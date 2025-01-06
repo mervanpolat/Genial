@@ -1,0 +1,19 @@
+/* src/components/Footer.css */
+.genial-footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #000;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: inline-flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-links li {
+  cursor: pointer;
+}

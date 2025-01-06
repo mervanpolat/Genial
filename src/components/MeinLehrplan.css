@@ -1,0 +1,149 @@
+/* Main container */
+.mein-lehrplan-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main heading */
+.main-heading {
+  text-align: left;
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+/* Header section */
+.lehrplan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+/* Header content */
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Header icon */
+.header-icon {
+  width: 60px;
+  height: 60px;
+}
+
+/* Header text */
+.header-text h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #000;
+}
+
+.header-text p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Start path button */
+.start-path-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.start-path-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable container for levels */
+.levels-scroll-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding-bottom: 10px; /* Add some space below for better look */
+  
+  /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+.levels-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Levels container */
+.levels-container {
+  display: flex; /* Use flex to arrange items horizontally */
+  gap: 20px; /* Space between cards */
+  padding: 10px 0;
+}
+
+/* Link wrapper for level cards */
+.level-link {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Ensures text color remains unaffected */
+}
+
+/* Individual level card */
+.level-card {
+  min-width: 200px;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 250px;
+  cursor: pointer;
+  
+  scroll-snap-align: center; /* Ensure the card snaps to the center when scrolling */
+}
+
+.level-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Level label */
+.level-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Icon inside level card */
+.level-icon {
+  width: 100%; /* Make the image take full width of its container */
+  height: auto; /* Maintain the aspect ratio */
+  max-width: 150px; /* Set a max width to control the image size */
+  max-height: 150px; /* Set a max height to create a square area */
+  object-fit: contain; /* Ensure the entire image is visible without distortion */
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Level title */
+.level-title {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}

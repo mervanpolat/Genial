@@ -1,0 +1,12 @@
+
+
+/* Apply the custom font to the body */
+body {
+  font-family: 'LTCKennerleyPro', serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  background-color: #faf3dc;
+  color: #000;
+}
+
