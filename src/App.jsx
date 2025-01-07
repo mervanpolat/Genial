@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/LandingPage/NavBar.jsx';
 import Footer from './components/LandingPage/Footer.jsx';
@@ -11,7 +11,7 @@ import Grundlagen from './modules/Pages/Grundlagen.jsx';
 import GleichungenLoesen from './modules/Pages/GleichungenLoesen.jsx'; // Example page using PageWrapper
 
 function App() {
-    return (
+    return (//sdfgsduzfgsddfzugsuzfdg
         <Router>
             <NavBar />
             <Routes>
