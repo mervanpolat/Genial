@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import './LandingPage.css';
 

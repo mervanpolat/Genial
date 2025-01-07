@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import './UeberUns.css'; // Make sure to style the grid in this file
 
 function UeberUns() {

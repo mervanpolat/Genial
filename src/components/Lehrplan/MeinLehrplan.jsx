@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { Link } from 'react-router-dom';
 import './MeinLehrplan.css'; // Import the CSS file
 
@@ -25,17 +25,18 @@ function MeinLehrplan() {
         <div className="levels-container">
 
           {/* Level 1 */}
-          <Link to="/level-1" className="level-link">
+          <Link to="/grundlagen" className="level-link">
             <div className="level-card">
               <span className="level-label">LEVEL 1</span>
               <img
-                src="/CardImages/Gleichung.png"
-                alt="Grundlagen"
-                className="level-icon"
+                  src="/CardImages/Gleichung.png"
+                  alt="Grundlagen"
+                  className="level-icon"
               />
               <p className="level-title">Grundlagen</p>
             </div>
           </Link>
+
 
           {/* Level 2 */}
           <Link to="/gleichungen-loesen" className="level-link">

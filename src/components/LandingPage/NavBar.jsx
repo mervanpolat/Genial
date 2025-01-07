@@ -1,6 +1,6 @@
 // src/components/NavBar.jsx
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
 import './NavBar.css';
 
@@ -54,6 +54,7 @@ function NavBar() {
         <li>
           <Link to="/anmelden" onClick={closeMenu}>Anmelden</Link>
         </li>
+       
       </ul>
     </nav>
   );

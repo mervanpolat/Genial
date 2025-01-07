@@ -1,7 +1,7 @@
-// src/components/CodeButton.jsx
-import React from 'react';
+// src/components/CubeButton.jsx
+import 'react';
 
-function CodeButton() {
+function CubeButton() {
   return (
     <svg
       id="cube-button"
@@ -68,4 +68,4 @@ function CodeButton() {
   );
 }
 
-export default CodeButton;
+export default CubeButton;
