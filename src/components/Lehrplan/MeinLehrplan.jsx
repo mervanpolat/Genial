@@ -33,8 +33,9 @@ function MeinLehrplan() {
                   alt="Grundlagen"
                   className="level-icon"
               />
-              <p className="level-title">Grundlagen</p>
             </div>
+            <p className="level-title">Grundlagen</p>
+
           </Link>
 
 
@@ -43,12 +44,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 2</span>
               <img
-                src="/CardImages/Algebra.png"
-                alt="Gleichungen lösen"
-                className="level-icon"
+                  src="/CardImages/Algebra.png"
+                  alt="Gleichungen lösen"
+                  className="level-icon"
               />
-              <p className="level-title">Gleichungen lösen</p>
             </div>
+            <p className="level-title">Gleichungen lösen</p>
+
           </Link>
 
           {/* Level 3 */}
@@ -56,12 +58,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 3</span>
               <img
-                src="/CardImages/Funktionen.png"
-                alt="Funktionen"
-                className="level-icon"
+                  src="/CardImages/Funktionen.png"
+                  alt="Funktionen"
+                  className="level-icon"
               />
-              <p className="level-title">Funktionen</p>
             </div>
+            <p className="level-title">Funktionen</p>
+
           </Link>
 
           {/* Level 4 */}
@@ -69,12 +72,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 4</span>
               <img
-                src="/CardImages/Trigonometrie.png"
-                alt="Trigonometrie"
-                className="level-icon"
+                  src="/CardImages/Trigonometrie.png"
+                  alt="Trigonometrie"
+                  className="level-icon"
               />
-              <p className="level-title">Trigonometrie</p>
             </div>
+            <p className="level-title">Trigonometrie</p>
+
           </Link>
 
           {/* Level 5 */}
@@ -82,12 +86,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 5</span>
               <img
-                src="/CardImages/Vektoren.png"
-                alt="Vektoren"
-                className="level-icon"
+                  src="/CardImages/Vektoren.png"
+                  alt="Vektoren"
+                  className="level-icon"
               />
-              <p className="level-title">Vektoren</p>
             </div>
+            <p className="level-title">Vektoren</p>
+
           </Link>
 
           {/* Level 6 */}
@@ -95,12 +100,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 6</span>
               <img
-                src="/CardImages/Ungleichungssysteme.png"
-                alt="(Un)gleichungssysteme"
-                className="level-icon"
+                  src="/CardImages/Ungleichungssysteme.png"
+                  alt="(Un)gleichungssysteme"
+                  className="level-icon"
               />
-              <p className="level-title">(Un)gleichungssysteme</p>
             </div>
+            <p className="level-title">(Un)gleichungssysteme</p>
+
           </Link>
 
           {/* Level 7 */}
@@ -108,12 +114,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 7</span>
               <img
-                src="/CardImages/Differentialrechnung.png"
-                alt="Differentialrechnung"
-                className="level-icon"
+                  src="/CardImages/Differentialrechnung.png"
+                  alt="Differentialrechnung"
+                  className="level-icon"
               />
-              <p className="level-title">Differentialrechnung</p>
             </div>
+            <p className="level-title">Differentialrechnung</p>
+
           </Link>
 
           {/* Level 8 */}
@@ -121,12 +128,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 8</span>
               <img
-                src="/CardImages/Umkehraufgaben.png"
-                alt="Umkehraufgaben"
-                className="level-icon"
+                  src="/CardImages/Umkehraufgaben.png"
+                  alt="Umkehraufgaben"
+                  className="level-icon"
               />
-              <p className="level-title">Umkehraufgaben</p>
             </div>
+            <p className="level-title">Umkehraufgaben</p>
+
           </Link>
 
           {/* Level 9 */}
@@ -134,12 +142,12 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 9</span>
               <img
-                src="/CardImages/Integral.png"
-                alt="Integral"
-                className="level-icon"
+                  src="/CardImages/Integral.png"
+                  alt="Integral"
+                  className="level-icon"
               />
-              <p className="level-title">Integral</p>
             </div>
+            <p className="level-title">Integral</p>
           </Link>
 
           {/* Level 10 */}
@@ -147,12 +155,13 @@ function MeinLehrplan() {
             <div className="level-card">
               <span className="level-label">LEVEL 10</span>
               <img
-                src="/CardImages/WHST.png"
-                alt="Wahrscheinlichkeit & Statistik"
-                className="level-icon"
+                  src="/CardImages/WHST.png"
+                  alt="Wahrscheinlichkeit & Statistik"
+                  className="level-icon"
               />
-              <p className="level-title">Wahrscheinlichkeit & Statistik</p>
+
             </div>
+            <p className="level-title">Wahrscheinlichkeit & Statistik</p>
           </Link>
 
         </div>

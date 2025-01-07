@@ -9,6 +9,30 @@ function Grundlagen() {
             title: 'Zahlenmengen',
             headline: 'Zahlenmengen',
             description: 'Lerne die Basics von Basics von Zahlenmengen.'
+        },
+        {
+            id: 2,
+            title: 'Zahlenmengen',
+            headline: 'Zahlenmengen',
+            description: 'Lerne die Basics von Basics von Zahlenmengen.'
+        },
+        {
+            id: 3,
+            title: 'Zahlenmengen',
+            headline: 'Zahlenmengen',
+            description: 'Lerne die Basics von Basics von Zahlenmengen.'
+        },
+        {
+            id: 4,
+            title: 'Zahlenmengen',
+            headline: 'Zahlenmengen',
+            description: 'Lerne die Basics von Basics von Zahlenmengen.'
+        },
+        {
+            id: 5,
+            title: 'Zahlenmengen',
+            headline: 'Zahlenmengen',
+            description: 'Lerne die Basics von Basics von Zahlenmengen.'
         }
     ];
 
@@ -31,15 +55,15 @@ function Grundlagen() {
     };
 
     return (
-        <div className="gleichungen-page">
+        <div className="template-page">
             <div className="gleichungen-container">
                 <div className="left-section">
                     <img
                         src="/images/Lektionen/Gleichungen/Gleichung.png"
                         alt="Gleichung"
-                        className="gleichung-icon"
+                        className="subject-icon"
                     />
-                    <h6>DIE BASICS VON MATHEMATIK </h6>
+                    <h6>LEVEL 1</h6>
                     <h1>Grundlagen</h1>
                     <p>Vetiefe dich bei den Grundlagen von Mathematik.</p>
                     <div className="exercise-units">

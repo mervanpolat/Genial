@@ -1,18 +1,53 @@
-import 'react';
+import  { useEffect, useRef, useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import CubeButton from '/Users/mervan/Desktop/genial/src/components/CubeButton/CubeButton.jsx'; // Import CubeButton
+import CubeButton from '/Users/mervan/Desktop/genial/src/components/CubeButton/CubeButton.jsx';
 import PropTypes from 'prop-types';
 
-
 function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
+    const tippyRef = useRef(null); // Ref to control the Tippy instance
+    const [isVisible, setIsVisible] = useState(false); // State to manage Tippy visibility
+
+    useEffect(() => {
+        const handleWheel = () => {
+            if (tippyRef.current) {
+                tippyRef.current.hide();
+                setIsVisible(false); // Update visibility state when hiding
+            }
+        };
+
+        window.addEventListener('wheel', handleWheel, { passive: true });
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, []);
+
+    const handleCubeClick = (e) => {
+        onCubeClick(module, e, itemRef); // Call the original click handler
+
+        if (tippyRef.current) {
+            if (isVisible) {
+                tippyRef.current.hide(); // Hide if currently visible
+                setIsVisible(false);
+            } else {
+                tippyRef.current.show(); // Show if currently hidden
+                setIsVisible(true);
+            }
+        }
+    };
+
     return (
         <Tippy
             theme="genial"
             interactive={true}
-            trigger="click"
+            trigger="manual" // Use manual trigger to control visibility with state
+            visible={isVisible}
             hideOnClick={false}
-            onClickOutside={(instance) => instance.hide()}
+            onClickOutside={(instance) => {
+                instance.hide();
+                setIsVisible(false); // Update visibility state when clicking outside
+            }}
             arrow={true}
             placement="bottom"
             offset={[0, 1]}
@@ -26,13 +61,14 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                     </button>
                 </div>
             }
+            onCreate={(instance) => {
+                tippyRef.current = instance; // Store the Tippy instance
+            }}
         >
-            <div
-                ref={itemRef}
-                className="right-item"
-                onClick={(e) => onCubeClick(module, e, itemRef)}
-            >
-                <CubeButton /> {/* CubeButton is included here */}
+            <div ref={itemRef} className="right-item">
+                <div className="cube-button-wrapper" onClick={handleCubeClick}>
+                    <CubeButton />
+                </div>
                 <p>{module.title}</p>
             </div>
         </Tippy>
@@ -50,6 +86,5 @@ TooltipItem.propTypes = {
     onCubeClick: PropTypes.func.isRequired,
     itemRef: PropTypes.object.isRequired,
 };
-
 
 export default TooltipItem;

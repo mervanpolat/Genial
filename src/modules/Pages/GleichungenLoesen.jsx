@@ -67,16 +67,16 @@ function GleichungenLoesen() {
   };
 
   return (
-      <div className="gleichungen-page">
+      <div className="template-page">
         <div className="gleichungen-container">
           <div className="left-section">
             <img
                 src="/images/Lektionen/Gleichungen/Gleichung.png"
                 alt="Gleichung"
-                className="gleichung-icon"
+                className="subject-icon"
             />
-            <h6>ALGEBRA &amp; FUNKTIONSTHEORIE</h6>
-            <h1>1.1 Gleichungen lösen</h1>
+            <h6>LEVEL 2</h6>
+            <h1>Gleichungen lösen</h1>
             <p>Eine solide Grundlage in Gleichungen mit Unbekannten aufbauen.</p>
             <div className="exercise-units">
               <div className="exercise-unit">

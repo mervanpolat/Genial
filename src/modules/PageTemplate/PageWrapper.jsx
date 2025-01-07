@@ -4,22 +4,22 @@ import './PageWrapper.css';
 
 function PageWrapper({ title, headline, description, imageSrc, exercises, units, moduleData }) {
     return (
-        <div className="gleichungen-page">
+        <div className="template-page">
             <div className="gleichungen-container">
                 {/* Left Section */}
                 <div className="left-section">
-                    <img src={imageSrc} alt={title} className="gleichung-icon" />
-                    <h6>ALGEBRA &amp; FUNKTIONSTHEORIE</h6>
+                    <img src={imageSrc} alt={title} className="subject-icon" />
+                    <h6></h6>
                     <h1>{headline}</h1>
                     <p>{description}</p>
                     <div className="exercise-units">
                         <div className="exercise-unit">
-                            <img src="/images/Lektionen/Gleichungen/Uebung.png" alt="Übung" />
-                            <h1>{exercises} Übungen</h1>
+                            <img src="" alt="Übung" />
+                            <h1>{exercises}</h1>
                         </div>
                         <div className="exercise-unit">
-                            <img src="/images/Lektionen/Gleichungen/Lectures.png" alt="Einheit" />
-                            <h1>{units} Einheiten</h1>
+                            <img src="" alt="Einheit" />
+                            <h1>{units}</h1>
                         </div>
                     </div>
                 </div>
