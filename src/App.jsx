@@ -21,8 +21,8 @@ function App() {
                 <Route path="/mein-lehrplan" element={<MeinLehrplan />} />
 
                 {/* Routes for pages using PageWrapper */}
-                <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
                 <Route path="/grundlagen" element={<Grundlagen />} /> {/* Updated route */}
+                <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
             </Routes>
             <Footer />
         </Router>

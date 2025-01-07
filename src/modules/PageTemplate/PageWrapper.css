@@ -252,7 +252,7 @@ body {
   background-color: #333; /* black background */
   color: #faf3dc; /* beige text color */
   border-radius: 20px; /* more rounding */
-  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3); /* drop shadow */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* drop shadow */
   padding: 14px; /* extra spacing for the tooltip */
 }
 

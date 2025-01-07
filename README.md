@@ -1,8 +1,112 @@
-# React + Vite
+# Genial Math Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Genial is an interactive web-based application designed to simplify and gamify the Austrian Math Matura. The platform provides students with tools to practice, understand, and master mathematical concepts in an engaging and intuitive way. It supports various types of Math Matura, including AHS, P, Cluster T1, Cluster T2, W1, and W2, with interactive features tailored to each category.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+
+- **Interactive Exercises**: Engage with exercises that provide real-time feedback and visualizations.
+- **Dynamic Function Plotting**: Plot linear and quadratic functions with adjustable parameters.
+- **Comprehensive Topic Coverage**: Includes algebra, precalculus, calculus, and distributions.
+- **User-Friendly Interface**: Minimalistic and sleek design for intuitive navigation.
+- **Gamification**: Progress tracking and interactive quizzes to motivate learning.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+---
+
+## Project Structure
+
+```
+├── src
+│   ├── components
+│   │   ├── LandingPage
+│   │   │   ├── Footer.css
+│   │   │   ├── Footer.jsx
+│   │   │   ├── NavBar.css
+│   │   │   ├── NavBar.jsx
+│   │   │   ├── UeberUns.css
+│   │   │   ├── UeberUns.jsx
+│   │   └── Lehrplan
+│   │       ├── MeinLehrplan.css
+│   │       ├── MeinLehrplan.jsx
+│   ├── modules
+│   │   ├── PageTemplate
+│   │   │   ├── PageWrapper.css
+│   │   │   ├── PageWrapper.jsx
+│   │   └── Pages
+│   │       ├── GleichungenLoesen.jsx
+│   │       ├── Grundlagen.jsx
+│   │       └── Tippy
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16 or later)
+- [Git](https://git-scm.com/)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mervanpolat/Genial.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Genial
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+To start the development server, run:
+```bash
+npm run dev
+```
+
+Open your browser and navigate to [http://localhost:5173/](http://localhost:5173/) to view the application.
+
+---
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Description of feature"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Contact
+
+For questions, suggestions, or issues, please contact:
+- **Mervan Polat**  
+  [GitHub Profile](https://github.com/mervanpolat)
