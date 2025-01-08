@@ -1,6 +1,6 @@
 // src/components/LoginPopper/LoginPopper.jsx
 
-import React, { useState } from "react";
+import  { useState } from "react";
 import PropTypes from "prop-types";
 import {
     Modal,
@@ -100,9 +100,20 @@ const LoginPopper = ({ isOpen, onClose }) => {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button variant="ghost" onClick={onClose} className={styles.cancelButton}>
+                    <Button
+                        variant="ghost"
+                        onClick={onClose}
+                        color="#333333"
+                        _hover={{
+                            color: "#333333",
+                            backgroundColor: "rgba(0, 0, 0, 0.1)" // 20% transparent black
+                        }}
+                    >
                         Abbrechen
                     </Button>
+
+
+
                 </ModalFooter>
             </ModalContent>
         </Modal>

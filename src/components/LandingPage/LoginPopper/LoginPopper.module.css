@@ -25,42 +25,43 @@
 
 /* Modal Close Button */
 .modalCloseButton {
-    color: #333333 !important; /* Chakra's gray.600 */
+    color: #333333 ; /* Chakra's gray.600 */
 }
 
 /* Form Labels */
 .formLabel {
     font-weight: 600;
-    color: #2d3748; /* Chakra's gray.800 */
+    color: #000; /* Chakra's gray.800 */
 }
 
 /* Input Fields */
 .input {
-    border-color: #333333; /* Chakra's gray.300 */
+    border-color: #333333 !important; /* Chakra's gray.300 */
 }
 
 .input:focus {
-    border-color: #333333; /* Chakra's blue.500 */
+    border-color: #333333 !important; /* Chakra's blue.500 */
     box-shadow: 0 0 0 1px #333333;
 }
 
 /* Submit Button */
 .submitButton {
-    background-color: #333333; /* Chakra's blue.600 */
-    color: white;
+    background-color: #333333 !important; /* Chakra's blue.600 */
+    color: white !important;
     transition: background-color 0.2s ease-in-out;
+
 }
 
 .submitButton:hover {
-    background-color: #007BFF; /* Chakra's blue.700 */
+    background-color: #3E3E3E !important; /* Chakra's blue.700 */
 }
 
 /* Cancel Button */
 .cancelButton {
-    color: #718096; /* Chakra's gray.500 */
+    color: #333333; ; /* Chakra's gray.500 */
     transition: color 0.2s ease-in-out;
 }
 
 .cancelButton:hover {
-    color: #4a5568; /* Chakra's gray.600 */
+    color: #333; /* Chakra's gray.600 */
 }
