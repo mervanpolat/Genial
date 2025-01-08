@@ -19,9 +19,9 @@ import {
     Spinner,
     VStack,
 } from "@chakra-ui/react";
-import { auth } from "../../../firebase/firebaseConfig.js"; // Ensure this path is correct
+import { auth } from "../../../firebase/firebaseConfig.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import styles from "./LoginPopper.module.css"; // Importing the CSS module
+import styles from "./LoginPopper.module.css"; // Import CSS module
 
 const LoginPopper = ({ isOpen, onClose }) => {
     const [email, setEmail] = useState("");
@@ -54,31 +54,27 @@ const LoginPopper = ({ isOpen, onClose }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
-            <ModalContent
-                className={styles.modalContent}
-                width={{ base: "90%", sm: "80%", md: "50%" }} // Responsive widths
-                maxWidth="500px" // Optional: Adjust as needed
-            >
+            <ModalContent className={styles.modalContent}>
                 <ModalHeader className={styles.modalHeader}>Anmelden</ModalHeader>
                 <ModalCloseButton className={styles.modalCloseButton} />
                 <ModalBody>
                     <form onSubmit={handleLogin}>
                         <VStack spacing={4}>
                             <FormControl isInvalid={!!error}>
-                                <FormLabel className={styles.formLabel}>Email</FormLabel>
+                                <FormLabel className={styles.formLabel}></FormLabel>
                                 <Input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
                                     className={styles.input}
-                                    placeholder="Beispiel: name@domain.com"
+                                    placeholder="Email"
                                     autoFocus
                                 />
                             </FormControl>
 
                             <FormControl isInvalid={!!error}>
-                                <FormLabel className={styles.formLabel}>Passwort</FormLabel>
+                                <FormLabel className={styles.formLabel}></FormLabel>
                                 <Input
                                     type="password"
                                     value={password}
@@ -91,7 +87,6 @@ const LoginPopper = ({ isOpen, onClose }) => {
                             </FormControl>
 
                             <Button
-                                colorScheme="blue"
                                 type="submit"
                                 width="100%"
                                 isLoading={loading}

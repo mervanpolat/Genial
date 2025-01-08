@@ -1,61 +1,66 @@
-/* src/components/LoginPopper/LoginPopper.module.css */
+/* LoginPopper.module.css */
 
+/* Modal Content */
 .modalContent {
-    background-color: #faf3dc; /* Soft background color */
-    border: 2px solid #333; /* Dark border with 2px thickness */
-    border-radius: 12px; /* Rounded corners */
-    padding: 20px; /* Adequate padding */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    /* Removed width and max-width to avoid conflicts */
+    background-color: #faf3dc !important;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 20px !important;
+    width: 500px; /* Default width for md and above */
 }
 
+@media (max-width: 48em) { /* Chakra's md breakpoint is 48em */
+    .modalContent {
+        width: 90%; /* 90% width for smaller screens */
+    }
+}
+
+/* Modal Header */
 .modalHeader {
-    font-size: 1.5rem; /* Larger font size for the header */
-    font-weight: 600; /* Semi-bold font weight */
-    color: #333; /* Dark text color */
-    text-align: center; /* Centered header text */
+    font-size: 1.75rem; /* Equivalent to fontSize="xl" */
+    font-weight: bold;
+    color: #2d3748; /* Chakra's gray.800 */
+    text-align: center !important;
 }
 
+/* Modal Close Button */
 .modalCloseButton {
-    color: #333; /* Dark close button */
+    color: #333333 !important; /* Chakra's gray.600 */
 }
 
+/* Form Labels */
 .formLabel {
-    font-size: 1rem; /* Consistent font size for labels */
-    color: #333; /* Dark label color */
-    font-weight: 500; /* Medium font weight */
+    font-weight: 600;
+    color: #2d3748; /* Chakra's gray.800 */
 }
 
+/* Input Fields */
 .input {
-    border-radius: 8px; /* Rounded input fields */
-    border: 1px solid #ccc; /* Light border for inputs */
-    padding: 8px; /* Padding inside inputs */
-    font-size: 1rem; /* Consistent font size */
-    background-color: #fff; /* White background for inputs */
+    border-color: #333333; /* Chakra's gray.300 */
 }
 
+.input:focus {
+    border-color: #333333; /* Chakra's blue.500 */
+    box-shadow: 0 0 0 1px #333333;
+}
+
+/* Submit Button */
 .submitButton {
-    background-color: #333; /* Dark background for the submit button */
-    color: #faf3dc; /* Light text color */
-    border: none; /* Remove default border */
-    border-radius: 8px; /* Rounded button corners */
-    padding: 10px 0; /* Vertical padding */
-    font-size: 1rem; /* Consistent font size */
-    font-weight: 600; /* Semi-bold text */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    background-color: #333333; /* Chakra's blue.600 */
+    color: white;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .submitButton:hover {
-    background-color: #555; /* Slightly lighter on hover */
+    background-color: #007BFF; /* Chakra's blue.700 */
 }
 
+/* Cancel Button */
 .cancelButton {
-    color: #333; /* Dark text for cancel button */
-    font-weight: 500; /* Medium font weight */
-    font-size: 1rem; /* Consistent font size */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    color: #718096; /* Chakra's gray.500 */
+    transition: color 0.2s ease-in-out;
 }
 
 .cancelButton:hover {
-    color: #555; /* Slightly lighter on hover */
+    color: #4a5568; /* Chakra's gray.600 */
 }

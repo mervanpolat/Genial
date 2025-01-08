@@ -17,7 +17,7 @@
     "@tippyjs/react": "^4.2.6",
     "d3": "^7.9.0",
     "firebase": "^11.1.0",
-    "framer-motion": "^11.16.0",
+    "framer-motion": "^11.16.1",
     "jsxgraph": "^1.10.1",
     "mafs": "^0.21.0",
     "prop-types": "^15.8.1",
