@@ -1,33 +1,60 @@
-import React from "react";
+// NavBar.jsx
+
+import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import LoginPopper from "./LoginPopper/LoginPopper.jsx";
-import "./NavBar.css";
+import styles from "./NavBar.module.css"; // Importing the CSS Module
 
 function NavBar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isLoginOpen, onOpen, onClose } = useDisclosure();
+  const [menuOpen, setMenuOpen] = useState(false); // State for burger menu
+
+  const toggleMenu = () => setMenuOpen(!menuOpen); // Function to toggle menu
 
   return (
       <>
-        <nav className="navbar">
-          <div className="navbar-logo">
-            <Link to="/" className="logo-link">
+        <nav className={styles.navbar}>
+          <div className={styles.navbarLogo}>
+            <Link to="/" className={styles.logoLink}>
               GENIAL
             </Link>
           </div>
 
-          <ul className="navbar-links">
+          {/* Burger Menu Icon */}
+          <button
+              className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`}
+              onClick={toggleMenu}
+              aria-label="Toggle Navigation Menu"
+          >
+            <span className={styles.burgerLine}></span>
+            <span className={styles.burgerLine}></span>
+          </button>
+
+          <ul
+              className={`${styles.navbarLinks} ${
+                  menuOpen ? styles.navbarLinksOpen : ""
+              }`}
+          >
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => setMenuOpen(false)}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/preis">Preis</Link>
+              <Link to="/preis" onClick={() => setMenuOpen(false)}>
+                Preis
+              </Link>
             </li>
             <li>
-              <Link to="/kurse">Kurse</Link>
+              <Link to="/kurse" onClick={() => setMenuOpen(false)}>
+                Kurse
+              </Link>
             </li>
             <li>
-              <Link to="/ueber-uns">Über uns</Link>
+              <Link to="/ueber-uns" onClick={() => setMenuOpen(false)}>
+                Über uns
+              </Link>
             </li>
             <li>
               <Button variant="link" onClick={onOpen}>
@@ -38,7 +65,7 @@ function NavBar() {
         </nav>
 
         {/* Login Modal */}
-        <LoginPopper isOpen={isOpen} onClose={onClose} />
+        <LoginPopper isOpen={isLoginOpen} onClose={onClose} />
       </>
   );
 }
