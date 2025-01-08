@@ -19,6 +19,7 @@ import {
     Spinner,
     VStack,
 } from "@chakra-ui/react";
+
 import { auth } from "../../../firebase/firebaseConfig.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import styles from "./LoginPopper.module.css"; // Import CSS module
@@ -106,7 +107,7 @@ const LoginPopper = ({ isOpen, onClose }) => {
                         color="#333333"
                         _hover={{
                             color: "#333333",
-                            backgroundColor: "rgba(0, 0, 0, 0.1)" // 20% transparent black
+                            backgroundColor: "rgba(0, 0, 0, 0.1)" // 10% transparent black
                         }}
                     >
                         Abbrechen

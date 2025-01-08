@@ -46,20 +46,28 @@ body {
   3) LEFT SECTION (Card)
 ****************************************************/
 .left-section {
-  flex: 0 0 auto;
-  width: 450px;
-  border: 1px solid #000;
+  display: flex;              /* Use flexbox */
+  flex-direction: column;     /* Stack content vertically */
+  align-items: center;        /* Center horizontally */
   padding: 30px;
   text-align: center;
+  border: 1px solid #000;
   position: sticky;
   top: 100px;
   height: fit-content;
 }
 
+:root {
+  --font-primary: 'LTCKennerleyPro', sans-serif;
+}
+
+
 .subject-icon {
   width: 200px;
   height: auto;
+  margin-bottom: 20px; /* Add spacing below the icon */
 }
+
 
 .left-section h6 {
   font-size: 1.3rem;
@@ -110,6 +118,7 @@ body {
 @media (max-width: 768px) {
   .left-section {
     flex: 1 1 auto;
+  align-items: center;
     width: 100%; /* Full width on mobile */
     position: static; /* Remove sticky */
     top: auto;
