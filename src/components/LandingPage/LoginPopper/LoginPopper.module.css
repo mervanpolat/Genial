@@ -1,0 +1,61 @@
+/* src/components/LoginPopper/LoginPopper.module.css */
+
+.modalContent {
+    background-color: #faf3dc; /* Soft background color */
+    border: 2px solid #333; /* Dark border with 2px thickness */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px; /* Adequate padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    /* Removed width and max-width to avoid conflicts */
+}
+
+.modalHeader {
+    font-size: 1.5rem; /* Larger font size for the header */
+    font-weight: 600; /* Semi-bold font weight */
+    color: #333; /* Dark text color */
+    text-align: center; /* Centered header text */
+}
+
+.modalCloseButton {
+    color: #333; /* Dark close button */
+}
+
+.formLabel {
+    font-size: 1rem; /* Consistent font size for labels */
+    color: #333; /* Dark label color */
+    font-weight: 500; /* Medium font weight */
+}
+
+.input {
+    border-radius: 8px; /* Rounded input fields */
+    border: 1px solid #ccc; /* Light border for inputs */
+    padding: 8px; /* Padding inside inputs */
+    font-size: 1rem; /* Consistent font size */
+    background-color: #fff; /* White background for inputs */
+}
+
+.submitButton {
+    background-color: #333; /* Dark background for the submit button */
+    color: #faf3dc; /* Light text color */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded button corners */
+    padding: 10px 0; /* Vertical padding */
+    font-size: 1rem; /* Consistent font size */
+    font-weight: 600; /* Semi-bold text */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submitButton:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+.cancelButton {
+    color: #333; /* Dark text for cancel button */
+    font-weight: 500; /* Medium font weight */
+    font-size: 1rem; /* Consistent font size */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cancelButton:hover {
+    color: #555; /* Slightly lighter on hover */
+}
