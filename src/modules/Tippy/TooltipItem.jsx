@@ -1,7 +1,7 @@
 import  { useEffect, useRef, useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import CubeButton from '/Users/mervan/Desktop/genial/src/components/CubeButton/CubeButton.jsx';
+import CubeButton from "../../components/CubeButton/CubeButton.jsx";
 import PropTypes from 'prop-types';
 
 function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {

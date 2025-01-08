@@ -1,6 +1,6 @@
 import { useRef, createRef } from 'react';
 import '../PageTemplate/PageWrapper.css';
-import TooltipItem from '/Users/mervan/Desktop/genial/src/modules/Tippy/TooltipItem.jsx'; // Import TooltipItem
+import TooltipItem from "../Tippy/ToolTipItem.jsx";
 
 function GleichungenLoesen() {
   const moduleData = [
