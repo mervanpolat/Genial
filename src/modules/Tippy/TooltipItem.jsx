@@ -1,18 +1,19 @@
-import  { useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import CubeButton from "../../components/CubeButton/CubeButton.jsx";
 import PropTypes from 'prop-types';
 
 function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
-    const tippyRef = useRef(null); // Ref to control the Tippy instance
-    const [isVisible, setIsVisible] = useState(false); // State to manage Tippy visibility
+    const tippyRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const [isHovered, setIsHovered] = useState(false); // State to track hover
 
     useEffect(() => {
         const handleWheel = () => {
             if (tippyRef.current) {
                 tippyRef.current.hide();
-                setIsVisible(false); // Update visibility state when hiding
+                setIsVisible(false);
             }
         };
 
@@ -24,14 +25,14 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     }, []);
 
     const handleCubeClick = (e) => {
-        onCubeClick(module, e, itemRef); // Call the original click handler
+        onCubeClick(module, e, itemRef);
 
         if (tippyRef.current) {
             if (isVisible) {
-                tippyRef.current.hide(); // Hide if currently visible
+                tippyRef.current.hide();
                 setIsVisible(false);
             } else {
-                tippyRef.current.show(); // Show if currently hidden
+                tippyRef.current.show();
                 setIsVisible(true);
             }
         }
@@ -41,12 +42,12 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
         <Tippy
             theme="genial"
             interactive={true}
-            trigger="manual" // Use manual trigger to control visibility with state
+            trigger="manual"
             visible={isVisible}
             hideOnClick={false}
             onClickOutside={(instance) => {
                 instance.hide();
-                setIsVisible(false); // Update visibility state when clicking outside
+                setIsVisible(false);
             }}
             arrow={true}
             placement="bottom"
@@ -54,15 +55,36 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
             animation="appleish"
             content={
                 <div style={{ textAlign: 'center' }}>
-                    <h2 style={{ margin: 0, marginBottom: '1px' }}>{module.headline}</h2>
-                    <p style={{ margin: 0 }}>{module.description}</p>
-                    <button className="btn-auswaehlen" onClick={() => onSelect(module)}>
-                        Auswählen
+                    <h2 style={{ fontSize: '26px', color: '#faf3dc', margin: '10px' }}>
+                        {module.headline}
+                    </h2>
+                    <p style={{ fontSize: '22px', color: '#faf3dc', marginBottom: '30px' }}>
+                        {module.description}
+                    </p>
+
+                    {/* Button with hover effect */}
+                    <button
+                        style={{
+                            fontSize: '18px',
+                            color: isHovered ? 'black' : 'white', // Change text color on hover
+                            backgroundColor: isHovered ? '#faf3dc' : '#333', // Change background color on hover
+                            padding: '9px 80px',
+                            borderRadius: '100px',
+                            border: '2px solid #faf3dc',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease', // Smooth transition effect
+                            marginBottom: '15px',
+                        }}
+                        onMouseEnter={() => setIsHovered(true)} // Set hover state to true
+                        onMouseLeave={() => setIsHovered(false)} // Set hover state to false
+                        onClick={() => onSelect(module)}
+                    >
+                        AUSWÄHLEN
                     </button>
                 </div>
             }
             onCreate={(instance) => {
-                tippyRef.current = instance; // Store the Tippy instance
+                tippyRef.current = instance;
             }}
         >
             <div ref={itemRef} className="right-item">
