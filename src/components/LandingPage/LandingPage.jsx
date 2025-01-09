@@ -1,97 +1,108 @@
-import 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
-import './LandingPage.css';
+import { Box, Button, Heading, Text, Image, Flex, Grid } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
-  const navigate = useNavigate(); // Hook to navigate between routes
+    const navigate = useNavigate();
 
-  const handleStart = () => {
-    navigate('/mein-lehrplan'); // Redirect to "Mein Lehrplan für HTL2" page
-  };
+    const handleStart = () => {
+        navigate('/mein-lehrplan');
+    };
 
-  return (
-    <section className="landing-section">
-      {/* Hero content */}
-      <h1>Learn by doing.</h1>
-      <p>
-        Interaktives Problemlösen, das effektiv und unterhaltsam ist. <br></br>
-        Bereite dich mühelos auf die Mathematik-Zentralmatura und Schularbeiten vor – egal ob AHS oder BHS.
-      </p>
-      <button className="cta-button" onClick={handleStart}>Loslegen</button>
-      <div className="video-container">
-        <video
-          className="hero-video"
-          src="/videos/LandingPage_Sinusfunktion.mov"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      </div>
+    return (
+        <Box textAlign="center" py="8" maxW="1200px" mx="auto">
+            {/* Hero Content */}
+            <Heading as="h1" fontSize={{ base: '2xl', md: '4xl' }} mb="4">
+                Learn by doing.
+            </Heading>
+            <Text fontSize={{ base: 'md', md: 'lg' }} lineHeight="1.6" mb="6">
+                Interaktives Problemlösen, das effektiv und unterhaltsam ist. <br />
+                Bereite dich mühelos auf die Mathematik-Zentralmatura und Schularbeiten vor – egal ob AHS oder BHS.
+            </Text>
+            <Button
+                onClick={handleStart}
+                variant="outline"
+                borderColor="black"
+                color="black"
+                _hover={{ bg: 'blackAlpha.100' }}
+                mb="8"
+            >
+                Loslegen
+            </Button>
 
-      {/* Concepts section */}
-      <section className="concepts-section">
-        <div className="concepts-text">
-          <h2>KONZEPTE, DIE LICHT INS DUNKEL BRINGEN.</h2>
-          <p>
-            Interaktive Lektionen machen komplexe Themen leicht zugänglich. 
-            Direktes Feedback sorgt dafür, dass du schneller verstehst.
-          </p>
-        </div>
-        <img
-          className="concepts-image"
-          src="/images/LandingPage/ZRegel.png"
-          alt="Konzept Grafik"
-        />
-      </section>
+            {/* Video Section */}
+            <Box maxW="800px" mx="auto" mb="16" overflow="hidden" borderRadius="md">
+                <Box
+                    as="video"
+                    src="/videos/LandingPage_Sinusfunktion.mov"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    w="100%"
+                    h="auto"
+                    maxH="400px"
+                    objectFit="contain"
+                />
+            </Box>
 
-      {/* KURSINHALT SECTION */}
-      <section className="kursinhalt-section">
-        <h2>KURSINHALT.</h2>
-        <p>
-          Genial hilft dir, die österreichische Mathematikmatura spielend zu
-          meistern – mit perfekt abgestimmten Übungen.
-        </p>
+            {/* Concepts Section */}
+            <Grid
+                templateColumns={{ base: '1fr', md: '1fr 1fr' }}
+                gap="8"
+                maxW="1000px"
+                mx="auto"
+                mb="16"
+                px="4"
+            >
+                <Box>
+                    <Heading as="h2" fontSize="2xl" mb="4">
+                        KONZEPTE, DIE LICHT INS DUNKEL BRINGEN.
+                    </Heading>
+                    <Text fontSize="lg" lineHeight="1.6">
+                        Interaktive Lektionen machen komplexe Themen leicht zugänglich. Direktes Feedback sorgt dafür,
+                        dass du schneller verstehst.
+                    </Text>
+                </Box>
+                <Image src="/images/LandingPage/ZRegel.png" alt="Konzept Grafik" objectFit="cover" />
+            </Grid>
 
-        {/* Container for both logos side-by-side */}
-        <div className="kursinhalt-logos">
-          <img
-            src="/images/LandingPage/Bundesministerium.png"
-            alt="Bundesministerium: Bildung, Wissenschaft und Forschung"
-          />
-          <img
-            src="/images/LandingPage/bifie.png"
-            alt="Bundesinstitut bifie"
-          />
-        </div>
-      </section>
+            {/* Kursinhalt Section */}
+            <Box textAlign="center" maxW="1000px" mx="auto" mb="16" px="4">
+                <Heading as="h2" fontSize="2xl" mb="4">
+                    KURSINHALT.
+                </Heading>
+                <Text fontSize="lg" lineHeight="1.6" mb="8">
+                    Genial hilft dir, die österreichische Mathematikmatura spielend zu meistern – mit perfekt
+                    abgestimmten Übungen.
+                </Text>
+                <Flex justify="center" gap="8" mb="8" wrap={{ base: 'wrap', md: 'nowrap' }}>
+                    <Image
+                        src="/images/LandingPage/Bundesministerium.png"
+                        alt="Bundesministerium: Bildung, Wissenschaft und Forschung"
+                        maxH="100px"
+                    />
+                    <Image src="/images/LandingPage/bifie.png" alt="Bundesinstitut bifie" maxH="100px" />
+                </Flex>
+            </Box>
 
-      {/* TECHNOLOGIEEINSATZ SECTION */}
-      <section className="technologieeinsatz-section">
-        <h2>TECHNOLOGIE.</h2>
-        <p>
-          Egal, ob du GeoGebra, den TI-Nspire CX CAS, TI-82, TI-84 oder den CASIO ClassPad II verwendest, 
-          Genial sorgt für eine optimale Vorbereitung mit Leichtigkeit.
-        </p>
+            {/* Technologieeinsatz Section */}
+            <Box textAlign="center" maxW="1000px" mx="auto" mb="16" px="4">
+                <Heading as="h2" fontSize="2xl" mb="4">
+                    TECHNOLOGIE.
+                </Heading>
+                <Text fontSize="lg" lineHeight="1.6" mb="8">
+                    Egal, ob du GeoGebra, den TI-Nspire CX CAS, TI-82, TI-84 oder den CASIO ClassPad II verwendest,
+                    Genial sorgt für eine optimale Vorbereitung mit Leichtigkeit.
+                </Text>
 
-        {/* Container for the three images */}
-        <div className="technologieeinsatz-images">
-          <img
-            src="/images/LandingPage/Casio.svg"
-            alt="Casio Logo"
-          />
-          <img
-            src="/images/LandingPage/TexasInstruments.svg"
-            alt="Texas Instruments Logo"
-          />
-          <img
-            src="/images/LandingPage/Geogebra.svg"
-            alt="Geogebra Logo"
-          />
-        </div>
-      </section>
-    </section>
-  );
+                <Flex justify="center" gap="8" mb="8" wrap={{ base: 'wrap', md: 'nowrap' }} maxW="250px" mx="auto">
+                    <Image src="/images/LandingPage/Casio.svg" alt="Casio Logo" borderRadius="md" maxH="100px" />
+                    <Image src="/images/LandingPage/TexasInstruments.svg" alt="Texas Instruments Logo" borderRadius="md" maxH="100px" />
+                    <Image src="/images/LandingPage/Geogebra.svg" alt="Geogebra Logo" borderRadius="md" maxH="100px" />
+                </Flex>
+            </Box>
+        </Box>
+    );
 }
 
 export default LandingPage;

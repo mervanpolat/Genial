@@ -1,0 +1,8 @@
+/* TooltipItem.css */
+@media (max-width: 768px) {
+    .tooltip-content-mobile {
+        width: 100vw;
+        padding: 0 10px; /* Optional: Add some horizontal padding */
+        box-sizing: border-box; /* Ensure padding doesn't exceed 100vw */
+    }
+}

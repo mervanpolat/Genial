@@ -1,38 +1,39 @@
-import React from 'react';
 import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
-import './UeberUns.css'; // Keeping the CSS file as requested for grid styling
 
 function UeberUns() {
   return (
-      <Box className="ueber-uns-container" p="20px">
+      <Box p="5" maxW="1200px" mx="auto" my="12">
         {/* Grid Section */}
         <Flex
             direction={{ base: 'column', md: 'row-reverse' }}
-            gap="20px"
-            className="ueber-uns-grid"
+            gap="5"
             alignItems="center"
         >
           {/* Image at the right on desktop, top on mobile */}
-          <Box className="grid-item image" flex="1">
+          <Box flex="1" borderRadius="lg" overflow="hidden">
             <Image
                 src="/images/UeberUns/Euclid.png"
                 alt="Euclid's Elements"
-                borderRadius="10px"
+                borderRadius="lg"
                 w="100%"
-                maxW={{ base: '100%', md: '500px', lg: '600px' }}  /* Increased size for desktop */
-                mb={{ base: '20px', md: '0' }}
+                maxW={{ base: '100%', md: '400px' }}
+                mb={{ base: '5', md: '0' }}
             />
           </Box>
 
           {/* Text Section */}
-          <Box className="grid-item text" flex="2">
-            <Heading as="h1" size="2xl" mb="20px">Über uns</Heading>
-            <Text fontSize="lg" lineHeight="1.8">
+          <Box flex="2">
+            <Heading as="h1" size="2xl" mb="5">
+              Über uns
+            </Heading>
+            <Text fontSize="lg" lineHeight="1.6">
               Wir helfen Schülern und Lernenden, ihre mathematischen Fähigkeiten zu verbessern,
               mit besonderem Fokus auf die Vorbereitung zur Zentralmatura.
-              <br /><br />
+              <br />
+              <br />
               Auf unserer Plattform setzt du auf aktives Lernen – keine Videos, nur interaktive Übungen.
-              <br /><br />
+              <br />
+              <br />
               Wir führen dich Schritt für Schritt durch die Konzepte und bauen dabei ein solides Fundament auf,
               um dich optimal auf die Matura vorzubereiten.
             </Text>
@@ -40,20 +41,26 @@ function UeberUns() {
         </Flex>
 
         {/* Team Section */}
-        <Box as="section" className="team-section" mt="40px">
-          <Heading as="h1" size="xl" mb="20px">Team</Heading>
-          <Box className="team-member" textAlign="center">
+        <Box as="section" mt="20">
+          <Heading as="h1" size="xl" mb="8" fontWeight="bold" textAlign="left">
+            Team
+          </Heading>
+          <Flex direction="column" alignItems="flex-start" gap="2">
             <Image
                 src="/images/TeamMembers/MervanPolat.png"
                 alt="Mervan Polat"
-                className="team-member-image"
                 borderRadius="full"
                 boxSize="150px"
-                mb="10px"
+                objectFit="cover"
+                mb="4"
             />
-            <Heading as="h3" size="md">Mervan Polat</Heading>
-            <Text fontSize="md" color="gray.600">Software Engineer, Founder</Text>
-          </Box>
+            <Heading as="h3" size="md" fontWeight="normal">
+              Mervan Polat
+            </Heading>
+            <Text fontSize="md" color="gray.600">
+              Software Engineer, Founder
+            </Text>
+          </Flex>
         </Box>
       </Box>
   );

@@ -63,6 +63,7 @@ function NavBar() {
               borderLeft="8px solid #30628b"
               borderRight="8px solid #f0c34e"
               borderBottom="8px solid #000000"
+              borderRadius="md"
               position="relative"
               mx={{ base: 4, sm: 6, md: "auto" }}
           >
