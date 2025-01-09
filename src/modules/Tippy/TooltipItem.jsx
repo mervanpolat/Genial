@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Box, Heading, Text, Button } from '@chakra-ui/react';
 import CubeButton from "../../components/CubeButton/CubeButton.jsx";
 import PropTypes from 'prop-types';
 
@@ -8,6 +9,7 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     const tippyRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false); // State to track hover
+    const [loading, setLoading] = useState(false); // Loading state
 
     useEffect(() => {
         const handleWheel = () => {
@@ -38,6 +40,14 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
         }
     };
 
+    const handleSelectClick = () => {
+        setLoading(true); // Start loading
+        onSelect(module); // Call the provided onSelect function
+
+        // Simulate completion (remove this if onSelect handles async logic)
+        setTimeout(() => setLoading(false), 1000);
+    };
+
     return (
         <Tippy
             theme="genial"
@@ -54,45 +64,47 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
             offset={[0, 1]}
             animation="appleish"
             content={
-                <div style={{ textAlign: 'center' }}>
-                    <h2 style={{ fontSize: '26px', color: '#faf3dc', margin: '10px' }}>
+                <Box textAlign="center">
+                    <Heading fontSize="26px" color="#faf3dc" mb="2" mt="2">
                         {module.headline}
-                    </h2>
-                    <p style={{ fontSize: '22px', color: '#faf3dc', marginBottom: '30px' }}>
+                    </Heading>
+                    <Text fontSize="22px" color="#faf3dc" mb="6">
                         {module.description}
-                    </p>
+                    </Text>
 
-                    {/* Button with hover effect */}
-                    <button
-                        style={{
-                            fontSize: '18px',
-                            color: isHovered ? 'black' : 'white', // Change text color on hover
-                            backgroundColor: isHovered ? '#faf3dc' : '#333', // Change background color on hover
-                            padding: '9px 80px',
-                            borderRadius: '100px',
-                            border: '2px solid #faf3dc',
-                            cursor: 'pointer',
-                            transition: 'all 0.3s ease', // Smooth transition effect
-                            marginBottom: '15px',
-                        }}
-                        onMouseEnter={() => setIsHovered(true)} // Set hover state to true
-                        onMouseLeave={() => setIsHovered(false)} // Set hover state to false
-                        onClick={() => onSelect(module)}
+                    {/* Button with loading state */}
+                    <Button
+                        fontSize="18px"
+                        color={isHovered ? 'black' : 'white'}
+                        bg={isHovered ? '#faf3dc' : '#333'}
+                        _hover={{ bg: '#faf3dc', color: 'black' }}
+                        px="12"
+                        py="2"
+                        borderRadius="100px"
+                        border="2px solid #faf3dc"
+                        cursor="pointer"
+                        transition="all 0.3s ease"
+                        mb="4"
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        onClick={handleSelectClick}
+                        isLoading={loading} // Apply loading state
+                        loadingText="AUSWÄHLEN..." // Text displayed while loading
                     >
                         AUSWÄHLEN
-                    </button>
-                </div>
+                    </Button>
+                </Box>
             }
             onCreate={(instance) => {
                 tippyRef.current = instance;
             }}
         >
-            <div ref={itemRef} className="right-item">
-                <div className="cube-button-wrapper" onClick={handleCubeClick}>
+            <Box ref={itemRef} className="right-item">
+                <Box className="cube-button-wrapper" onClick={handleCubeClick}>
                     <CubeButton />
-                </div>
-                <p>{module.title}</p>
-            </div>
+                </Box>
+                <Text>{module.title}</Text>
+            </Box>
         </Tippy>
     );
 }

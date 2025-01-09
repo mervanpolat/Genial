@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import { Box, Button, Heading, Text, Image, Flex, Grid } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false); // Loading state
 
     const handleStart = () => {
-        navigate('/mein-lehrplan');
+        setLoading(true); // Start loading
+
+        // Simulate a delay before navigation (remove if unnecessary)
+        setTimeout(() => {
+            navigate('/mein-lehrplan');
+            setLoading(false); // Reset loading state after navigation (optional)
+        }, 1000);
     };
 
     return (
@@ -25,6 +33,8 @@ function LandingPage() {
                 color="black"
                 _hover={{ bg: 'blackAlpha.100' }}
                 mb="8"
+                isLoading={loading} // Apply loading state
+                loadingText="Loslegen" // Text during loading
             >
                 Loslegen
             </Button>
