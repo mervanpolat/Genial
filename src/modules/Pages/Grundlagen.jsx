@@ -59,7 +59,7 @@ function Grundlagen() {
             <div className="gleichungen-container">
                 <div className="left-section">
                     <img
-                        src="/images/Lektionen/Gleichungen/Gleichung.png"
+                        src="/CardImages/HTL2/Grundlagen.svg"
                         alt="Gleichung"
                         className="subject-icon"
                     />

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2, .cls-4 {
+        stroke: #1e1e1c;
+        stroke-width: 30px;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 0 0 48.44 48.44;
+      }
+
+      .cls-3 {
+        stroke: #000;
+        stroke-width: 20px;
+      }
+
+      .cls-4 {
+        stroke-dasharray: 0 0 50.97 50.97;
+      }
+
+      .cls-5 {
+        stroke: #eeba41;
+        stroke-linecap: round;
+        stroke-width: 50px;
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-9 {
+        stroke-width: 0px;
+      }
+
+      .cls-7 {
+        fill: #c03b2d;
+      }
+
+      .cls-8 {
+        fill: #30628b;
+      }
+
+      .cls-9 {
+        fill: #faf3dc;
+      }
+    </style>
+  </defs>
+  <rect class="cls-9" x="0" y="1" width="1023" height="1023"/>
+  <polygon class="cls-6" points="66.2 65.22 20.49 144.38 111.9 144.38 66.2 65.22"/>
+  <polygon class="cls-6" points="962.51 957.15 883.35 911.45 883.35 1002.86 962.51 957.15"/>
+  <g>
+    <line class="cls-1" x1="246" y1="779" x2="271" y2="779"/>
+    <line class="cls-4" x1="321.97" y1="779" x2="704.23" y2="779"/>
+    <polyline class="cls-1" points="729.71 779 754.71 779 754.71 754"/>
+    <line class="cls-2" x1="754.71" y1="705.56" x2="754.71" y2="342.22"/>
+    <line class="cls-1" x1="754.71" y1="318" x2="754.71" y2="293"/>
+  </g>
+  <polygon class="cls-8" points="273.07 770 744 769.55 744.03 297.15 273.07 770"/>
+  <path class="cls-7" d="m450.39,591.61s99.63,30.71,99.63,177.74l-276.92.27,177.29-178Z"/>
+  <line class="cls-5" x1="81" y1="942" x2="910" y2="107"/>
+  <circle class="cls-6" cx="754.35" cy="255.6" r="83.65"/>
+  <circle class="cls-6" cx="246.35" cy="769.6" r="83.65"/>
+  <polyline class="cls-3" points="65.91 144.87 65.91 957.15 65.91 957.15 883.51 957.15"/>
+</svg>

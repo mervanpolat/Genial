@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1025">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #c03b2d;
+      }
+
+      .cls-3 {
+        fill: #30628b;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5 {
+        fill: #f0c34e;
+      }
+
+      .cls-6 {
+        fill: #faf3dc;
+      }
+    </style>
+  </defs>
+  <rect class="cls-6" x="0" y="1" width="1024" height="1024"/>
+  <ellipse class="cls-3" cx="511.5" cy="513.5" rx="463" ry="448"/>
+  <ellipse class="cls-5" cx="511.5" cy="591" rx="403.5" ry="350"/>
+  <ellipse class="cls-2" cx="511.5" cy="658.5" rx="300.5" ry="259.5"/>
+  <ellipse class="cls-1" cx="511.5" cy="725.5" rx="209.6" ry="169.5"/>
+  <ellipse class="cls-4" cx="511.5" cy="790.5" rx="103.5" ry="80.5"/>
+</svg>

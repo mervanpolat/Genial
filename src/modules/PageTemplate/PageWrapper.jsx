@@ -1,39 +1,51 @@
-import 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import './PageWrapper.css';
+import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
+import './PageWrapper.css'; // Keeping the CSS file as requested for any custom styles
 
 function PageWrapper({ title, headline, description, imageSrc, exercises, units, moduleData }) {
     return (
-        <div className="template-page">
-            <div className="gleichungen-container">
+        <Box className="template-page" p="20px">
+            <Flex
+                className="gleichungen-container"
+                direction={{ base: 'column', md: 'row' }}
+                gap="20px"
+            >
                 {/* Left Section */}
-                <div className="left-section">
-                    <img src={imageSrc} alt={title} className="subject-icon" />
-                    <h6></h6>
-                    <h1>{headline}</h1>
-                    <p>{description}</p>
-                    <div className="exercise-units">
-                        <div className="exercise-unit">
-                            <img src="" alt="Übung" />
-                            <h1>{exercises}</h1>
-                        </div>
-                        <div className="exercise-unit">
-                            <img src="" alt="Einheit" />
-                            <h1>{units}</h1>
-                        </div>
-                    </div>
-                </div>
+                <Box className="left-section" flex="1">
+                    <Image src={imageSrc} alt={title} className="subject-icon" boxSize="100px" mb="10px" />
+                    <Heading as="h1" size="xl" mb="10px">
+                        {headline}
+                    </Heading>
+                    <Text fontSize="lg" mb="20px">
+                        {description}
+                    </Text>
+                    <Flex className="exercise-units" gap="20px">
+                        <Flex className="exercise-unit" direction="column" align="center">
+                            <Image src="" alt="Übung" boxSize="40px" mb="5px" />
+                            <Heading as="h1" size="lg">
+                                {exercises}
+                            </Heading>
+                        </Flex>
+                        <Flex className="exercise-unit" direction="column" align="center">
+                            <Image src="" alt="Einheit" boxSize="40px" mb="5px" />
+                            <Heading as="h1" size="lg">
+                                {units}
+                            </Heading>
+                        </Flex>
+                    </Flex>
+                </Box>
 
                 {/* Right Section */}
-                <div className="right-section">
-                    {moduleData.map((module, index) => (
-                        <div key={module.id} className="right-item">
-                            <p>{module.title}</p>
-                        </div>
+                <Box className="right-section" flex="1">
+                    {moduleData.map((module) => (
+                        <Box key={module.id} className="right-item" p="10px" borderBottom="1px solid #ddd">
+                            <Text fontSize="md">{module.title}</Text>
+                        </Box>
                     ))}
-                </div>
-            </div>
-        </div>
+                </Box>
+            </Flex>
+        </Box>
     );
 }
 
@@ -48,9 +60,9 @@ PageWrapper.propTypes = {
     moduleData: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired
+            title: PropTypes.string.isRequired,
         })
-    ).isRequired
+    ).isRequired,
 };
 
 export default PageWrapper;

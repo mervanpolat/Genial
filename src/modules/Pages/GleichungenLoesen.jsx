@@ -71,7 +71,7 @@ function GleichungenLoesen() {
         <div className="gleichungen-container">
           <div className="left-section">
             <img
-                src="/images/Lektionen/Gleichungen/Gleichung.png"
+                src="/CardImages/HTL2/Gleichung.png"
                 alt="Gleichung"
                 className="subject-icon"
             />
