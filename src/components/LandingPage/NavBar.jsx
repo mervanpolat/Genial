@@ -1,5 +1,3 @@
-// NavBar.jsx
-
 import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
@@ -16,7 +14,8 @@ import {
   HStack,
   Link as ChakraLink,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 import LoginPopper from "./LoginPopper/LoginPopper.jsx";
 
 function NavBar() {
@@ -55,16 +54,17 @@ function NavBar() {
           <Box
               maxW="container.lg"
               w="100%"
-              px={6}
+              px={{ base: 4, md: 6 }}
               py={3}
               bg="#faf3dc"
-              boxShadow={customBoxShadow} // Apply custom shadow
-              color="#000000" // Set text color to black
-              borderTop="8px solid #c03b2d" // Top border
-              borderLeft="8px solid #30628b" // Left border
-              borderRight="8px solid #f0c34e" // Right border
-              borderBottom="8px solid #000000" // Bottom border
-              position="relative" // Ensure positioning for shadows if needed
+              boxShadow={customBoxShadow}
+              color="#000000"
+              borderTop="8px solid #c03b2d"
+              borderLeft="8px solid #30628b"
+              borderRight="8px solid #f0c34e"
+              borderBottom="8px solid #000000"
+              position="relative"
+              mx={{ base: 4, sm: 6, md: "auto" }}
           >
             <Flex align="center" justify="space-between">
               {/* Logo */}
@@ -72,21 +72,43 @@ function NavBar() {
                 <ChakraLink
                     as={RouterLink}
                     to="/"
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   GENIAL
                 </ChakraLink>
               </Box>
 
-              {/* Hamburger Icon for mobile */}
+              {/* Animated Hamburger Icon for mobile */}
               <IconButton
                   aria-label="Toggle Navigation Menu"
-                  icon={<HamburgerIcon />}
                   display={{ base: "block", md: "none" }}
-                  onClick={openDrawer}
-                  color="#000000" // Set icon color to black
+                  onClick={isDrawerOpen ? closeDrawer : openDrawer}
+                  color="#000000"
                   variant="ghost"
-                  _hover={{ bg: "transparent" }} // Maintain ghost variant on hover
+                  _hover={{ bg: "transparent" }}
+                  icon={
+                    <AnimatePresence initial={false} mode="wait">
+                      {isDrawerOpen ? (
+                          <motion.div
+                              key="close"
+                              initial={{ rotate: -90, opacity: 0 }}
+                              animate={{ rotate: 0, opacity: 1 }}
+                              exit={{ rotate: 90, opacity: 0 }}
+                          >
+                            <CloseIcon />
+                          </motion.div>
+                      ) : (
+                          <motion.div
+                              key="menu"
+                              initial={{ rotate: 90, opacity: 0 }}
+                              animate={{ rotate: 0, opacity: 1 }}
+                              exit={{ rotate: -90, opacity: 0 }}
+                          >
+                            <HamburgerIcon />
+                          </motion.div>
+                      )}
+                    </AnimatePresence>
+                  }
               />
 
               {/* Links (Desktop view only) */}
@@ -98,28 +120,28 @@ function NavBar() {
                 <ChakraLink
                     as={RouterLink}
                     to="/"
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Home
                 </ChakraLink>
                 <ChakraLink
                     as={RouterLink}
                     to="/preis"
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Preis
                 </ChakraLink>
                 <ChakraLink
                     as={RouterLink}
                     to="/kurse"
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Kurse
                 </ChakraLink>
                 <ChakraLink
                     as={RouterLink}
                     to="/ueber-uns"
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Über uns
                 </ChakraLink>
@@ -127,7 +149,7 @@ function NavBar() {
                     variant="link"
                     onClick={onOpen}
                     color="#000000"
-                    sx={animatedUnderline} // Apply animated underline styles
+                    sx={animatedUnderline}
                 >
                   Anmelden
                 </Button>
@@ -137,17 +159,18 @@ function NavBar() {
         </Flex>
 
         {/* Drawer for Mobile Menu */}
-        <Drawer isOpen={isDrawerOpen} placement="right" onClose={closeDrawer}>
+        <Drawer isOpen={isDrawerOpen} placement="top" onClose={closeDrawer}>
           <DrawerOverlay />
           <DrawerContent
-              bg="#ffffff" // Changed to white for better contrast with black text
-              color="#000000" // Set text color to black
-              boxShadow={customBoxShadow} // Apply the same custom shadow
-              borderTop="8px solid #c03b2d" // Top border
-              borderLeft="8px solid #30628b" // Left border
-              borderRight="8px solid #f0c34e" // Right border
-              borderBottom="8px solid #000000" // Bottom border
-              borderRadius="md" // Optional: Add slight border radius for smoothness
+              bg="#ffffff"
+              color="#000000"
+              boxShadow={customBoxShadow}
+              borderTop="8px solid #c03b2d"
+              borderLeft="8px solid #30628b"
+              borderRight="8px solid #f0c34e"
+              borderBottom="8px solid #000000"
+              borderRadius="md"
+              height="100vh"
           >
             <DrawerCloseButton />
             <DrawerBody>
@@ -156,7 +179,7 @@ function NavBar() {
                     as={RouterLink}
                     to="/"
                     onClick={closeDrawer}
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Home
                 </ChakraLink>
@@ -164,7 +187,7 @@ function NavBar() {
                     as={RouterLink}
                     to="/preis"
                     onClick={closeDrawer}
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Preis
                 </ChakraLink>
@@ -172,7 +195,7 @@ function NavBar() {
                     as={RouterLink}
                     to="/kurse"
                     onClick={closeDrawer}
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Kurse
                 </ChakraLink>
@@ -180,7 +203,7 @@ function NavBar() {
                     as={RouterLink}
                     to="/ueber-uns"
                     onClick={closeDrawer}
-                    {...animatedUnderline} // Apply animated underline styles
+                    {...animatedUnderline}
                 >
                   Über uns
                 </ChakraLink>
@@ -188,7 +211,7 @@ function NavBar() {
                     variant="link"
                     onClick={onOpen}
                     color="#000000"
-                    sx={animatedUnderline} // Apply animated underline styles
+                    sx={animatedUnderline}
                 >
                   Anmelden
                 </Button>
