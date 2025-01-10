@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Heading, Text, Image, Flex, Grid } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,8 +11,8 @@ function LandingPage() {
 
         // Simulate a delay before navigation (remove if unnecessary)
         setTimeout(() => {
-            navigate('/mein-lehrplan');
-            setLoading(false); // Reset loading state after navigation (optional)
+            navigate('/welcome'); // Redirect to Welcome page
+            setLoading(false); // Reset loading state after navigation
         }, 1000);
     };
 
