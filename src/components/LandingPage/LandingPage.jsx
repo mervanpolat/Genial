@@ -11,7 +11,7 @@ function LandingPage() {
 
         // Simulate a delay before navigation (remove if unnecessary)
         setTimeout(() => {
-            navigate('/welcome'); // Redirect to Welcome page
+            navigate('/welcome'); // Redirect to Step1_Welcome page
             setLoading(false); // Reset loading state after navigation
         }, 1000);
     };
