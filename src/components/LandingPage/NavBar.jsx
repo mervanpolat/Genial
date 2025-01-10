@@ -163,7 +163,7 @@ function NavBar() {
         <Drawer isOpen={isDrawerOpen} placement="top" onClose={closeDrawer}>
           <DrawerOverlay />
           <DrawerContent
-              bg="#ffffff"
+              bg="#faf3dc"
               color="#000000"
               boxShadow={customBoxShadow}
               borderTop="8px solid #c03b2d"
