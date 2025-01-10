@@ -27,14 +27,15 @@ import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 
 const LoginPopper = ({ isOpen, onClose }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loadingLogin, setLoadingLogin] = useState(false); // Separate loading state for email/password login
+    const [loadingGoogle, setLoadingGoogle] = useState(false); // Separate loading state for Google login
     const [error, setError] = useState("");
     const toast = useToast();
 
     // Handle email/password login
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setLoadingLogin(true); // Set loading for email/password login
         setError("");
         try {
             await signInWithEmailAndPassword(auth, email, password);
@@ -49,14 +50,15 @@ const LoginPopper = ({ isOpen, onClose }) => {
         } catch (err) {
             setError("Login fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.");
         } finally {
-            setLoading(false);
+            setLoadingLogin(false); // Reset loading state
         }
     };
 
     // Handle Google Sign-In
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider(); // Create a new Google provider instance
-        setLoading(true);
+        setLoadingGoogle(true); // Set loading for Google Sign-In
+        setError("");
         try {
             await signInWithPopup(auth, provider);
             toast({
@@ -70,7 +72,7 @@ const LoginPopper = ({ isOpen, onClose }) => {
         } catch (err) {
             setError("Login mit Google fehlgeschlagen.");
         } finally {
-            setLoading(false);
+            setLoadingGoogle(false); // Reset loading state
         }
     };
 
@@ -138,7 +140,7 @@ const LoginPopper = ({ isOpen, onClose }) => {
                             <Button
                                 type="submit"
                                 width="100%"
-                                isLoading={loading}
+                                isLoading={loadingLogin} // Apply loading state for email/password login
                                 spinner={<Spinner />}
                                 bg="#333333"
                                 color="white"
@@ -160,7 +162,8 @@ const LoginPopper = ({ isOpen, onClose }) => {
                             bg="#4285F4" // Google brand color
                             color="white"
                             _hover={{ bg: "#357AE8" }}
-                            isLoading={loading}
+                            isLoading={loadingGoogle} // Apply loading state for Google login
+                            spinner={<Spinner />}
                         >
                             <HStack justify="center" spacing={2}>
                                 <AiOutlineGoogle size={20} /> {/* Google Icon */}
