@@ -1,21 +1,18 @@
 // src/components/WelcomeIntro/steps/Step7_TimePreference.jsx
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Button, VStack } from '@chakra-ui/react';
+import { Box, Text, VStack } from '@chakra-ui/react';
 import OptionItem from '../OptionItem';
-
-import { BsSunrise, BsSunset } from 'react-icons/bs';
-import { WiDaySunny } from 'react-icons/wi';
-import { FaRegMoon } from 'react-icons/fa';
+import ContinueButton from "../ContinueButton.jsx";
 
 function Step7_TimePreference({ onContinue }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const options = [
-        { label: 'Morgens', icon: BsSunrise },
-        { label: 'Mittags', icon: WiDaySunny },
-        { label: 'Abends', icon: BsSunset },
-        { label: 'Nachts', icon: FaRegMoon },
+        { label: 'Morgens', emoji: '🐓' },   // Sunrise emoji for morning
+        { label: 'Mittags', emoji: '🍽️️' },   // Sunny emoji for midday
+        { label: 'Abends', emoji: '🏡' },   // Sunset emoji for evening
+        { label: 'Nachts', emoji: '🦉' },   // Moon emoji for night
     ];
 
     const handleSelection = (index) => {
@@ -25,8 +22,6 @@ function Step7_TimePreference({ onContinue }) {
     const handleContinueClick = () => {
         if (selectedOption !== null) {
             onContinue();
-        } else {
-            // Optionally, provide user feedback to select an option
         }
     };
 
@@ -40,7 +35,7 @@ function Step7_TimePreference({ onContinue }) {
                     {options.map((option, index) => (
                         <OptionItem
                             key={index}
-                            icon={option.icon}
+                            emoji={option.emoji} // Pass emoji prop
                             label={option.label}
                             isSelected={selectedOption === index}
                             onSelect={() => handleSelection(index)}
@@ -48,15 +43,13 @@ function Step7_TimePreference({ onContinue }) {
                         />
                     ))}
                 </VStack>
-                <Button
-                    colorScheme="teal"
-                    size="lg"
+                <ContinueButton
                     onClick={handleContinueClick}
                     isDisabled={selectedOption === null}
-                    aria-label="Continue to Final Info"
+                    ariaLabel="Continue to Info Section"
                 >
-                    Continue
-                </Button>
+                    Weiter
+                </ContinueButton>
             </VStack>
         </Box>
     );

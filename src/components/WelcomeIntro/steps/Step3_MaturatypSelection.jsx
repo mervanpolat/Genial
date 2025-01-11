@@ -1,13 +1,10 @@
-// src/components/WelcomeIntro/steps/Step3_MaturatypSelection.jsx
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Button, VStack } from '@chakra-ui/react';
+import { Box, Text, VStack } from '@chakra-ui/react';
 import OptionItem from '../OptionItem';
+import ContinueButton from "../ContinueButton.jsx";
 
-import {
-    GiBookshelf,
-    GiStairsGoal
-} from 'react-icons/gi';
+import { GiBookshelf, GiStairsGoal } from 'react-icons/gi';
 import { FaLaptopCode, FaToolbox } from 'react-icons/fa';
 import { MdBusiness } from 'react-icons/md';
 import { RiBuilding2Fill } from 'react-icons/ri';
@@ -31,8 +28,6 @@ function Step3_MaturatypSelection({ onContinue }) {
     const handleContinueClick = () => {
         if (selectedOption !== null) {
             onContinue();
-        } else {
-            // Optionally, provide user feedback to select an option
         }
     };
 
@@ -54,15 +49,13 @@ function Step3_MaturatypSelection({ onContinue }) {
                         />
                     ))}
                 </VStack>
-                <Button
-                    colorScheme="teal"
-                    size="lg"
+                <ContinueButton
                     onClick={handleContinueClick}
                     isDisabled={selectedOption === null}
-                    aria-label="Continue to Info Section"
+                    ariaLabel="Continue to Info Section"
                 >
-                    Continue
-                </Button>
+                    Weiter
+                </ContinueButton>
             </VStack>
         </Box>
     );

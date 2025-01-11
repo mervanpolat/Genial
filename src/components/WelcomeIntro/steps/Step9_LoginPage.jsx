@@ -1,47 +1,50 @@
 // src/components/WelcomeIntro/steps/Step9_LoginPage.jsx
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, VStack, Text, Button } from '@chakra-ui/react';
+import { VStack, Text, Button, Flex, Image } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
 import LoginPopper from '../../LandingPage/LoginPopper/LoginPopper.jsx';
 
-function Step9_LoginPage({ onContinue }) {
+function Step9_LoginPage() {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <Box p={8} textAlign="center">
+        <Flex
+            p={8}
+            direction="column"
+            align="center"
+            justify="center"
+            h="100vh" // Full screen height for vertical centering
+            bg="#faf3dc"
+        >
+            {/* Image component */}
+            <Image
+                src="src/components/WelcomeIntro/assets/icon1.png"
+                alt="Login Illustration"
+                boxSize="200px"
+                mb={6}
+                objectFit="contain"
+            />
+
             <VStack spacing={6}>
-                <Text fontSize="2xl" fontWeight="bold">
-                    Please log in to continue
+                <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+                    Dein individueller Lernweg wartet auf dich. Registriere dich kostenlos und fange an, dein Wissen auszubauen.
                 </Text>
-                {/* Trigger LoginPopper on button click */}
+
                 <Button
-                    colorScheme="teal"
+                    bg="black"
+                    color="white"
                     size="lg"
                     onClick={onOpen}
                     aria-label="Open Login Popper"
+                    _hover={{ bg: 'rgba(0, 0, 0, 0.8)' }}
                 >
-                    Login
+                    Anmelden
                 </Button>
+
                 <LoginPopper isOpen={isOpen} onClose={onClose} />
-                <Text fontSize="sm" color="gray.500">
-                    Click the button above to start the login process.
-                </Text>
-                <Button
-                    colorScheme="teal"
-                    size="lg"
-                    onClick={onContinue}
-                    aria-label="Continue after Login"
-                >
-                    Continue
-                </Button>
             </VStack>
-        </Box>
+        </Flex>
     );
 }
-
-Step9_LoginPage.propTypes = {
-    onContinue: PropTypes.func.isRequired,
-};
 
 export default Step9_LoginPage;

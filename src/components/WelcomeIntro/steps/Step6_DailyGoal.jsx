@@ -1,13 +1,14 @@
 // src/components/WelcomeIntro/steps/Step6_DailyGoal.jsx
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Button, VStack } from '@chakra-ui/react';
+import { Box, Text, VStack } from '@chakra-ui/react';
 import OptionItem from '../OptionItem';
+import ContinueButton from "../ContinueButton.jsx";
 
 function Step6_DailyGoal({ onContinue }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
-    const options = ['15 min', '30 min', '45 min', '60 min'];
+    const options = ['🕒 15 min', '🕧 30 min', '🕓 45 min', '🕐 60 min'];
 
     const handleSelection = (index) => {
         setSelectedOption(index);
@@ -25,7 +26,7 @@ function Step6_DailyGoal({ onContinue }) {
         <Box p={8} textAlign="center">
             <VStack spacing={6}>
                 <Text fontSize="2xl" fontWeight="bold">
-                    What's your daily learning goal?
+                    Was ist dein tägliches Lernziel?
                 </Text>
                 <VStack spacing={4} w="100%">
                     {options.map((option, index) => (
@@ -38,15 +39,13 @@ function Step6_DailyGoal({ onContinue }) {
                         />
                     ))}
                 </VStack>
-                <Button
-                    colorScheme="teal"
-                    size="lg"
+                <ContinueButton
                     onClick={handleContinueClick}
                     isDisabled={selectedOption === null}
-                    aria-label="Continue to Time Preference"
+                    ariaLabel="Continue to Info Section"
                 >
-                    Continue
-                </Button>
+                    Weiter
+                </ContinueButton>
             </VStack>
         </Box>
     );

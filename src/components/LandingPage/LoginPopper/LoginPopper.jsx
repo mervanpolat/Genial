@@ -19,23 +19,32 @@ import {
     Divider,
     HStack,
     Box,
+    Text,
 } from "@chakra-ui/react";
-import { AiOutlineGoogle } from "react-icons/ai"; // Google icon from Ant Design icons
+import { AiOutlineGoogle } from "react-icons/ai";
 import { auth } from "../../../firebase/firebaseConfig.js";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const LoginPopper = ({ isOpen, onClose }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loadingLogin, setLoadingLogin] = useState(false); // Separate loading state for email/password login
+    const [confirmPassword, setConfirmPassword] = useState(""); // For signup
+    const [loading, setLoading] = useState(false); // Common loading state
     const [loadingGoogle, setLoadingGoogle] = useState(false); // Separate loading state for Google login
     const [error, setError] = useState("");
+    const [isLoginMode, setIsLoginMode] = useState(true); // Toggle between login and signup modes
     const toast = useToast();
+
+    // Toggle between login and signup
+    const toggleMode = () => {
+        setIsLoginMode(!isLoginMode);
+        setError(""); // Clear error on mode switch
+    };
 
     // Handle email/password login
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoadingLogin(true); // Set loading for email/password login
+        setLoading(true);
         setError("");
         try {
             await signInWithEmailAndPassword(auth, email, password);
@@ -46,18 +55,44 @@ const LoginPopper = ({ isOpen, onClose }) => {
                 duration: 3000,
                 isClosable: true,
             });
-            onClose(); // Close modal on success
+            onClose();
         } catch (err) {
             setError("Login fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.");
         } finally {
-            setLoadingLogin(false); // Reset loading state
+            setLoading(false);
+        }
+    };
+
+    // Handle email/password signup
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        if (password !== confirmPassword) {
+            setError("Passwörter stimmen nicht überein.");
+            return;
+        }
+        setLoading(true);
+        setError("");
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            toast({
+                title: "Registrierung erfolgreich",
+                description: "Dein Konto wurde erstellt.",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+            });
+            onClose();
+        } catch (err) {
+            setError("Registrierung fehlgeschlagen. Bitte versuche es erneut.");
+        } finally {
+            setLoading(false);
         }
     };
 
     // Handle Google Sign-In
     const handleGoogleSignIn = async () => {
-        const provider = new GoogleAuthProvider(); // Create a new Google provider instance
-        setLoadingGoogle(true); // Set loading for Google Sign-In
+        const provider = new GoogleAuthProvider();
+        setLoadingGoogle(true);
         setError("");
         try {
             await signInWithPopup(auth, provider);
@@ -68,11 +103,11 @@ const LoginPopper = ({ isOpen, onClose }) => {
                 duration: 3000,
                 isClosable: true,
             });
-            onClose(); // Close modal on success
+            onClose();
         } catch (err) {
             setError("Login mit Google fehlgeschlagen.");
         } finally {
-            setLoadingGoogle(false); // Reset loading state
+            setLoadingGoogle(false);
         }
     };
 
@@ -92,12 +127,12 @@ const LoginPopper = ({ isOpen, onClose }) => {
                     color="gray.800"
                     textAlign="center"
                 >
-                    Anmelden
+                    {isLoginMode ? "Anmelden" : "Registrieren"}
                 </ModalHeader>
                 <ModalCloseButton color="gray.600" />
 
                 <ModalBody>
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={isLoginMode ? handleLogin : handleSignup}>
                         <VStack spacing={4}>
                             <FormControl isInvalid={!!error}>
                                 <FormLabel fontWeight="600" color="black">
@@ -134,43 +169,74 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                     }}
                                     placeholder="Dein Passwort"
                                 />
-                                {error && <FormErrorMessage>{error}</FormErrorMessage>}
                             </FormControl>
+
+                            {!isLoginMode && (
+                                <FormControl isInvalid={!!error}>
+                                    <FormLabel fontWeight="600" color="black">
+                                        Passwort bestätigen
+                                    </FormLabel>
+                                    <Input
+                                        type="password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        required
+                                        borderColor="gray.600"
+                                        _focus={{
+                                            borderColor: "gray.600",
+                                            boxShadow: "0 0 0 1px #333333",
+                                        }}
+                                        placeholder="Passwort bestätigen"
+                                    />
+                                </FormControl>
+                            )}
+
+                            {error && <FormErrorMessage>{error}</FormErrorMessage>}
 
                             <Button
                                 type="submit"
                                 width="100%"
-                                isLoading={loadingLogin} // Apply loading state for email/password login
+                                isLoading={loading}
                                 spinner={<Spinner />}
                                 bg="#333333"
                                 color="white"
                                 _hover={{ bg: "#3E3E3E" }}
                                 transition="background-color 0.2s ease-in-out"
                             >
-                                Anmelden
+                                {isLoginMode ? "Anmelden" : "Registrieren"}
                             </Button>
                         </VStack>
                     </form>
 
                     <Divider my={4} />
 
-                    {/* Google Sign-In Button */}
                     <HStack justifyContent="center" spacing={4}>
                         <Button
                             width="100%"
                             onClick={handleGoogleSignIn}
-                            bg="#4285F4" // Google brand color
+                            bg="#4285F4"
                             color="white"
                             _hover={{ bg: "#357AE8" }}
-                            isLoading={loadingGoogle} // Apply loading state for Google login
+                            isLoading={loadingGoogle}
                             spinner={<Spinner />}
                         >
                             <HStack justify="center" spacing={2}>
-                                <AiOutlineGoogle size={20} /> {/* Google Icon */}
+                                <AiOutlineGoogle size={20} />
                                 <Box>Mit Google anmelden</Box>
                             </HStack>
                         </Button>
                     </HStack>
+
+                    <Text mt={4} textAlign="center" fontSize="sm" color="gray.600">
+                        {isLoginMode ? "Noch kein Konto?" : "Bereits registriert?"}{" "}
+                        <Button
+                            variant="link"
+                            color="blue.500"
+                            onClick={toggleMode}
+                        >
+                            {isLoginMode ? "Registrieren" : "Anmelden"}
+                        </Button>
+                    </Text>
                 </ModalBody>
 
                 <ModalFooter>
