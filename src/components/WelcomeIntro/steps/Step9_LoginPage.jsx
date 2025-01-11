@@ -21,13 +21,13 @@ function Step9_LoginPage() {
                 <Image
                     src="src/components/WelcomeIntro/assets/proposition_10_figure.svg"
                     alt="Login Illustration"
-                    maxW="400px"
+                    maxW="250px"
                     objectFit="contain"
                     mb={6}
                 />
 
                 {/* Supporting Text Section */}
-                <Text fontSize="xl" fontWeight="bold" textAlign="center">
+                <Text fontSize="xl" fontWeight="normal" textAlign="center">
                     Dein individueller Lernweg wartet auf dich. Registriere dich kostenlos und fange an, dein Wissen auszubauen.
                 </Text>
 

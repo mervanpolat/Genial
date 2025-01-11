@@ -23,13 +23,13 @@ function Step4_InfoSection({ onContinue }) {
                 <Image
                     src="src/components/WelcomeIntro/assets/proposition_4_figure_same.svg"
                     alt="Informationsbild"
-                    maxW="300px"
+                    maxW="250px"
                     objectFit="contain"
                     mb={6}
                 />
 
                 {/* Zentrierter Text */}
-                <Text fontSize="lg" textAlign="center">
+                <Text fontSize="xl" textAlign="center">
                     {message}
                 </Text>
 

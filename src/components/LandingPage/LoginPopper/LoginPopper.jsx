@@ -28,20 +28,18 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthP
 const LoginPopper = ({ isOpen, onClose }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState(""); // For signup
-    const [loading, setLoading] = useState(false); // Common loading state
-    const [loadingGoogle, setLoadingGoogle] = useState(false); // Separate loading state for Google login
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [loadingGoogle, setLoadingGoogle] = useState(false);
     const [error, setError] = useState("");
-    const [isLoginMode, setIsLoginMode] = useState(true); // Toggle between login and signup modes
+    const [isLoginMode, setIsLoginMode] = useState(true);
     const toast = useToast();
 
-    // Toggle between login and signup
     const toggleMode = () => {
         setIsLoginMode(!isLoginMode);
-        setError(""); // Clear error on mode switch
+        setError("");
     };
 
-    // Handle email/password login
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -63,7 +61,6 @@ const LoginPopper = ({ isOpen, onClose }) => {
         }
     };
 
-    // Handle email/password signup
     const handleSignup = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
@@ -89,7 +86,6 @@ const LoginPopper = ({ isOpen, onClose }) => {
         }
     };
 
-    // Handle Google Sign-In
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         setLoadingGoogle(true);
@@ -143,11 +139,13 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    borderColor="gray.600"
+                                    borderColor="rgba(0, 0, 0, 0.3)"
+                                    _hover={{ borderColor: "black" }}
                                     _focus={{
-                                        borderColor: "gray.600",
-                                        boxShadow: "0 0 0 1px #333333",
+                                        borderColor: "black",
+                                        boxShadow: "0 0 0 1px black",
                                     }}
+                                    _placeholder={{ color: "rgba(0, 0, 0, 0.3)" }}
                                     placeholder="Email"
                                     autoFocus
                                 />
@@ -162,11 +160,13 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    borderColor="gray.600"
+                                    borderColor="rgba(0, 0, 0, 0.3)"
+                                    _hover={{ borderColor: "black" }}
                                     _focus={{
-                                        borderColor: "gray.600",
-                                        boxShadow: "0 0 0 1px #333333",
+                                        borderColor: "black",
+                                        boxShadow: "0 0 0 1px black",
                                     }}
+                                    _placeholder={{ color: "rgba(0, 0, 0, 0.3)" }}
                                     placeholder="Dein Passwort"
                                 />
                             </FormControl>
@@ -181,11 +181,13 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                         required
-                                        borderColor="gray.600"
+                                        borderColor="rgba(0, 0, 0, 0.3)"
+                                        _hover={{ borderColor: "black" }}
                                         _focus={{
-                                            borderColor: "gray.600",
-                                            boxShadow: "0 0 0 1px #333333",
+                                            borderColor: "black",
+                                            boxShadow: "0 0 0 1px black",
                                         }}
+                                        _placeholder={{ color: "rgba(0, 0, 0, 0.3)" }}
                                         placeholder="Passwort bestätigen"
                                     />
                                 </FormControl>
@@ -208,7 +210,8 @@ const LoginPopper = ({ isOpen, onClose }) => {
                         </VStack>
                     </form>
 
-                    <Divider my={4} />
+                    <Divider my={4} borderColor="rgba(0, 0, 0, 0.3)" />
+
 
                     <HStack justifyContent="center" spacing={4}>
                         <Button
@@ -238,17 +241,6 @@ const LoginPopper = ({ isOpen, onClose }) => {
                         </Button>
                     </Text>
                 </ModalBody>
-
-                <ModalFooter>
-                    <Button
-                        variant="ghost"
-                        onClick={onClose}
-                        color="#333333"
-                        _hover={{ bg: "rgba(0, 0, 0, 0.1)" }}
-                    >
-                        Abbrechen
-                    </Button>
-                </ModalFooter>
             </ModalContent>
         </Modal>
     );
