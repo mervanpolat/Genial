@@ -10,7 +10,7 @@ function Step1_Welcome({ onContinue }) {
     return (
         <Box p={8} textAlign="center">
             <VStack spacing={10}>
-                <Image src="src/components/WelcomeIntro/assets/Intro.png" alt="Step1_Welcome" boxSize="350px" />
+                <Image src="src/components/WelcomeIntro/assets/proposition_11_figure.svg" alt="Step1_Welcome" boxSize="350px" />
                 <Text fontSize="2xl" fontWeight="bold">
                     <Typewriter
                         words={[message]}

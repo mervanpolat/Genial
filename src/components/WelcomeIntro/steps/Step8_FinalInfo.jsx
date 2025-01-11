@@ -14,40 +14,41 @@ function Step8_FinalInfo({ onContinue }) {
         <Box
             p={4}
             textAlign="center"
-            width={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw', xl: '50vw' }}
-            maxWidth="800px" // Optional: Set a maximum width to prevent excessive stretching
-            mx="auto" // Center the Box horizontally
+            width="full"
+            maxWidth="800px"
+            mx="auto"
+            mt={8}
         >
-            <VStack spacing={6} align="center"> {/* Increased spacing from 4 to 6 */}
-                {/* Image added above the text */}
+            <VStack spacing={6} align="center">
+                {/* Image Section */}
                 <Image
-                    src={Intro3Image}
+                    src="src/components/WelcomeIntro/assets/proposition_47_figure.svg"
                     alt="Learning efficiency illustration"
-                    width={{ base: '100%', sm: '200px', md: '200px', lg: '200px', xl: '200px' }}
-                    height="auto"
+                    maxW="400px"
                     objectFit="contain"
-                    marginBottom={{ base: 4, sm: 6 }} // Increased marginBottom for more space below the image
+                    mb={6}
                 />
 
-                {/* Headline */}
+                {/* Headline Section */}
                 <Heading
                     as="h2"
-                    fontSize={{ base: 'xl', sm: '2xl', md: '2xl', lg: '2xl', xl: '2xl' }}
+                    fontSize="2xl"
                     fontWeight="bold"
                 >
                     {headline}
                 </Heading>
 
-                {/* Supporting message */}
+                {/* Supporting Text Section */}
                 <Text
-                    fontSize={{ base: 'md', sm: 'lg', md: 'lg', lg: 'lg', xl: 'lg' }}
-                    mb={4} // Adds margin-bottom for additional spacing below the text
+                    fontSize="lg"
+                    mb={4}
                 >
                     {message}
                 </Text>
 
+                {/* Continue Button */}
                 <ContinueButton
-                    onClick={onContinue} // Use onContinue directly
+                    onClick={onContinue}
                     ariaLabel="Continue to Login"
                 >
                     Weiter

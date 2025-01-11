@@ -1,6 +1,6 @@
 // src/components/WelcomeIntro/steps/Step9_LoginPage.jsx
 import React from 'react';
-import { VStack, Text, Button, Flex, Image } from '@chakra-ui/react';
+import { Box, VStack, Text, Button, Image } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
 import LoginPopper from '../../LandingPage/LoginPopper/LoginPopper.jsx';
 
@@ -8,28 +8,30 @@ function Step9_LoginPage() {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <Flex
-            p={8}
-            direction="column"
-            align="center"
-            justify="center"
-            h="100vh" // Full screen height for vertical centering
-            bg="#faf3dc"
+        <Box
+            p={4}
+            textAlign="center"
+            width="full"
+            maxWidth="800px"
+            mx="auto"
+            mt={8}
         >
-            {/* Image component */}
-            <Image
-                src="src/components/WelcomeIntro/assets/icon1.png"
-                alt="Login Illustration"
-                boxSize="200px"
-                mb={6}
-                objectFit="contain"
-            />
+            <VStack spacing={6} align="center">
+                {/* Image Section */}
+                <Image
+                    src="src/components/WelcomeIntro/assets/proposition_10_figure.svg"
+                    alt="Login Illustration"
+                    maxW="400px"
+                    objectFit="contain"
+                    mb={6}
+                />
 
-            <VStack spacing={6}>
-                <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+                {/* Supporting Text Section */}
+                <Text fontSize="xl" fontWeight="bold" textAlign="center">
                     Dein individueller Lernweg wartet auf dich. Registriere dich kostenlos und fange an, dein Wissen auszubauen.
                 </Text>
 
+                {/* Login Button */}
                 <Button
                     bg="black"
                     color="white"
@@ -41,9 +43,10 @@ function Step9_LoginPage() {
                     Anmelden
                 </Button>
 
+                {/* Login Popper */}
                 <LoginPopper isOpen={isOpen} onClose={onClose} />
             </VStack>
-        </Flex>
+        </Box>
     );
 }
 

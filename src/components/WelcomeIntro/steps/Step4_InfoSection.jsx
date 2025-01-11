@@ -13,22 +13,23 @@ function Step4_InfoSection({ onContinue }) {
         <Box
             p={4}
             textAlign="center"
-            width={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw', xl: '50vw' }}
-            maxWidth="800px" // Optional: Set a maximum width to prevent excessive stretching
-            mx="auto" // Center the Box horizontally
+            width="full"
+            maxWidth="800px"
+            mx="auto"
+            mt={8}
         >
-            <VStack spacing={6} align="center"> {/* Increased spacing from 4 to 6 */}
+            <VStack spacing={6} align="center">
                 {/* Bild oben */}
                 <Image
-                    src={Intro2Image}
+                    src="src/components/WelcomeIntro/assets/proposition_4_figure_same.svg"
                     alt="Informationsbild"
-                    width={{ base: '100%', sm: '300px', md: '300px', lg: '300px', xl: '300px' }}
-                    height="auto"
+                    maxW="300px"
                     objectFit="contain"
+                    mb={6}
                 />
 
                 {/* Zentrierter Text */}
-                <Text fontSize={{ base: 'md', sm: 'lg', md: 'xl' }} textAlign="center">
+                <Text fontSize="lg" textAlign="center">
                     {message}
                 </Text>
 
