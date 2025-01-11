@@ -1,13 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack, Image } from '@chakra-ui/react';
-import { Typewriter } from 'react-simple-typewriter';
+// src/components/WelcomeIntro/steps/Step1_Welcome.jsx
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import React from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack, Image } from "@chakra-ui/react";
+import { Typewriter } from "react-simple-typewriter";
 
-function Step1_Welcome({ onContinue }) {
-    const message = 'Hallo, lass uns einen Lernpfad nur für dich erstellen.';
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import ContinueButton from "../ContinueButton.jsx";
+
+function Step1_Welcome({ onContinue = () => {} }) {
+    const message = "Hallo, lass uns einen Lernpfad nur für dich erstellen.";
 
     return (
         <OnboardingLayout>
@@ -30,10 +32,7 @@ function Step1_Welcome({ onContinue }) {
                         />
                     </Text>
 
-                    <ContinueButton
-                        onClick={onContinue}
-                        ariaLabel="Continue to Goal Selection"
-                    >
+                    <ContinueButton onClick={onContinue}>
                         Weiter
                     </ContinueButton>
                 </VStack>
@@ -43,7 +42,7 @@ function Step1_Welcome({ onContinue }) {
 }
 
 Step1_Welcome.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step1_Welcome;

@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack, Image } from '@chakra-ui/react';
+import React from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack, Image } from "@chakra-ui/react";
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import ContinueButton from "../ContinueButton.jsx";
 
-function Step8_FinalInfo({ onContinue }) {
-    const headline = 'Lerne bis zu 6-mal effizienter';
+function Step8_FinalInfo({ onContinue = () => {} }) {
+    const headline = "Lerne bis zu 6-mal effizienter";
     const message =
-        'Studien zeigen, dass interaktives Lernen bis zu 6-mal effektiver ist als das bloße Ansehen von Vorlesungsvideos.';
+        "Studien zeigen, dass interaktives Lernen bis zu 6-mal effektiver ist als das bloße Ansehen von Vorlesungsvideos.";
 
     return (
         <OnboardingLayout>
@@ -37,10 +37,7 @@ function Step8_FinalInfo({ onContinue }) {
                         {message}
                     </Text>
 
-                    <ContinueButton
-                        onClick={onContinue}
-                        ariaLabel="Continue to Login"
-                    >
+                    <ContinueButton onClick={onContinue} ariaLabel="Continue to Login">
                         Weiter
                     </ContinueButton>
                 </VStack>
@@ -50,7 +47,7 @@ function Step8_FinalInfo({ onContinue }) {
 }
 
 Step8_FinalInfo.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step8_FinalInfo;

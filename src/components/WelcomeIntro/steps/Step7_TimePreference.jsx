@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack } from '@chakra-ui/react';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack } from "@chakra-ui/react";
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import OptionItem from '../OptionItem.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import OptionItem from "../OptionItem.jsx";
+import ContinueButton from "../ContinueButton.jsx";
 
-function Step7_TimePreference({ onContinue }) {
+function Step7_TimePreference({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const options = [
-        { label: 'Morgens', emoji: '🐓' },
-        { label: 'Mittags', emoji: '🍽️️' },
-        { label: 'Abends', emoji: '🏡' },
-        { label: 'Nachts', emoji: '🦉' },
+        { label: "Morgens", emoji: "🐓" },
+        { label: "Mittags", emoji: "🍽️️" },
+        { label: "Abends", emoji: "🏡" },
+        { label: "Nachts", emoji: "🦉" },
     ];
 
     const handleSelection = (index) => setSelectedOption(index);
@@ -58,7 +58,7 @@ function Step7_TimePreference({ onContinue }) {
 }
 
 Step7_TimePreference.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step7_TimePreference;

@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack } from '@chakra-ui/react';
+// src/components/WelcomeIntro/steps/Step2_GoalSelection.jsx
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import OptionItem from '../OptionItem.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack } from "@chakra-ui/react";
 
-function Step2_GoalSelection({ onContinue }) {
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import OptionItem from "../OptionItem.jsx";
+import ContinueButton from "../ContinueButton.jsx";
+
+function Step2_GoalSelection({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const options = [
-        { label: 'Mathekenntnisse auffrischen.', emoji: '✨' },
-        { label: 'Die Maturaprüfung schaffen', emoji: '👩‍🎓' },
-        { label: 'Meine Noten verbessern', emoji: '🚀' },
-        { label: 'Meinen Schülern helfen', emoji: '🧩' },
-        { label: 'Etwas anderes', emoji: '🧚' },
+        { label: "Mathekenntnisse auffrischen.", emoji: "✨" },
+        { label: "Die Maturaprüfung schaffen", emoji: "👩‍🎓" },
+        { label: "Meine Noten verbessern", emoji: "🚀" },
+        { label: "Meinen Schülern helfen", emoji: "🧩" },
+        { label: "Etwas anderes", emoji: "🧚" },
     ];
 
     const handleSelection = (index) => setSelectedOption(index);
@@ -23,7 +25,7 @@ function Step2_GoalSelection({ onContinue }) {
         if (selectedOption !== null) {
             onContinue();
         } else {
-            alert('Bitte wählen Sie ein Ziel aus, bevor Sie fortfahren.');
+            alert("Bitte wählen Sie ein Ziel aus, bevor Sie fortfahren.");
         }
     };
 
@@ -62,7 +64,7 @@ function Step2_GoalSelection({ onContinue }) {
 }
 
 Step2_GoalSelection.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step2_GoalSelection;

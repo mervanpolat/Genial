@@ -1,6 +1,6 @@
 // src/App.jsx
 
-import React from 'react';
+import React from "react";
 import {
     BrowserRouter as Router,
     Routes,
@@ -8,66 +8,59 @@ import {
     useLocation,
     useNavigate,
     Navigate,
-} from 'react-router-dom';
-import { IconButton, HStack } from '@chakra-ui/react';
-import { ArrowLeftIcon } from '@chakra-ui/icons';
+} from "react-router-dom";
+import { IconButton, HStack } from "@chakra-ui/react";
+import { ArrowLeftIcon } from "@chakra-ui/icons";
 
+// Import NavBar, Footer, and other pages
+import NavBar from "./components/LandingPage/NavBar.jsx";
+import Footer from "./components/LandingPage/Footer.jsx";
+import LandingPage from "./components/LandingPage/LandingPage.jsx";
+import MeinLehrplan from "./components/Lehrplan/MeinLehrplan.jsx";
 
-// Import NavBar, Footer, and General Pages
-import NavBar from './components/LandingPage/NavBar.jsx';
-import Footer from './components/LandingPage/Footer.jsx';
-import LandingPage from './components/LandingPage/LandingPage.jsx';
-import UeberUns from './components/LandingPage/UeberUns.jsx';
-import MeinLehrplan from './components/Lehrplan/MeinLehrplan.jsx';
-import Preis from './components/LandingPage/Preis.jsx';
-import Grundlagen from './modules/Pages/Grundlagen.jsx';
-import GleichungenLoesen from './modules/Pages/GleichungenLoesen.jsx';
+// Onboarding Steps
+import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
+import Step2_GoalSelection from "./components/WelcomeIntro/steps/Step2_GoalSelection.jsx";
+import Step3_MaturatypSelection from "./components/WelcomeIntro/steps/Step3_MaturatypSelection.jsx";
+import Step4_InfoSection from "./components/WelcomeIntro/steps/Step4_InfoSection.jsx";
+import Step5_MathComfortLevel from "./components/WelcomeIntro/steps/Step5_MathComfortLevel.jsx";
+import Step6_DailyGoal from "./components/WelcomeIntro/steps/Step6_DailyGoal.jsx";
+import Step7_TimePreference from "./components/WelcomeIntro/steps/Step7_TimePreference.jsx";
+import Step8_FinalInfo from "./components/WelcomeIntro/steps/Step8_FinalInfo.jsx";
+import Step9_LoginPage from "./components/WelcomeIntro/steps/Step9_LoginPage.jsx";
 
-// Import Onboarding Steps
-import Step1_Welcome from './components/WelcomeIntro/steps/Step1_Welcome.jsx';
-import Step2_GoalSelection from './components/WelcomeIntro/steps/Step2_GoalSelection.jsx';
-import Step3_MaturatypSelection from './components/WelcomeIntro/steps/Step3_MaturatypSelection.jsx';
-import Step4_InfoSection from './components/WelcomeIntro/steps/Step4_InfoSection.jsx';
-import Step5_MathComfortLevel from './components/WelcomeIntro/steps/Step5_MathComfortLevel.jsx';
-import Step6_DailyGoal from './components/WelcomeIntro/steps/Step6_DailyGoal.jsx';
-import Step7_TimePreference from './components/WelcomeIntro/steps/Step7_TimePreference.jsx';
-import Step8_FinalInfo from './components/WelcomeIntro/steps/Step8_FinalInfo.jsx';
-import Step9_LoginPage from './components/WelcomeIntro/steps/Step9_LoginPage.jsx';
+// Import OnboardingProvider
+import { OnboardingProvider } from "./context/OnboardingContext.jsx";
 
-// **Import your OnboardingProvider**
-import { OnboardingProvider } from './context/OnboardingContext.jsx';
-
-// Define steps array outside App component to prevent re-creation on every render
 const stepsArray = [
-    { path: '/welcome', component: Step1_Welcome },
-    { path: '/goal-selection', component: Step2_GoalSelection },
-    { path: '/maturatyp-selection', component: Step3_MaturatypSelection },
-    { path: '/info-1', component: Step4_InfoSection },
-    { path: '/math-comfort-level', component: Step5_MathComfortLevel },
-    { path: '/daily-goal', component: Step6_DailyGoal },
-    { path: '/time-preference', component: Step7_TimePreference },
-    { path: '/info-2', component: Step8_FinalInfo },
-    { path: '/login', component: Step9_LoginPage },
+    { path: "/welcome", component: Step1_Welcome },
+    { path: "/goal-selection", component: Step2_GoalSelection },
+    { path: "/maturatyp-selection", component: Step3_MaturatypSelection },
+    { path: "/info-1", component: Step4_InfoSection },
+    { path: "/math-comfort-level", component: Step5_MathComfortLevel },
+    { path: "/daily-goal", component: Step6_DailyGoal },
+    { path: "/time-preference", component: Step7_TimePreference },
+    { path: "/info-2", component: Step8_FinalInfo },
+    { path: "/login", component: Step9_LoginPage },
 ];
 
 function App() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // Routes where NavBar and Footer should be hidden
+    // These are the routes where we hide NavBar/Footer
     const hideLayoutRoutes = stepsArray.map((step) => step.path);
     const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
 
-    // Derive currentStep based on location.pathname
+    // Find which step index we are on
     const currentStep = stepsArray.findIndex(
         (step) => step.path === location.pathname
     );
 
-    // Debugging Logs (Remove in Production)
-    console.log(`Current Path: ${location.pathname}`);
-    console.log(`Current Step Index: ${currentStep}`);
+    console.log("Current Path:", location.pathname);
+    console.log("Current Step Index:", currentStep);
 
-    // Handle back button click
+    // Go back to previous step
     const handleBack = () => {
         if (currentStep > 0) {
             const previousStepPath = stepsArray[currentStep - 1].path;
@@ -75,20 +68,20 @@ function App() {
         }
     };
 
-    // Handle continue button click
+    // Move to the next route (onContinue handler)
     const handleContinue = (nextRoute) => {
         if (currentStep < stepsArray.length - 1 && nextRoute) {
             navigate(nextRoute);
         } else {
-            // After the last step, redirect to home or another page
-            navigate('/'); // e.g. Home page
+            // After the last step, go to home or wherever
+            navigate("/");
         }
     };
 
     return (
         <>
-            {/* Conditionally render NavBar and Footer */}
             {!shouldHideLayout && <NavBar />}
+
             {shouldHideLayout && (
                 <HStack spacing={4} p={4} alignItems="center">
                     <IconButton
@@ -96,26 +89,22 @@ function App() {
                         aria-label="Back"
                         onClick={handleBack}
                         isDisabled={currentStep === 0}
-                        variant="ghost" // Removes background by default
+                        variant="ghost"
                         _hover={{
-                            bg: 'rgba(0, 0, 0, 0.1)', // Black with 20% transparency on hover
+                            bg: "rgba(0, 0, 0, 0.1)",
                         }}
                         _disabled={{
-                            opacity: 0.4, // Makes the arrow semi-transparent when disabled
-                            cursor: 'not-allowed',
+                            opacity: 0.4,
+                            cursor: "not-allowed",
                         }}
                     />
                 </HStack>
             )}
 
             <Routes>
-                {/* General Routes */}
+                {/* General (non-onboarding) Routes */}
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/ueber-uns" element={<UeberUns />} />
-                <Route path="/kurse" element={<MeinLehrplan />} />
-                <Route path="/preis" element={<Preis />} />
-                <Route path="/grundlagen" element={<Grundlagen />} />
-                <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
+                <Route path="/mein-lehrplan" element={<MeinLehrplan />} />
 
                 {/* Onboarding Flow Routes */}
                 {stepsArray.map((step, index) => (
@@ -124,13 +113,16 @@ function App() {
                         path={step.path}
                         element={
                             <step.component
-                                onContinue={() => handleContinue(stepsArray[index + 1]?.path)}
+                                // We pass onContinue except for Step9, which might not need it
+                                onContinue={() =>
+                                    handleContinue(stepsArray[index + 1]?.path)
+                                }
                             />
                         }
                     />
                 ))}
 
-                {/* Fallback Route for Onboarding Steps */}
+                {/* Fallback for any undefined route during onboarding */}
                 {hideLayoutRoutes.includes(location.pathname) && (
                     <Route path="*" element={<Navigate to="/welcome" replace />} />
                 )}
@@ -141,7 +133,6 @@ function App() {
     );
 }
 
-// **Wrap App with OnboardingProvider** in AppWrapper
 export default function AppWrapper() {
     return (
         <Router>

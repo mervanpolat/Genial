@@ -1,9 +1,14 @@
 // src/components/WelcomeIntro/ContinueButton.jsx
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Button } from '@chakra-ui/react';
+import React from "react";
+import PropTypes from "prop-types";
+import { Button } from "@chakra-ui/react";
 
-function ContinueButton({ onClick, isDisabled, ariaLabel, children }) {
+function ContinueButton({
+                            onClick = () => {},
+                            isDisabled = false,
+                            ariaLabel = "Continue",
+                            children,
+                        }) {
     return (
         <Button
             bg="black"
@@ -12,7 +17,7 @@ function ContinueButton({ onClick, isDisabled, ariaLabel, children }) {
             onClick={onClick}
             isDisabled={isDisabled}
             aria-label={ariaLabel}
-            _hover={{ bg: 'rgba(0, 0, 0, 0.8)' }} // Slightly transparent black on hover
+            _hover={{ bg: "rgba(0, 0, 0, 0.8)" }}
         >
             {children}
         </Button>
@@ -20,15 +25,10 @@ function ContinueButton({ onClick, isDisabled, ariaLabel, children }) {
 }
 
 ContinueButton.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     isDisabled: PropTypes.bool,
     ariaLabel: PropTypes.string,
     children: PropTypes.node.isRequired,
-};
-
-ContinueButton.defaultProps = {
-    isDisabled: false,
-    ariaLabel: 'Continue',
 };
 
 export default ContinueButton;

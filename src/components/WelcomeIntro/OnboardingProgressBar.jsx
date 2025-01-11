@@ -1,9 +1,9 @@
 import React from 'react';
 import { Progress } from '@chakra-ui/react';
-import { useOnboarding } from '../../context/OnboardingContext.jsx';
+import { useOnboardingContext } from '../../context/OnboardingContext.jsx';
 
 function OnboardingProgressBar({ ...styleProps }) {
-    const { currentStep, totalSteps } = useOnboarding();
+    const { currentStep, totalSteps } = useOnboardingContext();
 
     // Avoid division by zero
     const progressValue = totalSteps > 1

@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack, Image } from '@chakra-ui/react';
+import React from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack, Image } from "@chakra-ui/react";
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import ContinueButton from "../ContinueButton.jsx";
 
-function Step4_InfoSection({ onContinue }) {
+function Step4_InfoSection({ onContinue = () => {} }) {
     const message =
-        'Unsere interaktiven, erzählenden Kurse wecken Neugier und helfen dabei, mathematische Themen auf intuitive Weise zu verstehen – ganz ohne starres Pauken von Formeln.';
+        "Unsere interaktiven, erzählenden Kurse wecken Neugier und helfen dabei, mathematische Themen auf intuitive Weise zu verstehen – ganz ohne starres Pauken von Formeln.";
 
     return (
         <OnboardingLayout>
@@ -32,10 +32,7 @@ function Step4_InfoSection({ onContinue }) {
                         {message}
                     </Text>
 
-                    <ContinueButton
-                        onClick={onContinue}
-                        ariaLabel="Continue to Info Section"
-                    >
+                    <ContinueButton onClick={onContinue} ariaLabel="Continue to Info Section">
                         Weiter
                     </ContinueButton>
                 </VStack>
@@ -45,7 +42,7 @@ function Step4_InfoSection({ onContinue }) {
 }
 
 Step4_InfoSection.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step4_InfoSection;

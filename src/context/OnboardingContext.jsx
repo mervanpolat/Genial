@@ -1,63 +1,59 @@
 // src/context/OnboardingContext.jsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const OnboardingContext = createContext();
 
-export const useOnboarding = () => useContext(OnboardingContext);
+export const useOnboardingContext = () => useContext(OnboardingContext);
 
 export const OnboardingProvider = ({ children }) => {
     const location = useLocation();
 
+    // Define all onboarding step paths
     const steps = [
-        '/welcome',
-        '/goal-selection',
-        '/maturatyp-selection',
-        '/info-1',
-        '/math-comfort-level',
-        '/daily-goal',
-        '/time-preference',
-        '/info-2',
-        '/final-info',
-        '/login',
+        "/welcome",
+        "/goal-selection",
+        "/maturatyp-selection",
+        "/info-1",
+        "/math-comfort-level",
+        "/daily-goal",
+        "/time-preference",
+        "/info-2",
+        "/login",
     ];
-    const totalSteps = steps.length;
+
     const [currentStep, setCurrentStep] = useState(0);
 
+    // Onboarding data states
+    const [goal, setGoal] = useState("");
+    const [maturatyp, setMaturatyp] = useState("");
+    const [mathComfortLevel, setMathComfortLevel] = useState("");
+    const [dailyGoal, setDailyGoal] = useState("");
+    const [timePreference, setTimePreference] = useState("");
+
     useEffect(() => {
-        const stepIndex = steps.indexOf(location.pathname);
-        if (stepIndex !== -1) {
-            setCurrentStep(stepIndex);
-        }
+        const index = steps.indexOf(location.pathname);
+        if (index !== -1) setCurrentStep(index);
     }, [location.pathname, steps]);
 
-    const goToStep = (stepPath) => {
-        const stepIndex = steps.indexOf(stepPath);
-        if (stepIndex !== -1) {
-            setCurrentStep(stepIndex);
-        }
-    };
-
-    const nextStep = () => {
-        setCurrentStep((prev) => Math.min(prev + 1, totalSteps - 1));
-    };
-
-    const prevStep = () => {
-        setCurrentStep((prev) => Math.max(prev - 1, 0));
+    const value = {
+        currentStep,
+        goal,
+        setGoal,
+        maturatyp,
+        setMaturatyp,
+        mathComfortLevel,
+        setMathComfortLevel,
+        dailyGoal,
+        setDailyGoal,
+        timePreference,
+        setTimePreference,
     };
 
     return (
-        <OnboardingContext.Provider
-            value={{
-                currentStep,
-                totalSteps,
-                goToStep,
-                nextStep,
-                prevStep,
-                steps,
-            }}
-        >
+        <OnboardingContext.Provider value={value}>
             {children}
         </OnboardingContext.Provider>
     );

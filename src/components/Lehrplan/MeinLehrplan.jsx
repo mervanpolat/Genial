@@ -1,4 +1,6 @@
-import 'react';
+// src/components/Lehrplan/MeinLehrplan.jsx
+
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Heading, Text, Flex, Button, Image } from '@chakra-ui/react';
 
@@ -83,7 +85,7 @@ function MeinLehrplan() {
   );
 }
 
-// Levels data to map over
+// Levels data for demonstration
 const levelsData = [
   {
     level: 1,

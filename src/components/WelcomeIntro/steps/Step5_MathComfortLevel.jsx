@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack } from '@chakra-ui/react';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack } from "@chakra-ui/react";
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import OptionItem from '../OptionItem.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import OptionItem from "../OptionItem.jsx";
+import ContinueButton from "../ContinueButton.jsx";
 
-function Step5_MathComfortLevel({ onContinue }) {
+function Step5_MathComfortLevel({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const options = [
-        { label: 'Grundrechnungsarten', emoji: '🧮' },
-        { label: 'Binomische Formel kann ich im Kopf', emoji: '🧠' },
+        { label: "Grundrechnungsarten", emoji: "🧮" },
+        { label: "Binomische Formel kann ich im Kopf", emoji: "🧠" },
         {
-            label: 'Ich kann erklären, warum Division durch Null nicht definiert ist',
-            emoji: '💥',
+            label: "Ich kann erklären, warum Division durch Null nicht definiert ist",
+            emoji: "💥",
         },
-        { label: 'Delta von x und y ist mir bekannt', emoji: '📈' },
+        { label: "Delta von x und y ist mir bekannt", emoji: "📈" },
     ];
 
     const handleSelection = (index) => setSelectedOption(index);
@@ -62,7 +62,7 @@ function Step5_MathComfortLevel({ onContinue }) {
 }
 
 Step5_MathComfortLevel.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step5_MathComfortLevel;

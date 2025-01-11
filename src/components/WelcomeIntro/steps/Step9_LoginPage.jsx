@@ -1,11 +1,68 @@
-import React from 'react';
-import { Box, VStack, Text, Button, Image, useDisclosure } from '@chakra-ui/react';
+// src/components/WelcomeIntro/steps/Step9_LoginPage.jsx
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import LoginPopper from '../../LandingPage/LoginPopper/LoginPopper.jsx';
+import React, { useEffect, useState } from "react";
+import { Box, VStack, Text, Button, Image, useDisclosure } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
+
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import LoginPopper from "../../LandingPage/LoginPopper/LoginPopper.jsx";
+import { auth, db } from "../../../firebase/firebaseConfig.js";
+import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
 
 function Step9_LoginPage() {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [hasSaved, setHasSaved] = useState(false);
+    const navigate = useNavigate();
+
+    const {
+        goal,
+        maturatyp,
+        mathComfortLevel,
+        dailyGoal,
+        timePreference,
+    } = useOnboardingContext();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user && !hasSaved) {
+                try {
+                    const userData = {
+                        goal,
+                        maturatyp,
+                        mathComfortLevel,
+                        dailyGoal,
+                        timePreference,
+                        username: user.displayName || "",
+                        email: user.email,
+                        completedOnboarding: true,
+                        timestamp: serverTimestamp(),
+                    };
+
+                    // Must match your Firestore rules: /users/{uid}
+                    await setDoc(doc(collection(db, "users"), user.uid), userData, {
+                        merge: true,
+                    });
+
+                    setHasSaved(true);
+                    navigate("/mein-lehrplan");
+                } catch (error) {
+                    console.error("Error saving onboarding data:", error);
+                }
+            }
+        });
+
+        return () => unsubscribe();
+    }, [
+        hasSaved,
+        navigate,
+        goal,
+        maturatyp,
+        mathComfortLevel,
+        dailyGoal,
+        timePreference,
+    ]);
 
     return (
         <OnboardingLayout>
@@ -37,12 +94,11 @@ function Step9_LoginPage() {
                         size="lg"
                         onClick={onOpen}
                         aria-label="Open Login Popper"
-                        _hover={{ bg: 'rgba(0, 0, 0, 0.8)' }}
+                        _hover={{ bg: "rgba(0, 0, 0, 0.8)" }}
                     >
                         Anmelden
                     </Button>
 
-                    {/* LoginPopper */}
                     <LoginPopper isOpen={isOpen} onClose={onClose} />
                 </VStack>
             </Box>

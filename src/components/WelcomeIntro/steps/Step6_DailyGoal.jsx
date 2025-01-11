@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Text, VStack } from '@chakra-ui/react';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Text, VStack } from "@chakra-ui/react";
 
-import OnboardingLayout from '../OnboardingLayout.jsx';
-import OptionItem from '../OptionItem.jsx';
-import ContinueButton from '../ContinueButton.jsx';
+import OnboardingLayout from "../OnboardingLayout.jsx";
+import OptionItem from "../OptionItem.jsx";
+import ContinueButton from "../ContinueButton.jsx";
 
-function Step6_DailyGoal({ onContinue }) {
+function Step6_DailyGoal({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
 
-    const options = ['🕒 15 min', '🕧 30 min', '🕓 45 min', '🕐 60 min'];
+    const options = ["🕒 15 min", "🕧 30 min", "🕓 45 min", "🕐 60 min"];
 
     const handleSelection = (index) => setSelectedOption(index);
 
@@ -52,7 +52,7 @@ function Step6_DailyGoal({ onContinue }) {
 }
 
 Step6_DailyGoal.propTypes = {
-    onContinue: PropTypes.func.isRequired,
+    onContinue: PropTypes.func,
 };
 
 export default Step6_DailyGoal;

@@ -1,5 +1,6 @@
 // src/components/ErrorBoundary.jsx
 import React from 'react';
+import PropTypes from 'prop-types'; // <-- Import PropTypes
 import { Box, Text, Button, VStack } from '@chakra-ui/react';
 
 class ErrorBoundary extends React.Component {
@@ -9,7 +10,7 @@ class ErrorBoundary extends React.Component {
     }
 
     static getDerivedStateFromError(error) {
-        // Update state to display fallback UI
+        // Update state so the next render shows the fallback UI.
         return { hasError: true };
     }
 
@@ -33,8 +34,14 @@ class ErrorBoundary extends React.Component {
             );
         }
 
+        // If there’s no error, render children as normal
         return this.props.children;
     }
 }
+
+// Define prop types to satisfy ESLint
+ErrorBoundary.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default ErrorBoundary;
