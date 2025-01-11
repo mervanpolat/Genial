@@ -1,10 +1,17 @@
 // src/App.jsx
+
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+    useNavigate,
+    Navigate,
+} from 'react-router-dom';
 import { IconButton, HStack } from '@chakra-ui/react';
 import { ArrowLeftIcon } from '@chakra-ui/icons';
-import { ProgressBar, Step } from 'react-step-progress-bar';
-import "react-step-progress-bar/styles.css"; // Import default styles
+
 
 // Import NavBar, Footer, and General Pages
 import NavBar from './components/LandingPage/NavBar.jsx';
@@ -27,6 +34,9 @@ import Step7_TimePreference from './components/WelcomeIntro/steps/Step7_TimePref
 import Step8_FinalInfo from './components/WelcomeIntro/steps/Step8_FinalInfo.jsx';
 import Step9_LoginPage from './components/WelcomeIntro/steps/Step9_LoginPage.jsx';
 
+// **Import your OnboardingProvider**
+import { OnboardingProvider } from './context/OnboardingContext.jsx';
+
 // Define steps array outside App component to prevent re-creation on every render
 const stepsArray = [
     { path: '/welcome', component: Step1_Welcome },
@@ -45,12 +55,13 @@ function App() {
     const navigate = useNavigate();
 
     // Routes where NavBar and Footer should be hidden
-    const hideLayoutRoutes = stepsArray.map(step => step.path);
-
+    const hideLayoutRoutes = stepsArray.map((step) => step.path);
     const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
 
     // Derive currentStep based on location.pathname
-    const currentStep = stepsArray.findIndex(step => step.path === location.pathname);
+    const currentStep = stepsArray.findIndex(
+        (step) => step.path === location.pathname
+    );
 
     // Debugging Logs (Remove in Production)
     console.log(`Current Path: ${location.pathname}`);
@@ -70,7 +81,7 @@ function App() {
             navigate(nextRoute);
         } else {
             // After the last step, redirect to home or another page
-            navigate('/'); // Redirect to home page
+            navigate('/'); // e.g. Home page
         }
     };
 
@@ -85,27 +96,15 @@ function App() {
                         aria-label="Back"
                         onClick={handleBack}
                         isDisabled={currentStep === 0}
+                        variant="ghost" // Removes background by default
+                        _hover={{
+                            bg: 'rgba(0, 0, 0, 0.1)', // Black with 20% transparency on hover
+                        }}
+                        _disabled={{
+                            opacity: 0.4, // Makes the arrow semi-transparent when disabled
+                            cursor: 'not-allowed',
+                        }}
                     />
-                    <ProgressBar
-                        percent={(currentStep / (stepsArray.length - 1)) * 100}
-                        filledBackground="teal"
-                        height={10}
-                    >
-                        {stepsArray.map((_, index) => (
-                            <Step key={index}>
-                                {({ accomplished }) => (
-                                    <div
-                                        style={{
-                                            width: 20,
-                                            height: 20,
-                                            borderRadius: '50%',
-                                            backgroundColor: accomplished ? 'teal' : 'gray',
-                                        }}
-                                    />
-                                )}
-                            </Step>
-                        ))}
-                    </ProgressBar>
                 </HStack>
             )}
 
@@ -124,7 +123,9 @@ function App() {
                         key={index}
                         path={step.path}
                         element={
-                            <step.component onContinue={() => handleContinue(stepsArray[index + 1]?.path)} />
+                            <step.component
+                                onContinue={() => handleContinue(stepsArray[index + 1]?.path)}
+                            />
                         }
                     />
                 ))}
@@ -140,10 +141,13 @@ function App() {
     );
 }
 
+// **Wrap App with OnboardingProvider** in AppWrapper
 export default function AppWrapper() {
     return (
         <Router>
-            <App />
+            <OnboardingProvider>
+                <App />
+            </OnboardingProvider>
         </Router>
     );
 }

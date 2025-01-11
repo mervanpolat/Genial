@@ -9,6 +9,7 @@ export const useOnboarding = () => useContext(OnboardingContext);
 
 export const OnboardingProvider = ({ children }) => {
     const location = useLocation();
+
     const steps = [
         '/welcome',
         '/goal-selection',
