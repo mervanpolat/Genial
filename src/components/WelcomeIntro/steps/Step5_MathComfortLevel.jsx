@@ -1,3 +1,4 @@
+// src/components/WelcomeIntro/steps/Step5_MathComfortLevel.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
@@ -5,21 +6,25 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
+import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
 
 function Step5_MathComfortLevel({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
+    const { setMathComfortLevel } = useOnboardingContext();
 
+    // Each option includes a label + an emoji
     const options = [
         { label: "Grundrechnungsarten", emoji: "🧮" },
-        { label: "Binomische Formel kann ich im Kopf", emoji: "🧠" },
-        {
-            label: "Ich kann erklären, warum Division durch Null nicht definiert ist",
-            emoji: "💥",
-        },
-        { label: "Delta von x und y ist mir bekannt", emoji: "📈" },
+        { label: "Binomische Formel im Kopf", emoji: "🧠" },
+        { label: "Division durch Null erklären", emoji: "💥" },
+        { label: "Delta (Δ) ist mir bekannt", emoji: "📈" },
     ];
 
-    const handleSelection = (index) => setSelectedOption(index);
+    const handleSelection = (index) => {
+        setSelectedOption(index);
+        // Store only the label
+        setMathComfortLevel(options[index].label);
+    };
 
     const handleContinueClick = () => {
         if (selectedOption !== null) {

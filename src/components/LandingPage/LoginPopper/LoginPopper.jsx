@@ -1,3 +1,4 @@
+// src/components/LandingPage/LoginPopper/LoginPopper.jsx
 import { useState } from "react";
 import PropTypes from "prop-types";
 import {
@@ -87,6 +88,7 @@ const LoginPopper = ({ isOpen, onClose }) => {
         setLoading(true);
         setError("");
         try {
+            // Create user in Firebase Auth
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
@@ -95,14 +97,18 @@ const LoginPopper = ({ isOpen, onClose }) => {
                 displayName: fullName,
             });
 
-            // Save extra fields in Firestore
+            // Save extra fields in Firestore (with merge)
             const userData = {
                 fullName,
                 age,
                 email: user.email,
                 createdAt: serverTimestamp(),
             };
-            await setDoc(doc(db, "users", user.uid), userData);
+            await setDoc(
+                doc(db, "users", user.uid),
+                userData,
+                { merge: true }
+            );
 
             toast({
                 title: "Registrierung erfolgreich",
@@ -128,13 +134,17 @@ const LoginPopper = ({ isOpen, onClose }) => {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
-            // Optionally store user in Firestore
-            await setDoc(doc(db, "users", user.uid), {
-                fullName: user.displayName || "",
-                email: user.email,
-                age: "",
-                createdAt: serverTimestamp(),
-            }, { merge: true });
+            // Optionally store user in Firestore (with merge)
+            await setDoc(
+                doc(db, "users", user.uid),
+                {
+                    fullName: user.displayName || "",
+                    email: user.email,
+                    age: "",
+                    createdAt: serverTimestamp(),
+                },
+                { merge: true }
+            );
 
             toast({
                 title: "Login erfolgreich",

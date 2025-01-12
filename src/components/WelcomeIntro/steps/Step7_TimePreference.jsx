@@ -1,3 +1,4 @@
+// src/components/WelcomeIntro/steps/Step7_TimePreference.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
@@ -5,18 +6,24 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
+import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
 
 function Step7_TimePreference({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
+    const { setTimePreference } = useOnboardingContext();
 
     const options = [
         { label: "Morgens", emoji: "🐓" },
-        { label: "Mittags", emoji: "🍽️️" },
+        { label: "Mittags", emoji: "🍽" },
         { label: "Abends", emoji: "🏡" },
         { label: "Nachts", emoji: "🦉" },
     ];
 
-    const handleSelection = (index) => setSelectedOption(index);
+    const handleSelection = (index) => {
+        setSelectedOption(index);
+        // Store only the label, e.g. "Morgens"
+        setTimePreference(options[index].label);
+    };
 
     const handleContinueClick = () => {
         if (selectedOption !== null) {

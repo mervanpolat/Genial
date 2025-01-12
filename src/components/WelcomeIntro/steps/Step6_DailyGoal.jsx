@@ -1,3 +1,4 @@
+// src/components/WelcomeIntro/steps/Step6_DailyGoal.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
@@ -5,13 +6,25 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
+import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
 
 function Step6_DailyGoal({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
+    const { setDailyGoal } = useOnboardingContext();
 
-    const options = ["🕒 15 min", "🕧 30 min", "🕓 45 min", "🕐 60 min"];
+    // We show the emoji but only store label
+    const options = [
+        { label: "15 min", emoji: "🕒" },
+        { label: "30 min", emoji: "🕧" },
+        { label: "45 min", emoji: "🕓" },
+        { label: "60 min", emoji: "🕐" },
+    ];
 
-    const handleSelection = (index) => setSelectedOption(index);
+    const handleSelection = (index) => {
+        setSelectedOption(index);
+        // Store only the label, e.g. "15 min"
+        setDailyGoal(options[index].label);
+    };
 
     const handleContinueClick = () => {
         if (selectedOption !== null) {
@@ -30,10 +43,11 @@ function Step6_DailyGoal({ onContinue = () => {} }) {
                         {options.map((option, index) => (
                             <OptionItem
                                 key={index}
-                                label={option}
+                                emoji={option.emoji}
+                                label={option.label}
                                 isSelected={selectedOption === index}
                                 onSelect={() => handleSelection(index)}
-                                ariaLabel={`Select daily goal: ${option}`}
+                                ariaLabel={`Select daily goal: ${option.label}`}
                             />
                         ))}
                     </VStack>

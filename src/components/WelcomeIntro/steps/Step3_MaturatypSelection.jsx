@@ -7,7 +7,6 @@ import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
 
-// icons
 import { GiBookshelf, GiStairsGoal } from "react-icons/gi";
 import { FaLaptopCode, FaToolbox } from "react-icons/fa";
 import { MdBusiness } from "react-icons/md";
@@ -17,8 +16,6 @@ import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
 
 function Step3_MaturatypSelection({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
-
-    // Pull from context
     const { setMaturatyp } = useOnboardingContext();
 
     const options = [
@@ -32,7 +29,7 @@ function Step3_MaturatypSelection({ onContinue = () => {} }) {
 
     const handleSelection = (index) => {
         setSelectedOption(index);
-        setMaturatyp(options[index].label);
+        setMaturatyp(options[index].label); // saves to context
     };
 
     const handleContinueClick = () => {

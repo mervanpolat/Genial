@@ -1,3 +1,4 @@
+// src/components/WelcomeIntro/steps/Step4_InfoSection.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack, Image } from "@chakra-ui/react";

@@ -1,5 +1,4 @@
 // src/components/WelcomeIntro/steps/Step9_LoginPage.jsx
-
 import React, { useEffect, useState } from "react";
 import { Box, VStack, Text, Button, Image, useDisclosure } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +15,7 @@ function Step9_LoginPage() {
     const [hasSaved, setHasSaved] = useState(false);
     const navigate = useNavigate();
 
+    // Pull the user’s onboarding data from context
     const {
         goal,
         maturatyp,
@@ -28,22 +28,26 @@ function Step9_LoginPage() {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user && !hasSaved) {
                 try {
+                    // Combine everything we have into one object:
                     const userData = {
                         goal,
                         maturatyp,
                         mathComfortLevel,
                         dailyGoal,
                         timePreference,
+                        // Also store the Firebase user info
                         username: user.displayName || "",
                         email: user.email,
                         completedOnboarding: true,
                         timestamp: serverTimestamp(),
                     };
 
-                    // Must match your Firestore rules: /users/{uid}
-                    await setDoc(doc(collection(db, "users"), user.uid), userData, {
-                        merge: true,
-                    });
+                    // MERGE so that we don't overwrite existing data
+                    await setDoc(
+                        doc(collection(db, "users"), user.uid),
+                        userData,
+                        { merge: true }
+                    );
 
                     setHasSaved(true);
                     navigate("/mein-lehrplan");
@@ -55,13 +59,13 @@ function Step9_LoginPage() {
 
         return () => unsubscribe();
     }, [
-        hasSaved,
-        navigate,
         goal,
         maturatyp,
         mathComfortLevel,
         dailyGoal,
         timePreference,
+        hasSaved,
+        navigate,
     ]);
 
     return (
