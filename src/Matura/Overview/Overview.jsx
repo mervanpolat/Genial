@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Heading, Text, Flex, Button, Image } from '@chakra-ui/react';
 
-function MeinLehrplan() {
+function Overview() {
   return (
       <Box p="20px" maxW="1200px" mx="auto">
         {/* Main Heading */}
@@ -148,4 +148,4 @@ const levelsData = [
   },
 ];
 
-export default MeinLehrplan;
+export default Overview;

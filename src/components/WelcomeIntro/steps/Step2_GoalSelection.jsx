@@ -6,7 +6,7 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
-import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
+import { useOnboardingContext } from "../../../OnboardingContext/OnboardingContext.jsx";
 
 function Step2_GoalSelection({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -23,7 +23,7 @@ function Step2_GoalSelection({ onContinue = () => {} }) {
 
     const handleSelection = (index) => {
         setSelectedOption(index);
-        // Store only the label in context (Option A)
+        // Store only the label in OnboardingContext (Option A)
         setGoal(options[index].label);
     };
 

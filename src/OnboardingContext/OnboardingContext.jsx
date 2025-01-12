@@ -1,4 +1,4 @@
-// src/context/OnboardingContext.jsx
+// src/OnboardingContext/OnboardingContext.jsx
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";

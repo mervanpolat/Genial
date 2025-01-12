@@ -1,6 +1,6 @@
 import { useRef, createRef } from 'react';
-import '../PageTemplate/PageWrapper.css';
-import TooltipItem from "../Tippy/ToolTipItem.jsx";
+import '../../PageTemplate/PageWrapper.css';
+import TooltipItem from "../../Tippy/TooltipItem.jsx";
 
 function Grundlagen() {
     const moduleData = [
@@ -43,7 +43,7 @@ function Grundlagen() {
 
     const handleCubeClick = (module, event, itemRef) => {
         event.stopPropagation();
-        console.log('Clicked modules:', module.headline);
+        console.log('Clicked Content:', module.headline);
 
         if (itemRef && itemRef.current) {
             itemRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });

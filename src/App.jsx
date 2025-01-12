@@ -14,14 +14,14 @@ import { ArrowLeftIcon } from "@chakra-ui/icons";
 import NavBar from "./components/LandingPage/NavBar.jsx";
 import Footer from "./components/LandingPage/Footer.jsx";
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
-import MeinLehrplan from "./components/Lehrplan/MeinLehrplan.jsx";
-import Preis from "./components/LandingPage/Preis.jsx";
-import UeberUns from "./components/LandingPage/UeberUns.jsx";
+import Overview from "./Matura/Overview/Overview.jsx";
+import Price from "./components/LandingPage/Price.jsx";
+import AboutUs from "./components/LandingPage/AboutUs.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
-// Import Grundlagen and GleichungenLoesen Pages
-import Grundlagen from "./modules/Pages/Grundlagen.jsx"; // Import for Grundlagen.jsx
-import GleichungenLoesen from "./modules/Pages/GleichungenLoesen.jsx"; // Import for GleichungenLoesen.jsx
+// Import Grundlagen and GleichungenLoesen Content
+import Grundlagen from "./Matura/Content/Grundlagen/Grundlagen.jsx"; // Import for Grundlagen.jsx
+import GleichungenLoesen from "./Matura/Content/GleichungenLoesen/GleichungenLoesen.jsx"; // Import for GleichungenLoesen.jsx
 
 // Onboarding Steps
 import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
@@ -35,7 +35,7 @@ import Step8_FinalInfo from "./components/WelcomeIntro/steps/Step8_FinalInfo.jsx
 import Step9_LoginPage from "./components/WelcomeIntro/steps/Step9_LoginPage.jsx";
 
 // Import OnboardingProvider
-import { OnboardingProvider } from "./context/OnboardingContext.jsx";
+import { OnboardingProvider } from "./OnboardingContext/OnboardingContext.jsx";
 
 const stepsArray = [
     { path: "/welcome", component: Step1_Welcome },
@@ -106,9 +106,9 @@ function App() {
             <Routes>
                 {/* Public routes */}
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/mein-lehrplan" element={<MeinLehrplan />} />
-                <Route path="/preis" element={<Preis />} />
-                <Route path="/ueber-uns" element={<UeberUns />} />
+                <Route path="/mein-lehrplan" element={<Overview />} />
+                <Route path="/preis" element={<Price />} />
+                <Route path="/ueber-uns" element={<AboutUs />} />
                 <Route path="/dashboard" element={<Dashboard />} />
 
                 {/* Grundlagen and GleichungenLoesen Routes */}
@@ -130,8 +130,8 @@ function App() {
                     />
                 ))}
 
-                {/* "Kurse" => same as MeinLehrplan */}
-                <Route path="/kurse" element={<MeinLehrplan />} />
+                {/* "Kurse" => same as Overview */}
+                <Route path="/kurse" element={<Overview />} />
 
                 {/* Fallback for invalid route if in onboarding */}
                 {hideLayoutRoutes.includes(location.pathname) && (

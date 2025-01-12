@@ -26,11 +26,11 @@ Genial is an interactive web-based application designed to simplify and gamify t
 │   │   │   ├── Footer.jsx
 │   │   │   ├── NavBar.css
 │   │   │   ├── NavBar.jsx
-│   │   │   ├── UeberUns.css
-│   │   │   ├── UeberUns.jsx
+│   │   │   ├── AboutUs.css
+│   │   │   ├── AboutUs.jsx
 │   │   └── Lehrplan
-│   │       ├── MeinLehrplan.css
-│   │       ├── MeinLehrplan.jsx
+│   │       ├── Overview.css
+│   │       ├── Overview.jsx
 │   ├── modules
 │   │   ├── PageTemplate
 │   │   │   ├── PageWrapper.css

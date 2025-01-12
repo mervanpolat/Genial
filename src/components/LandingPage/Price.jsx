@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, SimpleGrid, Heading, Text, Button, List, ListItem, Icon } from '@chakra-ui/react';
 import { AiOutlineCheck } from 'react-icons/ai';
 
-function Preis() {
+function Price() {
     const plans = [
         {
             name: 'Silver',
@@ -103,4 +103,4 @@ function Preis() {
     );
 }
 
-export default Preis;
+export default Price;

@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
 
-function UeberUns() {
+function AboutUs() {
   return (
       <Box p="5" maxW="1200px" mx="auto" my="12">
         <Flex
@@ -11,7 +11,7 @@ function UeberUns() {
           {/* Image on the right (desktop) */}
           <Box flex="1" borderRadius="lg" overflow="hidden">
             <Image
-                src="/images/UeberUns/Euclid.png"
+                src="/images/AboutUs/Euclid.png"
                 alt="Euclid's Elements"
                 borderRadius="lg"
                 w="100%"
@@ -63,4 +63,4 @@ function UeberUns() {
   );
 }
 
-export default UeberUns;
+export default AboutUs;

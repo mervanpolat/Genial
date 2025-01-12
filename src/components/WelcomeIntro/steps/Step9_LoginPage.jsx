@@ -6,16 +6,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 import OnboardingLayout from "../OnboardingLayout.jsx";
-import LoginPopper from "../../LandingPage/LoginPopper/LoginPopper.jsx";
+import LoginPopper from "../../../firebase/LoginPopper.jsx";
 import { auth, db } from "../../../firebase/firebaseConfig.js";
-import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
+import { useOnboardingContext } from "../../../OnboardingContext/OnboardingContext.jsx";
 
 function Step9_LoginPage() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [hasSaved, setHasSaved] = useState(false);
     const navigate = useNavigate();
 
-    // Pull the user’s onboarding data from context
+    // Pull the user’s onboarding data from OnboardingContext
     const {
         goal,
         maturatyp,

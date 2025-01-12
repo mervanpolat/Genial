@@ -12,7 +12,7 @@ import { FaLaptopCode, FaToolbox } from "react-icons/fa";
 import { MdBusiness } from "react-icons/md";
 import { RiBuilding2Fill } from "react-icons/ri";
 
-import { useOnboardingContext } from "../../../context/OnboardingContext.jsx";
+import { useOnboardingContext } from "../../../OnboardingContext/OnboardingContext.jsx";
 
 function Step3_MaturatypSelection({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -29,7 +29,7 @@ function Step3_MaturatypSelection({ onContinue = () => {} }) {
 
     const handleSelection = (index) => {
         setSelectedOption(index);
-        setMaturatyp(options[index].label); // saves to context
+        setMaturatyp(options[index].label); // saves to OnboardingContext
     };
 
     const handleContinueClick = () => {

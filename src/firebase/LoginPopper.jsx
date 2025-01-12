@@ -22,7 +22,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { auth, db } from "../../../firebase/firebaseConfig.js";
+import { auth, db } from "./firebaseConfig.js";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,

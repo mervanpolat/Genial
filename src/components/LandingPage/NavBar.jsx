@@ -31,7 +31,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig.js";
 
 // (Optional) Your login popper/modal (no longer triggered by “Anmelden”)
-import LoginPopper from "./LoginPopper/LoginPopper.jsx";
+import LoginPopper from "../../firebase/LoginPopper.jsx";
 
 function NavBar() {
   const [user, setUser] = useState(null);
