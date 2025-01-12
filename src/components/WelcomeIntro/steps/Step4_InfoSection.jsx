@@ -22,7 +22,7 @@ function Step4_InfoSection({ onContinue = () => {} }) {
             >
                 <VStack spacing={6} align="center">
                     <Image
-                        src="src/components/WelcomeIntro/assets/proposition_4_figure_same.svg"
+                        src="src/components/WelcomeIntro/assets/Step4_InfoSection.svg"
                         alt="Informationsbild"
                         maxW="250px"
                         objectFit="contain"

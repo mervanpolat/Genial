@@ -16,7 +16,7 @@ function Step1_Welcome({ onContinue = () => {} }) {
             <Box p={8} textAlign="center">
                 <VStack spacing={10}>
                     <Image
-                        src="src/components/WelcomeIntro/assets/proposition_11_figure.svg"
+                        src="src/components/WelcomeIntro/assets/Step1_Welcome.svg"
                         alt="Step1_Welcome"
                         boxSize="250px"
                     />
