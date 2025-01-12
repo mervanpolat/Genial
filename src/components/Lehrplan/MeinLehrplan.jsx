@@ -85,7 +85,7 @@ function MeinLehrplan() {
 const levelsData = [
   {
     level: 1,
-    link: '/grundlagen',
+    link: '/grundlagen', // Corrected to use a valid path
     imageSrc: '/CardImages/HTL2/Grundlagen.svg',
     alt: 'Grundlagen',
     title: 'Grundlagen',
@@ -120,28 +120,28 @@ const levelsData = [
   },
   {
     level: 6,
-    link: '/level-7',
+    link: '/level-6',
     imageSrc: '/CardImages/HTL2/Differentialrechnung.svg',
     alt: 'Differentialrechnung',
     title: 'Differentialrechnung',
   },
   {
     level: 7,
-    link: '/level-8',
+    link: '/level-7',
     imageSrc: '/CardImages/HTL2/Umkehraufgaben.png',
     alt: 'Umkehraufgaben',
     title: 'Umkehraufgaben',
   },
   {
     level: 8,
-    link: '/level-9',
+    link: '/level-8',
     imageSrc: '/CardImages/HTL2/Integral.png',
     alt: 'Integral',
     title: 'Integral',
   },
   {
     level: 9,
-    link: '/level-10',
+    link: '/level-9',
     imageSrc: '/CardImages/HTL2/Statistik.svg',
     alt: 'Wahrscheinlichkeit & Statistik',
     title: 'Wahrscheinlichkeit & Statistik',

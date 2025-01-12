@@ -15,9 +15,13 @@ import NavBar from "./components/LandingPage/NavBar.jsx";
 import Footer from "./components/LandingPage/Footer.jsx";
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import MeinLehrplan from "./components/Lehrplan/MeinLehrplan.jsx";
-import Preis from "./components/LandingPage/Preis.jsx";   // <-- updated import path
-import UeberUns from "./components/LandingPage/UeberUns.jsx"; // <-- updated import path
+import Preis from "./components/LandingPage/Preis.jsx";
+import UeberUns from "./components/LandingPage/UeberUns.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
+
+// Import Grundlagen and GleichungenLoesen Pages
+import Grundlagen from "./modules/Pages/Grundlagen.jsx"; // Import for Grundlagen.jsx
+import GleichungenLoesen from "./modules/Pages/GleichungenLoesen.jsx"; // Import for GleichungenLoesen.jsx
 
 // Onboarding Steps
 import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
@@ -106,6 +110,10 @@ function App() {
                 <Route path="/preis" element={<Preis />} />
                 <Route path="/ueber-uns" element={<UeberUns />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+
+                {/* Grundlagen and GleichungenLoesen Routes */}
+                <Route path="/grundlagen" element={<Grundlagen />} /> {/* Route for Grundlagen */}
+                <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} /> {/* Route for GleichungenLoesen */}
 
                 {/* Onboarding Flow Routes */}
                 {stepsArray.map((step, index) => (
