@@ -1,5 +1,3 @@
-// src/components/LandingPage/NavBar.jsx
-
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -38,7 +36,6 @@ import LoginPopper from "./LoginPopper/LoginPopper.jsx";
 function NavBar() {
   const [user, setUser] = useState(null);
 
-  // Listen to authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -46,34 +43,28 @@ function NavBar() {
     return () => unsubscribe();
   }, []);
 
-  // For login modal (LoginPopper)
   const {
     isOpen: isLoginOpen,
     onOpen: onLoginOpen,
     onClose: onLoginClose,
   } = useDisclosure();
 
-  // For mobile drawer
   const {
     isOpen: isDrawerOpen,
     onOpen: openDrawer,
     onClose: closeDrawer,
   } = useDisclosure();
 
-  // Handle user logout
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // Optionally show a toast or redirect
     } catch (error) {
       console.error("Logout error:", error);
     }
   };
 
-  // Box shadow for navbar and drawer
   const customBoxShadow = "0 4px 20px rgba(0, 0, 0, 0.05)";
 
-  // Animated underline style for ChakraLink or Button
   const animatedUnderline = {
     position: "relative",
     _after: {
@@ -97,7 +88,6 @@ function NavBar() {
 
   return (
       <>
-        {/* Main Nav Container */}
         <Flex justify="center" w="100%" py={4} bg="#faf3dc">
           <Box
               maxW="container.lg"
@@ -115,7 +105,6 @@ function NavBar() {
               mx={{ base: 4, sm: 6, md: "auto" }}
           >
             <Flex align="center" justify="space-between">
-              {/* Logo / Brand */}
               <Box fontWeight="bold" fontSize="lg">
                 <ChakraLink as={RouterLink} to="/" {...animatedUnderline}>
                   GENIAL
@@ -156,29 +145,27 @@ function NavBar() {
               />
 
               {/* Desktop Links */}
-              <HStack
-                  spacing={6}
-                  display={{ base: "none", md: "flex" }}
-                  align="center"
-              >
-                <ChakraLink as={RouterLink} to="/" {...animatedUnderline}>
+              <HStack spacing={6} display={{ base: "none", md: "flex" }} align="center">
+                {/* Home link: logged in => /dashboard, else => / */}
+                <ChakraLink
+                    as={RouterLink}
+                    to={user ? "/dashboard" : "/"}
+                    {...animatedUnderline}
+                >
                   Home
                 </ChakraLink>
+
                 <ChakraLink as={RouterLink} to="/preis" {...animatedUnderline}>
                   Preis
                 </ChakraLink>
                 <ChakraLink as={RouterLink} to="/kurse" {...animatedUnderline}>
                   Kurse
                 </ChakraLink>
-                <ChakraLink
-                    as={RouterLink}
-                    to="/ueber-uns"
-                    {...animatedUnderline}
-                >
+                <ChakraLink as={RouterLink} to="/ueber-uns" {...animatedUnderline}>
                   Über uns
                 </ChakraLink>
 
-                {/* Conditionally render "Anmelden" or User Menu */}
+                {/* Conditionally render "Anmelden" or user menu */}
                 {!user ? (
                     <Button
                         variant="link"
@@ -199,7 +186,6 @@ function NavBar() {
                         {user.displayName || "Konto"}
                       </MenuButton>
                       <MenuList>
-                        {/* Additional items (Profile, Settings, etc.) can go here */}
                         <MenuItem onClick={handleLogout}>Abmelden</MenuItem>
                       </MenuList>
                     </Menu>
@@ -228,7 +214,7 @@ function NavBar() {
               <Stack spacing={6} mt={8} align="center">
                 <ChakraLink
                     as={RouterLink}
-                    to="/"
+                    to={user ? "/dashboard" : "/"}
                     onClick={closeDrawer}
                     {...animatedUnderline}
                 >
@@ -259,7 +245,6 @@ function NavBar() {
                   Über uns
                 </ChakraLink>
 
-                {/* Conditionally render "Anmelden" or User Menu in the drawer */}
                 {!user ? (
                     <Button
                         variant="link"

@@ -21,10 +21,19 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { auth } from "../../../firebase/firebaseConfig.js";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth, db } from "../../../firebase/firebaseConfig.js";
+import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    updateProfile,
+} from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const LoginPopper = ({ isOpen, onClose }) => {
+    const [fullName, setFullName] = useState("");
+    const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -66,10 +75,35 @@ const LoginPopper = ({ isOpen, onClose }) => {
             setError("Passwörter stimmen nicht überein.");
             return;
         }
+        if (!fullName.trim()) {
+            setError("Bitte deinen vollen Namen eingeben.");
+            return;
+        }
+        if (!age) {
+            setError("Bitte dein Alter eingeben.");
+            return;
+        }
+
         setLoading(true);
         setError("");
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Update displayName in Firebase Auth
+            await updateProfile(user, {
+                displayName: fullName,
+            });
+
+            // Save extra fields in Firestore
+            const userData = {
+                fullName,
+                age,
+                email: user.email,
+                createdAt: serverTimestamp(),
+            };
+            await setDoc(doc(db, "users", user.uid), userData);
+
             toast({
                 title: "Registrierung erfolgreich",
                 description: "Dein Konto wurde erstellt.",
@@ -79,6 +113,7 @@ const LoginPopper = ({ isOpen, onClose }) => {
             });
             onClose();
         } catch (err) {
+            console.error("Registration error:", err);
             setError("Registrierung fehlgeschlagen. Bitte versuche es erneut.");
         } finally {
             setLoading(false);
@@ -90,7 +125,17 @@ const LoginPopper = ({ isOpen, onClose }) => {
         setLoadingGoogle(true);
         setError("");
         try {
-            await signInWithPopup(auth, provider);
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            // Optionally store user in Firestore
+            await setDoc(doc(db, "users", user.uid), {
+                fullName: user.displayName || "",
+                email: user.email,
+                age: "",
+                createdAt: serverTimestamp(),
+            }, { merge: true });
+
             toast({
                 title: "Login erfolgreich",
                 description: "Du bist jetzt angemeldet mit Google.",
@@ -100,6 +145,7 @@ const LoginPopper = ({ isOpen, onClose }) => {
             });
             onClose();
         } catch (err) {
+            console.error("Google Sign-In error:", err);
             setError("Login mit Google fehlgeschlagen.");
         } finally {
             setLoadingGoogle(false);
@@ -129,7 +175,48 @@ const LoginPopper = ({ isOpen, onClose }) => {
                 <ModalBody>
                     <form onSubmit={isLoginMode ? handleLogin : handleSignup}>
                         <VStack spacing={4}>
-                            <FormControl isInvalid={!!error}>
+                            {/* Additional fields in register mode */}
+                            {!isLoginMode && (
+                                <>
+                                    <FormControl isInvalid={!!error && !fullName}>
+                                        <FormLabel fontWeight="600" color="black">
+                                            Voller Name
+                                        </FormLabel>
+                                        <Input
+                                            type="text"
+                                            value={fullName}
+                                            onChange={(e) => setFullName(e.target.value)}
+                                            placeholder="Max Mustermann"
+                                            borderColor="rgba(0, 0, 0, 0.3)"
+                                            _hover={{ borderColor: "black" }}
+                                            _focus={{
+                                                borderColor: "black",
+                                                boxShadow: "0 0 0 1px black",
+                                            }}
+                                        />
+                                    </FormControl>
+
+                                    <FormControl isInvalid={!!error && !age}>
+                                        <FormLabel fontWeight="600" color="black">
+                                            Alter
+                                        </FormLabel>
+                                        <Input
+                                            type="number"
+                                            value={age}
+                                            onChange={(e) => setAge(e.target.value)}
+                                            placeholder="18"
+                                            borderColor="rgba(0, 0, 0, 0.3)"
+                                            _hover={{ borderColor: "black" }}
+                                            _focus={{
+                                                borderColor: "black",
+                                                boxShadow: "0 0 0 1px black",
+                                            }}
+                                        />
+                                    </FormControl>
+                                </>
+                            )}
+
+                            <FormControl isInvalid={!!error && !email}>
                                 <FormLabel fontWeight="600" color="black">
                                     Email
                                 </FormLabel>
@@ -138,19 +225,17 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
+                                    placeholder="Email"
                                     borderColor="rgba(0, 0, 0, 0.3)"
                                     _hover={{ borderColor: "black" }}
                                     _focus={{
                                         borderColor: "black",
                                         boxShadow: "0 0 0 1px black",
                                     }}
-                                    _placeholder={{ color: "rgba(0, 0, 0, 0.3)" }}
-                                    placeholder="Email"
-                                    autoFocus
                                 />
                             </FormControl>
 
-                            <FormControl isInvalid={!!error}>
+                            <FormControl isInvalid={!!error && !password}>
                                 <FormLabel fontWeight="600" color="black">
                                     Passwort
                                 </FormLabel>
@@ -159,19 +244,18 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
+                                    placeholder="Dein Passwort"
                                     borderColor="rgba(0, 0, 0, 0.3)"
                                     _hover={{ borderColor: "black" }}
                                     _focus={{
                                         borderColor: "black",
                                         boxShadow: "0 0 0 1px black",
                                     }}
-                                    _placeholder={{ color: "rgba(0, 0, 0, 0.3)" }}
-                                    placeholder="Dein Passwort"
                                 />
                             </FormControl>
 
                             {!isLoginMode && (
-                                <FormControl isInvalid={!!error}>
+                                <FormControl isInvalid={!!error && !confirmPassword}>
                                     <FormLabel fontWeight="600" color="black">
                                         Passwort bestätigen
                                     </FormLabel>
@@ -180,14 +264,13 @@ const LoginPopper = ({ isOpen, onClose }) => {
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                         required
+                                        placeholder="Passwort bestätigen"
                                         borderColor="rgba(0, 0, 0, 0.3)"
                                         _hover={{ borderColor: "black" }}
                                         _focus={{
                                             borderColor: "black",
                                             boxShadow: "0 0 0 1px black",
                                         }}
-                                        _placeholder={{ color: "rgba(0, 0, 0, 0.3)" }}
-                                        placeholder="Passwort bestätigen"
                                     />
                                 </FormControl>
                             )}
@@ -210,7 +293,6 @@ const LoginPopper = ({ isOpen, onClose }) => {
                     </form>
 
                     <Divider my={4} borderColor="rgba(0, 0, 0, 0.3)" />
-
 
                     <HStack justifyContent="center" spacing={4}>
                         <Button
@@ -245,7 +327,6 @@ const LoginPopper = ({ isOpen, onClose }) => {
     );
 };
 
-// PropTypes validation
 LoginPopper.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,

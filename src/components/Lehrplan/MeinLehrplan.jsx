@@ -1,5 +1,3 @@
-// src/components/Lehrplan/MeinLehrplan.jsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Heading, Text, Flex, Button, Image } from '@chakra-ui/react';
@@ -27,7 +25,7 @@ function MeinLehrplan() {
               <Heading as="h1" size="lg" mb="0">
                 HTL2
               </Heading>
-              <Text color="gray.600">Wähle diesen Pfad wenn du die HTL2 besuchst</Text>
+              <Text color="gray.600">Wähle diesen Pfad, wenn du die HTL2 besuchst</Text>
             </Box>
           </Flex>
           <Button
@@ -44,7 +42,6 @@ function MeinLehrplan() {
         {/* Levels Section */}
         <Box overflowX="auto" pb="10px" css={{ scrollbarWidth: 'none' }}>
           <Flex gap="20px" py="10px" minW="fit-content">
-            {/* Level Cards */}
             {levelsData.map((level) => (
                 <Link to={level.link} className="level-link" key={level.level}>
                   <Box textAlign="center">
@@ -85,7 +82,6 @@ function MeinLehrplan() {
   );
 }
 
-// Levels data for demonstration
 const levelsData = [
   {
     level: 1,

@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -17,6 +15,9 @@ import NavBar from "./components/LandingPage/NavBar.jsx";
 import Footer from "./components/LandingPage/Footer.jsx";
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
 import MeinLehrplan from "./components/Lehrplan/MeinLehrplan.jsx";
+import Preis from "./components/LandingPage/Preis.jsx";   // <-- updated import path
+import UeberUns from "./components/LandingPage/UeberUns.jsx"; // <-- updated import path
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
 // Onboarding Steps
 import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
@@ -48,19 +49,16 @@ function App() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // These are the routes where we hide NavBar/Footer
+    // Hide NavBar/Footer on these routes
     const hideLayoutRoutes = stepsArray.map((step) => step.path);
     const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
 
-    // Find which step index we are on
+    // Current step index
     const currentStep = stepsArray.findIndex(
         (step) => step.path === location.pathname
     );
 
-    console.log("Current Path:", location.pathname);
-    console.log("Current Step Index:", currentStep);
-
-    // Go back to previous step
+    // Go back a step
     const handleBack = () => {
         if (currentStep > 0) {
             const previousStepPath = stepsArray[currentStep - 1].path;
@@ -68,31 +66,31 @@ function App() {
         }
     };
 
-    // Move to the next route (onContinue handler)
+    // Continue to next route
     const handleContinue = (nextRoute) => {
         if (currentStep < stepsArray.length - 1 && nextRoute) {
             navigate(nextRoute);
         } else {
-            // After the last step, go to home or wherever
+            // After last step, go to landing
             navigate("/");
         }
     };
 
     return (
         <>
+            {/* Conditionally show/hide NavBar */}
             {!shouldHideLayout && <NavBar />}
 
+            {/* If in onboarding step, show a Back button */}
             {shouldHideLayout && (
-                <HStack spacing={4} p={4} alignItems="center">
+                <HStack spacing={4} p={4}>
                     <IconButton
                         icon={<ArrowLeftIcon />}
                         aria-label="Back"
                         onClick={handleBack}
                         isDisabled={currentStep === 0}
                         variant="ghost"
-                        _hover={{
-                            bg: "rgba(0, 0, 0, 0.1)",
-                        }}
+                        _hover={{ bg: "rgba(0, 0, 0, 0.1)" }}
                         _disabled={{
                             opacity: 0.4,
                             cursor: "not-allowed",
@@ -102,9 +100,12 @@ function App() {
             )}
 
             <Routes>
-                {/* General (non-onboarding) Routes */}
+                {/* Public routes */}
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/mein-lehrplan" element={<MeinLehrplan />} />
+                <Route path="/preis" element={<Preis />} />
+                <Route path="/ueber-uns" element={<UeberUns />} />
+                <Route path="/dashboard" element={<Dashboard />} />
 
                 {/* Onboarding Flow Routes */}
                 {stepsArray.map((step, index) => (
@@ -113,7 +114,6 @@ function App() {
                         path={step.path}
                         element={
                             <step.component
-                                // We pass onContinue except for Step9, which might not need it
                                 onContinue={() =>
                                     handleContinue(stepsArray[index + 1]?.path)
                                 }
@@ -122,12 +122,16 @@ function App() {
                     />
                 ))}
 
-                {/* Fallback for any undefined route during onboarding */}
+                {/* "Kurse" => same as MeinLehrplan */}
+                <Route path="/kurse" element={<MeinLehrplan />} />
+
+                {/* Fallback for invalid route if in onboarding */}
                 {hideLayoutRoutes.includes(location.pathname) && (
                     <Route path="*" element={<Navigate to="/welcome" replace />} />
                 )}
             </Routes>
 
+            {/* Conditionally show/hide Footer */}
             {!shouldHideLayout && <Footer />}
         </>
     );

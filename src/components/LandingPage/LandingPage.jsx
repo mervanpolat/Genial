@@ -1,30 +1,48 @@
-import React, { useState } from 'react';
-import { Box, Button, Heading, Text, Image, Flex, Grid } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase/firebaseConfig.js";
+import {
+    Box,
+    Button,
+    Heading,
+    Text,
+    Image,
+    Flex,
+    Grid,
+} from "@chakra-ui/react";
 
 function LandingPage() {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false); // Loading state
+    const [loading, setLoading] = useState(false);
 
     const handleStart = () => {
-        setLoading(true); // Start loading
-
-        // Simulate a delay before navigation (remove if unnecessary)
+        setLoading(true);
+        // Optional delay
         setTimeout(() => {
-            navigate('/welcome'); // Redirect to Step1_Welcome page
-            setLoading(false); // Reset loading state after navigation
+            navigate('/welcome');
+            setLoading(false);
         }, 1000);
     };
 
+    // Prevent logged-in users from seeing LandingPage
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigate("/dashboard");
+            }
+        });
+        return () => unsubscribe();
+    }, [navigate]);
+
     return (
         <Box textAlign="center" py="8" maxW="1200px" mx="auto">
-            {/* Hero Content */}
             <Heading as="h1" fontSize={{ base: '2xl', md: '4xl' }} mb="4">
                 Learn by doing.
             </Heading>
             <Text fontSize={{ base: 'md', md: 'lg' }} lineHeight="1.6" mb="6">
                 Interaktives Problemlösen, das effektiv und unterhaltsam ist. <br />
-                Bereite dich mühelos auf die Mathematik-Zentralmatura und Schularbeiten vor – egal ob AHS oder BHS.
+                Bereite dich mühelos auf die Mathematik-Zentralmatura vor – egal ob AHS oder BHS.
             </Text>
             <Button
                 onClick={handleStart}
@@ -33,14 +51,20 @@ function LandingPage() {
                 color="black"
                 _hover={{ bg: 'blackAlpha.100' }}
                 mb="8"
-                isLoading={loading} // Apply loading state
-                loadingText="Loslegen" // Text during loading
+                isLoading={loading}
+                loadingText="Loslegen"
             >
                 Loslegen
             </Button>
 
             {/* Video Section */}
-            <Box maxW="800px" mx="auto" mb="16" overflow="hidden" borderRadius="md">
+            <Box
+                maxW="800px"
+                mx="auto"
+                mb="16"
+                overflow="hidden"
+                borderRadius="md"
+            >
                 <Box
                     as="video"
                     src="/videos/LandingPage_Sinusfunktion.mov"
@@ -69,11 +93,15 @@ function LandingPage() {
                         KONZEPTE, DIE LICHT INS DUNKEL BRINGEN.
                     </Heading>
                     <Text fontSize="lg" lineHeight="1.6">
-                        Interaktive Lektionen machen komplexe Themen leicht zugänglich. Direktes Feedback sorgt dafür,
-                        dass du schneller verstehst.
+                        Interaktive Lektionen machen komplexe Themen leicht zugänglich.
+                        Direktes Feedback sorgt dafür, dass du schneller verstehst.
                     </Text>
                 </Box>
-                <Image src="/images/LandingPage/ZRegel.png" alt="Konzept Grafik" objectFit="cover" />
+                <Image
+                    src="/images/LandingPage/ZRegel.png"
+                    alt="Konzept Grafik"
+                    objectFit="cover"
+                />
             </Grid>
 
             {/* Kursinhalt Section */}
@@ -82,8 +110,8 @@ function LandingPage() {
                     KURSINHALT.
                 </Heading>
                 <Text fontSize="lg" lineHeight="1.6" mb="8">
-                    Genial hilft dir, die österreichische Mathematikmatura spielend zu meistern – mit perfekt
-                    abgestimmten Übungen.
+                    Genial hilft dir, die österreichische Mathematikmatura spielend zu meistern –
+                    mit perfekt abgestimmten Übungen.
                 </Text>
                 <Flex justify="center" gap="8" mb="8" wrap={{ base: 'wrap', md: 'nowrap' }}>
                     <Image
@@ -91,7 +119,11 @@ function LandingPage() {
                         alt="Bundesministerium: Bildung, Wissenschaft und Forschung"
                         maxH="100px"
                     />
-                    <Image src="/images/LandingPage/bifie.png" alt="Bundesinstitut bifie" maxH="100px" />
+                    <Image
+                        src="/images/LandingPage/bifie.png"
+                        alt="Bundesinstitut bifie"
+                        maxH="100px"
+                    />
                 </Flex>
             </Box>
 
@@ -101,14 +133,35 @@ function LandingPage() {
                     TECHNOLOGIE.
                 </Heading>
                 <Text fontSize="lg" lineHeight="1.6" mb="8">
-                    Egal, ob du GeoGebra, den TI-Nspire CX CAS, TI-82, TI-84 oder den CASIO ClassPad II verwendest,
+                    Egal, ob du GeoGebra, TI-Nspire, TI-82, TI-84 oder CASIO ClassPad II verwendest –
                     Genial sorgt für eine optimale Vorbereitung mit Leichtigkeit.
                 </Text>
-
-                <Flex justify="center" gap="8" mb="8" wrap={{ base: 'wrap', md: 'nowrap' }} maxW="250px" mx="auto">
-                    <Image src="/images/LandingPage/Casio.svg" alt="Casio Logo" borderRadius="md" maxH="100px" />
-                    <Image src="/images/LandingPage/TexasInstruments.svg" alt="Texas Instruments Logo" borderRadius="md" maxH="100px" />
-                    <Image src="/images/LandingPage/Geogebra.svg" alt="Geogebra Logo" borderRadius="md" maxH="100px" />
+                <Flex
+                    justify="center"
+                    gap="8"
+                    mb="8"
+                    wrap={{ base: 'wrap', md: 'nowrap' }}
+                    maxW="250px"
+                    mx="auto"
+                >
+                    <Image
+                        src="/images/LandingPage/Casio.svg"
+                        alt="Casio Logo"
+                        borderRadius="md"
+                        maxH="100px"
+                    />
+                    <Image
+                        src="/images/LandingPage/TexasInstruments.svg"
+                        alt="Texas Instruments Logo"
+                        borderRadius="md"
+                        maxH="100px"
+                    />
+                    <Image
+                        src="/images/LandingPage/Geogebra.svg"
+                        alt="Geogebra Logo"
+                        borderRadius="md"
+                        maxH="100px"
+                    />
                 </Flex>
             </Box>
         </Box>

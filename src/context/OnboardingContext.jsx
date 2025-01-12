@@ -1,5 +1,3 @@
-// src/context/OnboardingContext.jsx
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -11,7 +9,7 @@ export const useOnboardingContext = () => useContext(OnboardingContext);
 export const OnboardingProvider = ({ children }) => {
     const location = useLocation();
 
-    // Define all onboarding step paths
+    // Onboarding routes
     const steps = [
         "/welcome",
         "/goal-selection",
@@ -24,9 +22,10 @@ export const OnboardingProvider = ({ children }) => {
         "/login",
     ];
 
+    const [totalSteps] = useState(steps.length);
     const [currentStep, setCurrentStep] = useState(0);
 
-    // Onboarding data states
+    // Example states for user selection
     const [goal, setGoal] = useState("");
     const [maturatyp, setMaturatyp] = useState("");
     const [mathComfortLevel, setMathComfortLevel] = useState("");
@@ -35,11 +34,14 @@ export const OnboardingProvider = ({ children }) => {
 
     useEffect(() => {
         const index = steps.indexOf(location.pathname);
-        if (index !== -1) setCurrentStep(index);
+        if (index !== -1) {
+            setCurrentStep(index);
+        }
     }, [location.pathname, steps]);
 
     const value = {
         currentStep,
+        totalSteps,
         goal,
         setGoal,
         maturatyp,

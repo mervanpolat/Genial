@@ -3,13 +3,12 @@ import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
 function UeberUns() {
   return (
       <Box p="5" maxW="1200px" mx="auto" my="12">
-        {/* Grid Section */}
         <Flex
             direction={{ base: 'column', md: 'row-reverse' }}
             gap="5"
             alignItems="center"
         >
-          {/* Image at the right on desktop, top on mobile */}
+          {/* Image on the right (desktop) */}
           <Box flex="1" borderRadius="lg" overflow="hidden">
             <Image
                 src="/images/UeberUns/Euclid.png"
@@ -29,11 +28,9 @@ function UeberUns() {
             <Text fontSize="lg" lineHeight="1.6">
               Wir helfen Schülern und Lernenden, ihre mathematischen Fähigkeiten zu verbessern,
               mit besonderem Fokus auf die Vorbereitung zur Zentralmatura.
-              <br />
-              <br />
-              Auf unserer Plattform setzt du auf aktives Lernen – keine Videos, nur interaktive Übungen.
-              <br />
-              <br />
+              <br /><br />
+              Auf unserer Plattform setzen wir auf aktives Lernen – keine Videos, nur interaktive Übungen.
+              <br /><br />
               Wir führen dich Schritt für Schritt durch die Konzepte und bauen dabei ein solides Fundament auf,
               um dich optimal auf die Matura vorzubereiten.
             </Text>
