@@ -4,7 +4,7 @@ import React from "react";
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 
 const ZahlenmengenData = {
-    bannerImageSrc: "/images/lectureBanner_Zahlenmengen.jpg",
+    bannerImageSrc: "src/Matura/Content/Grundlagen/Lektionen/1_Zahlenmengen/Image/Zahlenmengen.svg",
     headline: "Theorie - Zahlenmengen",
     introText:
         "In dieser Theorie-Einheit erfährst du, welche Zahlenmengen es gibt und wie sie zueinander in Beziehung stehen.",
