@@ -1,3 +1,4 @@
+// src/App.jsx
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -10,7 +11,6 @@ import {
 import { IconButton, HStack } from "@chakra-ui/react";
 import { ArrowLeftIcon } from "@chakra-ui/icons";
 
-// Import NavBar, Footer, and other pages
 import NavBar from "./components/LandingPage/NavBar.jsx";
 import Footer from "./components/LandingPage/Footer.jsx";
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
@@ -19,11 +19,13 @@ import Price from "./components/LandingPage/Price.jsx";
 import AboutUs from "./components/LandingPage/AboutUs.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
-// Import Grundlagen and GleichungenLoesen Content
-import Grundlagen from "./Matura/Content/Grundlagen/Grundlagen.jsx"; // Import for Grundlagen.jsx
-import GleichungenLoesen from "./Matura/Content/GleichungenLoesen/GleichungenLoesen.jsx"; // Import for GleichungenLoesen.jsx
+// Import Grundlagen and GleichungenLoesen
+import Grundlagen from "./Matura/Content/Grundlagen/Grundlagen.jsx";
+import GleichungenLoesen from "./Matura/Content/GleichungenLoesen/GleichungenLoesen.jsx";
 
-// Onboarding Steps
+// Import Theorie_Zahlenmengen
+import Theorie_Zahlenmengen from "./Matura/Content/Grundlagen/Lektionen/1_Zahlenmengen/Theorie_Zahlenmengen.jsx";
+
 import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
 import Step2_GoalSelection from "./components/WelcomeIntro/steps/Step2_GoalSelection.jsx";
 import Step3_MaturatypSelection from "./components/WelcomeIntro/steps/Step3_MaturatypSelection.jsx";
@@ -34,7 +36,6 @@ import Step7_TimePreference from "./components/WelcomeIntro/steps/Step7_TimePref
 import Step8_FinalInfo from "./components/WelcomeIntro/steps/Step8_FinalInfo.jsx";
 import Step9_LoginPage from "./components/WelcomeIntro/steps/Step9_LoginPage.jsx";
 
-// Import OnboardingProvider
 import { OnboardingProvider } from "./OnboardingContext/OnboardingContext.jsx";
 
 const stepsArray = [
@@ -53,16 +54,13 @@ function App() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // Hide NavBar/Footer on these routes
     const hideLayoutRoutes = stepsArray.map((step) => step.path);
     const shouldHideLayout = hideLayoutRoutes.includes(location.pathname);
 
-    // Current step index
     const currentStep = stepsArray.findIndex(
         (step) => step.path === location.pathname
     );
 
-    // Go back a step
     const handleBack = () => {
         if (currentStep > 0) {
             const previousStepPath = stepsArray[currentStep - 1].path;
@@ -70,22 +68,18 @@ function App() {
         }
     };
 
-    // Continue to next route
     const handleContinue = (nextRoute) => {
         if (currentStep < stepsArray.length - 1 && nextRoute) {
             navigate(nextRoute);
         } else {
-            // After last step, go to landing
             navigate("/");
         }
     };
 
     return (
         <>
-            {/* Conditionally show/hide NavBar */}
             {!shouldHideLayout && <NavBar />}
 
-            {/* If in onboarding step, show a Back button */}
             {shouldHideLayout && (
                 <HStack spacing={4} p={4}>
                     <IconButton
@@ -111,11 +105,14 @@ function App() {
                 <Route path="/ueber-uns" element={<AboutUs />} />
                 <Route path="/dashboard" element={<Dashboard />} />
 
-                {/* Grundlagen and GleichungenLoesen Routes */}
-                <Route path="/grundlagen" element={<Grundlagen />} /> {/* Route for Grundlagen */}
-                <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} /> {/* Route for GleichungenLoesen */}
+                {/* Grundlagen & GleichungenLoesen */}
+                <Route path="/grundlagen" element={<Grundlagen />} />
+                <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
 
-                {/* Onboarding Flow Routes */}
+                {/* Our Theorie_Zahlenmengen route */}
+                <Route path="/theorie-zahlenmengen" element={<Theorie_Zahlenmengen />} />
+
+                {/* Onboarding flow */}
                 {stepsArray.map((step, index) => (
                     <Route
                         key={index}
@@ -133,13 +130,12 @@ function App() {
                 {/* "Kurse" => same as Overview */}
                 <Route path="/kurse" element={<Overview />} />
 
-                {/* Fallback for invalid route if in onboarding */}
+                {/* Fallback for invalid routes during onboarding */}
                 {hideLayoutRoutes.includes(location.pathname) && (
                     <Route path="*" element={<Navigate to="/welcome" replace />} />
                 )}
             </Routes>
 
-            {/* Conditionally show/hide Footer */}
             {!shouldHideLayout && <Footer />}
         </>
     );

@@ -41,8 +41,8 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     };
 
     const handleSelectClick = () => {
-        setLoading(true); // Start loading
-        onSelect(module); // Call the provided onSelect function
+        setLoading(true);      // Start loading
+        onSelect(module);      // Call the provided onSelect function
 
         // Simulate completion (remove this if onSelect handles async logic)
         setTimeout(() => setLoading(false), 1000);
@@ -88,8 +88,8 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         onClick={handleSelectClick}
-                        isLoading={loading} // Apply loading state
-                        loadingText="AUSWÄHLEN..." // Text displayed while loading
+                        isLoading={loading}           // Apply loading state
+                        loadingText="AUSWÄHLEN..."    // Text displayed while loading
                     >
                         AUSWÄHLEN
                     </Button>
