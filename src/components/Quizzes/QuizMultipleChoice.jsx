@@ -118,6 +118,7 @@ const QuizMultipleChoice = ({
                             bgColor = "black";
                             borderColor = "black";
                             textColor = "white";
+
                         }
 
                         return (
@@ -141,7 +142,7 @@ const QuizMultipleChoice = ({
                                 onClick={() => handleSelection(index)}
                                 _hover={
                                     index === selectedOption
-                                        ? { bg: "black", borderColor: "black" }
+                                        ? { bg: "black", borderColor: "black", transform: "scale(1.02)" }
                                         : disabledOptions.includes(index) ||
                                         highlightedCorrectIndex !== null ||
                                         showBlackPanel
