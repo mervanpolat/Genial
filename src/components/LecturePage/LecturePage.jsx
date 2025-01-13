@@ -74,7 +74,7 @@ const LecturePage = ({
         <chakra.section bg={bgColor} minH="100vh" py={6}>
             {/* Outer "card" area replaced with a <section> instead of Container */}
             <OuterSection
-                maxW={{ base: "100vw", md: "50vw", lg: "40vw" }}
+                maxW={{ base: "100vw", md: "100vw", lg: "40vw" }}
                 mx="auto"              // center horizontally (like Container does)
                 borderRadius="md"
                 p={6}
@@ -85,10 +85,10 @@ const LecturePage = ({
                     src={bannerImageSrc}
                     alt="Lecture Banner"
                     width="100%"
-                    maxH="300px"
+                    maxH="600px"
                     objectFit="cover"
                     borderRadius="md"
-                    mb={4}
+                    mb={8}
                 />
 
                 {/* Headline */}
@@ -100,18 +100,6 @@ const LecturePage = ({
                 <Text fontSize={{ base: "xl", md: "lg" }} mb={4}>
                     {introText}
                 </Text>
-
-                {/* Example Tippy usage */}
-                <Tippy content="Dies ist ein Beispiel für Tippy.js Tooltip">
-                    <Text
-                        as="span"
-                        color="blue.500"
-                        textDecoration="underline"
-                        cursor="pointer"
-                    >
-                        Mauszeiger hier
-                    </Text>
-                </Tippy>
 
                 {/* Sections Loop */}
                 {sectionsContent.map((section, idx) => (

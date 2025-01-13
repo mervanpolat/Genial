@@ -31,7 +31,7 @@ const LectureSection = ({ children, heading, imageSrc, isVisible }) => {
                     mb={7}
                     borderRadius="md"
                     maxH="300px"
-                    objectFit="cover"
+                    objectFit="fill"
                 />
             )}
 

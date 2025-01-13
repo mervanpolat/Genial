@@ -7,8 +7,8 @@ import {
     Text,
 } from "@chakra-ui/react";
 
-import PrimaryButton from "./shares/PrimaryButton.jsx";
-import WhyAccordion from "./shares/WhyAccordion.jsx";
+import PrimaryButton from "./shared/PrimaryButton.jsx";
+import WhyAccordion from "./shared/WhyAccordion.jsx";
 
 const QuizDuolingoStyle = ({
                                prompt,

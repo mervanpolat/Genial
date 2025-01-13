@@ -75,7 +75,7 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                     {/* Button with loading state */}
                     <Button
                         fontSize="18px"
-                        color={isHovered ? 'black' : 'white'}
+                        color={isHovered ? 'black' : '#faf3dc'}
                         bg={isHovered ? '#faf3dc' : '#333'}
                         _hover={{ bg: '#faf3dc', color: 'black' }}
                         px="12"

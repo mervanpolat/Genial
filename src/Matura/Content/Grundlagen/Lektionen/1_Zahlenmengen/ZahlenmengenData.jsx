@@ -5,7 +5,7 @@ import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 
 const ZahlenmengenData = {
     bannerImageSrc: "src/Matura/Content/Grundlagen/Lektionen/1_Zahlenmengen/Image/Zahlenmengen.svg",
-    headline: "Theorie - Zahlenmengen",
+    headline: "Zahlenmengen",
     introText:
         "In dieser Theorie-Einheit erfährst du, welche Zahlenmengen es gibt und wie sie zueinander in Beziehung stehen.",
 
@@ -20,8 +20,7 @@ const ZahlenmengenData = {
                     Insbesondere beschäftigen wir uns mit
                     <TippyText content="Die natürlichen Zahlen (1, 2, 3, …)">ℕ</TippyText>,
                     <TippyText content="Die ganzen Zahlen (… -2, -1, 0, 1, 2, …)">ℤ</TippyText>,
-                    <TippyText content="Die rationalen Zahlen (Brüche und ganze Zahlen)">ℚ</TippyText>
-                    und
+                    <TippyText content="Die rationalen Zahlen (Brüche und ganze Zahlen)">ℚ</TippyText> und
                     <TippyText content="Die reellen Zahlen (rationale + irrationale Zahlen)">ℝ</TippyText>.
                 </>,
             ],

@@ -31,7 +31,7 @@ const WhyAccordion = ({ explanation }) => {
                         justifyContent="center"
                         width="auto"
                         borderRadius="m"
-                        border="2px solid black"
+                        border="1px solid black"
                         bg="transparent"
                         color="black"
                         px="19px"
