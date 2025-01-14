@@ -1,4 +1,4 @@
-// src/components/GenialQuizzes/MatchingPairsQuiz.jsx
+// File: src/components/GenialQuizzes/MatchingPairsQuiz.jsx
 
 import React, { useState } from "react";
 import {
@@ -12,19 +12,13 @@ import {
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
-/**
- * A "match pairs" quiz.
- * For each left item, user must pick the correct right item from a dropdown.
- *
- * Props:
- *  - pairs: array of objects => [{ left: "...", right: "..." }] (the correct pairing)
- *  - explanation: string
- *  - onQuizComplete: function (optional)
- *
- * Implementation detail:
- *  We'll randomize the "right" options in the dropdown, user picks them. If
- *  user's choice for each left item matches the correct "right" => correct.
- */
+const CARD_BG = "#f2e8d5";
+const BEIGE = "#faf3dc";
+const BLUE = "#30628b";
+const RED = "#c03b2d";
+const GREEN = "#3bb25a";
+const YELLOW = "#f0c34e";
+
 const MatchingPairsQuiz = ({
                                pairs,
                                explanation,
@@ -36,9 +30,7 @@ const MatchingPairsQuiz = ({
 
     const toast = useToast();
 
-    // Collect all 'right' items
     const rightItems = pairs.map((p) => p.right);
-    // Let's randomize them for the dropdown
     const shuffledRightItems = [...rightItems].sort(() => Math.random() - 0.5);
 
     const handleSelectChange = (value, index) => {
@@ -49,8 +41,6 @@ const MatchingPairsQuiz = ({
     };
 
     const handleCheck = () => {
-        // verify each left item is matched with its correct right
-        // correct if selected[index] === pairs[index].right
         for (let i = 0; i < pairs.length; i++) {
             if (selected[i] !== pairs[i].right) {
                 setIsCorrect(false);
@@ -58,7 +48,6 @@ const MatchingPairsQuiz = ({
                 return;
             }
         }
-        // if we never returned, all matched
         setIsCorrect(true);
         setIsAnswered(true);
         if (onQuizComplete) {
@@ -70,26 +59,56 @@ const MatchingPairsQuiz = ({
         <Box
             p={6}
             borderRadius="md"
-            border="1px solid"
-            borderColor="gray.200"
-            bg="white"
+            border="2px solid"
+            borderColor={BLUE}
+            bg={CARD_BG}
             maxW="600px"
             mx="auto"
+            mt={6}
+            boxShadow="sm"
         >
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
+            <Text
+                fontSize={{ base: "xl", md: "lg" }}
+                fontWeight="bold"
+                mb={4}
+                color="black"
+            >
                 Ordne die passenden Paare zu
             </Text>
             <VStack spacing={4} align="stretch">
                 {pairs.map((pair, idx) => (
                     <HStack key={idx} spacing={3}>
-                        <Box flex="1" p={2} bg="gray.50" borderRadius="md">
+                        <Box
+                            flex="1"
+                            p={2}
+                            bg={BEIGE}
+                            borderRadius="md"
+                            border="2px solid"
+                            borderColor={BLUE}
+                            color="black"
+                            fontWeight="bold"
+                            fontSize={{ base: "xl", md: "lg" }}
+                        >
                             {pair.left}
                         </Box>
                         <Select
-                            placeholder="Passendes Gegenstück wählen"
+                            placeholder="Passendes Gegenstück"
                             value={selected[idx]}
                             onChange={(e) => handleSelectChange(e.target.value, idx)}
                             isDisabled={isAnswered}
+                            border="2px solid"
+                            borderColor={BLUE}
+                            bg={BEIGE}
+                            color="black"
+                            _hover={{
+                                bg: YELLOW,
+                                borderColor: BLUE,
+                            }}
+                            _focus={{
+                                borderColor: BLUE,
+                                boxShadow: "0 0 0 1px #30628b",
+                            }}
+                            fontSize={{ base: "xl", md: "lg" }}
                         >
                             {shuffledRightItems.map((item, i) => (
                                 <option key={i} value={item}>
@@ -104,7 +123,19 @@ const MatchingPairsQuiz = ({
             {!isAnswered && (
                 <Button
                     mt={6}
-                    colorScheme="blue"
+                    bg="black"
+                    color="white"
+                    border="2px solid"
+                    borderColor={BLUE}
+                    _hover={{
+                        bg: "#333333",
+                        boxShadow: "md",
+                        transform: "scale(1.02)",
+                    }}
+                    _active={{
+                        transform: "scale(0.98)",
+                    }}
+                    transition="all 0.2s"
                     onClick={handleCheck}
                 >
                     Überprüfen
@@ -116,9 +147,12 @@ const MatchingPairsQuiz = ({
                     <Text
                         mt={4}
                         fontWeight="bold"
-                        color={isCorrect ? "green.500" : "red.500"}
+                        color={isCorrect ? GREEN : RED}
+                        fontSize={{ base: "xl", md: "lg" }}
                     >
-                        {isCorrect ? "Super, alle korrekt zugeordnet!" : "Leider falsch. Schau nochmal hin!"}
+                        {isCorrect
+                            ? "Super, alle korrekt zugeordnet!"
+                            : "Leider falsch. Schau nochmal hin!"}
                     </Text>
 
                     <ExplanationReveal explanation={explanation} />

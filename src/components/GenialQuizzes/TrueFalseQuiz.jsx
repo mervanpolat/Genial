@@ -9,6 +9,13 @@ import {
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
+const CARD_BG = "#f2e8d5";
+const BEIGE = "#faf3dc";
+const BLUE = "#30628b";
+const RED = "#c03b2d";
+const GREEN = "#3bb25a";
+const YELLOW = "#f0c34e";
+
 const TrueFalseQuiz = ({
                            statement,
                            isTrue,
@@ -20,9 +27,9 @@ const TrueFalseQuiz = ({
     const [isCorrect, setIsCorrect] = useState(false);
     const toast = useToast();
 
-    const handleUserAnswer = (answer) => {
+    const handleUserAnswer = (val) => {
         if (isAnswered) return;
-        setUserAnswer(answer);
+        setUserAnswer(val);
     };
 
     const handleCheckAnswer = () => {
@@ -43,11 +50,32 @@ const TrueFalseQuiz = ({
         }
     };
 
+    const getButtonStyle = (val) => {
+        if (isAnswered) {
+            const userChoseThis = userAnswer === val;
+            const correctVal = isTrue ? "true" : "false";
+
+            if (userChoseThis && val === correctVal) {
+                return { bg: GREEN, borderColor: BLUE, color: "white" };
+            } else if (userChoseThis && val !== correctVal) {
+                return { bg: RED, borderColor: BLUE, color: "white" };
+            } else if (val === correctVal) {
+                return { bg: GREEN, borderColor: BLUE, color: "white" };
+            }
+            return { bg: BEIGE, borderColor: BLUE, color: "black" };
+        }
+        const isSelected = userAnswer === val;
+        if (isSelected) {
+            return { bg: BLUE, borderColor: BLUE, color: "white" };
+        }
+        return { bg: BEIGE, borderColor: BLUE, color: "black" };
+    };
+
     return (
         <Box
-            bg="white"
-            border="1px solid"
-            borderColor="gray.200"
+            bg={CARD_BG}
+            border="2px solid"
+            borderColor={BLUE}
             borderRadius="md"
             p={6}
             mt={6}
@@ -56,31 +84,54 @@ const TrueFalseQuiz = ({
             textAlign="center"
             boxShadow="sm"
         >
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
+            <Text
+                fontSize={{ base: "xl", md: "lg" }}
+                fontWeight="bold"
+                mb={4}
+                color="black"
+            >
                 {statement}
             </Text>
 
-            <HStack spacing={4} justify="center">
-                <Button
-                    colorScheme={userAnswer === "true" ? "blue" : "gray"}
-                    onClick={() => handleUserAnswer("true")}
-                    isDisabled={isAnswered}
-                >
-                    Wahr
-                </Button>
-                <Button
-                    colorScheme={userAnswer === "false" ? "blue" : "gray"}
-                    onClick={() => handleUserAnswer("false")}
-                    isDisabled={isAnswered}
-                >
-                    Falsch
-                </Button>
+            <HStack spacing={6} justify="center">
+                {["true", "false"].map((val) => {
+                    const styleProps = getButtonStyle(val);
+                    return (
+                        <Button
+                            key={val}
+                            border="2px solid"
+                            borderColor={styleProps.borderColor}
+                            bg={styleProps.bg}
+                            color={styleProps.color}
+                            _hover={{
+                                ...(isAnswered
+                                    ? {}
+                                    : {
+                                        bg: styleProps.bg === BLUE ? BLUE : YELLOW,
+                                        borderColor: BLUE,
+                                        boxShadow: "md",
+                                        transform: "scale(1.02)",
+                                    })
+                            }}
+                            _active={{ transform: "scale(0.98)" }}
+                            transition="all 0.2s"
+                            onClick={() => handleUserAnswer(val)}
+                            isDisabled={isAnswered}
+                            fontSize={{ base: "xl", md: "lg" }}
+                        >
+                            {val === "true" ? "Wahr" : "Falsch"}
+                        </Button>
+                    );
+                })}
             </HStack>
 
             {!isAnswered && (
                 <Button
                     mt={6}
-                    colorScheme="blue"
+                    bg="black"
+                    color="white"
+                    _hover={{ bg: "#333333", transform: "scale(1.02)" }}
+                    _active={{ transform: "scale(0.98)" }}
                     onClick={handleCheckAnswer}
                 >
                     Antwort prüfen
@@ -91,7 +142,8 @@ const TrueFalseQuiz = ({
                 <Box mt={4} textAlign="center">
                     <Text
                         fontWeight="bold"
-                        color={isCorrect ? "green.500" : "red.500"}
+                        color={isCorrect ? GREEN : RED}
+                        fontSize={{ base: "xl", md: "lg" }}
                     >
                         {isCorrect ? "Richtig!" : "Falsch!"}
                     </Text>

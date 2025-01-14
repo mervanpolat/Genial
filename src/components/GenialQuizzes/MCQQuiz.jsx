@@ -1,4 +1,5 @@
 // File: src/components/GenialQuizzes/MCQQuiz.jsx
+
 import React, { useState } from "react";
 import {
     Box,
@@ -9,6 +10,14 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
+
+// Byrne Colors
+const CARD_BG = "#f2e8d5";
+const BEIGE = "#faf3dc";
+const BLUE = "#30628b";
+const RED = "#c03b2d";
+const GREEN = "#3bb25a";
+const YELLOW = "#f0c34e";
 
 const MCQQuiz = ({
                      question,
@@ -45,47 +54,77 @@ const MCQQuiz = ({
         }
     };
 
+    const getButtonStyle = (idx) => {
+        if (isAnswered) {
+            if (idx === selectedIndex) {
+                return isCorrect
+                    ? { bg: GREEN, borderColor: BLUE, color: "white" }
+                    : { bg: RED, borderColor: BLUE, color: "white" };
+            }
+            if (idx === correctAnswerIndex) {
+                return { bg: GREEN, borderColor: BLUE, color: "white" };
+            }
+            return { bg: BEIGE, borderColor: BLUE, color: "black" };
+        }
+        // Not answered => selected?
+        const isSelected = idx === selectedIndex;
+        if (isSelected) {
+            return { bg: BLUE, borderColor: BLUE, color: "white" };
+        }
+        return { bg: BEIGE, borderColor: BLUE, color: "black" };
+    };
+
     return (
         <Box
-            bg="white"
-            border="1px solid"
-            borderColor="gray.200"
+            bg={CARD_BG}
+            border="2px solid"
+            borderColor={BLUE}
             borderRadius="md"
             p={6}
             mt={6}
             maxW="600px"
             mx="auto"
-            textAlign="center"
             boxShadow="sm"
         >
-            <Text fontSize="xl" fontWeight="bold" mb={3}>
+            <Text
+                fontSize={{ base: "xl", md: "lg" }}
+                fontWeight="bold"
+                mb={3}
+                color="black"
+            >
                 {question}
             </Text>
 
-            <SimpleGrid columns={[1, 2]} spacing={3} mt={3}>
+            <SimpleGrid columns={[1, 2]} spacing={4} mt={3}>
                 {options.map((option, idx) => {
-                    // If user answered, color feedback
-                    let bgColor = "gray.100";
-                    if (isAnswered) {
-                        if (idx === selectedIndex) {
-                            bgColor = isCorrect ? "green.100" : "red.100";
-                        }
-                        if (idx === correctAnswerIndex) {
-                            bgColor = "green.100";
-                        }
-                    } else {
-                        bgColor = idx === selectedIndex ? "blue.50" : "gray.50";
-                    }
-
+                    const styleProps = getButtonStyle(idx);
                     return (
                         <Button
                             key={idx}
-                            bg={bgColor}
-                            border="1px solid"
-                            borderColor="gray.300"
+                            border="2px solid"
+                            borderColor={styleProps.borderColor}
+                            bg={styleProps.bg}
+                            color={styleProps.color}
+                            _hover={{
+                                ...(isAnswered
+                                    ? {}
+                                    : {
+                                        bg:
+                                            styleProps.bg === BLUE
+                                                ? BLUE
+                                                : YELLOW,
+                                        borderColor: BLUE,
+                                        boxShadow: "md",
+                                        transform: "scale(1.02)",
+                                    })
+                            }}
+                            _active={{
+                                transform: "scale(0.98)",
+                            }}
+                            transition="all 0.2s"
                             onClick={() => handleSelect(idx)}
                             isDisabled={isAnswered}
-                            _hover={{ bg: "gray.200" }}
+                            fontSize={{ base: "xl", md: "lg" }}
                         >
                             {option}
                         </Button>
@@ -95,7 +134,13 @@ const MCQQuiz = ({
 
             <VStack mt={6}>
                 {!isAnswered && (
-                    <Button colorScheme="blue" onClick={handleCheckAnswer}>
+                    <Button
+                        bg="black"
+                        color="white"
+                        _hover={{ bg: "#333333", transform: "scale(1.02)" }}
+                        _active={{ transform: "scale(0.98)" }}
+                        onClick={handleCheckAnswer}
+                    >
                         Antwort prüfen
                     </Button>
                 )}
@@ -104,12 +149,12 @@ const MCQQuiz = ({
                     <>
                         <Text
                             fontWeight="bold"
-                            color={isCorrect ? "green.500" : "red.500"}
+                            color={isCorrect ? GREEN : RED}
+                            fontSize={{ base: "xl", md: "lg" }}
                         >
                             {isCorrect ? "Richtig!" : "Falsch!"}
                         </Text>
 
-                        {/* Explanation left-aligned */}
                         <Box width="100%" textAlign="left">
                             <ExplanationReveal explanation={explanation} />
                         </Box>

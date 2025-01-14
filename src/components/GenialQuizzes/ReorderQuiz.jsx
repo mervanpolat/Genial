@@ -1,4 +1,5 @@
 // File: src/components/GenialQuizzes/ReorderQuiz.jsx
+
 import React, { useState } from "react";
 import {
     Box,
@@ -9,6 +10,13 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
+
+const CARD_BG = "#f2e8d5";
+const BEIGE = "#faf3dc";
+const BLUE = "#30628b";
+const RED = "#c03b2d";
+const GREEN = "#3bb25a";
+const YELLOW = "#f0c34e";
 
 const ReorderQuiz = ({
                          prompt,
@@ -24,7 +32,6 @@ const ReorderQuiz = ({
 
     const handleWordClick = (idx) => {
         if (isAnswered) return;
-        // Move clicked word to the end
         const newArr = [...words];
         const [removed] = newArr.splice(idx, 1);
         newArr.push(removed);
@@ -41,11 +48,24 @@ const ReorderQuiz = ({
         }
     };
 
+    const getButtonStyle = () => {
+        if (isAnswered) {
+            return isCorrect
+                ? { bg: GREEN, borderColor: BLUE, color: "white" }
+                : { bg: RED, borderColor: BLUE, color: "white" };
+        }
+        return {
+            bg: BEIGE,
+            borderColor: BLUE,
+            color: "black"
+        };
+    };
+
     return (
         <Box
-            bg="white"
-            border="1px solid"
-            borderColor="gray.200"
+            bg={CARD_BG}
+            border="2px solid"
+            borderColor={BLUE}
             borderRadius="md"
             p={6}
             mt={6}
@@ -53,28 +73,57 @@ const ReorderQuiz = ({
             mx="auto"
             boxShadow="sm"
         >
-            <Text fontSize="xl" fontWeight="bold" mb={3}>
+            <Text
+                fontSize={{ base: "xl", md: "lg" }}
+                fontWeight="bold"
+                mb={3}
+                color="black"
+            >
                 {prompt}
             </Text>
 
             <Wrap spacing={2} mb={4}>
-                {words.map((word, idx) => (
-                    <WrapItem key={idx}>
-                        <Button
-                            variant="outline"
-                            onClick={() => handleWordClick(idx)}
-                            bg="gray.50"
-                            _hover={{ bg: "gray.100" }}
-                            isDisabled={isAnswered}
-                        >
-                            {word}
-                        </Button>
-                    </WrapItem>
-                ))}
+                {words.map((word, idx) => {
+                    const styleProps = getButtonStyle();
+                    return (
+                        <WrapItem key={idx}>
+                            <Button
+                                variant="outline"
+                                border="2px solid"
+                                borderColor={styleProps.borderColor}
+                                bg={styleProps.bg}
+                                color={styleProps.color}
+                                transition="all 0.2s"
+                                _hover={{
+                                    ...(isAnswered
+                                        ? {}
+                                        : {
+                                            bg: styleProps.bg === BLUE ? BLUE : YELLOW,
+                                            borderColor: BLUE,
+                                            boxShadow: "md",
+                                            transform: "scale(1.02)",
+                                        })
+                                }}
+                                _active={{ transform: "scale(0.98)" }}
+                                onClick={() => handleWordClick(idx)}
+                                isDisabled={isAnswered}
+                                fontSize={{ base: "xl", md: "lg" }}
+                            >
+                                {word}
+                            </Button>
+                        </WrapItem>
+                    );
+                })}
             </Wrap>
 
             {!isAnswered && (
-                <Button colorScheme="blue" onClick={handleCheck}>
+                <Button
+                    bg="black"
+                    color="white"
+                    _hover={{ bg: "#333333", transform: "scale(1.02)" }}
+                    _active={{ transform: "scale(0.98)" }}
+                    onClick={handleCheck}
+                >
                     Überprüfen
                 </Button>
             )}
@@ -84,11 +133,11 @@ const ReorderQuiz = ({
                     <Text
                         mt={4}
                         fontWeight="bold"
-                        color={isCorrect ? "green.500" : "red.500"}
+                        color={isCorrect ? GREEN : RED}
+                        fontSize={{ base: "xl", md: "lg" }}
                     >
                         {isCorrect ? "Richtig!" : "Falsche Reihenfolge!"}
                     </Text>
-
                     <ExplanationReveal explanation={explanation} />
                 </>
             )}

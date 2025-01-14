@@ -11,12 +11,14 @@ import {
 } from "../../../../../components/GenialQuizzes";
 
 import GriechischeBuchstabenData from "./GriechischeBuchstabenData.jsx";
+import SecantTangentVisualization from "../../../../../components/InteractiveElements/SecantTangentVisualization.jsx";
+
 
 const Theorie_GriechischeBuchstaben = () => {
     const sectionsContent = GriechischeBuchstabenData.sections.map((section) => {
         // paragraphs
         const paragraphsJSX = section.paragraphs?.map((para, idx) => (
-            <Box mb="1rem" key={idx}>
+            <Box mb="1rem" key={idx} fontSize={"xl"}>
                 {para}
             </Box>
         ));
@@ -75,10 +77,21 @@ const Theorie_GriechischeBuchstaben = () => {
             }
         }
 
+        // 3) Possibly include the SecantTangentVisualization
+        let analysisJSX = null;
+        if (section.includeSecantTangent) {
+            analysisJSX = (
+                <Box mt={6}>
+                    <SecantTangentVisualization />
+                </Box>
+            );
+        }
+
         const combinedContent = (
             <>
                 {paragraphsJSX}
                 {quizJSX}
+                {analysisJSX}
             </>
         );
 

@@ -1,4 +1,4 @@
-// src/components/GenialQuizzes/FillBlankQuiz.jsx
+// File: src/components/GenialQuizzes/FillBlankQuiz.jsx
 
 import React, { useState } from "react";
 import {
@@ -10,15 +10,13 @@ import {
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
-/**
- * Fill in the blank quiz. The placeholder "?" in the template is replaced by user's input.
- *
- * Props:
- *  - templateText: string => e.g. "Ein Kreis hat ? Durchmesser"
- *  - correctAnswers: string[] => one or more accepted correct answers
- *  - explanation: string
- *  - onQuizComplete: function (optional)
- */
+const CARD_BG = "#f2e8d5";
+const BEIGE = "#faf3dc";
+const BLUE = "#30628b";
+const RED = "#c03b2d";
+const GREEN = "#3bb25a";
+const YELLOW = "#f0c34e";
+
 const FillBlankQuiz = ({
                            templateText,
                            correctAnswers = [],
@@ -42,7 +40,6 @@ const FillBlankQuiz = ({
             });
             return;
         }
-        // Check if the typed answer matches one of the correctAnswers (case-insensitive)
         const correct = correctAnswers.some(
             (ans) => ans.toLowerCase().trim() === userInput.toLowerCase().trim()
         );
@@ -57,13 +54,20 @@ const FillBlankQuiz = ({
         <Box
             p={6}
             borderRadius="md"
-            border="1px solid"
-            borderColor="gray.200"
-            bg="white"
+            border="2px solid"
+            borderColor={BLUE}
+            bg={CARD_BG}
             maxW="600px"
             mx="auto"
+            mt={6}
+            boxShadow="sm"
         >
-            <Text mb={2} fontSize="xl" fontWeight="bold">
+            <Text
+                mb={2}
+                fontSize={{ base: "xl", md: "lg" }}
+                fontWeight="bold"
+                color="black"
+            >
                 {displayText}
             </Text>
 
@@ -73,13 +77,34 @@ const FillBlankQuiz = ({
                     placeholder="Deine Antwort"
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
+                    border="2px solid"
+                    borderColor={BLUE}
+                    bg={BEIGE}
+                    color="black"
+                    _hover={{
+                        borderColor: BLUE,
+                    }}
+                    _focus={{
+                        borderColor: BLUE,
+                        boxShadow: "0 0 0 1px #30628b",
+                    }}
+                    fontSize={{ base: "xl", md: "lg" }}
                 />
             )}
 
             {!isAnswered && (
                 <Button
                     mt={4}
-                    colorScheme="blue"
+                    bg="black"
+                    color="white"
+                    _hover={{
+                        bg: "#333333",
+                        transform: "scale(1.02)",
+                    }}
+                    _active={{
+                        transform: "scale(0.98)",
+                    }}
+                    transition="all 0.2s"
                     onClick={handleCheck}
                 >
                     Antwort prüfen
@@ -91,7 +116,8 @@ const FillBlankQuiz = ({
                     <Text
                         mt={4}
                         fontWeight="bold"
-                        color={isCorrect ? "green.500" : "red.500"}
+                        color={isCorrect ? GREEN : RED}
+                        fontSize={{ base: "xl", md: "lg" }}
                     >
                         {isCorrect ? "Richtig!" : "Leider falsch!"}
                     </Text>

@@ -126,8 +126,7 @@ const GriechischeBuchstabenData = {
                 <>
                     Beispiel für einen Grenzwert:{" "}
                     <BlockMath>
-                        {String.raw`\lim_{x \to a} f(x) = L \quad 
-            \text{wenn für jedes } \varepsilon > 0 \text{ ein } \delta > 0 \text{ existiert, sodass ...}`}
+                        {String.raw`\lim_{x \to a} f(x) = L \quad`}
                     </BlockMath>
                 </>,
                 <>
@@ -136,16 +135,17 @@ const GriechischeBuchstabenData = {
                     </strong>
                 </>,
             ],
-            quiz: {
-                type: "reorder",
-                prompt: "Bringe die informellen Schritte eines Grenzwert-Beweises in die richtige Reihenfolge.",
-                initialWords: [
-                    "Grenzwert", "\\(\\delta\\)", "\\(\\varepsilon\\)", "f(x) \\to L", "x \\to a"
-                ],
-                correctOrder: ["x \\to a", "f(x) \\to L", "\\(\\varepsilon\\)", "\\(\\delta\\)", "Grenzwert"],
-                explanation:
-                    "Zuerst nähert sich x dem Punkt a, wodurch sich f(x) dem Wert L nähert. Dann wird die Genauigkeit mit ε und δ festgelegt. Abschließend definieren wir so formal den Grenzwert.",
-            },
+
+        },
+
+        {
+            heading: "Analysis: Secant & Tangent Lines",
+            paragraphs: [
+                "Hier ein interaktives Beispiel, das zeigt, wie sich die Steigung der Sekante allmählich die Steigung der Tangente annähert."
+                // Possibly more text...
+            ],
+            // We'll add a custom field, e.g. 'includeSecantTangent': true
+            includeSecantTangent: true
         },
 
         // 5) Lineare Algebra
@@ -205,14 +205,15 @@ const GriechischeBuchstabenData = {
             paragraphs: [
                 <>
                     Die Welt der griechischen Buchstaben ist riesig—doch für deinen Studienalltag genügen meist
-                    ein paar wenige: <InlineMath>\alpha, \beta, \gamma, \varepsilon, \delta</InlineMath> und
-                    natürlich <InlineMath>\pi</InlineMath>.
+                    ein paar wenige: <InlineMath>\alpha, \beta, \gamma, \varepsilon, \delta</InlineMath> und natürlich
+                    <InlineMath>\pi</InlineMath>.
                 </>,
                 <>
                     Weiter geht es oft mit den lateinischen Buchstaben, die genauso wichtig sind!
                 </>
             ],
         },
+
     ],
 };
 
