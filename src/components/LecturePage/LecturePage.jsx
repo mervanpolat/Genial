@@ -1,5 +1,4 @@
-// src/components/LecturePage/LecturePage.jsx
-
+// File: src/components/LecturePage/LecturePage.jsx
 import React, { useState, useRef, useEffect } from "react";
 import {
     chakra,
@@ -7,75 +6,62 @@ import {
     Image,
     Text,
     useToast,
-    useColorModeValue,
+    useColorModeValue
 } from "@chakra-ui/react";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
-
+import { useNavigate } from "react-router-dom";
 import LectureSection from "./LectureSection";
 
-// We'll create two styled "section" components via Chakra:
-const OuterSection = chakra("section", {
-    baseStyle: {
-        // default styling can go here if needed
-    },
-});
-
-const InnerSection = chakra("section", {
-    baseStyle: {
-        // default styling for each repeated section
-    },
-});
+// Two styled sections
+const OuterSection = chakra("section", {});
+const InnerSection = chakra("section", {});
 
 const LecturePage = ({
                          bannerImageSrc,
                          headline,
                          introText,
                          sectionsContent,
-                         onSectionComplete,
+                         onSectionComplete
                      }) => {
     const [visibleSectionIndex, setVisibleSectionIndex] = useState(0);
     const sectionRefs = useRef([]);
     const toast = useToast();
+    const navigate = useNavigate();
 
-    // For now, same color in light/dark mode
     const bgColor = useColorModeValue("#faf3dc", "#faf3dc");
     const cardBg = useColorModeValue("#faf3dc", "#faf3dc");
 
+    // Scroll to current visible section
     useEffect(() => {
         if (sectionRefs.current[visibleSectionIndex]) {
             sectionRefs.current[visibleSectionIndex].scrollIntoView({
                 behavior: "smooth",
-                block: "start",
+                block: "start"
             });
         }
     }, [visibleSectionIndex]);
 
     const handleNextSection = () => {
+        // If NOT last section, go to next
         if (visibleSectionIndex < sectionsContent.length - 1) {
             setVisibleSectionIndex((prev) => prev + 1);
-
             if (onSectionComplete) {
                 onSectionComplete(visibleSectionIndex + 1);
             }
         } else {
-            toast({
-                title: "Lecture Complete",
-                description: "Du hast alle Inhalte abgeschlossen!",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            });
+            // If last section => navigate to /grundlagen
+            navigate("/grundlagen");
         }
     };
 
+    // We choose text for the button
+    const isLastSection = visibleSectionIndex === sectionsContent.length - 1;
+    const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
+
     return (
-        // Outer background area
         <chakra.section bg={bgColor} minH="100vh" py={6}>
-            {/* Outer "card" area replaced with a <section> instead of Container */}
             <OuterSection
                 maxW={{ base: "100vw", md: "100vw", lg: "40vw" }}
-                mx="auto"              // center horizontally (like Container does)
+                mx="auto"
                 borderRadius="md"
                 p={6}
                 bg={cardBg}
@@ -101,9 +87,8 @@ const LecturePage = ({
                     {introText}
                 </Text>
 
-                {/* Sections Loop */}
+                {/* Section Content */}
                 {sectionsContent.map((section, idx) => (
-                    // Replacing <Box> with an <InnerSection>
                     <InnerSection
                         key={idx}
                         ref={(el) => (sectionRefs.current[idx] = el)}
@@ -111,7 +96,6 @@ const LecturePage = ({
                     >
                         <LectureSection
                             heading={section.heading}
-                            imageSrc={section.imageSrc}
                             isVisible={idx <= visibleSectionIndex}
                         >
                             {section.content}
@@ -119,26 +103,25 @@ const LecturePage = ({
                     </InnerSection>
                 ))}
 
-                {/* "Weiter" Button */}
+                {/* Single button: "Weiter" or "Lektion abschließen" */}
                 <Button
                     onClick={handleNextSection}
                     alignSelf="flex-start"
                     mt={6}
-                    bg="#30628b" // Background color
-                    color="white" // Text color
+                    bg="#30628b"
+                    color="white"
                     size={{ base: "md", md: "lg" }}
                     boxShadow="md"
                     _hover={{
-                        bg: "#245074", // Slightly darker shade of #30628b for hover
-                        boxShadow: "lg",
+                        bg: "#245074",
+                        boxShadow: "lg"
                     }}
                     _active={{
-                        bg: "#1d3f5e", // Even darker shade for active state
+                        bg: "#1d3f5e"
                     }}
                 >
-                    Weiter
+                    {buttonLabel}
                 </Button>
-
             </OuterSection>
         </chakra.section>
     );

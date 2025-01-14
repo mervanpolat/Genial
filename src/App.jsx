@@ -1,4 +1,4 @@
-// src/App.jsx
+// File: src/App.jsx
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -19,12 +19,11 @@ import Price from "./components/LandingPage/Price.jsx";
 import AboutUs from "./components/LandingPage/AboutUs.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
-// Import Grundlagen and GleichungenLoesen
 import Grundlagen from "./Matura/Content/Grundlagen/Grundlagen.jsx";
 import GleichungenLoesen from "./Matura/Content/GleichungenLoesen/GleichungenLoesen.jsx";
 
-// Import Theorie_Zahlenmengen
-import Theorie_Zahlenmengen from "./Matura/Content/Grundlagen/Lektionen/1_Zahlenmengen/Theorie_Zahlenmengen.jsx";
+// The new Greek letter lecture
+import Theorie_GriechischeBuchstaben from "./Matura/Content/Grundlagen/Lektionen/1_GriechischeBuchstaben/Theorie_GriechischeBuchstaben.jsx";
 
 import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
 import Step2_GoalSelection from "./components/WelcomeIntro/steps/Step2_GoalSelection.jsx";
@@ -109,8 +108,11 @@ function App() {
                 <Route path="/grundlagen" element={<Grundlagen />} />
                 <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
 
-                {/* Our Theorie_Zahlenmengen route */}
-                <Route path="/theorie-zahlenmengen" element={<Theorie_Zahlenmengen />} />
+                {/* Greek Letters Lecture */}
+                <Route
+                    path="/theorie-griechischebuchstaben"
+                    element={<Theorie_GriechischeBuchstaben />}
+                />
 
                 {/* Onboarding flow */}
                 {stepsArray.map((step, index) => (
