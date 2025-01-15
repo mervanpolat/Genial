@@ -1,4 +1,4 @@
-// File: src/Matura/Content/Grundlagen/Lektionen/1_GriechischeBuchstaben/GriechischeBuchstabenData.jsx
+// File: src/Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/GriechischeBuchstabenData.jsx
 
 import React from "react";
 import { Box, Button } from "@chakra-ui/react";
@@ -8,14 +8,14 @@ import "katex/dist/katex.min.css";
 
 const GriechischeBuchstabenData = {
     bannerImageSrc:
-        "src/Matura/Content/Grundlagen/Lektionen/1_GriechischeBuchstaben/Image/GreekLettersBanner.svg",
+        "src/Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Image/GreekLettersBanner.svg",
     headline: "Griechische Buchstaben in der Mathematik",
     introText:
         "Von Alpha bis Omega: Griechische Buchstaben begegnen uns überall in der Mathematik—von Winkeln in der Geometrie bis hin zu Wahrscheinlichkeiten in der Statistik! " +
         "Diese Lektion zeigt dir Schritt für Schritt, wo und wie du sie anwenden kannst.",
 
     sections: [
-        // 1) Intro & Overview
+        // 1) Intro & MaturatypenUebersicht
         {
             heading: "Einführung und Überblick",
             paragraphs: [

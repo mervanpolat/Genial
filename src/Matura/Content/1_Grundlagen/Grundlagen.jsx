@@ -1,8 +1,8 @@
-// File: src/Matura/Content/Grundlagen/Grundlagen.jsx
+// File: src/Matura/Content/1_Grundlagen/1_Grundlagen.jsx
 import React, { useRef, createRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../PageTemplate/PageWrapper.css";
-import TooltipItem from "../../Tippy/TooltipItem.jsx";
+import "../ModulTemplate/PageWrapper.css";
+import TooltipItem from "../ModulTippy/TooltipItem.jsx";
 
 function Grundlagen() {
     const navigate = useNavigate();
@@ -68,7 +68,7 @@ function Grundlagen() {
                 {/* LEFT SECTION */}
                 <div className="left-section">
                     <img
-                        src="/CardImages/HTL2/Grundlagen.svg"
+                        src="/assets/CardImages/HTL2/Grundlagen.svg"
                         alt="Grundlagen"
                         className="subject-icon"
                     />
@@ -79,14 +79,14 @@ function Grundlagen() {
                     <div className="exercise-units">
                         <div className="exercise-unit">
                             <img
-                                src="/images/Lektionen/Gleichungen/Uebung.png"
+                                src="/assets/images/Lektionen/Gleichungen/Uebung.png"
                                 alt="Übung"
                             />
                             <h1>12 Übungen</h1>
                         </div>
                         <div className="exercise-unit">
                             <img
-                                src="/images/Lektionen/Gleichungen/Lectures.png"
+                                src="/assets/images/Lektionen/Gleichungen/Lectures.png"
                                 alt="Einheit"
                             />
                             <h1>2 Einheiten</h1>

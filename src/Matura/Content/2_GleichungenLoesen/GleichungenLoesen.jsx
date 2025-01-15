@@ -1,6 +1,6 @@
 import { useRef, createRef } from 'react';
-import '../../PageTemplate/PageWrapper.css';
-import TooltipItem from "../../Tippy/TooltipItem.jsx";
+import '../ModulTemplate/PageWrapper.css';
+import TooltipItem from "../ModulTippy/TooltipItem.jsx";
 
 function GleichungenLoesen() {
   const moduleData = [
@@ -71,7 +71,7 @@ function GleichungenLoesen() {
         <div className="gleichungen-container">
           <div className="left-section">
             <img
-                src="/CardImages/HTL2/Gleichung.png"
+                src="/assets/CardImages/HTL2/Gleichung.png"
                 alt="Gleichung"
                 className="subject-icon"
             />
@@ -81,14 +81,14 @@ function GleichungenLoesen() {
             <div className="exercise-units">
               <div className="exercise-unit">
                 <img
-                    src="/images/Lektionen/Gleichungen/Uebung.png"
+                    src="/assets/images/Lektionen/Gleichungen/Uebung.png"
                     alt="Übung"
                 />
                 <h1>24 Übungen</h1>
               </div>
               <div className="exercise-unit">
                 <img
-                    src="/images/Lektionen/Gleichungen/Lectures.png"
+                    src="/assets/images/Lektionen/Gleichungen/Lectures.png"
                     alt="Einheit"
                 />
                 <h1>4 Einheiten</h1>

@@ -1,7 +1,7 @@
-// File: src/Matura/Content/Grundlagen/Lektionen/1_GriechischeBuchstaben/Theorie_GriechischeBuchstaben.jsx
+// File: src/Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Theorie_GriechischeBuchstaben.jsx
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import LecturePage from "../../../../../components/LecturePage/LecturePage.jsx";
+import LecturePage from "../../../LektionenTemplate/LecturePage.jsx";
 import {
     MCQQuiz,
     TrueFalseQuiz,

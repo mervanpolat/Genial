@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
-import CubeButton from "../../components/CubeButton/CubeButton.jsx";
+import CubeButton from "../../../components/CubeButton/CubeButton.jsx";
 import PropTypes from 'prop-types';
 
 function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
