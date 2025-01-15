@@ -67,7 +67,7 @@ function LandingPage() {
             >
                 <Box
                     as="video"
-                    src="/videos/LandingPage_Sinusfunktion.mov"
+                    src="./assets/videos/LandingPage_Sinusfunktion.mov"
                     autoPlay
                     muted
                     loop
@@ -98,7 +98,7 @@ function LandingPage() {
                     </Text>
                 </Box>
                 <Image
-                    src="/images/LandingPage/ZRegel.png"
+                    src="./assets/images/LandingPage/ZRegel.png"
                     alt="Konzept Grafik"
                     objectFit="cover"
                 />
@@ -115,12 +115,12 @@ function LandingPage() {
                 </Text>
                 <Flex justify="center" gap="8" mb="8" wrap={{ base: 'wrap', md: 'nowrap' }}>
                     <Image
-                        src="/images/LandingPage/Bundesministerium.png"
+                        src="./assets/images/LandingPage/Bundesministerium.png"
                         alt="Bundesministerium: Bildung, Wissenschaft und Forschung"
                         maxH="100px"
                     />
                     <Image
-                        src="/images/LandingPage/bifie.png"
+                        src="./assets/images/LandingPage/bifie.png"
                         alt="Bundesinstitut bifie"
                         maxH="100px"
                     />
@@ -145,19 +145,19 @@ function LandingPage() {
                     mx="auto"
                 >
                     <Image
-                        src="/images/LandingPage/Casio.svg"
+                        src="./assets/images/LandingPage/Casio.svg"
                         alt="Casio Logo"
                         borderRadius="md"
                         maxH="100px"
                     />
                     <Image
-                        src="/images/LandingPage/TexasInstruments.svg"
+                        src="./assets/images/LandingPage/TexasInstruments.svg"
                         alt="Texas Instruments Logo"
                         borderRadius="md"
                         maxH="100px"
                     />
                     <Image
-                        src="/images/LandingPage/Geogebra.svg"
+                        src="./assets/images/LandingPage/Geogebra.svg"
                         alt="Geogebra Logo"
                         borderRadius="md"
                         maxH="100px"

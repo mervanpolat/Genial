@@ -1,6 +1,6 @@
 import React from 'react';
 import { Progress } from '@chakra-ui/react';
-import { useOnboardingContext } from '../../OnboardingContext/OnboardingContext.jsx';
+import { useOnboardingContext } from './OnboardingContext.jsx';
 
 function OnboardingProgressBar({ ...styleProps }) {
     const { currentStep, totalSteps } = useOnboardingContext();

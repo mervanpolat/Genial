@@ -1,4 +1,5 @@
 // File: src/components/InteractiveElements/SecantTangentVisualization.jsx
+
 import React, { useEffect, useRef, useState } from "react";
 import {
     Box,
@@ -12,39 +13,26 @@ import {
 } from "@chakra-ui/react";
 import * as d3 from "d3";
 
-// We'll use your color palette:
+// Adjusted color palette
 const BG_CARD = "#f2e8d5";   // Slightly darker beige for card
 const BG_BEIGE = "#faf3dc";  // Lighter background
-const BLUE = "#30628b";      // Byrne's Blue
-const RED = "#c03b2d";       // Byrne's Red
-const GREEN = "#3bb25a";     // Vibrant green for tangent
-const YELLOW = "#f0c34e";    // Byrne's Yellow
+const BLUE = "#30628b";      // Byrne's Blue (function)
+const RED = "#b02d22";       // Deeper Byrne's Red (secant line / point)
+const GREEN = "#2b9a4a";     // Deeper Byrne's Green (tangent line / point)
 
-/**
- * A "Brilliant.org–like" interactive to show how secant lines approach
- * a tangent line as Δx -> 0, with a "magnifier circle" that zooms in
- * around the tangency point.
- *
- * Function: f(x) = x^2
- * Tangent at x=a => derivative( x^2 ) = 2a, so slope=2a
- * We'll pick a=2, so tangent slope=4.
- *
- * We define a slider range: [0.0001..0.5], step=0.0001
- *   - right = 0.5 (largest Δx)
- *   - left  = 0.0001 (very small, close to 0)
- *
- * As we slide left => Δx => smaller => magnification factor => bigger
- */
 function SecantTangentVisualization() {
     const [deltaX, setDeltaX] = useState(0.5); // Start with 0.5 on the right
     const mainRef = useRef(null);
 
+    // We'll store references to important D3 elements and scales in here
+    const chartRef = useRef(null);
+
     // The function & tangent point
     const f = (x) => x * x;
-    const a = 2; // We'll use a=2
+    const a = 2;
     const slopeTangent = 2 * a; // derivative of x^2 => 2x => 4 at x=2
 
-    // D3 chart config
+    // Base chart dimensions (responsive via 'viewBox')
     const width = 500;
     const height = 300;
     const margin = { top: 20, right: 20, bottom: 40, left: 40 };
@@ -53,240 +41,366 @@ function SecantTangentVisualization() {
     const xMin = 0;
     const xMax = 4;
 
-    // We'll define a magnification factor that grows as deltaX goes down
-    // e.g. if deltaX=0.5 => mag=1, if deltaX=0.0001 => mag ~ 10
-    // We'll define a formula with an upper bound ~10
+    // Helper to compute secant slope
+    const slopeSecant = () => (f(a + deltaX) - f(a)) / deltaX;
+
+    // For numeric display
+    const slopeSec = slopeSecant().toFixed(3);
+
+    // Magnification logic
     const minDX = 0.0001;
     const maxDX = 0.5;
     const fraction = (maxDX - deltaX) / (maxDX - minDX); // 0..1
-    const magnifyFactor = 1 + fraction * 9; // range ~ [1..10]
+    const magnifyFactor = 1 + fraction * 9; // ~ [1..10]
 
-    // Some derived text for slopes
-    const slopeSecant = () => {
-        const dy = f(a + deltaX) - f(a);
-        return dy / deltaX;
-    };
-
+    // ----------- INITIAL CREATE (once) & UPDATES -----------
     useEffect(() => {
-        const container = d3.select(mainRef.current);
-        container.selectAll("*").remove(); // clear
+        if (!chartRef.current) {
+            // ----------------------------------------
+            // 1) CREATE CHART (runs only on first mount)
+            // ----------------------------------------
+            const container = d3.select(mainRef.current);
 
-        // Create SVG
-        const svg = container
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .style("background", BG_BEIGE);
+            // Create responsive SVG
+            const svg = container
+                .append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`)
+                .attr("preserveAspectRatio", "xMidYMid meet")
+                .style("width", "100%")
+                .style("height", "auto")
+                .style("background", BG_BEIGE);
 
-        // Scales
-        const xScale = d3.scaleLinear([xMin, xMax], [margin.left, width - margin.right]);
-        const yMax = xMax * xMax; // 16
-        const yScale = d3.scaleLinear([0, yMax], [height - margin.bottom, margin.top]);
+            // ==== DEFINITIONS (lens gradient + shadow) ====
+            const defs = svg.append("defs");
 
-        // Axes
-        const xAxis = d3.axisBottom(xScale).ticks(5);
-        svg
-            .append("g")
-            .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(xAxis);
+            // Radial gradient for lens effect
+            const radialGradient = defs
+                .append("radialGradient")
+                .attr("id", "lens-gradient")
+                .attr("cx", "50%")
+                .attr("cy", "50%")
+                .attr("r", "70%");
+            radialGradient
+                .append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", "#fff")
+                .attr("stop-opacity", 0.3);
+            radialGradient
+                .append("stop")
+                .attr("offset", "100%")
+                .attr("stop-color", "#fff")
+                .attr("stop-opacity", 0);
 
-        const yAxis = d3.axisLeft(yScale).ticks(5);
-        svg
-            .append("g")
-            .attr("transform", `translate(${margin.left},0)`)
-            .call(yAxis);
+            // Drop shadow for magnifier lens
+            const filter = defs
+                .append("filter")
+                .attr("id", "magnifier-shadow")
+                .attr("x", "-40%")
+                .attr("y", "-40%")
+                .attr("width", "180%")
+                .attr("height", "180%");
+            filter
+                .append("feDropShadow")
+                .attr("dx", 0)
+                .attr("dy", 2)
+                .attr("stdDeviation", 4)
+                .attr("flood-color", "#000")
+                .attr("flood-opacity", 0.3);
 
-        // The function data
-        const dataFn = d3.range(xMin, xMax + 0.01, 0.01).map((xx) => ({
-            x: xx,
-            y: f(xx),
-        }));
+            // ==== SCALES & AXES ====
+            const xScale = d3.scaleLinear([xMin, xMax], [margin.left, width - margin.right]);
+            const yMax = xMax * xMax; // 16
+            const yScale = d3.scaleLinear([0, yMax], [height - margin.bottom, margin.top]);
 
-        const lineGen = d3
-            .line()
-            .x((d) => xScale(d.x))
-            .y((d) => yScale(d.y));
+            const xAxis = d3.axisBottom(xScale).ticks(5);
+            const yAxis = d3.axisLeft(yScale).ticks(5);
 
-        svg
-            .append("path")
-            .datum(dataFn)
-            .attr("fill", "none")
-            .attr("stroke", BLUE)
-            .attr("stroke-width", 2)
-            .attr("d", lineGen);
+            svg
+                .append("g")
+                .attr("transform", `translate(0,${height - margin.bottom})`)
+                .call(xAxis)
+                .attr("color", "#333");
 
-        // Points for secant
+            svg
+                .append("g")
+                .attr("transform", `translate(${margin.left},0)`)
+                .call(yAxis)
+                .attr("color", "#333");
+
+            // ==== DATA & LINE GENERATORS ====
+            // Precompute the function curve
+            const dataFn = d3.range(xMin, xMax + 0.01, 0.01).map((xx) => ({
+                x: xx,
+                y: f(xx),
+            }));
+
+            const lineGen = d3
+                .line()
+                .x((d) => xScale(d.x))
+                .y((d) => yScale(d.y))
+                .curve(d3.curveMonotoneX);
+
+            // ---- MAIN FUNCTION PATH (BLUE) ----
+            svg
+                .append("path")
+                .datum(dataFn)
+                .attr("fill", "none")
+                .attr("stroke", BLUE)
+                .attr("stroke-width", 2)
+                .attr("d", lineGen);
+
+            // Tangent line range for a=2 (fixed)
+            const tangSlope = slopeTangent; // 4
+            const tangMinX = a - 0.3;
+            const tangMaxX = a + 0.3;
+            const tangentData = d3.range(tangMinX, tangMaxX, 0.01).map((xx) => {
+                const yy = tangSlope * (xx - a) + f(a);
+                return { x: xx, y: yy };
+            });
+
+            // Base group for lines (non-magnified)
+            const gBase = svg.append("g").attr("class", "gBase");
+
+            // Tangent (green, fixed)
+            gBase
+                .append("path")
+                .datum(tangentData)
+                .attr("fill", "none")
+                .attr("stroke", GREEN)
+                .attr("stroke-width", 2)
+                .attr("d", lineGen);
+
+            // Tangent point at (2,4)
+            gBase
+                .append("circle")
+                .attr("cx", xScale(a))
+                .attr("cy", yScale(f(a)))
+                .attr("r", 5)
+                .attr("fill", "#000");
+
+            // Create placeholders for the secant line & circle (we'll update them dynamically)
+            const secantPath = gBase
+                .append("path")
+                .attr("fill", "none")
+                .attr("stroke", RED)
+                .attr("stroke-width", 2);
+
+            const secantCircle = gBase
+                .append("circle")
+                .attr("r", 5)
+                .attr("fill", RED);
+
+            // ---- MAGNIFIER SETUP (clip, group, lens circle) ----
+            const cx = xScale(a);
+            const cy = yScale(f(a));
+            const magRadius = 50;
+
+            // Clip path for the magnifier
+            defs
+                .append("clipPath")
+                .attr("id", "magnifier-clip")
+                .append("circle")
+                .attr("cx", cx)
+                .attr("cy", cy)
+                .attr("r", magRadius);
+
+            // Create the magnified group
+            const gMagnify = svg.append("g").attr("class", "gMagnify");
+
+            // Same function path inside magnifier
+            gMagnify
+                .append("path")
+                .datum(dataFn)
+                .attr("fill", "none")
+                .attr("stroke", BLUE)
+                .attr("stroke-width", 2)
+                .attr("d", lineGen);
+
+            // Tangent inside magnifier (fixed data)
+            gMagnify
+                .append("path")
+                .datum(tangentData)
+                .attr("fill", "none")
+                .attr("stroke", GREEN)
+                .attr("stroke-width", 2)
+                .attr("d", lineGen);
+
+            // Secant path for magnifier (we'll update with new data)
+            const secantPathMag = gMagnify
+                .append("path")
+                .attr("fill", "none")
+                .attr("stroke", RED)
+                .attr("stroke-width", 2);
+
+            // Tangent point (black)
+            gMagnify
+                .append("circle")
+                .attr("cx", xScale(a))
+                .attr("cy", yScale(f(a)))
+                .attr("r", 5)
+                .attr("fill", "#000");
+
+            // Secant point for magnifier
+            const secantCircleMag = gMagnify
+                .append("circle")
+                .attr("r", 5)
+                .attr("fill", RED);
+
+            // Apply the clip-path
+            gMagnify.attr("clip-path", "url(#magnifier-clip)");
+
+            // Lens circle on top with gradient + shadow
+            svg
+                .append("circle")
+                .attr("cx", cx)
+                .attr("cy", cy)
+                .attr("r", magRadius)
+                .attr("fill", "url(#lens-gradient)")
+                .attr("filter", "url(#magnifier-shadow)")
+                .attr("pointer-events", "none");
+
+            // Store everything we need to update in chartRef
+            chartRef.current = {
+                svg,
+                xScale,
+                yScale,
+                lineGen,
+                secantPath,
+                secantCircle,
+                secantPathMag,
+                secantCircleMag,
+                gMagnify,
+                cx,
+                cy,
+            };
+        }
+
+        // ----------------------------------------
+        // 2) UPDATE CHART (runs every slider move)
+        // ----------------------------------------
+        updateChart(deltaX);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [deltaX]);
+
+    // This function updates only the secant line, its circle, and the magnifier's scale
+    const updateChart = (dX) => {
+        if (!chartRef.current) return; // Safety
+
+        const {
+            xScale,
+            yScale,
+            lineGen,
+            secantPath,
+            secantCircle,
+            secantPathMag,
+            secantCircleMag,
+            gMagnify,
+            cx,
+            cy,
+        } = chartRef.current;
+
+        // Recompute secant data
         const x1 = a;
         const y1 = f(a);
-        const x2 = a + deltaX;
-        const y2 = f(a + deltaX);
-        const slopeSec = slopeSecant(); // numeric slope
+        const x2 = a + dX;
+        const y2 = f(a + dX);
+        const slope = (y2 - y1) / dX;
 
-        // Secant line range
-        // let's extend a bit
+        // Extended domain for secant line
         const secMinX = Math.min(x1, x2) - 0.2;
         const secMaxX = Math.max(x1, x2) + 0.2;
         const secLineData = d3.range(secMinX, secMaxX, 0.01).map((xx) => {
-            const yy = slopeSec * (xx - x1) + y1;
+            const yy = slope * (xx - x1) + y1;
             return { x: xx, y: yy };
         });
 
-        // Tangent line range
-        const tangSlope = slopeTangent;
-        const tangMinX = a - 0.3;
-        const tangMaxX = a + 0.3;
-        const tangLineData = d3.range(tangMinX, tangMaxX, 0.01).map((xx) => {
-            const yy = tangSlope * (xx - a) + y1;
-            return { x: xx, y: yy };
-        });
-
-        // We'll draw normal function, secant, tangent in a group "gBase"
-        const gBase = svg
-            .append("g")
-            .attr("class", "gBase");
-
-        // Secant
-        gBase
-            .append("path")
+        // Update base secant path
+        secantPath
             .datum(secLineData)
-            .attr("fill", "none")
-            .attr("stroke", RED)
-            .attr("stroke-width", 2)
+            .transition()
+            .duration(200)
+            .ease(d3.easeLinear)
             .attr("d", lineGen);
 
-        // Tangent
-        gBase
-            .append("path")
-            .datum(tangLineData)
-            .attr("fill", "none")
-            .attr("stroke", GREEN)
-            .attr("stroke-width", 2)
+        // Update base secant circle
+        secantCircle
+            .transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .attr("cx", xScale(x2))
+            .attr("cy", yScale(y2));
+
+        // Update magnified secant path
+        secantPathMag
+            .datum(secLineData)
+            .transition()
+            .duration(200)
+            .ease(d3.easeLinear)
             .attr("d", lineGen);
 
-        // Mark the two points
-        [[x1, y1], [x2, y2]].forEach(([xx, yy]) => {
-            gBase
-                .append("circle")
-                .attr("cx", xScale(xx))
-                .attr("cy", yScale(yy))
-                .attr("r", 4)
-                .attr("fill", "#000");
-        });
+        // Update magnified secant circle
+        secantCircleMag
+            .transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .attr("cx", xScale(x2))
+            .attr("cy", yScale(y2));
 
-        // Now define a magnifier circle, centered at (a, f(a)) in screen coords
-        const cx = xScale(a);
-        const cy = yScale(y1);
-        const magRadius = 50; // radius of the magnifier circle
+        // Update magnifier scale
+        const minDX = 0.0001;
+        const maxDX = 0.5;
+        const fraction = (maxDX - dX) / (maxDX - minDX);
+        const factor = 1 + fraction * 9; // ~ [1..10]
 
-        // We'll define a clipPath referencing a circle
-        svg
-            .append("clipPath")
-            .attr("id", "magnifier-clip")
-            .append("circle")
-            .attr("cx", cx)
-            .attr("cy", cy)
-            .attr("r", magRadius);
-
-        // We'll create a group "gMagnify" that re-draws the function, secant, tangent lines scaled
-        // around the point (cx, cy)
-        const gMagnify = svg
-            .append("g")
-            .attr("class", "gMagnify")
-            .attr("clip-path", "url(#magnifier-clip)");
-
-        // We'll do a transform: translate(cx, cy), scale(magnifyFactor), translate(-cx, -cy)
         gMagnify
+            .transition()
+            .duration(200)
+            .ease(d3.easeLinear)
             .attr(
                 "transform",
-                `translate(${cx},${cy}) scale(${magnifyFactor}) translate(${-cx},${-cy})`
+                `translate(${cx},${cy}) scale(${factor}) translate(${-cx},${-cy})`
             );
-
-        // Now re-draw function, secant, tangent in the "magnified" group
-        // We'll reuse same data and line generator
-        gMagnify
-            .append("path")
-            .datum(dataFn)
-            .attr("fill", "none")
-            .attr("stroke", BLUE)
-            .attr("stroke-width", 2)
-            .attr("d", lineGen);
-
-        gMagnify
-            .append("path")
-            .datum(secLineData)
-            .attr("fill", "none")
-            .attr("stroke", RED)
-            .attr("stroke-width", 2)
-            .attr("d", lineGen);
-
-        gMagnify
-            .append("path")
-            .datum(tangLineData)
-            .attr("fill", "none")
-            .attr("stroke", GREEN)
-            .attr("stroke-width", 2)
-            .attr("d", lineGen);
-
-        // Points in the magnified region
-        [[x1, y1], [x2, y2]].forEach(([xx, yy]) => {
-            gMagnify
-                .append("circle")
-                .attr("cx", xScale(xx))
-                .attr("cy", yScale(yy))
-                .attr("r", 4)
-                .attr("fill", "#000");
-        });
-
-        // Outline the magnifier circle for clarity
-        svg
-            .append("circle")
-            .attr("cx", cx)
-            .attr("cy", cy)
-            .attr("r", magRadius)
-            .attr("fill", "none")
-            .attr("stroke", "#333")
-            .attr("stroke-width", 1)
-            .attr("stroke-dasharray", "4,4");
-    }, [deltaX]);
-
-    // slope of secant
-    const slopeSec = (( (a + deltaX)**2 - a**2 ) / deltaX).toFixed(3);
+    };
 
     return (
         <Box
             p={4}
-            border="2px solid #30628b"
+            border={`2px solid ${BLUE}`}
             borderRadius="md"
             bg={BG_CARD}
-            boxShadow="md"
+            boxShadow="lg"
             maxW={{ base: "95vw", md: "700px" }}
             mx="auto"
             mt={8}
         >
             <Heading
                 as="h2"
-                size="md"
+                size="lg"
                 mb={4}
+                color="#000"
                 textAlign="left"
-                color="black"
+                fontWeight="bold"
             >
-                Visualizing Secant & Tangent Lines
+                Visualizing the Limit: Secant & Tangent Lines
             </Heading>
 
-            <Text fontSize={{ base: "md", md: "lg" }} mb={4} color="black">
-                Drag the slider from the right (larger <em>Δx</em>) to the left (smaller <em>Δx</em>) and
-                watch how the red secant line approaches the green tangent line. The circle acts like
-                a magnifier around x = 2, showing the detail as <em>Δx</em> \(\to 0\).
+            <Text fontSize={{ base: "md", md: "lg" }} mb={4} color="#000">
+                As \(\Delta x \to 0\), the deeper red <strong>secant</strong> line converges
+                to the deeper green <strong>tangent</strong> line at \(x = 2\). Slide to
+                see this happen <em>dynamically</em>. The lens in the center provides
+                a subtle magnification effect around <em>x = 2</em>.
             </Text>
 
             {/* Main D3 container */}
             <Box ref={mainRef} overflow="hidden" />
 
-            {/* Slider for Δx in [0.0001..0.5] */}
-            <Box mt={6}>
+            {/* Slider for Δx */}
+            <Box mt={6} bg="#fff" p={4} borderRadius="md" boxShadow="md">
                 <Text fontSize={{ base: "md", md: "lg" }} mb={2} color="black">
-                    Adjust Δx:
+                    Adjust \(\Delta x\):
                 </Text>
+
                 <Slider
                     min={0.0001}
                     max={0.5}
@@ -300,21 +414,25 @@ function SecantTangentVisualization() {
                     </SliderTrack>
                     <SliderThumb boxSize={5} bg={RED} />
                 </Slider>
+
                 <Text mt={2} fontSize={{ base: "md", md: "lg" }} color="black">
-                    Δx: {deltaX.toFixed(4)}
+                    \(\Delta x\) = {deltaX.toFixed(4)}
                 </Text>
             </Box>
 
             {/* Display slopes & magnify factor */}
             <VStack align="start" mt={4} spacing={1}>
                 <Text fontSize={{ base: "md", md: "lg" }} color="black">
-                    Slope of secant: {slopeSec}
+                    Slope of secant: <strong>{slopeSec}</strong>
                 </Text>
                 <Text fontSize={{ base: "md", md: "lg" }} color="black">
-                    Slope of tangent at x=2: 4
+                    Slope of tangent at x=2: <strong>4</strong>
                 </Text>
                 <Text fontSize={{ base: "md", md: "lg" }} color="black">
-                    Magnification: {(1 + ((0.5 - deltaX) / (0.5 - 0.0001)) * 9).toFixed(2)}×
+                    Magnification:{" "}
+                    <strong>
+                        {(1 + fraction * 9).toFixed(2)}×
+                    </strong>
                 </Text>
             </VStack>
         </Box>

@@ -16,8 +16,8 @@ import {
  */
 const ProgressBarTabs = ({ tabContents }) => {
     // e.g. tabContents = [
-    //   { title: "Topic 1", content: <LecturePage ... />, isCompleted: false },
-    //   { title: "Topic 2", content: <LecturePage ... />, isCompleted: false },
+    //   { title: "Topic 1", content: <LektionenTemplate ... />, isCompleted: false },
+    //   { title: "Topic 2", content: <LektionenTemplate ... />, isCompleted: false },
     // ]
     const [activeIndex, setActiveIndex] = useState(0);
     const [completionState, setCompletionState] = useState(

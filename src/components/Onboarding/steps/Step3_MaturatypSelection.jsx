@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/steps/Step3_MaturatypSelection.jsx
+// src/components/Onboarding/steps/Step3_MaturatypSelection.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ import { FaLaptopCode, FaToolbox } from "react-icons/fa";
 import { MdBusiness } from "react-icons/md";
 import { RiBuilding2Fill } from "react-icons/ri";
 
-import { useOnboardingContext } from "../../../OnboardingContext/OnboardingContext.jsx";
+import { useOnboardingContext } from "../OnboardingContext.jsx";
 
 function Step3_MaturatypSelection({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);

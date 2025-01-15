@@ -1,6 +1,6 @@
 # Genial Math Project
 
-## Overview
+## MaturatypenUebersicht
 Genial is an interactive web-based application designed to simplify and gamify the Austrian Math Matura. The platform provides students with tools to practice, understand, and master mathematical concepts in an engaging and intuitive way. It supports various types of Math Matura, including AHS, P, Cluster T1, Cluster T2, W1, and W2, with interactive features tailored to each category.
 
 ---
@@ -29,8 +29,8 @@ Genial is an interactive web-based application designed to simplify and gamify t
 │   │   │   ├── AboutUs.css
 │   │   │   ├── AboutUs.jsx
 │   │   └── Lehrplan
-│   │       ├── Overview.css
-│   │       ├── Overview.jsx
+│   │       ├── MaturatypenUebersicht.css
+│   │       ├── MaturatypenUebersicht.jsx
 │   ├── modules
 │   │   ├── PageTemplate
 │   │   │   ├── PageWrapper.css

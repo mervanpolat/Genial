@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
 import './PageWrapper.css'; // Keeping the CSS file as requested for any custom styles
+//File: src/Matura/Content/ModulTemplate/PageWrapper.jsx
 
 function PageWrapper({ title, headline, description, imageSrc, exercises, units, moduleData }) {
     return (

@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/steps/Step1_Welcome.jsx
+// src/components/Onboarding/steps/Step1_Welcome.jsx
 
 import React from "react";
 import PropTypes from "prop-types";

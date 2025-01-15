@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/OptionItem.jsx
+// src/components/Onboarding/OptionItem.jsx
 import React from 'react';
 import { HStack, Text, Box } from '@chakra-ui/react';
 import PropTypes from 'prop-types';

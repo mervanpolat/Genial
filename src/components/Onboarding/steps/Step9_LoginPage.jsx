@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/steps/Step9_LoginPage.jsx
+// src/components/Onboarding/steps/Step9_LoginPage.jsx
 import React, { useEffect, useState } from "react";
 import { Box, VStack, Text, Button, Image, useDisclosure } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import LoginPopper from "../../../firebase/LoginPopper.jsx";
 import { auth, db } from "../../../firebase/firebaseConfig.js";
-import { useOnboardingContext } from "../../../OnboardingContext/OnboardingContext.jsx";
+import { useOnboardingContext } from "../OnboardingContext.jsx";
 
 function Step9_LoginPage() {
     const { isOpen, onOpen, onClose } = useDisclosure();

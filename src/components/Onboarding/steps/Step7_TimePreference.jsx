@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/steps/Step7_TimePreference.jsx
+// src/components/Onboarding/steps/Step7_TimePreference.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
@@ -6,7 +6,7 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
-import { useOnboardingContext } from "../../../OnboardingContext/OnboardingContext.jsx";
+import { useOnboardingContext } from "../OnboardingContext.jsx";
 
 function Step7_TimePreference({ onContinue = () => {} }) {
     const [selectedOption, setSelectedOption] = useState(null);

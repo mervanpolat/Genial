@@ -126,7 +126,6 @@ const MatchingPairsQuiz = ({
                     bg="black"
                     color="white"
                     border="2px solid"
-                    borderColor={BLUE}
                     _hover={{
                         bg: "#333333",
                         boxShadow: "md",

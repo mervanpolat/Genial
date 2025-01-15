@@ -1,8 +1,8 @@
-// File: src/components/LecturePage/LectureSection.jsx
+// File: src/Matura/Content/LektionenTemplate/LectureTheorySection.jsx
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-const LectureSection = ({ children, heading, isVisible }) => {
+function LectureTheorySection({ children, heading, isVisible }) {
     if (!isVisible) return null;
 
     return (
@@ -15,6 +15,6 @@ const LectureSection = ({ children, heading, isVisible }) => {
             <Box>{children}</Box>
         </Box>
     );
-};
+}
 
-export default LectureSection;
+export default LectureTheorySection;

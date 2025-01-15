@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Heading, Text, Flex, Button, Image } from '@chakra-ui/react';
 
-function Overview() {
+//File: src/Matura/MaturatypenUebersicht/MaturatypenUebersicht.jsx
+
+function MaturatypenUebersicht() {
   return (
       <Box p="20px" maxW="1200px" mx="auto">
         {/* Main Heading */}
@@ -86,66 +88,66 @@ const levelsData = [
   {
     level: 1,
     link: '/grundlagen', // Corrected to use a valid path
-    imageSrc: 'public/assets/CardImages/HTL2/Grundlagen.svg',
+    imageSrc: '/assets/CardImages/HTL2/Grundlagen.svg',
     alt: 'Grundlagen',
     title: 'Grundlagen',
   },
   {
     level: 2,
     link: '/gleichungen-loesen',
-    imageSrc: 'public/assets/CardImages/HTL2/Gleichung.png',
+    imageSrc: '/assets/CardImages/HTL2/Gleichung.png',
     alt: 'Gleichungen lösen',
     title: 'Gleichungen lösen',
   },
   {
     level: 3,
     link: '/level-3',
-    imageSrc: 'public/assets/CardImages/HTL2/Funktion.svg',
+    imageSrc: '/assets/CardImages/HTL2/Funktion.svg',
     alt: 'Funktionen',
     title: 'Funktionen',
   },
   {
     level: 4,
     link: '/level-4',
-    imageSrc: 'public/assets/CardImages/HTL2/Trigonometrie.png',
+    imageSrc: '/assets/CardImages/HTL2/Trigonometrie.png',
     alt: 'Trigonometrie',
     title: 'Trigonometrie',
   },
   {
     level: 5,
     link: '/level-5',
-    imageSrc: 'public/assets/CardImages/HTL2/Vektoren.png',
+    imageSrc: '/assets/CardImages/HTL2/Vektoren.png',
     alt: 'Vektoren',
     title: 'Vektoren',
   },
   {
     level: 6,
     link: '/level-6',
-    imageSrc: 'public/assets/CardImages/HTL2/Differentialrechnung.svg',
+    imageSrc: '/assets/CardImages/HTL2/Differentialrechnung.svg',
     alt: 'Differentialrechnung',
     title: 'Differentialrechnung',
   },
   {
     level: 7,
     link: '/level-7',
-    imageSrc: 'public/assets/CardImages/HTL2/Umkehraufgaben.png',
+    imageSrc: '/assets/CardImages/HTL2/Umkehraufgaben.png',
     alt: 'Umkehraufgaben',
     title: 'Umkehraufgaben',
   },
   {
     level: 8,
     link: '/level-8',
-    imageSrc: 'public/assets/CardImages/HTL2/Integral.png',
+    imageSrc: '/assets/CardImages/HTL2/Integral.png',
     alt: 'Integral',
     title: 'Integral',
   },
   {
     level: 9,
     link: '/level-9',
-    imageSrc: 'public/assets/CardImages/HTL2/Statistik.svg',
+    imageSrc: '/assets/CardImages/HTL2/Statistik.svg',
     alt: 'Wahrscheinlichkeit & Statistik',
     title: 'Wahrscheinlichkeit & Statistik',
   },
 ];
 
-export default Overview;
+export default MaturatypenUebersicht;

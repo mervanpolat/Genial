@@ -1,6 +1,7 @@
 /****************************************************
   GLOBAL FIXES
 ****************************************************/
+/*File: src/Matura/Content/ModulTemplate/PageWrapper.css*/
 * {
   box-sizing: border-box; /* Ensure padding/margin are contained within width */
 }

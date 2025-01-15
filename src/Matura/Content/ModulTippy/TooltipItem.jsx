@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
-import { Box, Heading, Text, Button } from '@chakra-ui/react';
+// File: src/Matura/Content/ModulTippy/TooltipItem.jsx
+import { useState, useEffect, useRef } from "react";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+import { Box, Heading, Text, Button } from "@chakra-ui/react";
+import PropTypes from "prop-types";
 import CubeButton from "../../../components/CubeButton/CubeButton.jsx";
-import PropTypes from 'prop-types';
+import CubePraxis from "../../../components/CubeButton/CubePraxis.jsx";
 
 function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     const tippyRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
-    const [isHovered, setIsHovered] = useState(false); // State to track hover
-    const [loading, setLoading] = useState(false); // Loading state
+    const [isHovered, setIsHovered] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const handleWheel = () => {
@@ -18,17 +20,12 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                 setIsVisible(false);
             }
         };
-
-        window.addEventListener('wheel', handleWheel, { passive: true });
-
-        return () => {
-            window.removeEventListener('wheel', handleWheel);
-        };
+        window.addEventListener("wheel", handleWheel, { passive: true });
+        return () => window.removeEventListener("wheel", handleWheel);
     }, []);
 
     const handleCubeClick = (e) => {
         onCubeClick(module, e, itemRef);
-
         if (tippyRef.current) {
             if (isVisible) {
                 tippyRef.current.hide();
@@ -41,17 +38,18 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     };
 
     const handleSelectClick = () => {
-        setLoading(true);      // Start loading
-        onSelect(module);      // Call the provided onSelect function
-
-        // Simulate completion (remove this if onSelect handles async logic)
+        setLoading(true);
+        onSelect(module); // calls handleAuswaehlen => navigate(module.route)
         setTimeout(() => setLoading(false), 1000);
     };
+
+    const isEvenID = module.id % 2 === 0;
+    const CubeToRender = isEvenID ? CubePraxis : CubeButton;
 
     return (
         <Tippy
             theme="genial"
-            interactive={true}
+            interactive
             trigger="manual"
             visible={isVisible}
             hideOnClick={false}
@@ -59,7 +57,7 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                 instance.hide();
                 setIsVisible(false);
             }}
-            arrow={true}
+            arrow
             placement="bottom"
             offset={[0, 1]}
             animation="appleish"
@@ -71,13 +69,11 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                     <Text fontSize="22px" color="#faf3dc" mb="6">
                         {module.description}
                     </Text>
-
-                    {/* Button with loading state */}
                     <Button
                         fontSize="18px"
-                        color={isHovered ? 'black' : '#faf3dc'}
-                        bg={isHovered ? '#faf3dc' : '#333'}
-                        _hover={{ bg: '#faf3dc', color: 'black' }}
+                        color={isHovered ? "black" : "#faf3dc"}
+                        bg={isHovered ? "#faf3dc" : "#333"}
+                        _hover={{ bg: "#faf3dc", color: "black" }}
                         px="12"
                         py="2"
                         borderRadius="100px"
@@ -88,8 +84,8 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         onClick={handleSelectClick}
-                        isLoading={loading}           // Apply loading state
-                        loadingText="AUSWÄHLEN..."    // Text displayed while loading
+                        isLoading={loading}
+                        loadingText="AUSWÄHLEN..."
                     >
                         AUSWÄHLEN
                     </Button>
@@ -101,7 +97,7 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
         >
             <Box ref={itemRef} className="right-item">
                 <Box className="cube-button-wrapper" onClick={handleCubeClick}>
-                    <CubeButton />
+                    <CubeToRender />
                 </Box>
                 <Text>{module.title}</Text>
             </Box>
@@ -115,6 +111,7 @@ TooltipItem.propTypes = {
         title: PropTypes.string.isRequired,
         headline: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
+        route: PropTypes.string, // added route
     }).isRequired,
     onSelect: PropTypes.func.isRequired,
     onCubeClick: PropTypes.func.isRequired,

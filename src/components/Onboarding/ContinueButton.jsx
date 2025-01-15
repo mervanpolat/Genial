@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/ContinueButton.jsx
+// src/components/Onboarding/ContinueButton.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "@chakra-ui/react";

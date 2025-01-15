@@ -1,32 +1,49 @@
-// File: src/Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Theorie_GriechischeBuchstaben.jsx
+// File: src/Matura/Content/DynamicTheoryPage.jsx
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import LecturePage from "../../../LektionenTemplate/LecturePage.jsx";
+import { useParams } from "react-router-dom";
+import theoryRegistry from "./TheoryRegistry.js";
+
+// Reusable theory layout
+import LectureTheoryPage from "./LektionenTemplate/LectureTheoryPage.jsx";
+
+// Quizzes + optional interactive element
 import {
     MCQQuiz,
     TrueFalseQuiz,
     ReorderQuiz,
     FillBlankQuiz,
     MatchingPairsQuiz
-} from "../../../../../components/GenialQuizzes";
+} from "../../components/GenialQuizzes";
+import SecantTangentVisualization from "../../components/InteractiveElements/SecantTangentVisualization.jsx";
 
-import GriechischeBuchstabenData from "./GriechischeBuchstabenData.jsx";
-import SecantTangentVisualization from "../../../../../components/InteractiveElements/SecantTangentVisualization.jsx";
+function DynamicTheoryPage() {
+    // Slug from /theory/:slug
+    const { slug } = useParams();
+    // Grab the data from the registry
+    const data = theoryRegistry[slug];
 
+    if (!data) {
+        return (
+            <Box p={6} color="red">
+                <strong>Theory not found for slug: “{slug}”</strong>
+            </Box>
+        );
+    }
 
-const Theorie_GriechischeBuchstaben = () => {
-    const sectionsContent = GriechischeBuchstabenData.sections.map((section) => {
-        // paragraphs
+    // Build sections for LectureTheoryPage
+    const sectionsContent = data.sections.map((section) => {
+        // Paragraphs
         const paragraphsJSX = section.paragraphs?.map((para, idx) => (
-            <Box mb="1rem" key={idx} fontSize={"xl"}>
+            <Box mb="1rem" key={idx} fontSize="xl">
                 {para}
             </Box>
         ));
 
+        // Possibly a quiz
         let quizJSX = null;
         if (section.quiz) {
-            const quizType = section.quiz.type || "mcq";
-            switch (quizType) {
+            switch (section.quiz.type) {
                 case "truefalse":
                     quizJSX = (
                         <TrueFalseQuiz
@@ -77,7 +94,7 @@ const Theorie_GriechischeBuchstaben = () => {
             }
         }
 
-        // 3) Possibly include the SecantTangentVisualization
+        // Possibly a special Secant/Tangent example
         let analysisJSX = null;
         if (section.includeSecantTangent) {
             analysisJSX = (
@@ -87,6 +104,7 @@ const Theorie_GriechischeBuchstaben = () => {
             );
         }
 
+        // Combine paragraphs, quiz, analysis
         const combinedContent = (
             <>
                 {paragraphsJSX}
@@ -101,19 +119,20 @@ const Theorie_GriechischeBuchstaben = () => {
         };
     });
 
+    // Callback for finishing a section
     const handleSectionComplete = (sectionIndex) => {
-        console.log("Section completed:", sectionIndex);
+        console.log("Section completed:", sectionIndex, "for slug=", slug);
     };
 
     return (
-        <LecturePage
-            bannerImageSrc={GriechischeBuchstabenData.bannerImageSrc}
-            headline={GriechischeBuchstabenData.headline}
-            introText={GriechischeBuchstabenData.introText}
+        <LectureTheoryPage
+            bannerImageSrc={data.bannerImageSrc}
+            headline={data.headline}
+            introText={data.introText}
             sectionsContent={sectionsContent}
             onSectionComplete={handleSectionComplete}
         />
     );
-};
+}
 
-export default Theorie_GriechischeBuchstaben;
+export default DynamicTheoryPage;

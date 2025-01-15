@@ -11,7 +11,7 @@ function AboutUs() {
           {/* Image on the right (desktop) */}
           <Box flex="1" borderRadius="lg" overflow="hidden">
             <Image
-                src="/images/AboutUs/Euclid.png"
+                src="./assets/images/AboutUs/Euclid.png"
                 alt="Euclid's Elements"
                 borderRadius="lg"
                 w="100%"
@@ -44,7 +44,7 @@ function AboutUs() {
           </Heading>
           <Flex direction="column" alignItems="flex-start" gap="2">
             <Image
-                src="/images/TeamMembers/MervanPolat.png"
+                src="./assets/images/TeamMembers/MervanPolat.png"
                 alt="Mervan Polat"
                 borderRadius="full"
                 boxSize="150px"

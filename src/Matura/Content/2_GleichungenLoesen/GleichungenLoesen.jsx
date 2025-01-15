@@ -63,7 +63,10 @@ function GleichungenLoesen() {
   };
 
   const handleAuswaehlen = (module) => {
+    // For now, just an alert
     alert(`Ausgewählt: ${module.headline}`);
+    // You can do if (module.id is even) => practice route, etc.:
+    // e.g. if (module.id % 2 === 0) { navigate("/praxis-xxx"); } else { ... }
   };
 
   return (

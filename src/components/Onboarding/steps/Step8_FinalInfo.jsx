@@ -1,4 +1,4 @@
-// src/components/WelcomeIntro/steps/Step8_FinalInfo.jsx
+// src/components/Onboarding/steps/Step8_FinalInfo.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack, Image } from "@chakra-ui/react";

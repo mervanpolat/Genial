@@ -14,28 +14,31 @@ import { ArrowLeftIcon } from "@chakra-ui/icons";
 import NavBar from "./components/LandingPage/NavBar.jsx";
 import Footer from "./components/LandingPage/Footer.jsx";
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
-import Overview from "./Matura/Overview/Overview.jsx";
+import MaturatypenUebersicht from "./Matura/MaturatypenUebersicht/MaturatypenUebersicht.jsx";
 import Price from "./components/LandingPage/Price.jsx";
 import AboutUs from "./components/LandingPage/AboutUs.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
-import Grundlagen from "./Matura/Content/Grundlagen/Grundlagen.jsx";
-import GleichungenLoesen from "./Matura/Content/GleichungenLoesen/GleichungenLoesen.jsx";
+import Grundlagen from "./Matura/Content/1_Grundlagen/Grundlagen.jsx";
+import GleichungenLoesen from "./Matura/Content/2_GleichungenLoesen/GleichungenLoesen.jsx";
 
-// The new Greek letter lecture
-import Theorie_GriechischeBuchstaben from "./Matura/Content/Grundlagen/Lektionen/1_GriechischeBuchstaben/Theorie_GriechischeBuchstaben.jsx";
+import Praxis_GriechischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Praxis_GriechischeBuchstaben.jsx";
 
-import Step1_Welcome from "./components/WelcomeIntro/steps/Step1_Welcome.jsx";
-import Step2_GoalSelection from "./components/WelcomeIntro/steps/Step2_GoalSelection.jsx";
-import Step3_MaturatypSelection from "./components/WelcomeIntro/steps/Step3_MaturatypSelection.jsx";
-import Step4_InfoSection from "./components/WelcomeIntro/steps/Step4_InfoSection.jsx";
-import Step5_MathComfortLevel from "./components/WelcomeIntro/steps/Step5_MathComfortLevel.jsx";
-import Step6_DailyGoal from "./components/WelcomeIntro/steps/Step6_DailyGoal.jsx";
-import Step7_TimePreference from "./components/WelcomeIntro/steps/Step7_TimePreference.jsx";
-import Step8_FinalInfo from "./components/WelcomeIntro/steps/Step8_FinalInfo.jsx";
-import Step9_LoginPage from "./components/WelcomeIntro/steps/Step9_LoginPage.jsx";
+// SINGLE dynamic route for theory
+import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
 
-import { OnboardingProvider } from "./OnboardingContext/OnboardingContext.jsx";
+// Onboarding
+import Step1_Welcome from "./components/Onboarding/steps/Step1_Welcome.jsx";
+import Step2_GoalSelection from "./components/Onboarding/steps/Step2_GoalSelection.jsx";
+import Step3_MaturatypSelection from "./components/Onboarding/steps/Step3_MaturatypSelection.jsx";
+import Step4_InfoSection from "./components/Onboarding/steps/Step4_InfoSection.jsx";
+import Step5_MathComfortLevel from "./components/Onboarding/steps/Step5_MathComfortLevel.jsx";
+import Step6_DailyGoal from "./components/Onboarding/steps/Step6_DailyGoal.jsx";
+import Step7_TimePreference from "./components/Onboarding/steps/Step7_TimePreference.jsx";
+import Step8_FinalInfo from "./components/Onboarding/steps/Step8_FinalInfo.jsx";
+import Step9_LoginPage from "./components/Onboarding/steps/Step9_LoginPage.jsx";
+
+import { OnboardingProvider } from "./components/Onboarding/OnboardingContext.jsx";
 
 const stepsArray = [
     { path: "/welcome", component: Step1_Welcome },
@@ -97,24 +100,27 @@ function App() {
             )}
 
             <Routes>
-                {/* Public routes */}
+                {/* Public */}
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/mein-lehrplan" element={<Overview />} />
+                <Route path="/mein-lehrplan" element={<MaturatypenUebersicht />} />
                 <Route path="/preis" element={<Price />} />
                 <Route path="/ueber-uns" element={<AboutUs />} />
                 <Route path="/dashboard" element={<Dashboard />} />
 
-                {/* Grundlagen & GleichungenLoesen */}
+                {/* Roadmaps */}
                 <Route path="/grundlagen" element={<Grundlagen />} />
                 <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
 
-                {/* Greek Letters Lecture */}
+                {/* Greek letters practice */}
                 <Route
-                    path="/theorie-griechischebuchstaben"
-                    element={<Theorie_GriechischeBuchstaben />}
+                    path="/praxis-griechischebuchstaben"
+                    element={<Praxis_GriechischeBuchstaben />}
                 />
 
-                {/* Onboarding flow */}
+                {/* DYNAMIC route for theory => the “slug” picks the data */}
+                <Route path="/theory/:slug" element={<DynamicTheoryPage />} />
+
+                {/* Onboarding steps */}
                 {stepsArray.map((step, index) => (
                     <Route
                         key={index}
@@ -129,10 +135,10 @@ function App() {
                     />
                 ))}
 
-                {/* "Kurse" => same as Overview */}
-                <Route path="/kurse" element={<Overview />} />
+                {/* "Kurse" => same as MaturatypenUebersicht */}
+                <Route path="/kurse" element={<MaturatypenUebersicht />} />
 
-                {/* Fallback for invalid routes during onboarding */}
+                {/* Fallback during onboarding */}
                 {hideLayoutRoutes.includes(location.pathname) && (
                     <Route path="*" element={<Navigate to="/welcome" replace />} />
                 )}

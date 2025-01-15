@@ -1,4 +1,4 @@
-// File: src/Matura/Content/1_Grundlagen/1_Grundlagen.jsx
+// File: src/Matura/Content/1_Grundlagen/Grundlagen.jsx
 import React, { useRef, createRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../ModulTemplate/PageWrapper.css";
@@ -12,60 +12,42 @@ function Grundlagen() {
             id: 1,
             title: "Griechische Buchstaben",
             headline: "Griechische Buchstaben",
-            description: "Lerne die griechischen Buchstaben in Mathematik."
+            description: "Lerne die Griechische Buchstaben in Mathematik.",
+            route: "/theory/griechische" // this is the slug from theoryRegistry
         },
         {
             id: 2,
             title: "Praxis: Griechische Buchstaben",
             headline: "Praxis: Griechische Buchstaben",
-            description: "Vertiefe dein Wissen über griechische Buchstaben!"
+            description: "Vertiefe dein Verständnis über die griechischen Buchstaben in Mathematik.",
+            route: "/praxis-griechischebuchstaben"
         },
-        {
-            id: 3,
-            title: "Zahlenmengen 3",
-            headline: "Zahlenmengen Advanced",
-            description: "Vertiefte Einblicke in Zahlenmengen."
-        },
-        {
-            id: 4,
-            title: "Zahlenmengen 4",
-            headline: "Zahlenmengen Mastery",
-            description: "Fortgeschrittenes Üben."
-        },
-        {
-            id: 5,
-            title: "Zahlenmengen 5",
-            headline: "Zahlenmengen Summary",
-            description: "Abschließende Zusammenfassung."
-        }
+        // more modules ...
     ];
 
     const itemRefs = useRef([]);
     itemRefs.current = moduleData.map(
-        (module, i) => itemRefs.current[i] ?? createRef()
+        (_, i) => itemRefs.current[i] ?? createRef()
     );
 
-    const handleCubeClick = (module, event, itemRef) => {
+    const handleCubeClick = (mod, event, itemRef) => {
         event.stopPropagation();
-        console.log("Clicked Content:", module.headline);
-
-        if (itemRef && itemRef.current) {
+        if (itemRef?.current) {
             itemRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     };
 
-    const handleAuswaehlen = (module) => {
-        if (module.id === 1) {
-            navigate("/theorie-griechischebuchstaben");
-        } else {
-            alert(`Seite für Modul-ID ${module.id} ist noch nicht definiert!`);
+    const handleAuswaehlen = (mod) => {
+        if (!mod.route) {
+            console.log("No route defined for module:", mod);
+            return;
         }
+        navigate(mod.route);
     };
 
     return (
         <div className="template-page">
             <div className="gleichungen-container">
-                {/* LEFT SECTION */}
                 <div className="left-section">
                     <img
                         src="/assets/CardImages/HTL2/Grundlagen.svg"
@@ -75,7 +57,6 @@ function Grundlagen() {
                     <h6>LEVEL 1</h6>
                     <h1>Grundlagen</h1>
                     <p>Vertiefe dich bei den Grundlagen der Mathematik.</p>
-
                     <div className="exercise-units">
                         <div className="exercise-unit">
                             <img
@@ -94,15 +75,14 @@ function Grundlagen() {
                     </div>
                 </div>
 
-                {/* RIGHT SECTION */}
                 <div className="right-section">
-                    {moduleData.map((module, index) => (
+                    {moduleData.map((mod, idx) => (
                         <TooltipItem
-                            key={module.id}
-                            module={module}
+                            key={mod.id}
+                            module={mod}
                             onSelect={handleAuswaehlen}
                             onCubeClick={handleCubeClick}
-                            itemRef={itemRefs.current[index]}
+                            itemRef={itemRefs.current[idx]}
                         />
                     ))}
                 </div>
