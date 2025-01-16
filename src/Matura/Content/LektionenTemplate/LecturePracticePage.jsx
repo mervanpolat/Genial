@@ -1,129 +1,93 @@
-import React, { useState, useRef } from "react";
-import {
-    chakra,
-    Button,
-    Image,
-    Text,
-    useColorModeValue
-} from "@chakra-ui/react";
+// File: src/Matura/Content/LektionenTemplate/LecturePracticePage.jsx
+import React, { useState } from "react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import LectureTheorySection from "./LectureTheorySection.jsx";
+import LecturePracticeSection from "./LecturePracticeSection.jsx";
 
 /**
- * LectureTheoryPage
+ * LecturePracticePage
  *
- * A reusable template for “theory” lectures that:
- *  - Optionally displays a banner
- *  - Shows a headline, intro text
- *  - Renders multiple “sections” (theory paragraphs + optional quizzes)
- *  - Has a “Weiter” or “Lektion abschließen” button to progress or end
+ * - Renders multiple quiz steps (quizSteps array).
+ * - Each step is 1 quiz -> user must answer before seeing “Weiter”.
+ * - On final step => “Lektion abschließen” => redirects to /grundlagen.
  *
  * PROPS:
- * - bannerImageSrc: string => optional banner path
- * - headline: string => the lecture's main headline
- * - introText: string => an intro paragraph
- * - sectionsContent: array => e.g. [{ heading: "...", content: <JSX/> }, ...]
- * - onSectionComplete: optional callback => fires when user moves to the next section
+ * - headline (string) => optional page headline
+ * - introText (string) => optional short text if needed
+ * - quizSteps (array) => each item is { type: "mcq"|"truefalse"|..., ... }
+ * - onAllDone?: callback => if you want a custom callback after last step
  */
-const OuterSection = chakra("section", {});
-const InnerSection = chakra("section", {});
 
-function LectureTheoryPage({
-                               bannerImageSrc,
-                               headline,
-                               introText,
-                               sectionsContent,
-                               onSectionComplete
-                           }) {
-    const [visibleSectionIndex, setVisibleSectionIndex] = useState(0);
-    const sectionRefs = useRef([]);
+function LecturePracticePage({
+                                 headline = "Praxis: Beispiel",
+                                 introText = "",
+                                 quizSteps = [],
+                                 onAllDone,
+                             }) {
+    const [currentStep, setCurrentStep] = useState(0);
+    const [isAnswered, setIsAnswered] = useState(false);
     const navigate = useNavigate();
 
-    const bgColor = useColorModeValue("#faf3dc", "#faf3dc");
-    const cardBg = useColorModeValue("#faf3dc", "#faf3dc");
+    const totalSteps = quizSteps.length;
+    const isLastStep = currentStep === totalSteps - 1;
 
-    const handleNextSection = () => {
-        const nextIndex = visibleSectionIndex + 1;
+    // Called whenever the user has answered the quiz
+    const handleAnswered = () => {
+        setIsAnswered(true);
+    };
 
-        // If not last section, reveal the next
-        if (nextIndex < sectionsContent.length) {
-            setVisibleSectionIndex(nextIndex);
+    // Called on button click
+    const handleNext = () => {
+        // Reset for next quiz
+        setIsAnswered(false);
 
-            // Optionally scroll to that next section
-            setTimeout(() => {
-                if (sectionRefs.current[nextIndex]) {
-                    sectionRefs.current[nextIndex].scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                    });
-                }
-            }, 50);
-
-            if (onSectionComplete) {
-                onSectionComplete(nextIndex);
-            }
+        if (!isLastStep) {
+            // Move on to next quiz
+            setCurrentStep((prev) => prev + 1);
         } else {
-            // If at last => end this lecture
-            navigate("/grundlagen"); // or whichever route you prefer
+            // Last quiz => “Lektion abschließen”
+            // optional: if you have onAllDone, call it
+            if (onAllDone) onAllDone();
+            // Then navigate away
+            navigate("/grundlagen");
         }
     };
 
-    // We detect if we’re at last section
-    const isLastSection = visibleSectionIndex === sectionsContent.length - 1;
-    const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
+    // Decide button label
+    const buttonLabel = isLastStep ? "Lektion abschließen" : "Weiter";
+
+    // The “Weiter” or “Lektion abschließen” button is hidden until quiz is answered
+    const showButton = isAnswered;
 
     return (
-        <chakra.section bg={bgColor} minH="100vh" py={6}>
-            <OuterSection
-                maxW={{ base: "100vw", md: "100vw", lg: "40vw" }}
-                mx="auto"
-                borderRadius="md"
-                p={6}
-                bg={cardBg}
-            >
-                {/* Optional Banner */}
-                {bannerImageSrc && (
-                    <Image
-                        src={bannerImageSrc}
-                        alt="Lecture Banner"
-                        width="100%"
-                        maxH="600px"
-                        objectFit="cover"
-                        borderRadius="md"
-                        mb={8}
-                    />
-                )}
-
-                {/* Headline */}
-                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={4}>
+        <Box maxW="600px" mx="auto" p={6} bg="#faf3dc" borderRadius="md">
+            {/* Optional headline & intro */}
+            {headline && (
+                <Text
+                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontWeight="bold"
+                    mb={4}
+                >
                     {headline}
                 </Text>
+            )}
 
-                {/* Intro Text */}
-                <Text fontSize={{ base: "xl", md: "lg" }} mb={4}>
+            {introText && (
+                <Text fontSize={{ base: "xl", md: "lg" }} mb={6}>
                     {introText}
                 </Text>
+            )}
 
-                {/* Sections */}
-                {sectionsContent.map((section, idx) => (
-                    <InnerSection
-                        key={idx}
-                        ref={(el) => (sectionRefs.current[idx] = el)}
-                        mt={8}
-                    >
-                        <LectureTheorySection
-                            heading={section.heading}
-                            isVisible={idx <= visibleSectionIndex}
-                        >
-                            {section.content}
-                        </LectureTheorySection>
-                    </InnerSection>
-                ))}
+            {/* Render current quiz */}
+            <LecturePracticeSection
+                quizData={quizSteps[currentStep]}
+                onAnswered={handleAnswered}
+            />
 
-                {/* Single Next/Finish Button */}
+            {/* Only show button after user answered */}
+            {showButton && (
                 <Button
-                    onClick={handleNextSection}
-                    alignSelf="flex-start"
+                    onClick={handleNext}
                     mt={6}
                     bg="#30628b"
                     color="white"
@@ -139,9 +103,9 @@ function LectureTheoryPage({
                 >
                     {buttonLabel}
                 </Button>
-            </OuterSection>
-        </chakra.section>
+            )}
+        </Box>
     );
 }
 
-export default LectureTheoryPage;
+export default LecturePracticePage;
