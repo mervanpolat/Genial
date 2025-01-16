@@ -1,5 +1,4 @@
 // File: src/components/GenialQuizzes/MatchingPairsQuiz.jsx
-
 import React, { useState } from "react";
 import {
     Box,
@@ -8,7 +7,7 @@ import {
     HStack,
     Select,
     Button,
-    useToast
+    useToast,
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
@@ -19,15 +18,10 @@ const RED = "#c03b2d";
 const GREEN = "#3bb25a";
 const YELLOW = "#f0c34e";
 
-const MatchingPairsQuiz = ({
-                               pairs,
-                               explanation,
-                               onQuizComplete
-                           }) => {
+function MatchingPairsQuiz({ pairs, explanation, onQuizComplete }) {
     const [selected, setSelected] = useState(Array(pairs.length).fill(""));
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
-
     const toast = useToast();
 
     const rightItems = pairs.map((p) => p.right);
@@ -45,14 +39,17 @@ const MatchingPairsQuiz = ({
             if (selected[i] !== pairs[i].right) {
                 setIsCorrect(false);
                 setIsAnswered(true);
+
+                // Always call onQuizComplete
+                if (onQuizComplete) onQuizComplete();
                 return;
             }
         }
+        // If we got here => all matched
         setIsCorrect(true);
         setIsAnswered(true);
-        if (onQuizComplete) {
-            onQuizComplete();
-        }
+
+        if (onQuizComplete) onQuizComplete();
     };
 
     return (
@@ -126,6 +123,7 @@ const MatchingPairsQuiz = ({
                     bg="black"
                     color="white"
                     border="2px solid"
+                    borderColor={BLUE}
                     _hover={{
                         bg: "#333333",
                         boxShadow: "md",
@@ -159,6 +157,6 @@ const MatchingPairsQuiz = ({
             )}
         </Box>
     );
-};
+}
 
 export default MatchingPairsQuiz;

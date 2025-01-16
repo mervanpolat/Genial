@@ -1,8 +1,9 @@
 // File: src/Matura/Content/LektionenTemplate/LecturePracticeSection.jsx
+
 import React from "react";
 import { Box } from "@chakra-ui/react";
 
-// Import your quiz components (use correct relative path)
+// Import your quiz components from the correct relative path
 import {
     MCQQuiz,
     TrueFalseQuiz,
@@ -22,7 +23,7 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
 
     const { type } = quizData;
 
-    // When user completes the quiz => call onAnswered
+    // Called after user checks an answer in each quiz
     const handleQuizComplete = () => {
         onAnswered();
     };

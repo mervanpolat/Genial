@@ -1,14 +1,6 @@
 // File: src/components/GenialQuizzes/ReorderQuiz.jsx
-
 import React, { useState } from "react";
-import {
-    Box,
-    Text,
-    Wrap,
-    WrapItem,
-    Button,
-    useToast,
-} from "@chakra-ui/react";
+import { Box, Text, Wrap, WrapItem, Button, useToast } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
 const CARD_BG = "#f2e8d5";
@@ -18,13 +10,13 @@ const RED = "#c03b2d";
 const GREEN = "#3bb25a";
 const YELLOW = "#f0c34e";
 
-const ReorderQuiz = ({
+function ReorderQuiz({
                          prompt,
                          initialWords,
                          correctOrder,
                          explanation,
                          onQuizComplete,
-                     }) => {
+                     }) {
     const [words, setWords] = useState(initialWords);
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -43,9 +35,9 @@ const ReorderQuiz = ({
         const correct = words.join(" ") === correctOrder.join(" ");
         setIsCorrect(correct);
         setIsAnswered(true);
-        if (correct && onQuizComplete) {
-            onQuizComplete();
-        }
+
+        // *** ALWAYS call onQuizComplete ***
+        if (onQuizComplete) onQuizComplete();
     };
 
     const getButtonStyle = () => {
@@ -57,7 +49,7 @@ const ReorderQuiz = ({
         return {
             bg: BEIGE,
             borderColor: BLUE,
-            color: "black"
+            color: "black",
         };
     };
 
@@ -102,7 +94,7 @@ const ReorderQuiz = ({
                                             borderColor: BLUE,
                                             boxShadow: "md",
                                             transform: "scale(1.02)",
-                                        })
+                                        }),
                                 }}
                                 _active={{ transform: "scale(0.98)" }}
                                 onClick={() => handleWordClick(idx)}
@@ -143,6 +135,6 @@ const ReorderQuiz = ({
             )}
         </Box>
     );
-};
+}
 
 export default ReorderQuiz;

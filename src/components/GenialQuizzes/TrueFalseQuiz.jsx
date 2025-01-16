@@ -1,12 +1,6 @@
 // File: src/components/GenialQuizzes/TrueFalseQuiz.jsx
 import React, { useState } from "react";
-import {
-    Box,
-    Text,
-    Button,
-    HStack,
-    useToast,
-} from "@chakra-ui/react";
+import { Box, Text, Button, HStack, useToast } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
 const CARD_BG = "#f2e8d5";
@@ -16,12 +10,7 @@ const RED = "#c03b2d";
 const GREEN = "#3bb25a";
 const YELLOW = "#f0c34e";
 
-const TrueFalseQuiz = ({
-                           statement,
-                           isTrue,
-                           explanation,
-                           onQuizComplete,
-                       }) => {
+function TrueFalseQuiz({ statement, isTrue, explanation, onQuizComplete }) {
     const [userAnswer, setUserAnswer] = useState(null);
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -45,11 +34,12 @@ const TrueFalseQuiz = ({
         const correct = (userAnswer === "true") === isTrue;
         setIsCorrect(correct);
         setIsAnswered(true);
-        if (correct && onQuizComplete) {
-            onQuizComplete();
-        }
+
+        // *** Always call onQuizComplete ***
+        if (onQuizComplete) onQuizComplete();
     };
 
+    // same style as before
     const getButtonStyle = (val) => {
         if (isAnswered) {
             const userChoseThis = userAnswer === val;
@@ -111,7 +101,7 @@ const TrueFalseQuiz = ({
                                         borderColor: BLUE,
                                         boxShadow: "md",
                                         transform: "scale(1.02)",
-                                    })
+                                    }),
                             }}
                             _active={{ transform: "scale(0.98)" }}
                             transition="all 0.2s"
@@ -152,6 +142,6 @@ const TrueFalseQuiz = ({
             )}
         </Box>
     );
-};
+}
 
 export default TrueFalseQuiz;

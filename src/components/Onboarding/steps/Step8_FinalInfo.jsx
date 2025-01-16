@@ -23,7 +23,7 @@ function Step8_FinalInfo({ onContinue = () => {} }) {
             >
                 <VStack spacing={6} align="center">
                     <Image
-                        src="src/components/WelcomeIntro/assets/Step8_FinalInfo.svg"
+                        src="src/components/Onboarding/assets/Step8_FinalInfo.svg"
                         alt="Learning efficiency illustration"
                         maxW="250px"
                         objectFit="contain"

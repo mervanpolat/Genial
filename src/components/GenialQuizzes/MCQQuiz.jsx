@@ -1,5 +1,4 @@
 // File: src/components/GenialQuizzes/MCQQuiz.jsx
-
 import React, { useState } from "react";
 import {
     Box,
@@ -19,13 +18,13 @@ const RED = "#c03b2d";
 const GREEN = "#3bb25a";
 const YELLOW = "#f0c34e";
 
-const MCQQuiz = ({
+function MCQQuiz({
                      question,
                      options,
                      correctAnswerIndex,
                      explanation,
                      onQuizComplete,
-                 }) => {
+                 }) {
     const [selectedIndex, setSelectedIndex] = useState(null);
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -49,24 +48,29 @@ const MCQQuiz = ({
         const correct = selectedIndex === correctAnswerIndex;
         setIsCorrect(correct);
         setIsAnswered(true);
-        if (correct && onQuizComplete) {
-            onQuizComplete();
-        }
+
+        // *** Always call onQuizComplete(), even if wrong ***
+        if (onQuizComplete) onQuizComplete();
     };
 
+    // Return correct styling
     const getButtonStyle = (idx) => {
         if (isAnswered) {
+            // after answer
             if (idx === selectedIndex) {
+                // user choice
                 return isCorrect
                     ? { bg: GREEN, borderColor: BLUE, color: "white" }
                     : { bg: RED, borderColor: BLUE, color: "white" };
             }
             if (idx === correctAnswerIndex) {
+                // highlight correct
                 return { bg: GREEN, borderColor: BLUE, color: "white" };
             }
+            // others remain neutral
             return { bg: BEIGE, borderColor: BLUE, color: "black" };
         }
-        // Not answered => selected?
+        // Not answered => highlight selected
         const isSelected = idx === selectedIndex;
         if (isSelected) {
             return { bg: BLUE, borderColor: BLUE, color: "white" };
@@ -109,14 +113,11 @@ const MCQQuiz = ({
                                 ...(isAnswered
                                     ? {}
                                     : {
-                                        bg:
-                                            styleProps.bg === BLUE
-                                                ? BLUE
-                                                : YELLOW,
+                                        bg: styleProps.bg === BLUE ? BLUE : YELLOW,
                                         borderColor: BLUE,
                                         boxShadow: "md",
                                         transform: "scale(1.02)",
-                                    })
+                                    }),
                             }}
                             _active={{
                                 transform: "scale(0.98)",
@@ -163,6 +164,6 @@ const MCQQuiz = ({
             </VStack>
         </Box>
     );
-};
+}
 
 export default MCQQuiz;

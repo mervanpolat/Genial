@@ -1,4 +1,5 @@
 // File: src/Matura/Content/LektionenTemplate/LecturePracticePage.jsx
+
 import React, { useState } from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,6 @@ import LecturePracticeSection from "./LecturePracticeSection.jsx";
 
 /**
  * LecturePracticePage
- *
  * - Renders multiple quiz steps (quizSteps array).
  * - Each step is 1 quiz -> user must answer before seeing “Weiter”.
  * - On final step => “Lektion abschließen” => redirects to /grundlagen.
@@ -17,7 +17,6 @@ import LecturePracticeSection from "./LecturePracticeSection.jsx";
  * - quizSteps (array) => each item is { type: "mcq"|"truefalse"|..., ... }
  * - onAllDone?: callback => if you want a custom callback after last step
  */
-
 function LecturePracticePage({
                                  headline = "Praxis: Beispiel",
                                  introText = "",
@@ -36,9 +35,8 @@ function LecturePracticePage({
         setIsAnswered(true);
     };
 
-    // Called on button click
     const handleNext = () => {
-        // Reset for next quiz
+        // Reset answered for the next quiz
         setIsAnswered(false);
 
         if (!isLastStep) {
@@ -46,22 +44,16 @@ function LecturePracticePage({
             setCurrentStep((prev) => prev + 1);
         } else {
             // Last quiz => “Lektion abschließen”
-            // optional: if you have onAllDone, call it
             if (onAllDone) onAllDone();
-            // Then navigate away
             navigate("/grundlagen");
         }
     };
 
-    // Decide button label
     const buttonLabel = isLastStep ? "Lektion abschließen" : "Weiter";
-
-    // The “Weiter” or “Lektion abschließen” button is hidden until quiz is answered
-    const showButton = isAnswered;
+    const showButton = isAnswered; // only show if answered
 
     return (
         <Box maxW="600px" mx="auto" p={6} bg="#faf3dc" borderRadius="md">
-            {/* Optional headline & intro */}
             {headline && (
                 <Text
                     fontSize={{ base: "2xl", md: "3xl" }}

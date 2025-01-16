@@ -1,13 +1,6 @@
 // File: src/components/GenialQuizzes/FillBlankQuiz.jsx
-
 import React, { useState } from "react";
-import {
-    Box,
-    Text,
-    Input,
-    Button,
-    useToast
-} from "@chakra-ui/react";
+import { Box, Text, Input, Button, useToast } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
 const CARD_BG = "#f2e8d5";
@@ -17,12 +10,12 @@ const RED = "#c03b2d";
 const GREEN = "#3bb25a";
 const YELLOW = "#f0c34e";
 
-const FillBlankQuiz = ({
+function FillBlankQuiz({
                            templateText,
                            correctAnswers = [],
                            explanation,
-                           onQuizComplete
-                       }) => {
+                           onQuizComplete,
+                       }) {
     const [userInput, setUserInput] = useState("");
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -45,9 +38,9 @@ const FillBlankQuiz = ({
         );
         setIsCorrect(correct);
         setIsAnswered(true);
-        if (correct && onQuizComplete) {
-            onQuizComplete();
-        }
+
+        // *** ALWAYS call onQuizComplete ***
+        if (onQuizComplete) onQuizComplete();
     };
 
     return (
@@ -127,6 +120,6 @@ const FillBlankQuiz = ({
             )}
         </Box>
     );
-};
+}
 
 export default FillBlankQuiz;

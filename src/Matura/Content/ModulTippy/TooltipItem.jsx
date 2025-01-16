@@ -1,9 +1,12 @@
 // File: src/Matura/Content/ModulTippy/TooltipItem.jsx
+
 import { useState, useEffect, useRef } from "react";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { Box, Heading, Text, Button } from "@chakra-ui/react";
 import PropTypes from "prop-types";
+
+// Import your two cube variants
 import CubeButton from "../../../components/CubeButton/CubeButton.jsx";
 import CubePraxis from "../../../components/CubeButton/CubePraxis.jsx";
 
@@ -13,36 +16,62 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     const [isHovered, setIsHovered] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    // We'll store the timeout ID here so we can clear it if needed
+    const timeoutIdRef = useRef(null);
+
+    // Adjust this if you want more/less delay
+    const scrollDelay = 350;
+
     useEffect(() => {
         const handleWheel = () => {
+            // If user scrolls, hide the tooltip
             if (tippyRef.current) {
                 tippyRef.current.hide();
                 setIsVisible(false);
             }
+            // Also clear any pending timeouts
+            if (timeoutIdRef.current) {
+                clearTimeout(timeoutIdRef.current);
+                timeoutIdRef.current = null;
+            }
         };
+
         window.addEventListener("wheel", handleWheel, { passive: true });
-        return () => window.removeEventListener("wheel", handleWheel);
+        return () => {
+            window.removeEventListener("wheel", handleWheel);
+            if (timeoutIdRef.current) {
+                clearTimeout(timeoutIdRef.current);
+            }
+        };
     }, []);
 
     const handleCubeClick = (e) => {
+        // This triggers your parent logic, e.g. itemRef.current.scrollIntoView(...)
         onCubeClick(module, e, itemRef);
-        if (tippyRef.current) {
-            if (isVisible) {
-                tippyRef.current.hide();
-                setIsVisible(false);
-            } else {
+
+        // If tooltip is currently visible, we hide it
+        if (isVisible && tippyRef.current) {
+            tippyRef.current.hide();
+            setIsVisible(false);
+        } else if (tippyRef.current) {
+            // Otherwise, wait a short delay before showing
+            timeoutIdRef.current = setTimeout(() => {
+                // Safety check: if user hasn't scrolled in the meantime
                 tippyRef.current.show();
                 setIsVisible(true);
-            }
+                timeoutIdRef.current = null;
+            }, scrollDelay);
         }
     };
 
     const handleSelectClick = () => {
         setLoading(true);
-        onSelect(module); // calls handleAuswaehlen => navigate(module.route)
+        onSelect(module); // calls e.g. handleAuswaehlen => navigate(module.route)
+        // Simulate loading
         setTimeout(() => setLoading(false), 1000);
     };
 
+    // Even ID => CubePraxis, else => CubeButton
     const isEvenID = module.id % 2 === 0;
     const CubeToRender = isEvenID ? CubePraxis : CubeButton;
 
@@ -111,7 +140,7 @@ TooltipItem.propTypes = {
         title: PropTypes.string.isRequired,
         headline: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-        route: PropTypes.string, // added route
+        route: PropTypes.string, // optional if you want to store the route
     }).isRequired,
     onSelect: PropTypes.func.isRequired,
     onCubeClick: PropTypes.func.isRequired,

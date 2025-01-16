@@ -80,7 +80,7 @@ function Step9_LoginPage() {
             >
                 <VStack spacing={6} align="center">
                     <Image
-                        src="src/components/WelcomeIntro/assets/Step9_LoginPage.svg"
+                        src="src/components/Onboarding/assets/Step9_LoginPage.svg"
                         alt="Login Illustration"
                         maxW="250px"
                         objectFit="contain"
