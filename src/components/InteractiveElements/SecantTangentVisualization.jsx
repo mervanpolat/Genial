@@ -382,23 +382,23 @@ function SecantTangentVisualization() {
                 textAlign="left"
                 fontWeight="bold"
             >
-                Visualizing the Limit: Secant & Tangent Lines
+                Visualisierung der Funktionsgrenzwerte
             </Heading>
 
             <Text fontSize={{ base: "md", md: "lg" }} mb={4} color="#000">
-                As \(\Delta x \to 0\), the deeper red <strong>secant</strong> line converges
-                to the deeper green <strong>tangent</strong> line at \(x = 2\). Slide to
-                see this happen <em>dynamically</em>. The lens in the center provides
-                a subtle magnification effect around <em>x = 2</em>.
+                Wenn Δx gegen 0 strebt, nähert sich die tiefrote <strong>Sekante </strong>
+                immer mehr der tiefgrünen <strong>Tangente</strong> an der Stelle <em>x = 2</em>.
+                Verschiebe den Regler, um diesen Vorgang <em>dynamisch</em> zu beobachten.
+                Die Linse in der Mitte bietet eine subtile Vergrößerung des Bereichs um <em>x = 2</em>.
             </Text>
 
             {/* Main D3 container */}
             <Box ref={mainRef} overflow="hidden" />
 
             {/* Slider for Δx */}
-            <Box mt={6} bg="#fff" p={4} borderRadius="md" boxShadow="md">
+            <Box mt={6} bg="#faf3dc" p={4} borderRadius="md" boxShadow="md">
                 <Text fontSize={{ base: "md", md: "lg" }} mb={2} color="black">
-                    Adjust \(\Delta x\):
+                    Ändere Δx:
                 </Text>
 
                 <Slider
@@ -409,27 +409,27 @@ function SecantTangentVisualization() {
                     onChange={setDeltaX}
                     aria-label="DeltaX Slider"
                 >
-                    <SliderTrack bg={BG_BEIGE}>
+                    <SliderTrack bg={"#f2e8d5"}>
                         <SliderFilledTrack bg={BLUE} />
                     </SliderTrack>
                     <SliderThumb boxSize={5} bg={RED} />
                 </Slider>
 
                 <Text mt={2} fontSize={{ base: "md", md: "lg" }} color="black">
-                    \(\Delta x\) = {deltaX.toFixed(4)}
+                    Δx = {deltaX.toFixed(4)}
                 </Text>
             </Box>
 
             {/* Display slopes & magnify factor */}
             <VStack align="start" mt={4} spacing={1}>
                 <Text fontSize={{ base: "md", md: "lg" }} color="black">
-                    Slope of secant: <strong>{slopeSec}</strong>
+                    Steigung der Sekante: <strong>{slopeSec}</strong>
                 </Text>
                 <Text fontSize={{ base: "md", md: "lg" }} color="black">
-                    Slope of tangent at x=2: <strong>4</strong>
+                    Steigung der Tangente bei x=2 beträgt: <strong>4</strong>
                 </Text>
                 <Text fontSize={{ base: "md", md: "lg" }} color="black">
-                    Magnification:{" "}
+                    Vergrößerung:{" "}
                     <strong>
                         {(1 + fraction * 9).toFixed(2)}×
                     </strong>

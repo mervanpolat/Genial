@@ -5,10 +5,14 @@ import { Box, Button } from "@chakra-ui/react";
 // Instead of a default TeX import, we import InlineMath/BlockMath:
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
+import GreekLettersBanner from "./Image/GriechischeBuchstaben.png";
+import Dreieck from "./Image/Dreieck.svg"
+import { Image as ChakraImage } from "@chakra-ui/react";
+
+
 
 const GriechischeBuchstabenData = {
-    bannerImageSrc:
-        "src/Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Image/GreekLettersBanner.svg",
+    bannerImageSrc: GreekLettersBanner,
     headline: "Griechische Buchstaben in der Mathematik",
     introText:
         "Von Alpha bis Omega: Griechische Buchstaben begegnen uns überall in der Mathematik—von Winkeln in der Geometrie bis hin zu Wahrscheinlichkeiten in der Statistik! " +
@@ -28,13 +32,7 @@ const GriechischeBuchstabenData = {
                         Hinweis: Du musst nicht alle griechischen Buchstaben auswendig lernen.
                         Konzentriere dich auf die gängigsten, die in deinen Themenbereichen vorkommen.
                     </em>
-                </>,
-                <>
-                    <strong>
-                        Hier könnte ein Bild der wichtigsten griechischen Buchstaben stehen (z.B. eine Tabelle)!
-                    </strong>{" "}
-                    {/* e.g. Insert an illustration of the Greek alphabet */}
-                </>,
+                </>
             ],
         },
 
@@ -47,28 +45,20 @@ const GriechischeBuchstabenData = {
                     <Box as="ul" mt={2} ml={6}>
                         <li>
                             <InlineMath>\pi</InlineMath> (Pi, klein) für die berühmte Kreiszahl:{" "}
-                            <InlineMath>\pi \approx 3.14159</InlineMath>.
+                            <InlineMath>\pi \approx 3.14159</InlineMath>
                         </li>
                         <li>
                             <InlineMath>\Pi</InlineMath> (Pi, groß) für Produkte, z.B.{" "}
-                            <BlockMath>{String.raw`\prod_{i=1}^{n} a_i`}</BlockMath>.
+                            <BlockMath>{String.raw`\prod_{i=1}^{n} a_i`}</BlockMath>
                         </li>
                         <li>
                             <InlineMath>\Sigma</InlineMath> (Sigma, groß) für Summen, z.B.{" "}
-                            <BlockMath>{String.raw`\sum_{k=0}^{m} b_k`}</BlockMath>.
+                            <BlockMath>{String.raw`\sum_{k=0}^{m} b_k`}</BlockMath>
                         </li>
                         <li>
                             <InlineMath>\in</InlineMath> (Epsilon-Variante) für „gehört zu“:{" "}
-                            <InlineMath>{String.raw`x \in \mathbb{R}`}</InlineMath>.
+                            <InlineMath>{String.raw`x \in \mathbb{R}`}</InlineMath>
                         </li>
-                    </Box>
-                </>,
-                <>
-                    <Box mt="4">
-                        <em>
-                            (Hier könnte eine Grafik mit dem Summen- und Produktzeichen eingefügt werden –
-                            z.B. um klar zu machen, wie sie in Formeln aussehen.)
-                        </em>
                     </Box>
                 </>,
             ],
@@ -99,9 +89,15 @@ const GriechischeBuchstabenData = {
                     <InlineMath>\alpha, \beta, \gamma</InlineMath> markieren.
                 </>,
                 <>
-                    <em>
-                        (Eine Illustration eines Dreiecks mit Winkeln α, β, γ könnte hier eingebunden werden.)
-                    </em>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Dreieck}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="400px"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
                 </>,
             ],
             quiz: {
@@ -116,7 +112,7 @@ const GriechischeBuchstabenData = {
 
         // 4) Analysis (Calculus I)
         {
-            heading: "Analysis (Calculus I): Epsilon und Delta",
+            heading: "Analysis: Epsilon und Delta",
             paragraphs: [
                 <>
                     In der Analysis geht es oft um Grenzwerte. Dabei kommt die berühmte „Epsilon-Delta-Definition“
@@ -131,7 +127,7 @@ const GriechischeBuchstabenData = {
                 </>,
                 <>
                     <strong>
-                        Hier könntest du ein Diagramm zeigen, das die Epsilon- und Delta-Umgebung illustriert!
+                        Natürlich gehen wir davon aus, dass du diese Konzepte weder gehört noch gesehen hast 😃
                     </strong>
                 </>,
             ],
@@ -139,7 +135,7 @@ const GriechischeBuchstabenData = {
         },
 
         {
-            heading: "Analysis: Secant & Tangent Lines",
+            heading: "Analysis: Sekante und Tangente",
             paragraphs: [
                 "Hier ein interaktives Beispiel, das zeigt, wie sich die Steigung der Sekante allmählich die Steigung der Tangente annähert."
                 // Possibly more text...

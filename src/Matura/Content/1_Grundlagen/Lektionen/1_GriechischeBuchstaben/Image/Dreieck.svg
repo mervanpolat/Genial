@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 987 698">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 70px;
+      }
+
+      .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #f9f2db;
+      }
+
+      .cls-5 {
+        fill: #c03b2d;
+      }
+
+      .cls-6 {
+        fill: #30628b;
+      }
+
+      .cls-7 {
+        fill: #f0c34e;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" width="987" height="698"/>
+  <path class="cls-6" d="m258,660H45.53l174.72-120.77c23.8,34.26,37.75,75.89,37.75,120.77Z"/>
+  <path class="cls-7" d="m944,497.4v162.6h-168.99c18.31-82.8,85.06-147.41,168.99-162.6Z"/>
+  <path class="cls-5" d="m944,39v212c-72.3,0-136.15-36.2-174.41-91.46l174.41-120.54Z"/>
+  <path class="cls-3" d="m949,665H29.5L949,29.47v635.53Zm-887.44-10h877.44V48.53l-166.57,115.12L223.09,543.34l-161.54,111.66Z"/>
+  <text class="cls-1" transform="translate(171.52 628.95)"><tspan x="0" y="0">α</tspan></text>
+  <text class="cls-2" transform="translate(861.52 618.95)"><tspan x="0" y="0">β</tspan></text>
+  <text class="cls-1" transform="translate(861.52 179.95)"><tspan x="0" y="0">γ</tspan></text>
+</svg>

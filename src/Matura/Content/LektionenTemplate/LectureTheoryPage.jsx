@@ -58,7 +58,7 @@ function LectureTheoryPage({
             <OuterSection
                 maxW={{ base: "100vw", md: "100vw", lg: "40vw" }}
                 mx="auto"
-                borderRadius="md"
+                borderRadius="xl"
                 p={6}
                 bg={cardBg}
             >
@@ -69,8 +69,8 @@ function LectureTheoryPage({
                         alt="Lecture Banner"
                         width="100%"
                         maxH="600px"
-                        objectFit="cover"
-                        borderRadius="md"
+                        objectFit="contain"
+                        borderRadius="lg"
                         mb={8}
                     />
                 )}
