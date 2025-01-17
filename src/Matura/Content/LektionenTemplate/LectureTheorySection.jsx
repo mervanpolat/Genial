@@ -1,8 +1,8 @@
 // File: src/Matura/Content/LektionenTemplate/LectureTheorySection.jsx
+
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-// IMPORTANT: use a relative path from your folder to the GenialQuizzes index
 import {
     MCQQuiz,
     TrueFalseQuiz,
@@ -15,13 +15,6 @@ import {
  * LectureTheorySection
  * Renders heading, paragraphs, optional quiz.
  * If a quiz is present => once answered => calls onQuizAnswered().
- *
- * PROPS:
- * - heading: string
- * - isVisible: boolean => if false, we render nothing
- * - children: paragraphs (JSX)
- * - quizData: optional object => { type: "mcq", ... }
- * - onQuizAnswered: function => called once quiz is fully answered
  */
 function LectureTheorySection({
                                   heading,
@@ -32,10 +25,10 @@ function LectureTheorySection({
                               }) {
     if (!isVisible) return null;
 
+    const handleQuizComplete = () => onQuizAnswered();
+
     const renderQuiz = () => {
         if (!quizData) return null;
-
-        const handleQuizComplete = () => onQuizAnswered();
 
         switch (quizData.type) {
             case "truefalse":

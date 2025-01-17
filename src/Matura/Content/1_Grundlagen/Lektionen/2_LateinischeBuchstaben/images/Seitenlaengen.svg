@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 987 698">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-family: CMUBright-Roman, 'CMU Bright';
+        font-size: 54.68px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #f9f2db;
+      }
+
+      .cls-5 {
+        fill: #c03b2d;
+      }
+
+      .cls-6 {
+        fill: #30628b;
+      }
+
+      .cls-7 {
+        fill: #f0c34e;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" width="987" height="698"/>
+  <path class="cls-6" d="m308.6,591.56h-165.98l136.49-94.34c18.59,26.76,29.49,59.28,29.49,94.34Z"/>
+  <path class="cls-7" d="m844.49,464.54v127.02h-132.01c14.3-64.68,66.45-115.15,132.01-127.02Z"/>
+  <path class="cls-5" d="m844.49,106.45v165.61c-56.48,0-106.36-28.28-136.25-71.45l136.25-94.16Z"/>
+  <path class="cls-3" d="m848.4,595.47H130.11L848.4,99v496.47Zm-693.25-7.81h685.44V113.9l-130.12,89.93-429.13,296.61-126.19,87.22Z"/>
+  <text class="cls-2" transform="translate(241.05 567.3)"><tspan x="0" y="0">α</tspan></text>
+  <text class="cls-1" transform="translate(102.05 658.3)"><tspan x="0" y="0">A</tspan></text>
+  <text class="cls-1" transform="translate(865.05 653.3)"><tspan x="0" y="0">B</tspan></text>
+  <text class="cls-1" transform="translate(858.05 80.3)"><tspan x="0" y="0">C</tspan></text>
+  <text class="cls-1" transform="translate(780.06 559.49)"><tspan x="0" y="0">β</tspan></text>
+  <text class="cls-2" transform="translate(780.06 216.55)"><tspan x="0" y="0">γ</tspan></text>
+</svg>

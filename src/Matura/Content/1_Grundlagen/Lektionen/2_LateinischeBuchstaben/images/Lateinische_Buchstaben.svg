@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 753 854.67">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        font-size: 30px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        font-family: CMUBright-SemiBold, 'CMU Bright';
+        font-weight: 600;
+      }
+
+      .cls-3 {
+        font-size: 80px;
+      }
+
+      .cls-4 {
+        fill: #6dc449;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        fill: #c6c647;
+      }
+
+      .cls-6 {
+        fill: #e2d3aa;
+      }
+
+      .cls-7 {
+        fill: #c03b2d;
+      }
+
+      .cls-8 {
+        fill: #30628b;
+      }
+
+      .cls-9 {
+        fill: #f0c34e;
+      }
+
+      .cls-10 {
+        fill: #faf3dc;
+      }
+
+      .cls-11 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="cls-8" x=".47" y="0" width="240" height="170.67"/>
+    <path class="cls-10" d="m238.47,2v166.67H2.47V2h236M240.47,0H.47v170.67h240V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="240" y="0" width="171" height="170.67"/>
+    <path class="cls-10" d="m409,2v166.67h-167V2h167m2-2h-171v170.67h171V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="411" y="0" width="171" height="170.67"/>
+    <path class="cls-10" d="m580,2v166.67h-167V2h167m2-2h-171v170.67h171V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="582" y="0" width="171" height="170.67"/>
+    <path class="cls-10" d="m751,2v166.67h-167V2h167m2-2h-171v170.67h171V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="240" y="171" width="171" height="170.67"/>
+    <path class="cls-10" d="m409,173v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="240" y="342" width="171" height="170.67"/>
+    <path class="cls-10" d="m409,344v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="240" y="513" width="171" height="170.67"/>
+    <path class="cls-10" d="m409,515v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="240" y="684" width="171" height="170.67"/>
+    <path class="cls-10" d="m409,686v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-7" y="171" width="240" height="170.67"/>
+    <path class="cls-10" d="m238,173v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-9" y="342" width="240" height="170.67"/>
+    <path class="cls-10" d="m238,344v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-5" y="513" width="240" height="170.67"/>
+    <path class="cls-10" d="m238,515v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-4" y="684" width="240" height="170.67"/>
+    <path class="cls-10" d="m238,686v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <text class="cls-1" transform="translate(62.67 94.98)"><tspan class="cls-11" x="0" y="0">V</tspan><tspan x="19.38" y="0">ekt</tspan><tspan class="cls-11" x="59.47" y="0">o</tspan><tspan x="74.36" y="0">ren</tspan></text>
+  <text class="cls-3" transform="translate(305.18 112.98)"><tspan x="0" y="0">u</tspan></text>
+  <text class="cls-3" transform="translate(307.54 277.98)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-3" transform="translate(307.54 453.98)"><tspan x="0" y="0">y</tspan></text>
+  <g>
+    <rect class="cls-6" x="411" y="342" width="171" height="170.67"/>
+    <path class="cls-10" d="m580,344v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <text class="cls-3" transform="translate(433.1 453.98)"><tspan x="0" y="0">f(x)</tspan></text>
+  <text class="cls-3" transform="translate(316.86 788.98)"><tspan x="0" y="0">i</tspan></text>
+  <g>
+    <rect class="cls-6" x="411" y="684" width="171" height="170.67"/>
+    <path class="cls-10" d="m580,686v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <text class="cls-3" transform="translate(486.69 788.98)"><tspan x="0" y="0">j</tspan></text>
+  <g>
+    <rect class="cls-6" x="582" y="684" width="171" height="170.67"/>
+    <path class="cls-10" d="m751,686v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <text class="cls-3" transform="translate(648.37 788.98)"><tspan x="0" y="0">k</tspan></text>
+  <text class="cls-3" transform="translate(307.54 622.98)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-3" transform="translate(478.54 112.98)"><tspan x="0" y="0">v</tspan></text>
+  <text class="cls-3" transform="translate(640.17 112.98)"><tspan x="0" y="0">w</tspan></text>
+  <g>
+    <rect class="cls-6" x="411" y="171" width="171" height="170.67"/>
+    <path class="cls-10" d="m580,173v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" x="582" y="171" width="171" height="170.67"/>
+    <path class="cls-10" d="m751,173v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <text class="cls-3" transform="translate(649.86 283.98)"><tspan x="0" y="0">z</tspan></text>
+  <text class="cls-1" transform="translate(61.35 247.98)"><tspan class="cls-11" x="0" y="0">Va</tspan><tspan x="33.27" y="0">riablen</tspan><tspan x="-15.02" y="36">und </tspan><tspan class="cls-11" x="41.45" y="36">A</tspan><tspan x="60.83" y="36">chsen</tspan></text>
+  <text class="cls-2" transform="translate(54.17 416.98)"><tspan x="0" y="0">Abhängige</tspan><tspan class="cls-11" x="15.93" y="36">Va</tspan><tspan x="49.2" y="36">riable</tspan></text>
+  <text class="cls-2" transform="translate(37.79 597.98)"><tspan x="0" y="0">Unabhängige</tspan><tspan class="cls-11" x="31.31" y="36">Va</tspan><tspan x="64.58" y="36">riable</tspan></text>
+  <text class="cls-2" transform="translate(92.43 781.98)"><tspan x="0" y="0">Index</tspan></text>
+  <text class="cls-3" transform="translate(478.54 278.98)"><tspan x="0" y="0">y</tspan></text>
+</svg>

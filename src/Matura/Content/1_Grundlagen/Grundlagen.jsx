@@ -22,6 +22,21 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis über die griechischen Buchstaben in Mathematik.",
             route: "/praxis-griechischebuchstaben"
         },
+
+        {
+            id: 3,
+            title: "Theorie: Lateinische Buchstaben",
+            headline: "Theorie: Lateinische Buchstaben",
+            description: "Lerne die Lateinische Buchstaben die in Mathematik ständig vorkommen.",
+            route: "/theory/lateinische"
+        },
+        {
+            id: 4,
+            title: "Praxis: Lateinische Buchstaben",
+            headline: "Praxis: Lateinische Buchstaben",
+            description: "Vertiefe dein Verständnis über die lateinischen Buchstaben in Mathematik.",
+            route: "/praxis-lateinischebuchstaben"
+        },
         // more modules ...
     ];
 

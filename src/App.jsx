@@ -23,6 +23,8 @@ import Grundlagen from "./Matura/Content/1_Grundlagen/Grundlagen.jsx";
 import GleichungenLoesen from "./Matura/Content/2_GleichungenLoesen/GleichungenLoesen.jsx";
 
 import Praxis_GriechischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Praxis_GriechischeBuchstaben.jsx";
+import Praxis_LateinischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/2_LateinischeBuchstaben/Praxis_LateinischeBuchstaben.jsx";
+
 
 // SINGLE dynamic route for theory
 import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
@@ -115,6 +117,11 @@ function App() {
                 <Route
                     path="/praxis-griechischebuchstaben"
                     element={<Praxis_GriechischeBuchstaben />}
+                />
+
+                <Route
+                    path="/praxis-lateinischebuchstaben"
+                    element={<Praxis_LateinischeBuchstaben />}
                 />
 
                 {/* DYNAMIC route for theory => the “slug” picks the data */}

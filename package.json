@@ -31,7 +31,9 @@
     "react-quiz-component": "^0.9.1",
     "react-router-dom": "^7.1.1",
     "react-simple-typewriter": "^5.0.1",
-    "react-step-progress-bar": "^1.0.3"
+    "react-slick": "^0.30.3",
+    "react-step-progress-bar": "^1.0.3",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

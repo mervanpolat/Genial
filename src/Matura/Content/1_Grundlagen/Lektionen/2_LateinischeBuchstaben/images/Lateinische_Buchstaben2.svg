@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 753 854.67">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+      }
+
+      .cls-2 {
+        font-size: 30px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        font-family: CMUBright-SemiBold, 'CMU Bright';
+        font-weight: 600;
+      }
+
+      .cls-5, .cls-4 {
+        font-size: 80px;
+      }
+
+      .cls-6 {
+        fill: #82a8f4;
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13 {
+        stroke-width: 0px;
+      }
+
+      .cls-7 {
+        fill: #4ecece;
+      }
+
+      .cls-8 {
+        fill: #98ffda;
+      }
+
+      .cls-9 {
+        fill: #c6c647;
+      }
+
+      .cls-10 {
+        fill: #e2d3aa;
+      }
+
+      .cls-11 {
+        fill: #ffc72c;
+      }
+
+      .cls-12 {
+        fill: #faf3dc;
+      }
+
+      .cls-13 {
+        fill: #f28c8c;
+      }
+
+      .cls-14 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="cls-13" x=".47" y="0" width="240" height="170.67"/>
+    <path class="cls-12" d="m238.47,2v166.67H2.47V2h236M240.47,0H.47v170.67h240V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="240" y="0" width="171" height="170.67"/>
+    <path class="cls-12" d="m409,2v166.67h-167V2h167m2-2h-171v170.67h171V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="411" y="0" width="171" height="170.67"/>
+    <path class="cls-12" d="m580,2v166.67h-167V2h167m2-2h-171v170.67h171V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="582" y="0" width="171" height="170.67"/>
+    <path class="cls-12" d="m751,2v166.67h-167V2h167m2-2h-171v170.67h171V0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="240" y="171" width="171" height="170.67"/>
+    <path class="cls-12" d="m409,173v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="240" y="342" width="344" height="170.67"/>
+    <path class="cls-12" d="m579.98,344v166.67H244.02v-166.67h335.95m4.02-2H240v170.67h344v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="240" y="513" width="171" height="170.67"/>
+    <path class="cls-12" d="m409,515v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="411" y="513" width="171" height="170.67"/>
+    <path class="cls-12" d="m580,515v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="582" y="513" width="171" height="170.67"/>
+    <path class="cls-12" d="m751,515v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-10" x="240" y="684" width="171" height="170.67"/>
+    <path class="cls-12" d="m409,686v166.67h-167v-166.67h167m2-2h-171v170.67h171v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-6" y="171" width="240" height="170.67"/>
+    <path class="cls-12" d="m238,173v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-7" y="342" width="240" height="170.67"/>
+    <path class="cls-12" d="m238,344v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-9" y="513" width="240" height="170.67"/>
+    <path class="cls-8" d="m238,515v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-11" y="684" width="240" height="170.67"/>
+    <path class="cls-12" d="m238,686v166.67H2v-166.67h236m2-2H0v170.67h240v-170.67h0Z"/>
+  </g>
+  <text class="cls-2" transform="translate(54.36 58.98)"><tspan x="0" y="0">Seiten des</tspan><tspan x="-5.43" y="36">Dreiecks &amp;</tspan><tspan x="-15.53" y="72">reelle Zahlen</tspan></text>
+  <text class="cls-4" transform="translate(306.18 112.98)"><tspan x="0" y="0">a</tspan></text>
+  <text class="cls-4" transform="translate(305.18 277.98)"><tspan x="0" y="0">d</tspan></text>
+  <text class="cls-5" transform="translate(278.56 453.98)"><tspan class="cls-3" x="0" y="0">e </tspan><tspan class="cls-1" x="64.26" y="0">≈ 2.71</tspan></text>
+  <text class="cls-4" transform="translate(316.86 788.98)"><tspan x="0" y="0">i</tspan></text>
+  <text class="cls-4" transform="translate(313.01 622.98)"><tspan x="0" y="0">f</tspan></text>
+  <text class="cls-4" transform="translate(475.18 620.98)"><tspan x="0" y="0">g</tspan></text>
+  <text class="cls-4" transform="translate(647.18 621.98)"><tspan x="0" y="0">h</tspan></text>
+  <text class="cls-4" transform="translate(476.18 112.98)"><tspan x="0" y="0">b</tspan></text>
+  <text class="cls-4" transform="translate(649.17 112.98)"><tspan x="0" y="0">c</tspan></text>
+  <text class="cls-2" transform="translate(67.39 268.98)"><tspan x="0" y="0">Abstand</tspan></text>
+  <text class="cls-2" transform="translate(32.68 401.98)"><tspan x="0" y="0">Die Eulersche </tspan><tspan x="-22.26" y="36">Zahl ist die Basis </tspan><tspan x="35.93" y="72">des ln(e)</tspan></text>
+  <text class="cls-2" transform="translate(49.06 607.98)"><tspan class="cls-14" x="0" y="0">F</tspan><tspan x="17.01" y="0">unktionen</tspan></text>
+  <text class="cls-2" transform="translate(31.19 781.98)"><tspan x="0" y="0">Imagin</tspan><tspan class="cls-14" x="84.71" y="0">ä</tspan><tspan x="98.6" y="0">re Zahl</tspan></text>
+</svg>
