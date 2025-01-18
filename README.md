@@ -19,29 +19,84 @@ Genial is an interactive web-based application designed to simplify and gamify t
 ## Project Structure
 
 ```
-├── src
-│   ├── components
-│   │   ├── LandingPage
-│   │   │   ├── Footer.css
-│   │   │   ├── Footer.jsx
-│   │   │   ├── NavBar.css
-│   │   │   ├── NavBar.jsx
-│   │   │   ├── AboutUs.css
-│   │   │   ├── AboutUs.jsx
-│   │   └── Lehrplan
-│   │       ├── MaturatypenUebersicht.css
-│   │       ├── MaturatypenUebersicht.jsx
-│   ├── modules
-│   │   ├── PageTemplate
-│   │   │   ├── PageWrapper.css
-│   │   │   ├── PageWrapper.jsx
-│   │   └── Pages
-│   │       ├── GleichungenLoesen.jsx
-│   │       ├── Grundlagen.jsx
-│   │       └── Tippy
-├── package.json
+.
+├── README.md
+├── eslint.config.js
+├── index.html
 ├── package-lock.json
-└── README.md
+├── package.json
+├── public
+│   ├── assets
+│   │   ├── CardImages
+│   │   │   └── HTL2
+│   │   ├── images
+│   │   │   ├── AboutUs
+│   │   │   ├── LandingPage
+│   │   │   ├── Lektionen
+│   │   │   ├── TeamMembers
+│   │   │   └── Webclip
+│   │   └── videos
+│   │       └── LandingPage_Sinusfunktion.mov
+│   └── font
+│       └── font
+│           ├── ltckennerleypro-bold.woff2
+│           └── ltckennerleypro_regular.woff2
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── Matura
+│   │   ├── Content
+│   │   │   ├── 1_Grundlagen
+│   │   │   ├── 2_GleichungenLoesen
+│   │   │   ├── DynamicTheoryPage.jsx
+│   │   │   ├── LektionenTemplate
+│   │   │   ├── ModulTemplate
+│   │   │   ├── ModulTippy
+│   │   │   └── TheoryRegistry.js
+│   │   └── MaturatypenUebersicht
+│   │       └── MaturatypenUebersicht.jsx
+│   ├── components
+│   │   ├── CubeButton
+│   │   │   ├── CubeButton.jsx
+│   │   │   └── CubePraxis.jsx
+│   │   ├── Dashboard
+│   │   │   └── Dashboard.jsx
+│   │   ├── GenialQuizzes
+│   │   │   ├── ExplanationReveal.jsx
+│   │   │   ├── FillBlankQuiz.jsx
+│   │   │   ├── MCQQuiz.jsx
+│   │   │   ├── MatchingPairsQuiz.jsx
+│   │   │   ├── ReorderQuiz.jsx
+│   │   │   ├── TrueFalseQuiz.jsx
+│   │   │   └── index.jsx
+│   │   ├── InteractiveElements
+│   │   │   └── SecantTangentVisualization.jsx
+│   │   ├── LandingPage
+│   │   │   ├── AboutUs.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── LandingPage.jsx
+│   │   │   ├── NavBar.jsx
+│   │   │   └── Price.jsx
+│   │   ├── Onboarding
+│   │   │   ├── ContinueButton.jsx
+│   │   │   ├── ErrorBoundary.jsx
+│   │   │   ├── OnboardingContext.jsx
+│   │   │   ├── OnboardingLayout.jsx
+│   │   │   ├── OnboardingProgressBar.jsx
+│   │   │   ├── OptionItem.jsx
+│   │   │   ├── assets
+│   │   │   └── steps
+│   │   ├── ProgressBar
+│   │   │   ├── ProgressBarBrilliant.jsx
+│   │   │   └── ProgressTabsBrilliant.jsx
+│   │   └── TippyText
+│   │       └── TippyText.jsx
+│   ├── firebase
+│   │   ├── LoginPopper.jsx
+│   │   └── firebaseConfig.js
+│   ├── main.jsx
+│   └── theme.js
+└── vite.config.js
 ```
 
 ---
