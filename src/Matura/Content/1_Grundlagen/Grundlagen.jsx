@@ -37,6 +37,22 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis über die lateinischen Buchstaben in Mathematik.",
             route: "/praxis-lateinischebuchstaben"
         },
+
+        {
+            id: 5,
+            title: "Theorie: Zahlenmengen",
+            headline: "Theorie: Zahlenmengen",
+            description: "Lerne die Gründe warum wir mehrere Zahlenmengen brauchen.",
+            route: "/theory/zahlenarith"
+        },
+
+        {
+            id: 6,
+            title: "Praxis: Zahlenmengen",
+            headline: "Praxis: Zahlenmengen",
+            description: "Vertiefe dein Verständnis über Zahlenmengen.",
+            route: "/praxis-zahlenarithmetik"
+        },
         // more modules ...
     ];
 

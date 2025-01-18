@@ -11,11 +11,9 @@ import {
     MatchingPairsQuiz,
 } from "../../../components/GenialQuizzes";
 
-/**
- * LectureTheorySection
- * Renders heading, paragraphs, optional quiz.
- * If a quiz is present => once answered => calls onQuizAnswered().
- */
+// Optional: NumericInputQuiz or other custom quiz
+// import NumericInputQuiz from "../../../components/GenialQuizzes/NumericInputQuiz.jsx";
+
 function LectureTheorySection({
                                   heading,
                                   isVisible,
@@ -23,9 +21,12 @@ function LectureTheorySection({
                                   quizData,
                                   onQuizAnswered = () => {},
                               }) {
-    if (!isVisible) return null;
+    if (!isVisible) return null; // Gate: hide if not visible
 
-    const handleQuizComplete = () => onQuizAnswered();
+    // Called after user completes the quiz
+    const handleQuizComplete = () => {
+        onQuizAnswered();
+    };
 
     const renderQuiz = () => {
         if (!quizData) return null;
@@ -67,6 +68,15 @@ function LectureTheorySection({
                         onQuizComplete={handleQuizComplete}
                     />
                 );
+            // case "numericinput":
+            //   return (
+            //     <NumericInputQuiz
+            //       question={quizData.question}
+            //       correctNumber={quizData.correctNumber}
+            //       explanation={quizData.explanation}
+            //       onQuizComplete={handleQuizComplete}
+            //     />
+            //   );
             case "mcq":
             default:
                 return (
@@ -84,13 +94,15 @@ function LectureTheorySection({
     return (
         <Box as="section" mb={8}>
             {heading && (
-                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={7}>
+                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={4}>
                     {heading}
                 </Text>
             )}
-            <Box mb={4}>{children}</Box>
 
-            {/* If there's a quiz, render it */}
+            <Box mb={4} fontSize={{ base: "xl", md: "xl" }}>
+                {children}
+            </Box>
+
             {renderQuiz()}
         </Box>
     );

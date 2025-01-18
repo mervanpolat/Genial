@@ -3,7 +3,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 
-// Import your quiz components from the correct relative path
 import {
     MCQQuiz,
     TrueFalseQuiz,
@@ -12,18 +11,14 @@ import {
     MatchingPairsQuiz,
 } from "../../../components/GenialQuizzes";
 
-/**
- * LecturePracticeSection
- *
- * Renders exactly ONE quiz (the current step).
- * onAnswered() => called once the user has answered (correct or not).
- */
+// Falls du numericinput nutzt
+import NumericInputQuiz from "../../../components/GenialQuizzes/NumericInputQuiz.jsx";
+
 function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
     if (!quizData) return null;
 
     const { type } = quizData;
 
-    // Called after user checks an answer in each quiz
     const handleQuizComplete = () => {
         onAnswered();
     };
@@ -40,7 +35,6 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
-
         case "fillblank":
             return (
                 <Box>
@@ -52,7 +46,6 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
-
         case "reorder":
             return (
                 <Box>
@@ -65,7 +58,6 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
-
         case "matchingpairs":
             return (
                 <Box>
@@ -76,7 +68,17 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
-
+        case "numericinput":
+            return (
+                <Box>
+                    <NumericInputQuiz
+                        question={quizData.question}
+                        correctNumber={quizData.correctNumber}
+                        explanation={quizData.explanation}
+                        onQuizComplete={handleQuizComplete}
+                    />
+                </Box>
+            );
         case "mcq":
         default:
             return (

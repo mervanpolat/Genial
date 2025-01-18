@@ -17,7 +17,6 @@ import Lateinische_Buchstaben from "./images/Lateinische_Buchstaben.svg";
 import Lateinische_Buchstaben2 from "./images/Lateinische_Buchstaben2.svg";
 
 // Additional inline images
-import Seitenlaengen from "./images/Seitenlaengen.svg";
 import DependantAndNonDependant from "./images/DependantAndNonDependant.svg";
 
 /**
@@ -87,17 +86,6 @@ const LateinischeBuchstabenData = {
                     <InlineMath>{String.raw`\mathbb{R}`}</InlineMath> betrachten wollen,
                     ohne Einschränkungen. Außerdem begegnet man ihnen in der Geometrie –
                     etwa als Seitenlängen in einem Dreieck.
-                </>,
-                <>
-                    <Box mt={4} textAlign="center">
-                        <ChakraImage
-                            src={Seitenlaengen}
-                            alt="Dreieck mit α, β, γ"
-                            maxW="400px"
-                            objectFit="contain"
-                            margin="0 auto"
-                        />
-                    </Box>
                 </>,
             ],
             quizData: {
@@ -332,10 +320,6 @@ const LateinischeBuchstabenData = {
         {
             heading: "Fazit und Kontextabhängigkeit",
             paragraphs: [
-                // Now we use DoubleImageSliderFazit
-                <>
-                    <DoubleImageSliderFazit />
-                </>,
 
                 <>
                     Die Bedeutung lateinischer Buchstaben in der Mathematik ist stark

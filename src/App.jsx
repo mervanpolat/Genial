@@ -24,6 +24,7 @@ import GleichungenLoesen from "./Matura/Content/2_GleichungenLoesen/GleichungenL
 
 import Praxis_GriechischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Praxis_GriechischeBuchstaben.jsx";
 import Praxis_LateinischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/2_LateinischeBuchstaben/Praxis_LateinischeBuchstaben.jsx";
+import Praxis_ZahlenArithmetik from "./Matura/Content/1_Grundlagen/Lektionen/3_ZahlenArithmetik/Praxis_ZahlenArithmetik.jsx";
 
 
 // SINGLE dynamic route for theory
@@ -122,6 +123,11 @@ function App() {
                 <Route
                     path="/praxis-lateinischebuchstaben"
                     element={<Praxis_LateinischeBuchstaben />}
+                />
+
+                <Route
+                    path="/praxis-zahlenarithmetik"
+                    element={<Praxis_ZahlenArithmetik />}
                 />
 
                 {/* DYNAMIC route for theory => the “slug” picks the data */}

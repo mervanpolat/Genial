@@ -5,6 +5,7 @@ import TrueFalseQuiz from "./TrueFalseQuiz";
 import ReorderQuiz from "./ReorderQuiz";
 import FillBlankQuiz from "./FillBlankQuiz";
 import MatchingPairsQuiz from "./MatchingPairsQuiz";
+import NumericInputQuiz from "./NumericInputQuiz.jsx";
 
 export {
     ExplanationReveal,
@@ -13,4 +14,5 @@ export {
     ReorderQuiz,
     FillBlankQuiz,
     MatchingPairsQuiz,
+    NumericInputQuiz,
 };
