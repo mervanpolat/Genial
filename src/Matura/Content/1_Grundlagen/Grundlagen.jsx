@@ -25,8 +25,8 @@ function Grundlagen() {
 
         {
             id: 3,
-            title: "Theorie: Lateinische Buchstaben",
-            headline: "Theorie: Lateinische Buchstaben",
+            title: "Lateinische Buchstaben",
+            headline: "Lateinische Buchstaben",
             description: "Lerne die Lateinische Buchstaben die in Mathematik ständig vorkommen.",
             route: "/theory/lateinische"
         },
@@ -40,8 +40,8 @@ function Grundlagen() {
 
         {
             id: 5,
-            title: "Theorie: Zahlenmengen",
-            headline: "Theorie: Zahlenmengen",
+            title: "Zahlenmengen",
+            headline: "Zahlenmengen",
             description: "Lerne die Gründe warum wir mehrere Zahlenmengen brauchen.",
             route: "/theory/zahlenarith"
         },
@@ -52,6 +52,20 @@ function Grundlagen() {
             headline: "Praxis: Zahlenmengen",
             description: "Vertiefe dein Verständnis über Zahlenmengen.",
             route: "/praxis-zahlenarithmetik"
+        },
+        {
+            id: 7,
+            title: "Grundlagen der Zahlen und Arithmetik",
+            headline: "Grundlagen der Zahlen und Arithmetik",
+            description: "Erfahre mehr über Zahlenmengen, ihre Eigenschaften und grundlegende Rechenregeln.",
+            route: "/theory/natZahlenArith"
+        },
+        {
+            id: 8,
+            title: "Praxis: Grundlagen der Zahlen und Arithmetik",
+            headline: "Praxis: Grundlagen der Zahlen und Arithmetik",
+            description: "Vertiefe dein Verständnis über Zahlen und Arithmetik.",
+            route: "/praxis-natZahlenArithmetik"
         },
         // more modules ...
     ];
