@@ -1,6 +1,6 @@
 // File: src/Matura/Content/LektionenTemplate/LectureTheoryPage.jsx
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
     chakra,
     Button,
@@ -19,6 +19,11 @@ import "slick-carousel/slick/slick-theme.css";
 const OuterSection = chakra("section", {});
 const InnerSection = chakra("section", {});
 
+/**
+ * A helper to render either a slider if multiple banner images,
+ * a single image if exactly one banner,
+ * or nothing if no banner is provided.
+ */
 function BannerArea({ bannerImageSrc, bannerImages = [] }) {
     if (bannerImages.length >= 2) {
         const settings = {
@@ -80,6 +85,15 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
     return null;
 }
 
+/**
+ * LectureTheoryPage
+ *
+ * Behavior:
+ *  - On initial mount, we scroll the user down so that the navbar is NOT visible.
+ *    (We do that by offsetting the top by NAVBAR_HEIGHT or a bit more.)
+ *  - Show an "intro" (banner, optional headline, optional introText) plus a "Weiter" button.
+ *  - When user clicks "Weiter" => show section 0, then 1, etc., gating each with quizzes if present.
+ */
 function LectureTheoryPage({
                                bannerImageSrc,
                                bannerImages,
@@ -88,10 +102,23 @@ function LectureTheoryPage({
                                sectionsContent,
                                onSectionComplete,
                            }) {
+    const navigate = useNavigate();
+
+    // We'll reference the entire main container to measure offset
+    const pageRef = useRef(null);
+
+    // If we want the navbar out of sight => we assume the navbar is ~80 px high.
+    // You can tweak this to fit your actual nav size.
+    const NAVBAR_HEIGHT = 80;
+
+    // "Intro" gating
+    const [introVisible, setIntroVisible] = useState(!!introText);
+
+    // "Section" gating
     const [visibleSectionIndex, setVisibleSectionIndex] = useState(0);
     const [isSectionAnswered, setIsSectionAnswered] = useState(false);
+
     const sectionRefs = useRef([]);
-    const navigate = useNavigate();
 
     const bgColor = useColorModeValue("#faf3dc", "#faf3dc");
     const cardBg = useColorModeValue("#faf3dc", "#faf3dc");
@@ -99,11 +126,45 @@ function LectureTheoryPage({
     const totalSections = sectionsContent.length;
     const isLastSection = visibleSectionIndex === totalSections - 1;
 
-    // Klicke auf “Weiter”
-    const handleNextSection = () => {
-        const nextIndex = visibleSectionIndex + 1;
+    // Scroll user so the navbar is NOT visible initially
+    useEffect(() => {
+        if (pageRef.current) {
+            // Wait a little so layout is rendered
+            setTimeout(() => {
+                // We scroll an offset that hides the navbar from view.
+                // If your navbar is at top: 0, we add ~80 px
+                // You might want to do + NAVBAR_HEIGHT + some margin => e.g. + 10
+                const topPosition = pageRef.current.offsetTop + NAVBAR_HEIGHT;
+
+                window.scrollTo({
+                    top: topPosition,
+                    behavior: "smooth",
+                });
+            }, 50);
+        }
+    }, []);
+
+    // User clicks "Weiter" in the intro => show first section
+    const handleIntroNext = () => {
+        setIntroVisible(false);
+        setVisibleSectionIndex(0);
         setIsSectionAnswered(false);
 
+        // Scroll to the first section
+        setTimeout(() => {
+            if (sectionRefs.current[0]) {
+                sectionRefs.current[0].scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }
+        }, 50);
+    };
+
+    // User clicks "Weiter" in each section => next or done
+    const handleNextSection = () => {
+        setIsSectionAnswered(false);
+        const nextIndex = visibleSectionIndex + 1;
         if (nextIndex < totalSections) {
             setVisibleSectionIndex(nextIndex);
             setTimeout(() => {
@@ -116,12 +177,11 @@ function LectureTheoryPage({
             }, 50);
             if (onSectionComplete) onSectionComplete(nextIndex);
         } else {
-            // Letzter Abschnitt => Abschließen
             navigate("/grundlagen");
         }
     };
 
-    // Die Logik zum Deaktivieren des Buttons
+    // Gating if there's a quiz
     const currentSection = sectionsContent[visibleSectionIndex];
     const hasQuiz = !!currentSection?.quizData;
     const isButtonDisabled = hasQuiz && !isSectionAnswered;
@@ -133,7 +193,7 @@ function LectureTheoryPage({
     const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
 
     return (
-        <chakra.section bg={bgColor} minH="100vh" py={6}>
+        <chakra.section ref={pageRef} bg={bgColor} minH="100vh" py={6}>
             <OuterSection
                 maxW={{ base: "95vw", md: "80vw", lg: "50vw" }}
                 mx="auto"
@@ -141,53 +201,79 @@ function LectureTheoryPage({
                 p={6}
                 bg={cardBg}
             >
-                <BannerArea bannerImageSrc={bannerImageSrc} bannerImages={bannerImages || []} />
+                <BannerArea
+                    bannerImageSrc={bannerImageSrc}
+                    bannerImages={bannerImages || []}
+                />
 
                 {headline && (
-                    <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={4}>
+                    <Text
+                        fontSize={{ base: "2xl", md: "3xl" }}
+                        fontWeight="bold"
+                        mb={4}
+                    >
                         {headline}
                     </Text>
                 )}
 
-                {introText && (
-                    <Text fontSize={{ base: "xl", md: "xl" }} mb={4}>
-                        {introText}
-                    </Text>
+                {/* INTRO STAGE */}
+                {introVisible && introText && (
+                    <>
+                        <Text fontSize={{ base: "xl", md: "xl" }} mb={4}>
+                            {introText}
+                        </Text>
+
+                        <Button
+                            onClick={handleIntroNext}
+                            mt={6}
+                            bg="#30628b"
+                            color="white"
+                            size={{ base: "md", md: "lg" }}
+                            boxShadow="md"
+                            _hover={{ bg: "#245074", boxShadow: "lg" }}
+                            _active={{ bg: "#1d3f5e" }}
+                        >
+                            Weiter
+                        </Button>
+                    </>
                 )}
 
-                {/* Render all sections, but only up to visibleSectionIndex are actually displayed */}
-                {sectionsContent.map((section, idx) => (
-                    <InnerSection
-                        key={idx}
-                        ref={(el) => (sectionRefs.current[idx] = el)}
-                        mt={8}
-                    >
-                        <LectureTheorySection
-                            heading={section.heading}
-                            isVisible={idx <= visibleSectionIndex}
-                            quizData={section.quizData}
-                            onQuizAnswered={handleQuizAnswered}
-                        >
-                            {section.paragraphs}
-                        </LectureTheorySection>
-                    </InnerSection>
-                ))}
+                {/* SECTION STAGE */}
+                {!introVisible && (
+                    <>
+                        {sectionsContent.map((section, idx) => (
+                            <InnerSection
+                                key={idx}
+                                ref={(el) => (sectionRefs.current[idx] = el)}
+                                mt={8}
+                            >
+                                <LectureTheorySection
+                                    heading={section.heading}
+                                    isVisible={idx <= visibleSectionIndex}
+                                    quizData={section.quizData}
+                                    onQuizAnswered={handleQuizAnswered}
+                                >
+                                    {section.paragraphs}
+                                </LectureTheorySection>
+                            </InnerSection>
+                        ))}
 
-                {/* Button */}
-                {visibleSectionIndex < totalSections && (
-                    <Button
-                        onClick={handleNextSection}
-                        mt={6}
-                        bg="#30628b"
-                        color="white"
-                        size={{ base: "md", md: "lg" }}
-                        boxShadow="md"
-                        _hover={{ bg: "#245074", boxShadow: "lg" }}
-                        _active={{ bg: "#1d3f5e" }}
-                        isDisabled={isButtonDisabled}
-                    >
-                        {buttonLabel}
-                    </Button>
+                        {visibleSectionIndex < totalSections && (
+                            <Button
+                                onClick={handleNextSection}
+                                mt={6}
+                                bg="#30628b"
+                                color="white"
+                                size={{ base: "md", md: "lg" }}
+                                boxShadow="md"
+                                _hover={{ bg: "#245074", boxShadow: "lg" }}
+                                _active={{ bg: "#1d3f5e" }}
+                                isDisabled={isButtonDisabled}
+                            >
+                                {buttonLabel}
+                            </Button>
+                        )}
+                    </>
                 )}
             </OuterSection>
         </chakra.section>

@@ -73,7 +73,7 @@ const LateinischeBuchstabenData = {
 
     headline: "Lateinische Buchstaben in der Mathematik",
     introText:
-        "Diese kurze Übersicht behandelt die häufigsten lateinischen Buchstaben und deren typische Verwendung in der Mathematik – von Variablen für reelle Zahlen bis hin zu Euler’s berühmter Zahl e.",
+        "Diese kurze Übersicht behandelt die häufigsten lateinischen Buchstaben und deren typische Verwendung in der Mathematik – von Variablen für reelle Zahlen bis hin zu Euler’s Zahl e.",
 
     sections: [
         {
