@@ -67,6 +67,21 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis über Zahlen und Arithmetik.",
             route: "/praxis-natZahlenArithmetik"
         },
+
+        {
+            id: 9,
+            title: "Kommutativität von Addition und Multiplikation",
+            headline: "Kommutativität von Addition und Multiplikation",
+            description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren das Ergebnis nicht verändert.",
+            route: "/theory/kommutativg"
+        },
+        {
+            id: 10,
+            title: "Praxis: Kommutativität von Addition und Multiplikation",
+            headline: "Praxis: Kommutativität von Addition und Multiplikation",
+            description: "Vertiefe dein Verständnis über Kommutativgesetz.",
+            route: "/praxis-natZahlenArithmetik"
+        },
         // more modules ...
     ];
 

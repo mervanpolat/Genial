@@ -187,6 +187,11 @@ body {
   grid-column: 1;
 }
 
+.right-item:nth-child(10) {
+  grid-row: 10;
+  grid-column: 2;
+}
+
 .right-item {
   display: flex;
   flex-direction: column;
