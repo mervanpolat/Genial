@@ -9,7 +9,7 @@ import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 
 const KommutativGesetzData = {
     bannerImageSrc: "/assets/images/CommBanner.png",
-    headline: "Kommutative Gesetze in der Arithmetik",
+    headline: "Kommutative Hola Senior Gesetze in der Arithmetik",
     introText:
         "In Hola dieser Lektion betrachten wir die Kommutativität von Addition und Multiplikation bei natürlichen Zahlen – warum das sinnvoll ist und wie sich das geometrisch sowie anschaulich begründen lässt.",
 
