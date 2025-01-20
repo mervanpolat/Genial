@@ -27,6 +27,7 @@ import Praxis_LateinischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektione
 import Praxis_ZahlenArithmetik from "./Matura/Content/1_Grundlagen/Lektionen/3_ZahlenArithmetik/Praxis_ZahlenArithmetik.jsx";
 import Praxis_NatZahlenArith from "./Matura/Content/1_Grundlagen/Lektionen/4_NatZahlenArith/Praxis_NatZahlenArith.jsx";
 import Praxis_KommutativGesetz from "./Matura/Content/1_Grundlagen/Lektionen/5_Kommutativgesetz/Praxis_KommutativGesetz.jsx";
+import Praxis_Assoziativitaet from "./Matura/Content/1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
 
 // SINGLE dynamic route for theory
 import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
@@ -137,8 +138,13 @@ function App() {
                 />
 
                 <Route
-                    path= "//praxis-natZahlenArithmetik"
+                    path= "/praxis-kommutativ"
                     element={<Praxis_KommutativGesetz />}
+                />
+
+                <Route
+                    path= "//praxis-assoziativitaet"
+                    element={<Praxis_Assoziativitaet />}
                 />
 
                 {/* DYNAMIC route for theory => the “slug” picks the data */}

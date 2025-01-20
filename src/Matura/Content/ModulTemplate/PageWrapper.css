@@ -192,6 +192,16 @@ body {
   grid-column: 2;
 }
 
+.right-item:nth-child(11) {
+  grid-row: 11;
+  grid-column: 3;
+}
+
+.right-item:nth-child(12) {
+  grid-row: 12;
+  grid-column: 2;
+}
+
 .right-item {
   display: flex;
   flex-direction: column;
@@ -263,6 +273,31 @@ body {
   .right-item:nth-child(8) {
     grid-row: 8;
     grid-column: 2;
+  }
+
+  .right-item:nth-child(9) {
+    grid-row: 9;
+    grid-column: 1;
+  }
+
+  .right-item:nth-child(10) {
+    grid-row: 10;
+    grid-column: 2;
+  }
+
+  .right-item:nth-child(11) {
+    grid-row: 11;
+    grid-column: 3;
+  }
+
+  .right-item:nth-child(12) {
+    grid-row: 12;
+    grid-column: 2;
+  }
+
+  .right-item:nth-child(13) {
+    grid-row: 13;
+    grid-column: 1;
   }
 }
 

@@ -6,7 +6,7 @@ import LateinischeBuchstabenData from "./1_Grundlagen/Lektionen/2_LateinischeBuc
 import ZahlenArithmetikData from "./1_Grundlagen/Lektionen/3_ZahlenArithmetik/ZahlenArithmetikData.jsx";
 import natZahlenArithData from "./1_Grundlagen/Lektionen/4_NatZahlenArith/NatZahlenArithData.jsx";
 import KommutativGesetzData from "./1_Grundlagen/Lektionen/5_Kommutativgesetz/KommutativGesetzData.jsx";
-
+import AssoziativitaetData from "./1_Grundlagen/Lektionen/6_Assoziativgesetz/AssoziativitaetData.jsx";
 
 
 // Create a mapping from "slug" => data object
@@ -17,6 +17,7 @@ const theoryRegistry = {
     zahlenarith: ZahlenArithmetikData,
     natZahlenArith: natZahlenArithData,
     kommutativg: KommutativGesetzData,
+    assoziativitaet: AssoziativitaetData
 
 };
 

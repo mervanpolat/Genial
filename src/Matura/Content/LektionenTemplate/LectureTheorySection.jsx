@@ -11,9 +11,6 @@ import {
     MatchingPairsQuiz,
 } from "../../../components/GenialQuizzes";
 
-// Optional: NumericInputQuiz or other custom quiz
-// import NumericInputQuiz from "../../../components/GenialQuizzes/NumericInputQuiz.jsx";
-
 function LectureTheorySection({
                                   heading,
                                   isVisible,
@@ -21,16 +18,15 @@ function LectureTheorySection({
                                   quizData,
                                   onQuizAnswered = () => {},
                               }) {
-    if (!isVisible) return null; // Gate: hide if not visible
+    // Optional Gating
+    // if (!isVisible) return null;
 
-    // Called after user completes the quiz
     const handleQuizComplete = () => {
         onQuizAnswered();
     };
 
     const renderQuiz = () => {
         if (!quizData) return null;
-
         switch (quizData.type) {
             case "truefalse":
                 return (
@@ -68,15 +64,6 @@ function LectureTheorySection({
                         onQuizComplete={handleQuizComplete}
                     />
                 );
-            // case "numericinput":
-            //   return (
-            //     <NumericInputQuiz
-            //       question={quizData.question}
-            //       correctNumber={quizData.correctNumber}
-            //       explanation={quizData.explanation}
-            //       onQuizComplete={handleQuizComplete}
-            //     />
-            //   );
             case "mcq":
             default:
                 return (
@@ -91,6 +78,15 @@ function LectureTheorySection({
         }
     };
 
+    // Keys for paragraphs to fix key warning
+    const paragraphsArray = Array.isArray(children)
+        ? children.map((para, i) => (
+            <Box key={`para-${i}`} mb={2}>
+                {para}
+            </Box>
+        ))
+        : children;
+
     return (
         <Box as="section" mb={8}>
             {heading && (
@@ -100,7 +96,7 @@ function LectureTheorySection({
             )}
 
             <Box mb={4} fontSize={{ base: "xl", md: "xl" }}>
-                {children}
+                {paragraphsArray}
             </Box>
 
             {renderQuiz()}

@@ -74,13 +74,29 @@ function Grundlagen() {
             headline: "Kommutativität von Addition und Multiplikation",
             description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren das Ergebnis nicht verändert.",
             route: "/theory/kommutativg"
+
         },
         {
             id: 10,
             title: "Praxis: Kommutativität von Addition und Multiplikation",
             headline: "Praxis: Kommutativität von Addition und Multiplikation",
             description: "Vertiefe dein Verständnis über Kommutativgesetz.",
-            route: "/praxis-natZahlenArithmetik"
+            route: "/praxis-kommutativ"
+        },
+        {
+            id: 11,
+            title: "Assoziativität in der Arithmetik",
+            headline: "Assoziativität in der Arithmetik",
+            description: "Lerne, warum die Klammerung bei Addition/Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt.",
+            route: "/theory/assoziativitaet"
+        },
+
+        {
+            id: 12,
+            title: "Praxis: Assoziativität in der Arithmetik",
+            headline: "Praxis: Assoziativität in der Arithmetik",
+            description: "Vertiefe dein Verständnis über Assoziativgesetz",
+            route: "/praxis-assoziativitaet"
         },
         // more modules ...
     ];
