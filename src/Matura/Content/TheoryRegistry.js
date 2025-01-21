@@ -7,6 +7,8 @@ import ZahlenArithmetikData from "./1_Grundlagen/Lektionen/3_ZahlenArithmetik/Za
 import natZahlenArithData from "./1_Grundlagen/Lektionen/4_NatZahlenArith/NatZahlenArithData.jsx";
 import KommutativGesetzData from "./1_Grundlagen/Lektionen/5_Kommutativgesetz/KommutativGesetzData.jsx";
 import AssoziativitaetData from "./1_Grundlagen/Lektionen/6_Assoziativgesetz/AssoziativitaetData.jsx";
+import DistributivData from "./1_Grundlagen/Lektionen/7_Distributivgesetz/DistributivData.jsx";
+import PrimzahlUndTeilbarkeitData from "./1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/PrimzahlUndTeilbarkeitData.jsx";
 
 
 // Create a mapping from "slug" => data object
@@ -17,7 +19,9 @@ const theoryRegistry = {
     zahlenarith: ZahlenArithmetikData,
     natZahlenArith: natZahlenArithData,
     kommutativg: KommutativGesetzData,
-    assoziativitaet: AssoziativitaetData
+    assoziativitaet: AssoziativitaetData,
+    distributiv: DistributivData,
+    primzahlundteil: PrimzahlUndTeilbarkeitData,
 
 };
 

@@ -98,6 +98,39 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis über Assoziativgesetz",
             route: "/praxis-assoziativitaet"
         },
+
+        {
+            id: 13,
+            title: "Das Distributive Gesetz in der Arithmetik",
+            headline: "Das Distributive Gesetz in der Arithmetik",
+            description: "Wie verknüpft man Addition und Multiplikation sinnvoll? Das Distributivgesetz liefert die Antwort!",
+            route: "/theory/distributiv"
+        },
+
+        {
+            id: 14,
+            title: "Praxis: Das Distributive Gesetz in der Arithmetik",
+            headline: "Praxis: Das Distributive Gesetz in der Arithmetik",
+            description: "Vertiefe dein Verständnis über Distributivgesetz!",
+            route: "/praxis-distributivgesetz"
+        },
+        {
+            id: 15,
+            title: "Primzahlen und Teilbarkeitsregeln",
+            headline: "Primzahlen und Teilbarkeitsregeln",
+            description: "Lerne die Grundlagen zu Primzahlen und Teilbarkeitsregeln, um Divisoren zu erkennen und Zahlenfaktoren zu bestimmen.",
+            route: "/theory/primzahlundteil"
+        },
+
+        {
+            id: 16,
+            title: "Praxis: Primzahlen und Teilbarkeitsregeln",
+            headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
+            description: "Vertiefe dein Verständnis die Grundlagen zu Primzahlen und wichtigen Teilbarkeitsregeln.",
+            route: "/praxis-primzahlundteil"
+        }
+
+
         // more modules ...
     ];
 

@@ -28,6 +28,8 @@ import Praxis_ZahlenArithmetik from "./Matura/Content/1_Grundlagen/Lektionen/3_Z
 import Praxis_NatZahlenArith from "./Matura/Content/1_Grundlagen/Lektionen/4_NatZahlenArith/Praxis_NatZahlenArith.jsx";
 import Praxis_KommutativGesetz from "./Matura/Content/1_Grundlagen/Lektionen/5_Kommutativgesetz/Praxis_KommutativGesetz.jsx";
 import Praxis_Assoziativitaet from "./Matura/Content/1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
+import Praxis_Distributivgesetz from "./Matura/Content/1_Grundlagen/Lektionen/7_Distributivgesetz/Praxis_Distributivgesetz.jsx";
+import Praxis_PrimzahlUndTeilbarkeit from "./Matura/Content/1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/Praxis_PrimzahlUndTeilbarkeit.jsx";
 
 // SINGLE dynamic route for theory
 import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
@@ -143,8 +145,20 @@ function App() {
                 />
 
                 <Route
-                    path= "//praxis-assoziativitaet"
+                    path= "/praxis-assoziativitaet"
                     element={<Praxis_Assoziativitaet />}
+                />
+
+                <Route
+                    path= "/praxis-distributivgesetz"
+                    element={<Praxis_Distributivgesetz />}
+                />
+
+                Praxis_PrimzahlUndTeilbarkeit
+
+                <Route
+                    path= "/praxis-primzahlundteil"
+                    element={<Praxis_PrimzahlUndTeilbarkeit />}
                 />
 
                 {/* DYNAMIC route for theory => the “slug” picks the data */}
