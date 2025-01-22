@@ -11,11 +11,6 @@ import {
     MatchingPairsQuiz,
 } from "../../../components/GenialQuizzes";
 
-/**
- * LectureTheorySection
- * Renders heading, paragraphs, optional quiz.
- * If a quiz is present => once answered => calls onQuizAnswered().
- */
 function LectureTheorySection({
                                   heading,
                                   isVisible,
@@ -23,13 +18,15 @@ function LectureTheorySection({
                                   quizData,
                                   onQuizAnswered = () => {},
                               }) {
-    if (!isVisible) return null;
+    // Optional Gating
+    // if (!isVisible) return null;
 
-    const handleQuizComplete = () => onQuizAnswered();
+    const handleQuizComplete = () => {
+        onQuizAnswered();
+    };
 
     const renderQuiz = () => {
         if (!quizData) return null;
-
         switch (quizData.type) {
             case "truefalse":
                 return (
@@ -81,16 +78,27 @@ function LectureTheorySection({
         }
     };
 
+    // Keys for paragraphs to fix key warning
+    const paragraphsArray = Array.isArray(children)
+        ? children.map((para, i) => (
+            <Box key={`para-${i}`} mb={2}>
+                {para}
+            </Box>
+        ))
+        : children;
+
     return (
         <Box as="section" mb={8}>
             {heading && (
-                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={7}>
+                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={4}>
                     {heading}
                 </Text>
             )}
-            <Box mb={4}>{children}</Box>
 
-            {/* If there's a quiz, render it */}
+            <Box mb={4} fontSize={{ base: "xl", md: "xl" }}>
+                {paragraphsArray}
+            </Box>
+
             {renderQuiz()}
         </Box>
     );

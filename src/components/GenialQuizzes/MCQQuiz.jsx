@@ -1,4 +1,5 @@
 // File: src/components/GenialQuizzes/MCQQuiz.jsx
+
 import React, { useState } from "react";
 import {
     Box,
@@ -10,13 +11,12 @@ import {
 } from "@chakra-ui/react";
 import ExplanationReveal from "./ExplanationReveal";
 
-// Byrne Colors
+// Farben
 const CARD_BG = "#f2e8d5";
 const BEIGE = "#faf3dc";
 const BLUE = "#30628b";
 const RED = "#c03b2d";
 const GREEN = "#3bb25a";
-const YELLOW = "#f0c34e";
 
 function MCQQuiz({
                      question,
@@ -49,28 +49,27 @@ function MCQQuiz({
         setIsCorrect(correct);
         setIsAnswered(true);
 
-        // *** Always call onQuizComplete(), even if wrong ***
         if (onQuizComplete) onQuizComplete();
     };
 
-    // Return correct styling
     const getButtonStyle = (idx) => {
+        // Stil je nach Status
         if (isAnswered) {
-            // after answer
+            // Nach Abgabe
             if (idx === selectedIndex) {
-                // user choice
+                // User Choice
                 return isCorrect
                     ? { bg: GREEN, borderColor: BLUE, color: "white" }
                     : { bg: RED, borderColor: BLUE, color: "white" };
             }
             if (idx === correctAnswerIndex) {
-                // highlight correct
+                // Markiere die richtige Option
                 return { bg: GREEN, borderColor: BLUE, color: "white" };
             }
-            // others remain neutral
+            // andere bleiben normal
             return { bg: BEIGE, borderColor: BLUE, color: "black" };
         }
-        // Not answered => highlight selected
+        // Vor Abgabe
         const isSelected = idx === selectedIndex;
         if (isSelected) {
             return { bg: BLUE, borderColor: BLUE, color: "white" };
@@ -90,12 +89,7 @@ function MCQQuiz({
             mx="auto"
             boxShadow="sm"
         >
-            <Text
-                fontSize={{ base: "xl", md: "lg" }}
-                fontWeight="bold"
-                mb={3}
-                color="black"
-            >
+            <Text fontSize={{ base: "xl", md: "lg" }} fontWeight="bold" color="black" mb={2}>
                 {question}
             </Text>
 
@@ -109,23 +103,26 @@ function MCQQuiz({
                             borderColor={styleProps.borderColor}
                             bg={styleProps.bg}
                             color={styleProps.color}
+                            px={6} // Horizontales Padding
+                            py={10} // Vertikales Padding
+                            // WICHTIG: Zeilenumbruch ermöglichen
+                            whiteSpace="normal"
+                            textAlign="center"
+                            // Hover-Effekt nur, wenn noch nicht beantwortet
                             _hover={{
                                 ...(isAnswered
                                     ? {}
                                     : {
-                                        bg: styleProps.bg === BLUE ? BLUE : YELLOW,
-                                        borderColor: BLUE,
+                                        bg: styleProps.bg === BLUE ? BLUE : "#e2d7b7",
                                         boxShadow: "md",
-                                        transform: "scale(1.02)",
                                     }),
                             }}
                             _active={{
                                 transform: "scale(0.98)",
                             }}
-                            transition="all 0.2s"
                             onClick={() => handleSelect(idx)}
                             isDisabled={isAnswered}
-                            fontSize={{ base: "xl", md: "lg" }}
+                            fontSize={{ base: "md", md: "lg" }}
                         >
                             {option}
                         </Button>
@@ -155,7 +152,6 @@ function MCQQuiz({
                         >
                             {isCorrect ? "Richtig!" : "Falsch!"}
                         </Text>
-
                         <Box width="100%" textAlign="left">
                             <ExplanationReveal explanation={explanation} />
                         </Box>

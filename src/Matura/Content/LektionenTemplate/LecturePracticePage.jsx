@@ -5,18 +5,6 @@ import { Box, Button, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import LecturePracticeSection from "./LecturePracticeSection.jsx";
 
-/**
- * LecturePracticePage
- * - Renders multiple quiz steps (quizSteps array).
- * - Each step is 1 quiz -> user must answer before seeing “Weiter”.
- * - On final step => “Lektion abschließen” => redirects to /grundlagen.
- *
- * PROPS:
- * - headline (string) => optional page headline
- * - introText (string) => optional short text if needed
- * - quizSteps (array) => each item is { type: "mcq"|"truefalse"|..., ... }
- * - onAllDone?: callback => if you want a custom callback after last step
- */
 function LecturePracticePage({
                                  headline = "Praxis: Beispiel",
                                  introText = "",
@@ -30,30 +18,31 @@ function LecturePracticePage({
     const totalSteps = quizSteps.length;
     const isLastStep = currentStep === totalSteps - 1;
 
-    // Called whenever the user has answered the quiz
     const handleAnswered = () => {
         setIsAnswered(true);
     };
 
     const handleNext = () => {
-        // Reset answered for the next quiz
         setIsAnswered(false);
-
         if (!isLastStep) {
-            // Move on to next quiz
             setCurrentStep((prev) => prev + 1);
         } else {
-            // Last quiz => “Lektion abschließen”
             if (onAllDone) onAllDone();
             navigate("/grundlagen");
         }
     };
 
     const buttonLabel = isLastStep ? "Lektion abschließen" : "Weiter";
-    const showButton = isAnswered; // only show if answered
+    const showButton = isAnswered; // Erst sichtbar, wenn geantwortet
 
     return (
-        <Box maxW="600px" mx="auto" p={6} bg="#faf3dc" borderRadius="md">
+        <Box
+            maxW="600px"
+            mx="auto"
+            p={6}
+            bg="#faf3dc"
+            borderRadius="md"
+        >
             {headline && (
                 <Text
                     fontSize={{ base: "2xl", md: "3xl" }}
@@ -70,13 +59,11 @@ function LecturePracticePage({
                 </Text>
             )}
 
-            {/* Render current quiz */}
             <LecturePracticeSection
                 quizData={quizSteps[currentStep]}
                 onAnswered={handleAnswered}
             />
 
-            {/* Only show button after user answered */}
             {showButton && (
                 <Button
                     onClick={handleNext}

@@ -1,6 +1,6 @@
 // File: src/Matura/Content/LektionenTemplate/LectureTheoryPage.jsx
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
     chakra,
     Button,
@@ -12,7 +12,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import LectureTheorySection from "./LectureTheorySection.jsx";
 
-// For multiple-banner support
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,12 +20,9 @@ const OuterSection = chakra("section", {});
 const InnerSection = chakra("section", {});
 
 /**
- * A small helper to render either:
- *  - a single static image (if there's exactly 1),
- *  - or a swipeable carousel (if there's 2+).
+ * Banner rendering logic
  */
 function BannerArea({ bannerImageSrc, bannerImages = [] }) {
-    // If bannerImages has 2 or more => show carousel
     if (bannerImages.length >= 2) {
         const settings = {
             dots: true,
@@ -36,7 +32,6 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
             slidesToScroll: 1,
             arrows: true,
         };
-
         return (
             <Box w="100%" maxW="600px" mx="auto" mb={8}>
                 <Slider {...settings}>
@@ -57,7 +52,6 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
         );
     }
 
-    // If bannerImages has exactly 1 => single static image
     if (bannerImages.length === 1) {
         return (
             <Image
@@ -72,7 +66,6 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
         );
     }
 
-    // If only bannerImageSrc is provided => single static image
     if (bannerImageSrc) {
         return (
             <Image
@@ -87,10 +80,20 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
         );
     }
 
-    // Otherwise => no banner
     return null;
 }
 
+/**
+ * LectureTheoryPage
+ *
+ * Alternative Gating mit sectionVisibility[] (boolean array).
+ *
+ * - Intro: bei Klick "Weiter" => Intro wird versteckt, sectionVisibility[0] = true,
+ *   wir scrollen zu section 0.
+ * - currentSectionIndex => der "aktive" Abschnitt, an dem sich der User befindet.
+ * - Klick auf "Weiter" in section i => wir schalten section i+1 "visible" und
+ *   scrollen dorthin, increment i => gating fürs Quiz (user muss isAnswered=true).
+ */
 function LectureTheoryPage({
                                bannerImageSrc,
                                bannerImages,
@@ -99,23 +102,88 @@ function LectureTheoryPage({
                                sectionsContent,
                                onSectionComplete,
                            }) {
-    const [visibleSectionIndex, setVisibleSectionIndex] = useState(0);
-    const [isSectionAnswered, setIsSectionAnswered] = useState(false);
-    const sectionRefs = useRef([]);
     const navigate = useNavigate();
+
+    const pageRef = useRef(null);
+    const NAVBAR_HEIGHT = 80;
+
+    // Intro gating
+    const [introVisible, setIntroVisible] = useState(!!introText);
+
+    // Wir halten fest, welcher Abschnitt "aktiv" ist (User steht dort).
+    const [currentSectionIndex, setCurrentSectionIndex] = useState(-1);
+
+    // Ein bool-Array, ob section i angezeigt wird.
+    // Anfangs: alle false.
+    const initialVisibility = sectionsContent.map(() => false);
+    const [sectionVisibility, setSectionVisibility] = useState(initialVisibility);
+
+    // Quiz-Freischaltung
+    const [isSectionAnswered, setIsSectionAnswered] = useState(false);
+
+    const sectionRefs = useRef([]);
 
     const bgColor = useColorModeValue("#faf3dc", "#faf3dc");
     const cardBg = useColorModeValue("#faf3dc", "#faf3dc");
 
-    // Next section logic
-    const handleNextSection = () => {
-        const nextIndex = visibleSectionIndex + 1;
+    const totalSections = sectionsContent.length;
+
+    const isLastSection = currentSectionIndex === totalSections - 1;
+
+    // Scroll Navbar out of view on mount
+    useEffect(() => {
+        if (pageRef.current) {
+            setTimeout(() => {
+                const topPosition = pageRef.current.offsetTop + NAVBAR_HEIGHT;
+                window.scrollTo({
+                    top: topPosition,
+                    behavior: "smooth",
+                });
+            }, 50);
+        }
+    }, []);
+
+    // INTRO => klick => zeige Section 0
+    const handleIntroNext = () => {
+        setIntroVisible(false);
+
+        // Mach section 0 sichtbar
+        setSectionVisibility((prev) => {
+            const copy = [...prev];
+            copy[0] = true;
+            return copy;
+        });
+
+        // Wir wechseln currentSectionIndex = 0
+        setCurrentSectionIndex(0);
         setIsSectionAnswered(false);
 
-        if (nextIndex < sectionsContent.length) {
-            setVisibleSectionIndex(nextIndex);
+        // Scroll zu Section 0
+        setTimeout(() => {
+            if (sectionRefs.current[0]) {
+                sectionRefs.current[0].scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }
+        }, 50);
+    };
 
-            // Smooth scroll to the next section
+    // "Weiter" => next section
+    const handleNextSection = () => {
+        setIsSectionAnswered(false);
+
+        const nextIndex = currentSectionIndex + 1;
+        if (nextIndex < totalSections) {
+            // Mach section nextIndex sichtbar
+            setSectionVisibility((prev) => {
+                const copy = [...prev];
+                copy[nextIndex] = true;
+                return copy;
+            });
+
+            setCurrentSectionIndex(nextIndex);
+
             setTimeout(() => {
                 if (sectionRefs.current[nextIndex]) {
                     sectionRefs.current[nextIndex].scrollIntoView({
@@ -125,86 +193,116 @@ function LectureTheoryPage({
                 }
             }, 50);
 
-            if (onSectionComplete) {
-                onSectionComplete(nextIndex);
-            }
+            if (onSectionComplete) onSectionComplete(nextIndex);
         } else {
-            // If we're at the end => navigate away or show completion
+            // Letzter => navigate
             navigate("/grundlagen");
         }
     };
 
-    const isLastSection = visibleSectionIndex === sectionsContent.length - 1;
-    const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
+    // Wenn im aktuellen Abschnitt quiz => gating
+    const currentSection = currentSectionIndex >= 0
+        ? sectionsContent[currentSectionIndex]
+        : null;
 
-    // Check the quiz in the current section
-    const currentSection = sectionsContent[visibleSectionIndex] || {};
-    const hasQuiz = !!currentSection.quizData;
+    const hasQuiz = currentSection?.quizData ? true : false;
     const isButtonDisabled = hasQuiz && !isSectionAnswered;
 
-    // Once user answers => enable "Weiter" button
+    // Quiz answered => man darf "Weiter" klicken
     const handleQuizAnswered = () => {
         setIsSectionAnswered(true);
     };
 
+    // Button label
+    const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
+
     return (
-        <chakra.section bg={bgColor} minH="100vh" py={6}>
+        <chakra.section ref={pageRef} bg={bgColor} minH="100vh" py={6}>
             <OuterSection
-                maxW={{ base: "100vw", md: "100vw", lg: "40vw" }}
+                maxW={{ base: "95vw", md: "80vw", lg: "50vw" }}
                 mx="auto"
                 borderRadius="md"
                 p={6}
                 bg={cardBg}
             >
-                {/* Banner (single or multiple images) */}
                 <BannerArea
                     bannerImageSrc={bannerImageSrc}
                     bannerImages={bannerImages || []}
                 />
 
-                {/* Headline */}
-                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={4}>
-                    {headline}
-                </Text>
+                {headline && (
+                    <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={4}>
+                        {headline}
+                    </Text>
+                )}
 
-                {/* Intro Text */}
-                <Text fontSize={{ base: "xl", md: "lg" }} mb={4}>
-                    {introText}
-                </Text>
+                {/* INTRO */}
+                {introVisible && introText && (
+                    <>
+                        <Text fontSize={{ base: "xl", md: "xl" }} mb={4}>
+                            {introText}
+                        </Text>
 
-                {/* Sections */}
-                {sectionsContent.map((section, idx) => (
-                    <InnerSection
-                        key={idx}
-                        ref={(el) => (sectionRefs.current[idx] = el)}
-                        mt={8}
-                    >
-                        <LectureTheorySection
-                            heading={section.heading}
-                            isVisible={idx <= visibleSectionIndex}
-                            quizData={section.quizData}
-                            onQuizAnswered={handleQuizAnswered}
+                        <Button
+                            onClick={handleIntroNext}
+                            mt={6}
+                            bg="#30628b"
+                            color="white"
+                            size={{ base: "md", md: "lg" }}
+                            boxShadow="md"
+                            _hover={{ bg: "#245074", boxShadow: "lg" }}
+                            _active={{ bg: "#1d3f5e" }}
                         >
-                            {section.paragraphs || section.content}
-                        </LectureTheorySection>
-                    </InnerSection>
-                ))}
+                            Weiter
+                        </Button>
+                    </>
+                )}
 
-                {/* Next/Weiter Button */}
-                <Button
-                    onClick={handleNextSection}
-                    alignSelf="flex-start"
-                    mt={6}
-                    bg="#30628b"
-                    color="white"
-                    size={{ base: "md", md: "lg" }}
-                    boxShadow="md"
-                    _hover={{ bg: "#245074", boxShadow: "lg" }}
-                    _active={{ bg: "#1d3f5e" }}
-                    isDisabled={isButtonDisabled}
-                >
-                    {buttonLabel}
-                </Button>
+                {/* Abschnitte */}
+                {!introVisible && (
+                    <>
+                        {sectionsContent.map((section, idx) => {
+                            // Nur rendern, wenn sectionVisibility[idx] == true
+                            if (!sectionVisibility[idx]) return null;
+
+                            return (
+                                <InnerSection
+                                    key={idx}
+                                    ref={(el) => (sectionRefs.current[idx] = el)}
+                                    mt={8}
+                                >
+                                    <LectureTheorySection
+                                        heading={section.heading}
+                                        // isVisible => immer true, weil wir ja
+                                        // uns entschieden haben, es anzuzeigen
+                                        isVisible
+                                        quizData={section.quizData}
+                                        onQuizAnswered={handleQuizAnswered}
+                                    >
+                                        {section.paragraphs}
+                                    </LectureTheorySection>
+                                </InnerSection>
+                            );
+                        })}
+
+                        {/* Next/Abschließen Button */}
+                        {currentSectionIndex < totalSections && (
+                            <Button
+                                onClick={handleNextSection}
+                                mt={6}
+                                bg="#30628b"
+                                color="white"
+                                size={{ base: "md", md: "lg" }}
+                                boxShadow="md"
+                                _hover={{ bg: "#245074", boxShadow: "lg" }}
+                                _active={{ bg: "#1d3f5e" }}
+                                isDisabled={isButtonDisabled}
+                            >
+                                {buttonLabel}
+                            </Button>
+                        )}
+                    </>
+                )}
             </OuterSection>
         </chakra.section>
     );

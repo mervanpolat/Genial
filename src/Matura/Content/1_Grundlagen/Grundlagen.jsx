@@ -25,8 +25,8 @@ function Grundlagen() {
 
         {
             id: 3,
-            title: "Theorie: Lateinische Buchstaben",
-            headline: "Theorie: Lateinische Buchstaben",
+            title: "Lateinische Buchstaben",
+            headline: "Lateinische Buchstaben",
             description: "Lerne die Lateinische Buchstaben die in Mathematik ständig vorkommen.",
             route: "/theory/lateinische"
         },
@@ -37,6 +37,100 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis über die lateinischen Buchstaben in Mathematik.",
             route: "/praxis-lateinischebuchstaben"
         },
+
+        {
+            id: 5,
+            title: "Zahlenmengen",
+            headline: "Zahlenmengen",
+            description: "Lerne die Gründe warum wir mehrere Zahlenmengen brauchen.",
+            route: "/theory/zahlenarith"
+        },
+
+        {
+            id: 6,
+            title: "Praxis: Zahlenmengen",
+            headline: "Praxis: Zahlenmengen",
+            description: "Vertiefe dein Verständnis über Zahlenmengen.",
+            route: "/praxis-zahlenarithmetik"
+        },
+        {
+            id: 7,
+            title: "Grundlagen der Zahlen und Arithmetik",
+            headline: "Grundlagen der Zahlen und Arithmetik",
+            description: "Erfahre mehr über Zahlenmengen, ihre Eigenschaften und grundlegende Rechenregeln.",
+            route: "/theory/natZahlenArith"
+        },
+        {
+            id: 8,
+            title: "Praxis: Grundlagen der Zahlen und Arithmetik",
+            headline: "Praxis: Grundlagen der Zahlen und Arithmetik",
+            description: "Vertiefe dein Verständnis über Zahlen und Arithmetik.",
+            route: "/praxis-natZahlenArithmetik"
+        },
+
+        {
+            id: 9,
+            title: "Kommutativität von Addition und Multiplikation",
+            headline: "Kommutativität von Addition und Multiplikation",
+            description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren das Ergebnis nicht verändert.",
+            route: "/theory/kommutativg"
+
+        },
+        {
+            id: 10,
+            title: "Praxis: Kommutativität von Addition und Multiplikation",
+            headline: "Praxis: Kommutativität von Addition und Multiplikation",
+            description: "Vertiefe dein Verständnis über Kommutativgesetz.",
+            route: "/praxis-kommutativ"
+        },
+        {
+            id: 11,
+            title: "Assoziativität in der Arithmetik",
+            headline: "Assoziativität in der Arithmetik",
+            description: "Lerne, warum die Klammerung bei Addition/Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt.",
+            route: "/theory/assoziativitaet"
+        },
+
+        {
+            id: 12,
+            title: "Praxis: Assoziativität in der Arithmetik",
+            headline: "Praxis: Assoziativität in der Arithmetik",
+            description: "Vertiefe dein Verständnis über Assoziativgesetz",
+            route: "/praxis-assoziativitaet"
+        },
+
+        {
+            id: 13,
+            title: "Das Distributive Gesetz in der Arithmetik",
+            headline: "Das Distributive Gesetz in der Arithmetik",
+            description: "Wie verknüpft man Addition und Multiplikation sinnvoll? Das Distributivgesetz liefert die Antwort!",
+            route: "/theory/distributiv"
+        },
+
+        {
+            id: 14,
+            title: "Praxis: Das Distributive Gesetz in der Arithmetik",
+            headline: "Praxis: Das Distributive Gesetz in der Arithmetik",
+            description: "Vertiefe dein Verständnis über Distributivgesetz!",
+            route: "/praxis-distributivgesetz"
+        },
+        {
+            id: 15,
+            title: "Primzahlen und Teilbarkeitsregeln",
+            headline: "Primzahlen und Teilbarkeitsregeln",
+            description: "Lerne die Grundlagen zu Primzahlen und Teilbarkeitsregeln, um Divisoren zu erkennen und Zahlenfaktoren zu bestimmen.",
+            route: "/theory/primzahlundteil"
+        },
+
+        {
+            id: 16,
+            title: "Praxis: Primzahlen und Teilbarkeitsregeln",
+            headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
+            description: "Vertiefe dein Verständnis die Grundlagen zu Primzahlen und wichtigen Teilbarkeitsregeln.",
+            route: "/praxis-primzahlundteil"
+        }
+
+
         // more modules ...
     ];
 

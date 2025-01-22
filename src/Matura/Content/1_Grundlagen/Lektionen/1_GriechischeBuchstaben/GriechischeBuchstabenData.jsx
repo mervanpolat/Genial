@@ -5,11 +5,13 @@ import { Box } from "@chakra-ui/react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
+// Bilder & Banner
 import GreekLettersBanner from "./Image/GriechischeBuchstaben.png";
 import Dreieck from "./Image/Dreieck.svg";
 import { Image as ChakraImage } from "@chakra-ui/react";
 
-// Correct usage of String.raw + backticks for LaTeX
+// NEU: Interaktive Visualisierung
+import SecantTangentVisualization from "../../../../../components/InteractiveElements/SecantTangentVisualization.jsx";
 
 const GriechischeBuchstabenData = {
     bannerImageSrc: GreekLettersBanner,
@@ -36,7 +38,7 @@ const GriechischeBuchstabenData = {
                     </em>
                 </>,
             ],
-            // No quizData => user can proceed instantly
+            // Kein quizData => User kann weiter
         },
 
         // 2) Allgemeine Verwendung
@@ -52,15 +54,11 @@ const GriechischeBuchstabenData = {
                         </li>
                         <li>
                             <InlineMath>\Pi</InlineMath> (Pi, groß) für Produkte, z.B.{" "}
-                            <BlockMath>
-                                {String.raw`\prod_{i=1}^{n} a_i`}
-                            </BlockMath>
+                            <BlockMath>{String.raw`\prod_{i=1}^{n} a_i`}</BlockMath>
                         </li>
                         <li>
                             <InlineMath>\Sigma</InlineMath> (Sigma, groß) für Summen, z.B.{" "}
-                            <BlockMath>
-                                {String.raw`\sum_{k=0}^{m} b_k`}
-                            </BlockMath>
+                            <BlockMath>{String.raw`\sum_{k=0}^{m} b_k`}</BlockMath>
                         </li>
                         <li>
                             <InlineMath>\in</InlineMath> (Epsilon-Variante) für „gehört zu“:{" "}
@@ -134,15 +132,24 @@ const GriechischeBuchstabenData = {
                     </strong>
                 </>,
             ],
-            // no quiz => can proceed
+            // kein quiz => kann weiter
         },
+
+        // NEU: wir betten die Visualisierung direkt ein
         {
             heading: "Analysis: Sekante und Tangente",
             paragraphs: [
-                "Hier ein interaktives Beispiel, das zeigt, wie sich die Steigung der Sekante allmählich die Steigung der Tangente annähert.",
+                <>
+                    Hier ein interaktives Beispiel, das zeigt, wie sich die Steigung der
+                    Sekante allmählich der Steigung der Tangente annähert.
+                    <Box mt={4}>
+                        <SecantTangentVisualization />
+                    </Box>
+                </>,
             ],
-            // We might have: includeSecantTangent: true
-            includeSecantTangent: true,
+            // remove the "includeSecantTangent" if you wish.
+            // or keep if your LectureTheoryPage checks it
+            // includeSecantTangent: true,
         },
 
         // 5) Lineare Algebra
@@ -151,9 +158,9 @@ const GriechischeBuchstabenData = {
             paragraphs: [
                 <>
                     In der linearen Algebra steht <InlineMath>\lambda</InlineMath> (Lambda)
-                    für Eigenwerte einer Matrix. Auch <InlineMath>\sigma</InlineMath>{" "}
-                    (Sigma) kann hier auftauchen, z.B. bei der Singulärwertzerlegung (SVD)
-                    für „Singular Values“.
+                    für Eigenwerte einer Matrix. Auch <InlineMath>\sigma</InlineMath> (Sigma)
+                    kann hier auftauchen, z.B. bei der Singulärwertzerlegung (SVD) für
+                    „Singular Values“.
                 </>,
             ],
             quizData: {
@@ -175,8 +182,8 @@ const GriechischeBuchstabenData = {
                     <InlineMath>\mu</InlineMath> (My) bezeichnet den Erwartungswert, und{" "}
                     <InlineMath>\sigma</InlineMath> (Sigma, klein) wird gern als
                     Standardabweichung verwendet. Außerdem gibt es die
-                    Chi-Quadrat-Verteilung, die mit <InlineMath>\chi^2</InlineMath>{" "}
-                    notiert ist.
+                    Chi-Quadrat-Verteilung, die mit <InlineMath>\chi^2</InlineMath> notiert
+                    ist.
                 </>,
                 <>
                     <strong>
@@ -186,7 +193,6 @@ const GriechischeBuchstabenData = {
                 </>,
             ],
             quizData: {
-                // A matching pairs quiz
                 type: "matchingpairs",
                 pairs: [
                     { left: "Ergebnisraum", right: "Ω" },
@@ -213,7 +219,7 @@ const GriechischeBuchstabenData = {
                     sind!
                 </>,
             ],
-            // no quiz => user can proceed or finish
+            // kein quiz => user kann finish
         },
     ],
 };

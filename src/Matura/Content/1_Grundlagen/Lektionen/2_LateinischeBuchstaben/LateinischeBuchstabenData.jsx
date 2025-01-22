@@ -5,108 +5,75 @@ import { Box, Image as ChakraImage } from "@chakra-ui/react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
-// For the small slider in the “Fazit” section
+// We need react-slick for the small slider in the Fazit
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Our TippyText with a solid blue underline
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 
-// Banners for the top-level LectureTheoryPage slider
+// Banners for the top-level slider
 import Lateinische_Buchstaben from "./images/Lateinische_Buchstaben.svg";
 import Lateinische_Buchstaben2 from "./images/Lateinische_Buchstaben2.svg";
 
 // Additional inline images
-import Seitenlaengen from "./images/Seitenlaengen.svg";
 import DependantAndNonDependant from "./images/DependantAndNonDependant.svg";
 
 /**
- * A small inline slider for the “Fazit” section, with “Instagram-like” circle dots
- * and increased space between the image and dots.
+ * A small inline slider to show the two “Lateinische_Buchstaben” images
+ * at the end (Fazit). We rename it to avoid double declarations.
  */
 function DoubleImageSliderFazit() {
     const settings = {
+        dots: true,
         infinite: true,
         speed: 400,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false, // no arrows => more “Instagram-like”
-        dots: true,
-        customPaging: () => (
-            <div
-                style={{
-                    width: "10px",
-                    height: "10px",
-                    borderRadius: "50%",
-                    margin: "0 3px",
-                    backgroundColor: "#30628b", // Byrne’s Blue for inactive
-                }}
-            />
-        ),
-        dotsClass: "slick-dots custom-dots",
+        arrows: true,
     };
 
     return (
-        <>
-            {/*
-        Style to position the dots with extra margin on top,
-        so there's more space between the image and circles.
-      */}
-            <style>{`
-        .custom-dots {
-          margin-top: 20px; /* Increase space above circles */
-          bottom: 0;
-          display: flex !important;
-          justify-content: center;
-        }
-        .custom-dots li.slick-active div {
-          background-color: #f0c34e !important; /* Active dot in Byrne’s Yellow */
-        }
-      `}</style>
-
-            <Box
-                w="100%"
-                maxW="400px"
-                mx="auto"
-                mt={4}
-                bg="#faf3dc"
-                borderRadius="md"
-                overflow="visible"  // let the dots show fully
-                pb={10}             // extra bottom padding so circles aren’t cramped
-            >
-                <Slider {...settings}>
-                    <Box textAlign="center" p={2}>
-                        <ChakraImage
-                            src={Lateinische_Buchstaben}
-                            alt="Lateinische Buchstaben Teil 1/2"
-                            maxW="100%"
-                            objectFit="contain"
-                            m="0 auto"
-                        />
-                    </Box>
-                    <Box textAlign="center" p={2}>
-                        <ChakraImage
-                            src={Lateinische_Buchstaben2}
-                            alt="Lateinische Buchstaben Teil 2/2"
-                            maxW="100%"
-                            objectFit="contain"
-                            m="0 auto"
-                        />
-                    </Box>
-                </Slider>
-            </Box>
-        </>
+        <Box
+            w="100%"
+            maxW="400px"
+            mx="auto"
+            mt={4}
+            bg="#faf3dc"
+            borderRadius="md"
+            overflow="hidden"
+        >
+            <Slider {...settings}>
+                <Box textAlign="center" p={2}>
+                    <ChakraImage
+                        src={Lateinische_Buchstaben}
+                        alt="Lateinische Buchstaben Teil 1/2"
+                        maxW="100%"
+                        objectFit="contain"
+                        m="0 auto"
+                    />
+                </Box>
+                <Box textAlign="center" p={2}>
+                    <ChakraImage
+                        src={Lateinische_Buchstaben2}
+                        alt="Lateinische Buchstaben Teil 2/2"
+                        maxW="100%"
+                        objectFit="contain"
+                        m="0 auto"
+                    />
+                </Box>
+            </Slider>
+        </Box>
     );
 }
 
 const LateinischeBuchstabenData = {
-    // Banners for the top-level slider
+    // We have two main banners for the top-level slider in LectureTheoryPage
     bannerImages: [Lateinische_Buchstaben, Lateinische_Buchstaben2],
 
     headline: "Lateinische Buchstaben in der Mathematik",
     introText:
-        "Diese kurze Übersicht behandelt die häufigsten lateinischen Buchstaben und deren typische Verwendung in der Mathematik – von Variablen für reelle Zahlen bis hin zu Euler’s berühmter Zahl e.",
+        "Diese kurze Übersicht behandelt die häufigsten lateinischen Buchstaben und deren typische Verwendung in der Mathematik – von Variablen für reelle Zahlen bis hin zu Euler’s Zahl e.",
 
     sections: [
         {
@@ -119,17 +86,6 @@ const LateinischeBuchstabenData = {
                     <InlineMath>{String.raw`\mathbb{R}`}</InlineMath> betrachten wollen,
                     ohne Einschränkungen. Außerdem begegnet man ihnen in der Geometrie –
                     etwa als Seitenlängen in einem Dreieck.
-                </>,
-                <>
-                    <Box mt={4} textAlign="center">
-                        <ChakraImage
-                            src={Seitenlaengen}
-                            alt="Dreieck mit α, β, γ"
-                            maxW="400px"
-                            objectFit="contain"
-                            margin="0 auto"
-                        />
-                    </Box>
                 </>,
             ],
             quizData: {
@@ -358,9 +314,13 @@ const LateinischeBuchstabenData = {
             // no quiz => user proceeds
         },
 
+        /**
+         * Final "Fazit" with a slider for the 2 images
+         */
         {
             heading: "Fazit und Kontextabhängigkeit",
             paragraphs: [
+
                 <>
                     Die Bedeutung lateinischer Buchstaben in der Mathematik ist stark
                     konventionell geprägt. Meist halten sich Lehrbücher und Vorlesungen an
@@ -371,12 +331,9 @@ const LateinischeBuchstabenData = {
                     Achte also immer genau darauf, wie die Variablen{" "}
                     <InlineMath>{String.raw`a, b, c, i`}</InlineMath> usw. in deinem
                     jeweiligen Kontext eingeführt werden!
-                </>,
-                <>
-                    <DoubleImageSliderFazit />
-                </>,
+                </>
             ],
-            // no quiz => final
+            // no quiz => user proceeds
         },
     ],
 };
