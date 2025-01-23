@@ -110,8 +110,8 @@ function MCQQuiz({
                             borderColor={styleProps.borderColor}
                             bg={styleProps.bg}
                             color={styleProps.color}
-                            px={4}
-                            py={6}
+                            px={1}
+                            py={12}
                             whiteSpace="normal"
                             textAlign="center"
                             transition="all 0.2s"
