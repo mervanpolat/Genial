@@ -4,9 +4,14 @@ import React from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import TippyText from "../../../../../components/TippyText/TippyText.jsx"; // Pfad anpassen, falls nötig
+import Assoziativgesetz from "./images/Assoziativgesetz.svg";
+import Assoziativ_Addition from "./images/Assoziativ_Addition.svg";
+import Assoziativ_Multiplikation from "./images/Assoziativ_Multiplikation.svg";
+import {Box} from "@chakra-ui/react";
+import { Image as ChakraImage } from "@chakra-ui/react";
 
 const AssoziativitaetData = {
-    bannerImageSrc: "/assets/images/AssoziativBanner.png", // Beispielpfad oder weglassen
+    bannerImageSrc: Assoziativgesetz, // Beispielpfad oder weglassen
     headline: "Assoziativität in der Arithmetik",
     introText:
         "Hier lernst du, warum sich die Klammerung bei Addition oder Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt und wieso das als Axiom festgelegt wird.",
@@ -37,14 +42,26 @@ const AssoziativitaetData = {
             paragraphs: [
                 <>
                     Nehmen wir drei natürliche Zahlen{" "}
-                    <InlineMath>{String.raw`a, b, c \in \mathbb{N}`}</InlineMath>. Das assoziative
+                    <InlineMath>{String.raw`m, n, k \in \mathbb{N}`}</InlineMath>. Das assoziative
                     Gesetz lautet:
                 </>,
                 <>
                     <BlockMath>
-                        {String.raw`(a + b) + c = a + (b + c)`}
+                        {String.raw`m + (n + k) = (m + n) + k`}
                     </BlockMath>
                 </>,
+                <>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Assoziativ_Addition}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="800px"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
+                </>,
+
                 <>
                     Die Summe dreier Zahlen ist unabhängig davon, welche beiden du zuerst addierst.
                     Denk an drei Gruppen von Objekten: Ob du erst Gruppe 1 mit Gruppe 2 und dann Gruppe
@@ -88,6 +105,18 @@ const AssoziativitaetData = {
                     <InlineMath>{String.raw`a, b, c`}</InlineMath>. Egal in welcher Reihenfolge du
                     „Fläche × Höhe“ rechnest – das Volumen bleibt identisch.
                 </>,
+                <>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Assoziativ_Multiplikation}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="800px"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
+                </>,
+
             ],
             quizData: {
                 type: "truefalse",

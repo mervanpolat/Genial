@@ -6,9 +6,14 @@ import "katex/dist/katex.min.css";
 
 // Füge bitte den korrekten Import-Pfad für TippyText ein:
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
+import KommutativGesetz from "./images/Kommutativgesetz.svg";
+import {Box} from "@chakra-ui/react";
+import { Image as ChakraImage } from "@chakra-ui/react";
+import Addition from "./images/Addition.svg";
+import Multiplikation from "./images/Multiplikation.svg";
 
 const KommutativGesetzData = {
-    bannerImageSrc: "/assets/images/CommBanner.png",
+    bannerImageSrc: KommutativGesetz,
     headline: "Kommutative Gesetze in der Arithmetik",
     introText:
         "In dieser Lektion betrachten wir die Kommutativität von Addition und Multiplikation bei natürlichen Zahlen – warum das sinnvoll ist und wie sich das geometrisch sowie anschaulich begründen lässt.",
@@ -50,12 +55,17 @@ const KommutativGesetzData = {
                     <InlineMath>{String.raw`n`}</InlineMath>-Gruppe nimmst, nach dem Zusammenfügen
                     bleibt die Gesamtanzahl gleich.
                 </>,
-                // Illustrationshinweis:
-                /*
-                  <Box mt={4} textAlign="center">
-                    // Z.B. Bild, das zwei Gruppen von Objekten zeigt
-                  </Box>
-                */
+                <>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Addition}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="800px"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
+                </>,
             ],
             quizData: {
                 type: "mcq",
@@ -94,6 +104,17 @@ const KommutativGesetzData = {
                     und Höhe <InlineMath>{String.raw`b`}</InlineMath>. Sein Flächeninhalt ist{" "}
                     <InlineMath>{String.raw`a\times b`}</InlineMath>. Wenn du das Rechteck um 90°
                     drehst, werden Breite und Höhe vertauscht – doch die Fläche bleibt gleich.
+                </>,
+                <>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Multiplikation}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="800px"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
                 </>,
             ],
             quizData: {

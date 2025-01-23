@@ -70,30 +70,30 @@ function Grundlagen() {
 
         {
             id: 9,
-            title: "Kommutativität von Addition und Multiplikation",
-            headline: "Kommutativität von Addition und Multiplikation",
+            title: "Kommutativgesetz",
+            headline: "Kommutativgesetz",
             description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren das Ergebnis nicht verändert.",
             route: "/theory/kommutativg"
 
         },
         {
             id: 10,
-            title: "Praxis: Kommutativität von Addition und Multiplikation",
+            title: "Praxis: Kommutativgesetz",
             headline: "Praxis: Kommutativität von Addition und Multiplikation",
             description: "Vertiefe dein Verständnis über Kommutativgesetz.",
             route: "/praxis-kommutativ"
         },
         {
             id: 11,
-            title: "Assoziativität in der Arithmetik",
-            headline: "Assoziativität in der Arithmetik",
+            title: "Assoziativgesetz",
+            headline: "Assoziativgesetz",
             description: "Lerne, warum die Klammerung bei Addition/Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt.",
             route: "/theory/assoziativitaet"
         },
 
         {
             id: 12,
-            title: "Praxis: Assoziativität in der Arithmetik",
+            title: "Praxis: Assoziativgesetz",
             headline: "Praxis: Assoziativität in der Arithmetik",
             description: "Vertiefe dein Verständnis über Assoziativgesetz",
             route: "/praxis-assoziativitaet"
@@ -101,15 +101,15 @@ function Grundlagen() {
 
         {
             id: 13,
-            title: "Das Distributive Gesetz in der Arithmetik",
-            headline: "Das Distributive Gesetz in der Arithmetik",
+            title: "Distributivgesetz",
+            headline: "Distributivgesetz",
             description: "Wie verknüpft man Addition und Multiplikation sinnvoll? Das Distributivgesetz liefert die Antwort!",
             route: "/theory/distributiv"
         },
 
         {
             id: 14,
-            title: "Praxis: Das Distributive Gesetz in der Arithmetik",
+            title: "Praxis: Distributivgesetz",
             headline: "Praxis: Das Distributive Gesetz in der Arithmetik",
             description: "Vertiefe dein Verständnis über Distributivgesetz!",
             route: "/praxis-distributivgesetz"

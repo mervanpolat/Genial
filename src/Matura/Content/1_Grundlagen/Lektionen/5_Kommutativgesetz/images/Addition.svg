@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1259.64 290">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f9c12b;
+      }
+
+      .cls-2 {
+        fill: #fbf2d8;
+      }
+
+      .cls-3 {
+        fill: #d32a20;
+      }
+
+      .cls-4 {
+        font-family: CMUBright-SemiBoldOblique, 'CMU Bright';
+        font-size: 40px;
+        font-style: oblique;
+        font-weight: 600;
+      }
+    </style>
+  </defs>
+  <rect class="cls-2" width="1259.64" height="290"/>
+  <g>
+    <rect class="cls-3" x="139.41" y="61.16" width="87.77" height="87.77"/>
+    <path d="M229.68,151.43h-92.77V58.66h92.77v92.77ZM141.91,146.43h82.77V63.66h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="51.41" y="61.16" width="87.77" height="87.77"/>
+    <path d="M141.68,151.43H48.91V58.66h92.77v92.77ZM53.91,146.43h82.77V63.66H53.91v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="227.18" y="61.16" width="87.77" height="87.77"/>
+    <path d="M317.44,151.43h-92.77V58.66h92.77v92.77ZM229.68,146.43h82.77V63.66h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="314.94" y="61.16" width="87.77" height="87.77"/>
+    <path d="M405.21,151.43h-92.77V58.66h92.77v92.77ZM317.44,146.43h82.77V63.66h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="403.11" y="61.57" width="87.77" height="87.77"/>
+    <path d="M493.38,151.84h-92.77V59.07h92.77v92.77ZM405.61,146.84h82.77v-82.77h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="490.88" y="61.57" width="87.77" height="87.77"/>
+    <path d="M581.14,151.84h-92.77V59.07h92.77v92.77ZM493.38,146.84h82.77v-82.77h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="681.41" y="61.16" width="87.77" height="87.77"/>
+    <path d="M771.68,151.43h-92.77V58.66h92.77v92.77ZM683.91,146.43h82.77V63.66h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="769.18" y="61.16" width="87.77" height="87.77"/>
+    <path d="M859.44,151.43h-92.77V58.66h92.77v92.77ZM771.68,146.43h82.77V63.66h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="856.94" y="61.16" width="87.77" height="87.77"/>
+    <path d="M947.21,151.43h-92.77V58.66h92.77v92.77ZM859.44,146.43h82.77V63.66h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="945.11" y="61.57" width="87.77" height="87.77"/>
+    <path d="M1035.38,151.84h-92.77V59.07h92.77v92.77ZM947.61,146.84h82.77v-82.77h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="1032.88" y="61.57" width="87.77" height="87.77"/>
+    <path d="M1123.14,151.84h-92.77V59.07h92.77v92.77ZM1035.38,146.84h82.77v-82.77h-82.77v82.77Z"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="1120.88" y="61.57" width="87.77" height="87.77"/>
+    <path d="M1211.14,151.84h-92.77V59.07h92.77v92.77ZM1123.38,146.84h82.77v-82.77h-82.77v82.77Z"/>
+  </g>
+  <text class="cls-4" transform="translate(231.6 247.18)"><tspan x="0" y="0">4 + 2 = 6</tspan></text>
+  <text class="cls-4" transform="translate(860.1 248.68)"><tspan x="0" y="0">2 + 4 = 6</tspan></text>
+</svg>
