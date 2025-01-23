@@ -3,9 +3,10 @@
 import React from "react";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
+import NatZahlenArithDataBanner from "./images/ZahlenUndArithmetik.svg"
 
 const NatZahlenArithData = {
-    bannerImageSrc: "/assets/images/NatZahlenArith_Banner.png", // Beispielpfad
+    bannerImageSrc: NatZahlenArithDataBanner,
     headline: "Natürliche Zahlen und Grundrechenarten",
     introText: `In diesem Abschnitt besprechen wir die wichtigsten Eigenschaften der natürlichen Zahlen, darunter Diskretheit, Ordnungsrelation und die Bedeutung von neutralen Elementen beim Addieren und Multiplizieren.`,
 
@@ -90,7 +91,7 @@ const NatZahlenArithData = {
                     <InlineMath>{String.raw`5^3 = 5 \times 5 \times 5`}</InlineMath>.
                 </>,
                 <>
-                    <br/><br/><strong>Begriffe:</strong> Beim Addieren heißt jedes Summenglied ein{" "}
+                    <br/><strong>Begriffe:</strong> Beim Addieren heißt jedes Summenglied ein{" "}
                     „Term“ und das Ergebnis die „Summe“. Beim Multiplizieren nennen wir die
                     einzelnen Zahlen „Faktoren“ und das Ergebnis das „Produkt“.
                 </>,
@@ -144,7 +145,7 @@ const NatZahlenArithData = {
                     Wir haben gesehen: <InlineMath>{String.raw`\mathbb{N}`}</InlineMath> ist
                     geordnet, diskret und besitzt neutrale Elemente für Addition bzw.
                     Multiplikation. So sind die Grundlagen gelegt, um später komplexere
-                    Strukturen und Beweise zu verstehen.
+                    Themen zu verstehen.
                 </>,
             ],
             // kein quiz => Ende

@@ -24,7 +24,7 @@ import GleichungenLoesen from "./Matura/Content/2_GleichungenLoesen/GleichungenL
 
 import Praxis_GriechischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Praxis_GriechischeBuchstaben.jsx";
 import Praxis_LateinischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/2_LateinischeBuchstaben/Praxis_LateinischeBuchstaben.jsx";
-import Praxis_ZahlenArithmetik from "./Matura/Content/1_Grundlagen/Lektionen/3_ZahlenArithmetik/Praxis_ZahlenArithmetik.jsx";
+import Praxis_Zahlenmengen from "./Matura/Content/1_Grundlagen/Lektionen/3_Zahlenmengen/Praxis_Zahlenmengen.jsx";
 import Praxis_NatZahlenArith from "./Matura/Content/1_Grundlagen/Lektionen/4_NatZahlenArith/Praxis_NatZahlenArith.jsx";
 import Praxis_KommutativGesetz from "./Matura/Content/1_Grundlagen/Lektionen/5_Kommutativgesetz/Praxis_KommutativGesetz.jsx";
 import Praxis_Assoziativitaet from "./Matura/Content/1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
@@ -131,7 +131,7 @@ function App() {
 
                 <Route
                     path="/praxis-zahlenarithmetik"
-                    element={<Praxis_ZahlenArithmetik />}
+                    element={<Praxis_Zahlenmengen />}
                 />
 
                 <Route

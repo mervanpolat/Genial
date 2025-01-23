@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 998 697">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d32a20;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+
+      .cls-2 {
+        fill: #48a346;
+      }
+
+      .cls-3 {
+        fill: #f9c12b;
+      }
+
+      .cls-4 {
+        fill: #c285cb;
+      }
+
+      .cls-5 {
+        fill: #b5c84b;
+      }
+
+      .cls-6 {
+        fill: #dd8d41;
+      }
+
+      .cls-7 {
+        fill: #e36a5a;
+      }
+
+      .cls-14, .cls-15 {
+        font-family: CMUSansSerif, 'CMU Sans Serif';
+        font-size: 90px;
+      }
+
+      .cls-8 {
+        fill: #9c9e3d;
+      }
+
+      .cls-15, .cls-16 {
+        fill: #fbf2d8;
+      }
+
+      .cls-9 {
+        fill: #333132;
+      }
+
+      .cls-10 {
+        fill: #299c9f;
+      }
+
+      .cls-11 {
+        fill: #c23bb7;
+      }
+
+      .cls-12 {
+        fill: #f5b5aa;
+      }
+
+      .cls-13 {
+        fill: #30628b;
+      }
+    </style>
+  </defs>
+  <rect class="cls-16" width="998" height="697"/>
+  <g>
+    <circle class="cls-7" cx="554.5" cy="269.5" r="87"/>
+    <text class="cls-14" transform="translate(532.22 305.42)"><tspan x="0" y="0">9</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-5" cx="526.5" cy="414.5" r="87"/>
+    <text class="cls-14" transform="translate(500.9 437.43)"><tspan x="0" y="0">4</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-12" cx="413.5" cy="318.5" r="87"/>
+    <text class="cls-14" transform="translate(387.9 341.43)"><tspan x="0" y="0">4</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-2" cx="179.55" cy="508.71" r="87"/>
+    <text class="cls-14" transform="translate(157.05 530.89)"><tspan x="0" y="0">6</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-6" cx="397.5" cy="471.5" r="87"/>
+    <text class="cls-14" transform="translate(381.57 494.43)"><tspan x="0" y="0">!</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-6" cx="740.15" cy="121.87" r="87"/>
+    <text class="cls-14" transform="translate(718.92 144.06)"><tspan x="0" y="0">?</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-8" cx="706.5" cy="550.5" r="87"/>
+    <text class="cls-14" transform="translate(661.5 572.68)"><tspan x="0" y="0">10</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-11" cx="859.5" cy="208.5" r="87"/>
+    <text class="cls-14" transform="translate(843.57 231.43)"><tspan x="0" y="0">!</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-3" cx="316.5" cy="165.5" r="87"/>
+    <text class="cls-14" transform="translate(295.76 187.68)"><tspan x="0" y="0">x</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-13" cx="145.95" cy="194.87" r="87"/>
+    <text class="cls-14" transform="translate(123.45 217.06)"><tspan x="0" y="0">6</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-1" cx="221.95" cy="296.87" r="87"/>
+    <text class="cls-14" transform="translate(199.45 319.06)"><tspan x="0" y="0">–</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-10" cx="676.5" cy="363.5" r="87"/>
+    <text class="cls-14" transform="translate(641.5 385.68)"><tspan x="0" y="0">+</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-9" cx="566.5" cy="537.5" r="87"/>
+    <text class="cls-15" transform="translate(540.9 560.43)"><tspan x="0" y="0">7</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-4" cx="864.95" cy="463.87" r="87"/>
+    <text class="cls-14" transform="translate(842.45 486.06)"><tspan x="0" y="0">/</tspan></text>
+  </g>
+</svg>

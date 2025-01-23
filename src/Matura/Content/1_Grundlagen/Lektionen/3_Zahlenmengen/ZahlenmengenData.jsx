@@ -1,4 +1,4 @@
-// File: src/Matura/Content/1_Grundlagen/Lektionen/3_ZahlenArithmetik/ZahlenArithmetikData.jsx
+// File: src/Matura/Content/1_Grundlagen/Lektionen/3_Zahlenmengen/ZahlenmengenData.jsx
 
 import React from "react";
 import { Box, Image as ChakraImage } from "@chakra-ui/react";
@@ -8,7 +8,7 @@ import "katex/dist/katex.min.css";
 // Beispielbanner (SVG oder PNG) – Pfad ggf. anpassen:
 import Zahlenmengen from "./images/Zahlenmengen.svg";
 
-const ZahlenArithmetikData = {
+const ZahlenmengenData = {
     bannerImageSrc: Zahlenmengen,
 
     headline: "Zahlen und Arithmetik – Ein Überblick",
@@ -195,4 +195,4 @@ const ZahlenArithmetikData = {
     ],
 };
 
-export default ZahlenArithmetikData;
+export default ZahlenmengenData;

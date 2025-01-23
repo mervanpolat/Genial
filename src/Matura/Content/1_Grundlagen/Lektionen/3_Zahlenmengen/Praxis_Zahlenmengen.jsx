@@ -1,11 +1,11 @@
-// File: src/Matura/Content/1_Grundlagen/Lektionen/3_ZahlenArithmetik/Praxis_ZahlenArithmetik.jsx
+// File: src/Matura/Content/1_Grundlagen/Lektionen/3_Zahlenmengen/Praxis_Zahlenmengen.jsx
 
 import React from "react";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import LecturePracticePage from "../../../LektionenTemplate/LecturePracticePage.jsx";
 
-function Praxis_ZahlenArithmetik() {
+function Praxis_Zahlenmengen() {
     const quizSteps = [
         {
             type: "mcq",
@@ -101,4 +101,4 @@ function Praxis_ZahlenArithmetik() {
     );
 }
 
-export default Praxis_ZahlenArithmetik;
+export default Praxis_Zahlenmengen;
