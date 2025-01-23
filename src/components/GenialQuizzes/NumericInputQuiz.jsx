@@ -1,7 +1,17 @@
 // File: src/components/GenialQuizzes/NumericInputQuiz.jsx
 
 import React, { useState } from "react";
-import { Box, Text, Input, Button, useToast } from "@chakra-ui/react";
+import {
+    Box,
+    Text,
+    Input,
+    Button,
+    Flex,
+    useToast,
+    ScaleFade,
+    Tooltip,
+} from "@chakra-ui/react";
+import { CheckCircleIcon, CloseIcon } from "@chakra-ui/icons";
 import ExplanationReveal from "./ExplanationReveal";
 
 const CARD_BG = "#f2e8d5";
@@ -55,54 +65,75 @@ function NumericInputQuiz({
             maxW="600px"
             mx="auto"
             mt={6}
-            boxShadow="sm"
+            boxShadow="lg"
+            transition="all 0.3s"
         >
-            <Text
-                mb={2}
-                fontSize="lg"
-                fontWeight="bold"
-                color="black"
-            >
+            <Text fontSize="xl" fontWeight="bold" color="black" mb={1}>
                 {question}
+            </Text>
+            <Text fontSize="sm" color="gray.700" mb={5}>
+                Gib eine Zahl ein und klicke auf „Antwort prüfen“.
             </Text>
 
             {!isAnswered && (
-                <Input
-                    placeholder="Zahl eingeben"
-                    value={userAnswer}
-                    onChange={(e) => setUserAnswer(e.target.value)}
-                    border="2px solid"
-                    borderColor={BLUE}
-                    bg={BEIGE}
-                    color="black"
-                />
-            )}
+                <>
+                    <Tooltip label="Nur Zahlen eingeben" hasArrow>
+                        <Input
+                            placeholder="Zahl eingeben"
+                            value={userAnswer}
+                            onChange={(e) => setUserAnswer(e.target.value)}
+                            border="2px solid"
+                            borderColor={BLUE}
+                            bg={BEIGE}
+                            color="black"
+                            _hover={{
+                                borderColor: BLUE,
+                            }}
+                            _focus={{
+                                borderColor: BLUE,
+                                boxShadow: "0 0 0 1px #30628b",
+                            }}
+                            fontSize="lg"
+                        />
+                    </Tooltip>
 
-            {!isAnswered && (
-                <Button
-                    mt={4}
-                    bg="black"
-                    color="white"
-                    _hover={{ bg: "#333333" }}
-                    whiteSpace="normal"
-                    onClick={handleCheck}
-                >
-                    Antwort prüfen
-                </Button>
+                    <Button
+                        mt={4}
+                        bg="black"
+                        color="white"
+                        _hover={{
+                            bg: "#333333",
+                            transform: "scale(1.02)",
+                        }}
+                        _active={{
+                            transform: "scale(0.98)",
+                        }}
+                        transition="all 0.2s"
+                        onClick={handleCheck}
+                    >
+                        Antwort prüfen
+                    </Button>
+                </>
             )}
 
             {isAnswered && (
-                <>
-                    <Text
-                        mt={4}
-                        fontWeight="bold"
-                        color={isCorrect ? GREEN : RED}
-                        fontSize="lg"
-                    >
-                        {isCorrect ? "Richtig!" : "Falsch!"}
-                    </Text>
+                <ScaleFade initialScale={0.9} in={isAnswered}>
+                    <Flex alignItems="center" mt={4}>
+                        {isCorrect ? (
+                            <CheckCircleIcon boxSize="1.5em" color={GREEN} mr={2} />
+                        ) : (
+                            <CloseIcon boxSize="1em" color={RED} mr={2} />
+                        )}
+                        <Text
+                            fontWeight="bold"
+                            color={isCorrect ? GREEN : RED}
+                            fontSize="lg"
+                        >
+                            {isCorrect ? "Richtig!" : "Falsch!"}
+                        </Text>
+                    </Flex>
                     <ExplanationReveal explanation={explanation} />
-                </>
+                </ScaleFade>
             )}
         </Box>
     );

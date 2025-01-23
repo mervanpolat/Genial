@@ -3,15 +3,29 @@
 import React from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
-import TippyText from "../../../../../components/TippyText/TippyText.jsx"; // Pfad anpassen, falls nötig
+import TippyText from "../../../../../components/TippyText/TippyText.jsx";
+
+// ---- Import the original images ----
 import Assoziativgesetz from "./images/Assoziativgesetz.svg";
-import Assoziativ_Addition from "./images/Assoziativ_Addition.svg";
 import Assoziativ_Multiplikation from "./images/Assoziativ_Multiplikation.svg";
-import {Box} from "@chakra-ui/react";
+
+// ---- Import the three new images for the slider ----
+import Assoziativ_Addition_1 from "./images/Assoziativ_Addition_1.svg";
+import Assoziativ_Addition_2 from "./images/Assoziativ_Addition_2.svg";
+import Assoziativ_Addition_3 from "./images/Assoziativ_Addition_3.svg";
+
+// ---- Chakra components ----
+import { Box } from "@chakra-ui/react";
 import { Image as ChakraImage } from "@chakra-ui/react";
 
+// ---- react-slick imports ----
+import Slider from "react-slick";
+// For default slick styles (optional but recommended):
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const AssoziativitaetData = {
-    bannerImageSrc: Assoziativgesetz, // Beispielpfad oder weglassen
+    bannerImageSrc: Assoziativgesetz, // Optional banner
     headline: "Assoziativität in der Arithmetik",
     introText:
         "Hier lernst du, warum sich die Klammerung bei Addition oder Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt und wieso das als Axiom festgelegt wird.",
@@ -42,26 +56,60 @@ const AssoziativitaetData = {
             paragraphs: [
                 <>
                     Nehmen wir drei natürliche Zahlen{" "}
-                    <InlineMath>{String.raw`m, n, k \in \mathbb{N}`}</InlineMath>. Das assoziative
+                    <InlineMath>{String.raw`a, b, c \in \mathbb{N}`}</InlineMath>. Das assoziative
                     Gesetz lautet:
                 </>,
                 <>
-                    <BlockMath>
-                        {String.raw`m + (n + k) = (m + n) + k`}
-                    </BlockMath>
+                    <BlockMath>{String.raw`a + (b + c) = (a + b) + c`}</BlockMath>
                 </>,
+                // --- Slider with three images and extra bottom margin on dots ---
                 <>
-                    <Box mt={4} textAlign="center">
-                        <ChakraImage
-                            src={Assoziativ_Addition}
-                            alt="Dreieck mit α, β, γ"
-                            maxW="800px"
-                            objectFit="contain"
-                            margin="0 auto"
-                        />
+                    {/* Slider Container */}
+                    <Box mt={4} textAlign="center" maxW="800px" margin="0 auto">
+                        {/* React Slick settings */}
+                        <Slider
+                            dots={true}
+                            infinite={false}
+                            speed={500}
+                            slidesToShow={1}
+                            slidesToScroll={1}
+                            // This adds margin to the bottom of the dots
+                            appendDots={(dots) => (
+                                <div style={{ marginBottom: "30px" }}>
+                                    <ul style={{ margin: "0px" }}>{dots}</ul>
+                                </div>
+                            )}
+                        >
+                            <Box>
+                                <ChakraImage
+                                    src={Assoziativ_Addition_1}
+                                    alt="Assoziativität Addition 1"
+                                    maxW="100%"
+                                    objectFit="contain"
+                                    margin="0 auto"
+                                />
+                            </Box>
+                            <Box>
+                                <ChakraImage
+                                    src={Assoziativ_Addition_2}
+                                    alt="Assoziativität Addition 2"
+                                    maxW="100%"
+                                    objectFit="contain"
+                                    margin="0 auto"
+                                />
+                            </Box>
+                            <Box>
+                                <ChakraImage
+                                    src={Assoziativ_Addition_3}
+                                    alt="Assoziativität Addition 3"
+                                    maxW="100%"
+                                    objectFit="contain"
+                                    margin="0 auto"
+                                />
+                            </Box>
+                        </Slider>
                     </Box>
                 </>,
-
                 <>
                     Die Summe dreier Zahlen ist unabhängig davon, welche beiden du zuerst addierst.
                     Denk an drei Gruppen von Objekten: Ob du erst Gruppe 1 mit Gruppe 2 und dann Gruppe
@@ -79,7 +127,9 @@ const AssoziativitaetData = {
                 ),
                 options: [
                     "Die Reihenfolge der Summanden ist bedeutend.",
-                    <><InlineMath>{String.raw`(a + b) + c = a + (b + c)`}</InlineMath>.</>,
+                    <>
+                        <InlineMath>{String.raw`(a + b) + c = a + (b + c)`}</InlineMath>.
+                    </>,
                     "Man darf nur zwei Zahlen addieren, nie drei.",
                     "Assoziativität existiert nur für reelle Zahlen.",
                 ],
@@ -96,9 +146,7 @@ const AssoziativitaetData = {
                     <InlineMath>{String.raw`a, b, c`}</InlineMath> gilt:
                 </>,
                 <>
-                    <BlockMath>
-                        {String.raw`(a \times b) \times c = a \times (b \times c)`}
-                    </BlockMath>
+                    <BlockMath>{String.raw`(a \times b) \times c = a \times (b \times c)`}</BlockMath>
                 </>,
                 <>
                     Stell dir vor, du berechnest das Volumen eines Quaders mit Kantenlängen{" "}
@@ -109,14 +157,13 @@ const AssoziativitaetData = {
                     <Box mt={4} textAlign="center">
                         <ChakraImage
                             src={Assoziativ_Multiplikation}
-                            alt="Dreieck mit α, β, γ"
+                            alt="Assoziative Multiplikation"
                             maxW="800px"
                             objectFit="contain"
                             margin="0 auto"
                         />
                     </Box>
                 </>,
-
             ],
             quizData: {
                 type: "truefalse",
@@ -132,35 +179,7 @@ const AssoziativitaetData = {
             },
         },
         {
-            heading: "4. Veranschaulichung durch Volumen",
-            paragraphs: [
-                <>
-                    Bei <InlineMath>{String.raw`a \times b \times c`}</InlineMath> kannst du dir
-                    einen Quader mit Höhe <InlineMath>{String.raw`a`}</InlineMath>, Breite{" "}
-                    <InlineMath>{String.raw`b`}</InlineMath> und Tiefe{" "}
-                    <InlineMath>{String.raw`c`}</InlineMath> vorstellen. Egal, ob du{" "}
-                    <InlineMath>{String.raw`(a\times b)\times c`}</InlineMath> oder{" "}
-                    <InlineMath>{String.raw`(b\times c)\times a`}</InlineMath> rechnest, das
-                    Ergebnis ist dieselbe Menge an Einheitswürfeln, aus denen sich das Volumen
-                    zusammensetzt.
-                </>,
-                // Illustrationshinweis:
-                /*
-                  <Box mt={4} textAlign="center">
-                    // z.B. ein Quader mit Kantenlängen a, b, c
-                  </Box>
-                */
-            ],
-            quizData: {
-                type: "fillblank",
-                templateText: "Für (2×3)×4 und 2×(3×4) gilt jeweils ?",
-                correctAnswers: ["24"],
-                explanation:
-                    "2×3=6, dann 6×4=24; genauso 3×4=12, und 2×12=24. Beide Klammerungen führen zum selben Resultat.",
-            },
-        },
-        {
-            heading: "5. Ausblick",
+            heading: "4. Ausblick",
             paragraphs: [
                 <>
                     Wir sehen, dass Assoziativität in vielen Rechenbereichen eine

@@ -1,6 +1,17 @@
 // File: src/components/GenialQuizzes/ReorderQuiz.jsx
+
 import React, { useState } from "react";
-import { Box, Text, Wrap, WrapItem, Button, useToast } from "@chakra-ui/react";
+import {
+    Box,
+    Text,
+    Wrap,
+    WrapItem,
+    Button,
+    Flex,
+    useToast,
+    ScaleFade,
+} from "@chakra-ui/react";
+import { CheckCircleIcon, CloseIcon } from "@chakra-ui/icons";
 import ExplanationReveal from "./ExplanationReveal";
 
 const CARD_BG = "#f2e8d5";
@@ -36,7 +47,6 @@ function ReorderQuiz({
         setIsCorrect(correct);
         setIsAnswered(true);
 
-        // *** ALWAYS call onQuizComplete ***
         if (onQuizComplete) onQuizComplete();
     };
 
@@ -63,15 +73,14 @@ function ReorderQuiz({
             mt={6}
             maxW="600px"
             mx="auto"
-            boxShadow="sm"
+            boxShadow="lg"
+            transition="all 0.3s"
         >
-            <Text
-                fontSize={{ base: "xl", md: "lg" }}
-                fontWeight="bold"
-                mb={3}
-                color="black"
-            >
+            <Text fontSize="xl" fontWeight="bold" mb={1} color="black">
                 {prompt}
+            </Text>
+            <Text fontSize="sm" color="gray.700" mb={4}>
+                Klicke auf die Wörter, um sie nach hinten zu verschieben und die Reihenfolge zu ändern.
             </Text>
 
             <Wrap spacing={2} mb={4}>
@@ -90,7 +99,7 @@ function ReorderQuiz({
                                     ...(isAnswered
                                         ? {}
                                         : {
-                                            bg: styleProps.bg === BLUE ? BLUE : YELLOW,
+                                            bg: YELLOW,
                                             borderColor: BLUE,
                                             boxShadow: "md",
                                             transform: "scale(1.02)",
@@ -99,7 +108,7 @@ function ReorderQuiz({
                                 _active={{ transform: "scale(0.98)" }}
                                 onClick={() => handleWordClick(idx)}
                                 isDisabled={isAnswered}
-                                fontSize={{ base: "xl", md: "lg" }}
+                                fontSize="lg"
                             >
                                 {word}
                             </Button>
@@ -121,17 +130,23 @@ function ReorderQuiz({
             )}
 
             {isAnswered && (
-                <>
-                    <Text
-                        mt={4}
-                        fontWeight="bold"
-                        color={isCorrect ? GREEN : RED}
-                        fontSize={{ base: "xl", md: "lg" }}
-                    >
-                        {isCorrect ? "Richtig!" : "Falsche Reihenfolge!"}
-                    </Text>
+                <ScaleFade initialScale={0.9} in={isAnswered}>
+                    <Flex alignItems="center" mt={4}>
+                        {isCorrect ? (
+                            <CheckCircleIcon boxSize="1.5em" color={GREEN} mr={2} />
+                        ) : (
+                            <CloseIcon boxSize="1em" color={RED} mr={2} />
+                        )}
+                        <Text
+                            fontWeight="bold"
+                            color={isCorrect ? GREEN : RED}
+                            fontSize="lg"
+                        >
+                            {isCorrect ? "Richtig!" : "Falsche Reihenfolge!"}
+                        </Text>
+                    </Flex>
                     <ExplanationReveal explanation={explanation} />
-                </>
+                </ScaleFade>
             )}
         </Box>
     );

@@ -43,7 +43,7 @@ function Praxis_Assoziativitaet() {
             templateText: "Berechne (2 + 3) + 4 = ? und 2 + (3 + 4) = ?",
             correctAnswers: ["9", "9"],
             explanation:
-                "2+3=5, 5+4=9; sowie 3+4=7, 2+7=9. Gleiches Resultat.",
+                "2 + 3 = 5, 5 + 4 = 9; sowie 3 + 4 = 7, 2 + 7 = 9. Gleiches Resultat.",
         },
         {
             type: "matchingpairs",

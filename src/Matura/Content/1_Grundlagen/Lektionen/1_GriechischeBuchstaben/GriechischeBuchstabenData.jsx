@@ -8,6 +8,7 @@ import "katex/dist/katex.min.css";
 // Bilder & Banner
 import GreekLettersBanner from "./Image/GriechischeBuchstaben.png";
 import Dreieck from "./Image/Dreieck.svg";
+import Normalverteilung from "./Image/Normalverteilung.svg";
 import { Image as ChakraImage } from "@chakra-ui/react";
 
 // NEU: Interaktive Visualisierung
@@ -94,7 +95,7 @@ const GriechischeBuchstabenData = {
                         <ChakraImage
                             src={Dreieck}
                             alt="Dreieck mit α, β, γ"
-                            maxW="400px"
+                            maxW="80%"
                             objectFit="contain"
                             margin="0 auto"
                         />
@@ -186,10 +187,15 @@ const GriechischeBuchstabenData = {
                     ist.
                 </>,
                 <>
-                    <strong>
-                        Ein Diagramm einer Normalverteilung könnte hier gezeigt werden, mit μ
-                        als Mittelwert und σ als Standardabweichung!
-                    </strong>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Normalverteilung}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="100%"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
                 </>,
             ],
             quizData: {

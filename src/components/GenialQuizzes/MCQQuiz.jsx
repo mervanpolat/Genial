@@ -7,11 +7,13 @@ import {
     SimpleGrid,
     Button,
     VStack,
+    Flex,
     useToast,
+    ScaleFade,
 } from "@chakra-ui/react";
+import { CheckCircleIcon, CloseIcon } from "@chakra-ui/icons";
 import ExplanationReveal from "./ExplanationReveal";
 
-// Farben
 const CARD_BG = "#f2e8d5";
 const BEIGE = "#faf3dc";
 const BLUE = "#30628b";
@@ -52,24 +54,25 @@ function MCQQuiz({
         if (onQuizComplete) onQuizComplete();
     };
 
+    // Button style logic
     const getButtonStyle = (idx) => {
-        // Stil je nach Status
         if (isAnswered) {
-            // Nach Abgabe
+            // After submitting
             if (idx === selectedIndex) {
-                // User Choice
+                // The user's choice
                 return isCorrect
                     ? { bg: GREEN, borderColor: BLUE, color: "white" }
                     : { bg: RED, borderColor: BLUE, color: "white" };
             }
             if (idx === correctAnswerIndex) {
-                // Markiere die richtige Option
+                // Mark the correct option
                 return { bg: GREEN, borderColor: BLUE, color: "white" };
             }
-            // andere bleiben normal
+            // Others remain neutral
             return { bg: BEIGE, borderColor: BLUE, color: "black" };
         }
-        // Vor Abgabe
+
+        // Before submitting
         const isSelected = idx === selectedIndex;
         if (isSelected) {
             return { bg: BLUE, borderColor: BLUE, color: "white" };
@@ -87,13 +90,17 @@ function MCQQuiz({
             mt={6}
             maxW="600px"
             mx="auto"
-            boxShadow="sm"
+            boxShadow="lg"
+            transition="all 0.3s"
         >
-            <Text fontSize={{ base: "xl", md: "lg" }} fontWeight="bold" color="black" mb={2}>
+            <Text fontSize="xl" fontWeight="bold" color="black" mb={1}>
                 {question}
             </Text>
+            <Text fontSize="sm" color="gray.700" mb={5}>
+                Wähle eine der folgenden Optionen:
+            </Text>
 
-            <SimpleGrid columns={[1, 2]} spacing={4} mt={3}>
+            <SimpleGrid columns={[1, 2]} spacing={4}>
                 {options.map((option, idx) => {
                     const styleProps = getButtonStyle(idx);
                     return (
@@ -103,26 +110,26 @@ function MCQQuiz({
                             borderColor={styleProps.borderColor}
                             bg={styleProps.bg}
                             color={styleProps.color}
-                            px={6} // Horizontales Padding
-                            py={10} // Vertikales Padding
-                            // WICHTIG: Zeilenumbruch ermöglichen
+                            px={4}
+                            py={6}
                             whiteSpace="normal"
                             textAlign="center"
-                            // Hover-Effekt nur, wenn noch nicht beantwortet
+                            transition="all 0.2s"
                             _hover={{
                                 ...(isAnswered
                                     ? {}
                                     : {
                                         bg: styleProps.bg === BLUE ? BLUE : "#e2d7b7",
                                         boxShadow: "md",
+                                        transform: "scale(1.02)",
                                     }),
                             }}
                             _active={{
                                 transform: "scale(0.98)",
                             }}
+                            fontSize="lg"
                             onClick={() => handleSelect(idx)}
                             isDisabled={isAnswered}
-                            fontSize={{ base: "md", md: "lg" }}
                         >
                             {option}
                         </Button>
@@ -144,18 +151,25 @@ function MCQQuiz({
                 )}
 
                 {isAnswered && (
-                    <>
-                        <Text
-                            fontWeight="bold"
-                            color={isCorrect ? GREEN : RED}
-                            fontSize={{ base: "xl", md: "lg" }}
-                        >
-                            {isCorrect ? "Richtig!" : "Falsch!"}
-                        </Text>
-                        <Box width="100%" textAlign="left">
+                    <ScaleFade initialScale={0.9} in={isAnswered}>
+                        <Flex alignItems="center" mt={2}>
+                            {isCorrect ? (
+                                <CheckCircleIcon boxSize="1.5em" color={GREEN} mr={2} />
+                            ) : (
+                                <CloseIcon boxSize="1em" color={RED} mr={2} />
+                            )}
+                            <Text
+                                fontWeight="bold"
+                                color={isCorrect ? GREEN : RED}
+                                fontSize="lg"
+                            >
+                                {isCorrect ? "Richtig!" : "Falsch!"}
+                            </Text>
+                        </Flex>
+                        <Box width="100%" textAlign="left" mt={2}>
                             <ExplanationReveal explanation={explanation} />
                         </Box>
-                    </>
+                    </ScaleFade>
                 )}
             </VStack>
         </Box>

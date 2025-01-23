@@ -1,6 +1,16 @@
 // File: src/components/GenialQuizzes/TrueFalseQuiz.jsx
+
 import React, { useState } from "react";
-import { Box, Text, Button, HStack, useToast } from "@chakra-ui/react";
+import {
+    Box,
+    Text,
+    Button,
+    HStack,
+    Flex,
+    useToast,
+    ScaleFade,
+} from "@chakra-ui/react";
+import { CheckCircleIcon, CloseIcon } from "@chakra-ui/icons";
 import ExplanationReveal from "./ExplanationReveal";
 
 const CARD_BG = "#f2e8d5";
@@ -35,11 +45,9 @@ function TrueFalseQuiz({ statement, isTrue, explanation, onQuizComplete }) {
         setIsCorrect(correct);
         setIsAnswered(true);
 
-        // *** Always call onQuizComplete ***
         if (onQuizComplete) onQuizComplete();
     };
 
-    // same style as before
     const getButtonStyle = (val) => {
         if (isAnswered) {
             const userChoseThis = userAnswer === val;
@@ -54,6 +62,7 @@ function TrueFalseQuiz({ statement, isTrue, explanation, onQuizComplete }) {
             }
             return { bg: BEIGE, borderColor: BLUE, color: "black" };
         }
+        // Before answering
         const isSelected = userAnswer === val;
         if (isSelected) {
             return { bg: BLUE, borderColor: BLUE, color: "white" };
@@ -72,15 +81,14 @@ function TrueFalseQuiz({ statement, isTrue, explanation, onQuizComplete }) {
             maxW="600px"
             mx="auto"
             textAlign="center"
-            boxShadow="sm"
+            boxShadow="lg"
+            transition="all 0.3s"
         >
-            <Text
-                fontSize={{ base: "xl", md: "lg" }}
-                fontWeight="bold"
-                mb={4}
-                color="black"
-            >
+            <Text fontSize="xl" fontWeight="bold" color="black" mb={1}>
                 {statement}
+            </Text>
+            <Text fontSize="sm" color="gray.700" mb={5}>
+                Wähle „Wahr“ oder „Falsch“ und klicke auf „Antwort prüfen“.
             </Text>
 
             <HStack spacing={6} justify="center">
@@ -107,7 +115,7 @@ function TrueFalseQuiz({ statement, isTrue, explanation, onQuizComplete }) {
                             transition="all 0.2s"
                             onClick={() => handleUserAnswer(val)}
                             isDisabled={isAnswered}
-                            fontSize={{ base: "xl", md: "lg" }}
+                            fontSize="lg"
                         >
                             {val === "true" ? "Wahr" : "Falsch"}
                         </Button>
@@ -129,16 +137,23 @@ function TrueFalseQuiz({ statement, isTrue, explanation, onQuizComplete }) {
             )}
 
             {isAnswered && (
-                <Box mt={4} textAlign="center">
-                    <Text
-                        fontWeight="bold"
-                        color={isCorrect ? GREEN : RED}
-                        fontSize={{ base: "xl", md: "lg" }}
-                    >
-                        {isCorrect ? "Richtig!" : "Falsch!"}
-                    </Text>
+                <ScaleFade initialScale={0.9} in={isAnswered}>
+                    <Flex alignItems="center" justifyContent="center" mt={4}>
+                        {isCorrect ? (
+                            <CheckCircleIcon boxSize="1.5em" color={GREEN} mr={2} />
+                        ) : (
+                            <CloseIcon boxSize="1em" color={RED} mr={2} />
+                        )}
+                        <Text
+                            fontWeight="bold"
+                            color={isCorrect ? GREEN : RED}
+                            fontSize="lg"
+                        >
+                            {isCorrect ? "Richtig!" : "Falsch!"}
+                        </Text>
+                    </Flex>
                     <ExplanationReveal explanation={explanation} />
-                </Box>
+                </ScaleFade>
             )}
         </Box>
     );
