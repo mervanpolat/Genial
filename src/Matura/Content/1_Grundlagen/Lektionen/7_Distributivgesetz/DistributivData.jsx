@@ -5,279 +5,172 @@ import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import * as d3 from "d3";
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
-import {Box} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import Distributivgesetz from "./images/Distributivgesetz.svg";
+import { Image as ChakraImage } from "@chakra-ui/react";
+import Ausmultiplizieren from "./images/Ausmultiplizieren.svg";
 
 /**
  * D3RectPartitionPro
  * Ein d3.js-Minimodul mit Slider zur Illustration des Distributivgesetzes.
  * - Ein großes Rechteck (Breite = m + n, Höhe = k), das in 2 Teilflächen (k×m, k×n) zerlegt wird.
  * - Farbe/Styles in Byrne-Farben:
- *   Byrne's Beige: #faf3dc  (Seiten-Hintergrund)
+ *   Byrne's Beige: #faf3dc
  *   Byrne's Blue: #30628b
  *   Byrne's Red: #c03b2d
  *   Byrne's Yellow: #f0c34e
  *
  * Wir animieren EINMAL beim ersten Render, spätere Slider-Änderungen sind ohne Transition.
  */
-function D3RectPartitionPro({ width = 400, height = 150 }) {
-    const svgRef = useRef(null);
-    const didMountRef = useRef(false); // um erneutem Animieren zu verhindern
-
-    // mRel: Verhältnis [0..1], wie viel % vom großen Rechteck "m" einnimmt.
-    const [mRel, setMRel] = useState(0.5);
-
-    const marginLeft = 10;
-    const marginTop = 10;
-    const bigWidth = width;
-    const bigHeight = height;
-
-    // Byrne-Farben
-    const colorYellow = "#f0c34e"; // großes Rechteck
-    const colorRed = "#c03b2d";    // Rahmen
-    const colorBlue = "#30628b";   // Sub-Rechtecke
-    const textColor = "#30628b";   // Text
-
-    // Slider-Handler
-    const handleSliderChange = (e) => {
-        setMRel(parseFloat(e.target.value));
-    };
-
-    useEffect(() => {
-        if (!svgRef.current) return;
-        const svg = d3.select(svgRef.current);
-        svg.selectAll("*").remove();
-
-        const subW1 = mRel * bigWidth;      // k×m
-        const subW2 = (1 - mRel) * bigWidth; // k×n
-
-        // The main big rect
-        const rectAll = svg.append("rect")
-            .attr("x", marginLeft)
-            .attr("y", marginTop)
-            .attr("height", bigHeight)
-            .attr("fill", colorYellow)
-            .attr("stroke", colorRed)
-            .attr("stroke-width", 2);
-
-        // First subrect
-        const rect1 = svg.append("rect")
-            .attr("y", marginTop)
-            .attr("height", bigHeight)
-            .attr("fill", colorBlue)
-            .attr("fill-opacity", 0.6);
-
-        // Second subrect
-        const rect2 = svg.append("rect")
-            .attr("y", marginTop)
-            .attr("height", bigHeight)
-            .attr("fill", colorBlue)
-            .attr("fill-opacity", 0.3);
-
-        // Falls wir das erste Mal rendern => Transition, sonst direkt
-        if (!didMountRef.current) {
-            didMountRef.current = true; // Merke: das nächste Mal KEINE Animation
-
-            // Animation
-            rectAll
-                .attr("width", 0)
-                .transition()
-                .duration(700)
-                .attr("width", subW1 + subW2);
-
-            rect1
-                .attr("x", marginLeft)
-                .attr("width", 0)
-                .transition()
-                .duration(700)
-                .attr("width", subW1);
-
-            rect2
-                .attr("x", marginLeft + subW1)
-                .attr("width", 0)
-                .transition()
-                .duration(700)
-                .attr("width", subW2);
-
-        } else {
-            // Nur aktualisieren, keine Transition
-            rectAll.attr("width", subW1 + subW2);
-            rect1
-                .attr("x", marginLeft)
-                .attr("width", subW1);
-            rect2
-                .attr("x", marginLeft + subW1)
-                .attr("width", subW2);
-        }
-
-        // Beschriftung
-        svg.append("text")
-            .attr("x", marginLeft + 10)
-            .attr("y", marginTop + 20)
-            .style("fill", textColor)
-            .style("font-size", "14px")
-            .text("Distributiv: k×(m+n) = k×m + k×n");
-    }, [mRel, bigWidth, bigHeight]);
-
-    return (
-        <div style={{ textAlign: "center" }}>
-            <svg
-                ref={svgRef}
-                width={width + marginLeft * 2}
-                height={height + marginTop * 2}
-            />
-            <div style={{ marginTop: "8px" }}>
-                <label style={{ marginRight: "6px" }}>
-                    Verhältnis m / (m+n):
-                </label>
-                <input
-                    type="range"
-                    min="0.1"
-                    max="0.9"
-                    step="0.01"
-                    value={mRel}
-                    onChange={handleSliderChange}
-                    style={{ width: "150px" }}
-                />
-                <span style={{ marginLeft: "8px" }}>
-          {(mRel * 100).toFixed(0)}%
-        </span>
-            </div>
-        </div>
-    );
-}
 
 const DistributivData = {
-    bannerImageSrc: "/pfad/DistributivesGesetz_Banner.png",
-    headline: "Das Distributive Gesetz in der Arithmetik",
+    bannerImageSrc: Distributivgesetz,
+    headline: "Das Distributivgesetz",
     introText:
-        "Wie verknüpft man Addition und Multiplikation sinnvoll? Das Distributivgesetz liefert die Antwort und erklärt das Multiplizieren von Summen (Klammermultiplikation).",
+        "Nach den Illustrationen zum Kommutativ- und Assoziativgesetz geht es jetzt um das Distributivgesetz. Es verbindet Multiplikation und Addition – und ist fundamental für das Ausmultiplizieren von Klammern.",
+
     sections: [
         {
             heading: "1. Einführung",
             paragraphs: [
                 <>
-                    Bisher hast du <TippyText content="z.B. bei Summen und Produkten">
-                    kommutative
-                </TippyText>{" "}
-                    und assoziative Gesetze kennengelernt. Hier lernst du, wie{" "}
-                    <InlineMath>{String.raw`\text{Multiplikation}`}</InlineMath> und{" "}
-                    <InlineMath>{String.raw`\text{Addition}`}</InlineMath> verknüpft werden: das{" "}
-                    <TippyText content="Ein Rechengesetz, das Multiplikation auf Summanden verteilt.">
-                        Distributivgesetz
-                    </TippyText>
-                    .
+                    Stell dir vor, du hast bereits das{" "}
+                    <TippyText content="Vertauschungsgesetz: a×b = b×a">
+                        Kommutativgesetz
+                    </TippyText>{" "}
+                    und das{" "}
+                    <TippyText content="Verbindungsgesetz: (a×b)×c = a×(b×c)">
+                        Assoziativgesetz
+                    </TippyText>{" "}
+                    kennengelernt. Nun siehst du, wie{" "}
+                    <TippyText content="Ein Gesetz, das Multiplikation über Summen verteilt.">
+                        das Distributivgesetz
+                    </TippyText>{" "}
+                    für einen noch umfassenderen Rechenkomfort sorgt.
                 </>,
                 <>
-                    Zwar beweisen wir es hier nicht formal, aber wir illustrieren, warum es
-                    „praktisch nützlich“ ist, es als Axiom festzulegen.
+                    Beispiel: <InlineMath>{String.raw`2 \times (3 + 4)`}</InlineMath>. Du kannst erst{" "}
+                    <InlineMath>{String.raw`3 + 4 = 7`}</InlineMath> rechnen und mit 2 multiplizieren, oder
+                    2×3 plus 2×4 aufaddieren. Ergebnis: 14. Das ist kein Zufall, sondern ein allgemeines Gesetz.
                 </>,
             ],
         },
         {
-            heading: "2. Formulierung des Distributivgesetzes",
+            heading: "2. Das Distributivgesetz",
             paragraphs: [
                 <>
-                    Für <InlineMath>{String.raw`k,m,n \in \mathbb{N}`}</InlineMath> gilt:
+                    Für alle <InlineMath>{String.raw`k,m,n \in \mathbb{N}`}</InlineMath> gilt:
                 </>,
                 <>
                     <BlockMath>
-                        {String.raw`k \times (m+n) = k \times m + k \times n`}
+                        {String.raw`k \cdot (m + n) = k \cdot m + k \cdot n`}
                     </BlockMath>
+                    Dasselbe funktioniert auch mit vertauschten Faktoren, beispielsweise{" "}
+                    <InlineMath>{String.raw`(m + n)\cdot k = m\cdot k + n\cdot k`}</InlineMath>.
                 </>,
                 <>
-                    Man sagt: <em>k wird auf die Summanden m und n „verteilt“</em>. Ob du erst die
-                    Summe <InlineMath>{String.raw`m+n`}</InlineMath> bildest und dann mal k
-                    rechnest, oder du k×m + k×n addierst – das Ergebnis bleibt gleich.
+                    Dieses Rechengesetz erleichtert es, Summen zu multiplizieren. Man spricht davon,
+                    „<em>k wird verteilt</em>“.
                 </>,
             ],
             quizData: {
                 type: "truefalse",
                 statement: (
                     <>
-                        Gilt <InlineMath>{String.raw`k \times (m+n) = k\times m + k\times n`}</InlineMath>{" "}
-                        stets in <InlineMath>{String.raw`\mathbb{N}`}</InlineMath>?
+                        Gilt das Distributivgesetz auch für <InlineMath>{String.raw`k \cdot (m - n)`}</InlineMath>?
                     </>
                 ),
-                isTrue: true,
+                isTrue: false,
                 explanation:
-                    "Ja, das Distributivgesetz verbindet Addition und Multiplikation in allen natürlichen Zahlen.",
+                    "Hier brauchen wir zusätzlich, wie Subtraktion in den natürlichen Zahlen definiert wird. Das klassische Distributivgesetz bezieht sich strikt auf Addition. Für Minuenden und Subtraktionen verallgemeinert man später über ganze Zahlen.",
             },
         },
+        // ... Teil der DistributivData.jsx ...
+
         {
-            heading: "3. Interaktive Veranschaulichung (d3.js)",
+            heading: "3. Geometrische Illustration",
             paragraphs: [
                 <>
-                    Bewege den Slider, um das Verhältnis von <InlineMath>{String.raw`m`}</InlineMath> zu{" "}
-                    <InlineMath>{String.raw`n`}</InlineMath> zu ändern. Das große Rechteck zeigt
-                    <InlineMath>{String.raw`k\times(m+n)`}</InlineMath>, aufgeteilt in{" "}
-                    <InlineMath>{String.raw`k\times m`}</InlineMath> und{" "}
-                    <InlineMath>{String.raw`k\times n`}</InlineMath>.
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Distributivgesetz}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="80%"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
                 </>,
+
                 <>
-                    Damit siehst du live, wie das Distributivgesetz funktioniert – einmal animiert,
-                    danach ohne erneute Übergänge.
+                    In der linken Abbildung siehst du ein rotes Rechteck mit den Maßen{" "}
+                    <InlineMath>{String.raw`k \times (m+n)`}</InlineMath>. In der rechten Abbildung ist dieselbe
+                    Fläche in zwei Teilrechtecke aufgeteilt: ein grünes für{" "}
+                    <InlineMath>{String.raw`k \times m`}</InlineMath> und ein oranges für{" "}
+                    <InlineMath>{String.raw`k \times n`}</InlineMath>. So wird{" "}
+                    <InlineMath>{String.raw`k(m+n) = km + kn`}</InlineMath> anschaulich dargestellt.
                 </>,
-                // Hier binden wir unser Minimodul ein (D3RectPartitionPro):
-                <Box mt={4} textAlign="center">
-                    <D3RectPartitionPro width={400} height={150} />
-                </Box>,
             ],
             quizData: {
                 type: "mcq",
                 question: (
                     <>
-                        Welche Farbflächen zeigen <InlineMath>{String.raw`k\times m`}</InlineMath> bzw.{" "}
-                        <InlineMath>{String.raw`k\times n`}</InlineMath>?
+                        Was zeigt die Gegenüberstellung der roten und (grün + orange) Rechtecke?
                     </>
                 ),
                 options: [
-                    "Zwei unterschiedlich große Kreise",
-                    "Zwei Teilrechtecke in einem großen Rechteck",
-                    "Ein Quader mit 3 Dimensionen",
-                    "Keines davon",
+                    "Eine Illustration von k = m + n",
+                    "Zwei unterschiedliche Dimensionen in 3D",
+                    "Das Distributivgesetz, indem ein großes Rechteck in k×m und k×n aufgeteilt wird",
+                    "Nur zufällige Farbfelder ohne Bedeutung",
                 ],
-                correctAnswerIndex: 1,
+                correctAnswerIndex: 2,
                 explanation:
-                    "Die zwei Teilrechtecke (blau) repräsentieren k×m und k×n, das große gelbe Rechteck k×(m+n).",
+                    "Das große rote Rechteck steht für k×(m+n), während die Teilrechtecke (grün/orange) für k×m und k×n stehen. Zusammen illustriert das Diagramm das Distributivgesetz.",
             },
         },
         {
             heading: "4. Arithmetische Deutung",
             paragraphs: [
                 <>
-                    Stell dir einen Preis <InlineMath>{String.raw`k`}</InlineMath> pro Stück vor.
                     Kaufst du <InlineMath>{String.raw`m`}</InlineMath> Stück einer Sorte und{" "}
-                    <InlineMath>{String.raw`n`}</InlineMath> einer anderen, so kannst du
-                    den Gesamtpreis rechnen als{" "}
-                    <InlineMath>{String.raw`(m+n)\times k`}</InlineMath> oder{" "}
-                    <InlineMath>{String.raw`m\times k + n\times k`}</InlineMath>.
+                    <InlineMath>{String.raw`n`}</InlineMath> Stück einer anderen Sorte – beide zum Preis k
+                    – kannst du den Gesamtpreis über (m+n)×k oder m×k + n×k berechnen. Beide Wege führen zum
+                    selben Ergebnis.
                 </>,
             ],
             quizData: {
                 type: "fillblank",
-                templateText: "Wenn k=4, m=2 und n=3, was ist k×(m+n)? Ergebnis: ?",
-                correctAnswers: ["20"],
+                templateText:
+                    "Beispiel: k=4, m=3, n=5. Berechne: 4×(3+5) = ? ",
+                correctAnswers: ["32"],
                 explanation:
-                    "m+n=5, 4×5=20. Oder 2×4 + 3×4= 8+12=20.",
+                    "3 + 5 = 8, dann 4 × 8 = 32. Alternativ: 3 × 4 + 5 × 4 = 12 + 20 = 32.",
             },
         },
         {
-            heading: "5. Klammermultiplikation (Konsequenz)",
+            heading: "5. Klammermultiplikation",
             paragraphs: [
                 <>
-                    Für <InlineMath>{String.raw`(k+l)\times (m+n)`}</InlineMath> resultiert:
-                    <br />
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Ausmultiplizieren}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="80%"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
+                </>,
+                <>
+                    Mit dem Distributivgesetz kann man auch zwei Summen ausmultiplizieren:{" "}
                     <BlockMath>
                         {String.raw`(k+l)\times (m+n) = k\times m + k\times n + l\times m + l\times n`}
                     </BlockMath>
-                </>,
-                <>
-                    „Ausmultiplizieren“ zweier Summen – man kann es durch wiederholtes
-                    Distributivgesetz und Kommutativität herleiten. Grafisch: Ein großes Rechteck
-                    wird in vier Teilrechtecke zerlegt.
+                    Indem man das Gesetz zweimal anwendet (und die Kommutativität nutzt), zerlegt man das
+                    rechteckige Areal in vier Teilflächen.
                 </>,
             ],
-            // kein quiz => user kann finish
         },
     ],
 };
