@@ -102,11 +102,12 @@ const PrimzahlUndTeilbarkeitData = {
             quizData: {
                 type: "fillblank",
                 templateText:
-                    "Betrachte 12. Man kann es als 2^2 * 3^1 zerlegen. Welches Produkt erhältst du? ?",
+                    "Betrachte die Zahl 12. Man kann sie als 2² · 3¹ zerlegen. Welches Produkt erhältst du: ?",
                 correctAnswers: ["12", "12."],
                 explanation:
-                    "2²=4, 4×3=12. So entsteht aus den Primfaktoren 2 und 3 erneut 12.",
+                    "2² = 4, 4 × 3 = 12. So entsteht aus den Primfaktoren 2 und 3 erneut 12.",
             },
+
         },
         {
             heading: "4. Wichtige Teilbarkeitsregeln",
