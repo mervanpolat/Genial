@@ -3,7 +3,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
-import * as d3 from "d3";
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 import { Box } from "@chakra-ui/react";
 import Distributivgesetz from "./images/Distributivgesetz.svg";

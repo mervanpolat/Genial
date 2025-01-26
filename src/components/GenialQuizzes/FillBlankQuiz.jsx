@@ -1,4 +1,7 @@
 // File: src/components/GenialQuizzes/FillBlankQuiz.jsx
+// ----------------------------------------------------
+// Updated with a safety check for templateText
+// to prevent "Cannot read properties of undefined" errors.
 
 import React, { useState } from "react";
 import {
@@ -32,7 +35,11 @@ function FillBlankQuiz({
     const [isCorrect, setIsCorrect] = useState(false);
     const toast = useToast();
 
-    const displayText = templateText.replace("?", userInput || "___");
+    // If templateText is missing or not a string, default to an empty string.
+    const safeTemplate = typeof templateText === "string" ? templateText : "";
+
+    // Insert userInput or "___" in place of "?"
+    const displayText = safeTemplate.replace("?", userInput || "___");
 
     const handleCheck = () => {
         if (!userInput.trim()) {

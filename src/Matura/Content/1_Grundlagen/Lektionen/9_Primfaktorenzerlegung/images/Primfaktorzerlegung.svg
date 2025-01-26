@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 356">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: CMUSansSerif-Oblique, 'CMU Sans Serif';
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-style: oblique;
+      }
+
+      .cls-1, .cls-5, .cls-6, .cls-4 {
+        font-size: 40px;
+      }
+
+      .cls-7, .cls-8 {
+        font-size: 50px;
+      }
+
+      .cls-7, .cls-8, .cls-5, .cls-9, .cls-6, .cls-10 {
+        font-family: CMUClassicalSerif-Italic, 'CMU Classical Serif';
+        font-style: italic;
+      }
+
+      .cls-8, .cls-5, .cls-3, .cls-10 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-9, .cls-3, .cls-10 {
+        font-size: 30px;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: CMUBright-Oblique, 'CMU Bright';
+      }
+
+      .cls-11 {
+        fill: #f0c34e;
+      }
+
+      .cls-11, .cls-12, .cls-13, .cls-14 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-4 {
+        font-family: CMUSerif-RomanSlanted, 'CMU Serif Extra';
+      }
+
+      .cls-15 {
+        fill: #fbf2d8;
+      }
+
+      .cls-12 {
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .cls-16 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-13 {
+        fill: #c03b2d;
+      }
+
+      .cls-14 {
+        fill: #30628b;
+      }
+    </style>
+  </defs>
+  <rect class="cls-15" width="930" height="356"/>
+  <rect class="cls-14" x="315" y="51.92" width="84" height="84"/>
+  <rect class="cls-13" x="406.5" y="51.5" width="84" height="84"/>
+  <rect class="cls-11" x="497.5" y="51.5" width="84" height="84"/>
+  <text class="cls-7" transform="translate(218.36 100.03)"><tspan x="0" y="0">n =</tspan></text>
+  <text class="cls-1" transform="translate(297.57 210.03)"><tspan x="0" y="0">2, 3, 5, 7, 11, 13, ...</tspan></text>
+  <text class="cls-8" transform="translate(321.72 100.03)"><tspan x="0" y="0">p</tspan></text>
+  <text class="cls-5" transform="translate(353.27 81.03)"><tspan x="0" y="0">a</tspan></text>
+  <text class="cls-10" transform="translate(374.82 95.03)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-10" transform="translate(343.82 123.03)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-8" transform="translate(415.72 100.03)"><tspan x="0" y="0">p</tspan></text>
+  <text class="cls-5" transform="translate(447.27 81.03)"><tspan x="0" y="0">a</tspan></text>
+  <text class="cls-3" transform="translate(468.61 95.03)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-3" transform="translate(437.61 123.03)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-7" transform="translate(503.72 100.03)"><tspan x="0" y="0">p</tspan></text>
+  <text class="cls-6" transform="translate(535.27 81.03)"><tspan x="0" y="0">a</tspan></text>
+  <text class="cls-2" transform="translate(556.61 95.03)"><tspan x="0" y="0">3</tspan></text>
+  <text class="cls-2" transform="translate(525.61 123.03)"><tspan x="0" y="0">3</tspan></text>
+  <text class="cls-7" transform="translate(683.72 100.03)"><tspan x="0" y="0">p</tspan></text>
+  <text class="cls-6" transform="translate(715.27 81.03)"><tspan x="0" y="0">a</tspan></text>
+  <text class="cls-9" transform="translate(736.06 95.03)"><tspan x="0" y="0">n</tspan></text>
+  <text class="cls-9" transform="translate(705.06 123.03)"><tspan x="0" y="0">n</tspan></text>
+  <text class="cls-2" transform="translate(656.62 100.03)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-2" transform="translate(588.62 100.03)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-9" transform="translate(613.81 115.03)"><tspan x="0" y="0">…</tspan></text>
+  <text class="cls-4" transform="translate(31.96 291.32)"><tspan x="0" y="0">Starte immer mit der kleinstmögli</tspan><tspan class="cls-16" x="596.15" y="0">c</tspan><tspan x="612.79" y="0">hen Primzahl! </tspan></text>
+  <line class="cls-12" x1="29.5" y1="302.5" x2="903.5" y2="303.5"/>
+</svg>

@@ -30,6 +30,7 @@ import Praxis_KommutativGesetz from "./Matura/Content/1_Grundlagen/Lektionen/5_K
 import Praxis_Assoziativitaet from "./Matura/Content/1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
 import Praxis_Distributivgesetz from "./Matura/Content/1_Grundlagen/Lektionen/7_Distributivgesetz/Praxis_Distributivgesetz.jsx";
 import Praxis_PrimzahlUndTeilbarkeit from "./Matura/Content/1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/Praxis_PrimzahlUndTeilbarkeit.jsx";
+import Praxis_Primfaktorenzerlegung from "./Matura/Content/1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/Praxis_Primfaktorenzerlegung.jsx";
 
 // SINGLE dynamic route for theory
 import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
@@ -159,6 +160,11 @@ function App() {
                 <Route
                     path= "/praxis-primzahlundteil"
                     element={<Praxis_PrimzahlUndTeilbarkeit />}
+                />
+
+                <Route
+                    path= "/praxis-primfaktorenzerlegung"
+                    element={<Praxis_Primfaktorenzerlegung />}
                 />
 
                 {/* DYNAMIC route for theory => the “slug” picks the data */}

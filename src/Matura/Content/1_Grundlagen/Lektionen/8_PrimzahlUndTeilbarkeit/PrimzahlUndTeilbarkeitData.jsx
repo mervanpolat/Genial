@@ -4,12 +4,13 @@ import React from "react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
+import Teilbarkeit from "./images/Teilbarkeit.svg";
 
 const PrimzahlUndTeilbarkeitData = {
-    bannerImageSrc: "/pfad/Divisibility_Banner.png", // oder bannerImages: ["...", "..."]
+    bannerImageSrc: Teilbarkeit, // oder bannerImages: ["...", "..."]
     headline: "Teilbarkeit und Primzahlen",
     introText:
-        "Wie unterscheidet man Primzahlen und zusammengesetzte Zahlen? Wie funktioniert die Zerlegung in Primfaktoren? Hier erfährst du die wichtigsten Grundlagen zur Divisibilität.",
+        "Wie unterscheidet man Primzahlen und zusammengesetzte Zahlen? Wie funktioniert die Zerlegung in Primfaktoren? Hier erfährst du die wichtigsten Grundlagen zur Teilbarkeit.",
 
     sections: [
         {
@@ -54,10 +55,9 @@ const PrimzahlUndTeilbarkeitData = {
                     sie nur einen Divisor (1) hat.
                 </>,
                 <>
-                    <strong>Zusammengesetzte Zahlen</strong>
-                    sind
-                    dagegen Produkte aus zwei kleineren natürlichen Zahlen. Beispiele:
-                    <InlineMath>{String.raw`10, 25, 42`}</InlineMath>. Weder Primzahlen noch
+                    <strong>Zusammengesetzte Zahlen </strong>
+                     sind dagegen Produkte aus zwei kleineren natürlichen Zahlen. Beispiele:
+                    <InlineMath>{String.raw` 10, 25, 42`}</InlineMath>. Weder Primzahlen noch
                     die 1 zählen dazu.
                 </>,
             ],
@@ -96,7 +96,7 @@ const PrimzahlUndTeilbarkeitData = {
                 <>
                     Dabei sind alle <InlineMath>{String.raw`p_i`}</InlineMath> Primzahlen,
                     und <InlineMath>{String.raw`\alpha_i`}</InlineMath> sind natürliche
-                    Exponenten. In Video 12 siehst du Beispiele für diese Zerlegung.
+                    Exponenten.
                 </>,
             ],
             quizData: {
@@ -154,8 +154,8 @@ const PrimzahlUndTeilbarkeitData = {
                 <>
                     Du kennst nun die Begriffe <em>Divisor</em>, <em>Primzahl</em> und{" "}
                     <em>Primfaktorzerlegung</em>. Außerdem hast du grundlegende
-                    Teilbarkeitsregeln (2,3,5) aufgefrischt. Im nächsten Video siehst du
-                    praktische Beispiele zum Faktorisieren.
+                    Teilbarkeitsregeln (2, 3, 5) aufgefrischt. In der nächsten Lektion siehst du
+                    praktische Beispiele über Primfaktorenzerlegung.
                 </>,
             ],
             // kein quiz => user kann abschließen

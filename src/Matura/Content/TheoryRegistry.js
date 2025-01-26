@@ -9,7 +9,7 @@ import KommutativGesetzData from "./1_Grundlagen/Lektionen/5_Kommutativgesetz/Ko
 import AssoziativitaetData from "./1_Grundlagen/Lektionen/6_Assoziativgesetz/AssoziativitaetData.jsx";
 import DistributivData from "./1_Grundlagen/Lektionen/7_Distributivgesetz/DistributivData.jsx";
 import PrimzahlUndTeilbarkeitData from "./1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/PrimzahlUndTeilbarkeitData.jsx";
-
+import PrimfaktorenzerlegungData from "./1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/PrimfaktorenzerlegungData.jsx";
 
 // Create a mapping from "slug" => data object
 const theoryRegistry = {
@@ -22,6 +22,7 @@ const theoryRegistry = {
     assoziativitaet: AssoziativitaetData,
     distributiv: DistributivData,
     primzahlundteil: PrimzahlUndTeilbarkeitData,
+    primfaktorenzerlegung: PrimfaktorenzerlegungData,
 
 };
 

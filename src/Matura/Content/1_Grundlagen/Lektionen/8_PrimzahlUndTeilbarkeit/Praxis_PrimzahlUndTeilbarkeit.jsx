@@ -1,4 +1,4 @@
-// File: Praxis_MeinNeuesThema.jsx
+// File: Praxis_Primfaktorenzerlegung.jsx
 
 import React from "react";
 import { InlineMath } from "react-katex";
@@ -26,7 +26,7 @@ function Praxis_PrimzahlUndTeilbarkeit() {
         },
         {
             type: "fillblank",
-            templateText: "Wie lautet die Primfaktorzerlegung von 18? ?",
+            templateText: "Wie lautet die Primfaktorzerlegung von 18 = ? ?",
             correctAnswers: ["2 * 3^2", "2*3^2", "2 × 3^2"],
             explanation:
                 "18 = 2×3². 3²=9, 2×9=18.",

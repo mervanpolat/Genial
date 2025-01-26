@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221.17 219.7">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        font-family: Noteworthy-Bold, Noteworthy;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        fill: #fbf2d8;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-7 {
+        letter-spacing: .02em;
+      }
+
+      .cls-8 {
+        letter-spacing: .02em;
+      }
+
+      .cls-9 {
+        letter-spacing: .03em;
+      }
+
+      .cls-10 {
+        letter-spacing: .03em;
+      }
+    </style>
+  </defs>
+  <rect class="cls-3" width="221.17" height="219.7"/>
+  <text class="cls-2" transform="translate(23.38 38.96)"><tspan x="0" y="0">15</tspan><tspan x="0" y="30">5</tspan><tspan x="0" y="90">5</tspan><tspan x="0" y="120">1</tspan></text>
+  <text class="cls-2" transform="translate(68.38 38.96)"><tspan x="0" y="0">3</tspan><tspan x="0" y="30">n. </tspan><tspan class="cls-6" x="14.7" y="30">t</tspan><tspan class="cls-9" x="19.82" y="30">e</tspan><tspan x="27.39" y="30">i</tspan><tspan class="cls-8" x="30.45" y="30">l</tspan><tspan class="cls-4" x="33.71" y="30">b</tspan><tspan class="cls-7" x="41.12" y="30">a</tspan><tspan x="49.42" y="30">r d</tspan><tspan class="cls-10" x="66.13" y="30">u</tspan><tspan class="cls-6" x="73.46" y="30">r</tspan><tspan x="79.01" y="30">ch 3 aber</tspan><tspan x="0" y="60">d</tspan><tspan class="cls-9" x="7.57" y="60">u</tspan><tspan class="cls-5" x="14.91" y="60">r</tspan><tspan x="20.46" y="60">ch 5!</tspan><tspan x="0" y="90">5</tspan></text>
+  <line class="cls-1" x1="57.17" y1="18.26" x2="57.17" y2="201.26"/>
+</svg>

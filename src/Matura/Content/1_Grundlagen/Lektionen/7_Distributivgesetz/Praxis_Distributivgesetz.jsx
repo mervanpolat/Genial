@@ -1,4 +1,4 @@
-// File: Praxis_MeinNeuesThema.jsx
+// File: Praxis_Primfaktorenzerlegung.jsx
 
 import React from "react";
 import { InlineMath } from "react-katex";

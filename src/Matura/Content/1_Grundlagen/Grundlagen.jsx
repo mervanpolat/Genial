@@ -128,6 +128,22 @@ function Grundlagen() {
             headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
             description: "Vertiefe dein Verständnis die Grundlagen zu Primzahlen und wichtigen Teilbarkeitsregeln.",
             route: "/praxis-primzahlundteil"
+        },
+
+        {
+            id: 17,
+            title: "Primfaktorenzerlegung",
+            headline: "Primfaktorenzerlegung",
+            description: "Lerne die Grundlagen zu Primfaktorenzerlegung.",
+            route: "/theory/primfaktorenzerlegung"
+        },
+
+        {
+            id: 18,
+            title: "Praxis: Primzahlen und Teilbarkeitsregeln",
+            headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
+            description: "Vertiefe dein Verständnis die Grundlagen zu Primzahlen und wichtigen Teilbarkeitsregeln.",
+            route: "/praxis-primfaktorenzerlegung"
         }
 
 
