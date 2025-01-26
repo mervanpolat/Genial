@@ -9,7 +9,7 @@ import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 
-import { Image } from "@chakra-ui/react";
+import {Box, Image} from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,6 +26,10 @@ import prime105_1 from "./images/prime105_1.svg";
 // Images for 48
 import prime48_1 from "./images/prime48_1.svg";
 import Primfaktorzerlegung from "./images/Primfaktorzerlegung.svg";
+import { Image as ChakraImage } from "@chakra-ui/react";
+
+import Teilbarkeit from "./images/Teilbarkeit.svg";
+
 
 const PrimfaktorenzerlegungData = {
     bannerImageSrc: Primfaktorzerlegung,
@@ -47,6 +51,25 @@ const PrimfaktorenzerlegungData = {
                     Die sogenannte <em>vertikale Strichmethode</em> hilft uns beim systematischen
                     Faktorisieren. Man schreibt die Zahl links und die kleinste passende Primzahl
                     rechts, dann wiederholt man es mit dem Quotienten.
+                </>,
+            ],
+        },
+        {
+            heading: "Wiederholung: Teilbarkeitsregeln",
+            paragraphs: [
+                <>
+                    Nachfolgend findest du zur Wiederholung noch einmal eine Übersicht der Teilbarkeitsregeln.
+                </>,
+                <>
+                    <Box mt={4} textAlign="center">
+                        <ChakraImage
+                            src={Teilbarkeit}
+                            alt="Dreieck mit α, β, γ"
+                            maxW="80%"
+                            objectFit="contain"
+                            margin="0 auto"
+                        />
+                    </Box>
                 </>,
             ],
         },

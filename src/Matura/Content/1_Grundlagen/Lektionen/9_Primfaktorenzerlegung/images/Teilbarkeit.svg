@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 614">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-family: CMUSerif-Roman, 'CMU Serif';
+        font-size: 50px;
+      }
+
+      .cls-3 {
+        fill: #48a346;
+      }
+
+      .cls-4, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-4, .cls-5 {
+        font-family: CMUSerif-BoldItalic, 'CMU Serif';
+        font-size: 30px;
+        font-style: italic;
+        font-weight: 700;
+      }
+
+      .cls-6 {
+        fill: #7e4c8d;
+      }
+
+      .cls-7 {
+        fill: #c23bb7;
+      }
+
+      .cls-8 {
+        fill: #299c9f;
+      }
+
+      .cls-9 {
+        fill: #c03b2d;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-11 {
+        fill: #f0c34e;
+      }
+
+      .cls-12 {
+        fill: #dd8d41;
+      }
+
+      .cls-13 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-14 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-15 {
+        fill: #fbf2d8;
+      }
+
+      .cls-16 {
+        fill: #30628b;
+      }
+    </style>
+  </defs>
+  <rect class="cls-15" width="1020" height="614"/>
+  <rect class="cls-7" x="20.57" y="24.96" width="59.59" height="59.59"/>
+  <rect class="cls-7" x="224.21" y="25" width="774.79" height="59.59"/>
+  <rect class="cls-16" x="224.21" y="97" width="774.79" height="59.59"/>
+  <rect class="cls-9" x="224.21" y="169" width="774.79" height="59.59"/>
+  <rect class="cls-11" x="224.21" y="242" width="774.79" height="59.59"/>
+  <rect class="cls-12" x="224.21" y="314" width="774.79" height="59.59"/>
+  <rect class="cls-3" x="224.21" y="386" width="774.79" height="59.59"/>
+  <rect class="cls-6" x="224.21" y="458" width="774.79" height="59.59"/>
+  <rect class="cls-8" x="224.21" y="530" width="774.79" height="59.59"/>
+  <rect class="cls-16" x="21.21" y="97.14" width="59.59" height="59.59"/>
+  <rect class="cls-9" x="21.21" y="169.28" width="59.59" height="59.59"/>
+  <rect class="cls-11" x="21.21" y="241.42" width="59.59" height="59.59"/>
+  <rect class="cls-12" x="21.21" y="313.55" width="59.59" height="59.59"/>
+  <rect class="cls-3" x="21.21" y="385.69" width="59.59" height="59.59"/>
+  <rect class="cls-6" x="21.21" y="457.83" width="59.59" height="59.59"/>
+  <rect class="cls-8" x="21.21" y="529.97" width="59.59" height="59.59"/>
+  <text class="cls-5" transform="translate(108.74 65.93)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-4" transform="translate(250.02 65.93)"><tspan x="0" y="0">letzte Ziffer ge</tspan><tspan class="cls-13" x="222.23" y="0">r</tspan><tspan x="235.52" y="0">ade ist (endet auf 0, 2, 4, 6, 8).</tspan></text>
+  <text class="cls-4" transform="translate(291.38 137.93)"><tspan x="0" y="0">die Summe der Ziffern du</tspan><tspan class="cls-13" x="396.09" y="0">r</tspan><tspan x="409.38" y="0">ch 3 teil</tspan><tspan class="cls-13" x="532.65" y="0">b</tspan><tspan x="546.83" y="0">ar ist.</tspan></text>
+  <text class="cls-4" transform="translate(282.36 209.93)"><tspan x="0" y="0">die letzten zwei Ziffern du</tspan><tspan class="cls-14" x="399.1" y="0">r</tspan><tspan class="cls-10" x="412.38" y="0">ch 4 teil</tspan><tspan class="cls-13" x="535.65" y="0">b</tspan><tspan x="549.83" y="0">ar sind</tspan></text>
+  <text class="cls-5" transform="translate(312.76 283.93)"><tspan x="0" y="0">wenn die letzte Ziffer eine 0 </tspan><tspan class="cls-14" x="442.03" y="0">o</tspan><tspan x="457.98" y="0">der 5 ist.</tspan></text>
+  <text class="cls-5" transform="translate(309.52 351.93)"><tspan x="0" y="0">wenn die Zahl du</tspan><tspan class="cls-13" x="261.46" y="0">r</tspan><tspan x="274.75" y="0">ch 2 und 3 teil</tspan><tspan class="cls-13" x="496.36" y="0">b</tspan><tspan x="510.54" y="0">ar ist.</tspan></text>
+  <text class="cls-5" transform="translate(235.2 424.93)"><tspan x="0" y="0">wenn die letzten d</tspan><tspan class="cls-13" x="275.33" y="0">r</tspan><tspan x="288.62" y="0">ei Ziffern du</tspan><tspan class="cls-13" x="482.77" y="0">r</tspan><tspan x="496.05" y="0">ch 8 teil</tspan><tspan class="cls-13" x="619.32" y="0">b</tspan><tspan x="633.5" y="0">ar sind.</tspan></text>
+  <text class="cls-4" transform="translate(246.19 496.93)"><tspan x="0" y="0">wenn die Summe der Ziffern du</tspan><tspan class="cls-13" x="486.47" y="0">r</tspan><tspan x="499.76" y="0">ch 9 teil</tspan><tspan class="cls-13" x="623.03" y="0">b</tspan><tspan x="637.21" y="0">ar ist.</tspan></text>
+  <text class="cls-4" transform="translate(356.37 570.93)"><tspan x="0" y="0">wenn die letzte Ziffer eine 0 ist.</tspan></text>
+  <text class="cls-2" transform="translate(36.86 69.97)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-2" transform="translate(37.86 142.97)"><tspan x="0" y="0">3</tspan></text>
+  <text class="cls-2" transform="translate(37.86 214.97)"><tspan x="0" y="0">4</tspan></text>
+  <text class="cls-1" transform="translate(37.86 287.97)"><tspan x="0" y="0">5</tspan></text>
+  <text class="cls-1" transform="translate(37.86 359.97)"><tspan x="0" y="0">6</tspan></text>
+  <text class="cls-1" transform="translate(37.86 430.97)"><tspan x="0" y="0">8</tspan></text>
+  <text class="cls-2" transform="translate(37.86 503.97)"><tspan x="0" y="0">9</tspan></text>
+  <text class="cls-1" transform="translate(25.36 576.97)"><tspan x="0" y="0">10</tspan></text>
+  <text class="cls-5" transform="translate(108.74 137.93)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-5" transform="translate(108.74 204.93)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-5" transform="translate(107.24 278.43)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-5" transform="translate(108.74 351.93)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-5" transform="translate(108.74 423.93)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-5" transform="translate(108.74 490.93)"><tspan x="0" y="0">wenn</tspan></text>
+  <text class="cls-5" transform="translate(107.24 564.43)"><tspan x="0" y="0">wenn</tspan></text>
+</svg>
