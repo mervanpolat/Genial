@@ -80,7 +80,7 @@ function Grundlagen() {
             id: 10,
             title: "Praxis: Kommutativgesetz",
             headline: "Praxis: Kommutativität von Addition und Multiplikation",
-            description: "Vertiefe dein Verständnis über Kommutativgesetz.",
+            description: "Vertiefe dein Verständnis zu Kommutativgesetz.",
             route: "/praxis-kommutativ"
         },
         {
@@ -95,7 +95,7 @@ function Grundlagen() {
             id: 12,
             title: "Praxis: Assoziativgesetz",
             headline: "Praxis: Assoziativität in der Arithmetik",
-            description: "Vertiefe dein Verständnis über Assoziativgesetz",
+            description: "Vertiefe dein Verständnis zu Assoziativgesetz",
             route: "/praxis-assoziativitaet"
         },
 
@@ -111,14 +111,14 @@ function Grundlagen() {
             id: 14,
             title: "Praxis: Distributivgesetz",
             headline: "Praxis: Das Distributive Gesetz in der Arithmetik",
-            description: "Vertiefe dein Verständnis über Distributivgesetz!",
+            description: "Vertiefe dein Verständnis zu Distributivgesetz!",
             route: "/praxis-distributivgesetz"
         },
         {
             id: 15,
             title: "Primzahlen und Teilbarkeitsregeln",
             headline: "Primzahlen und Teilbarkeitsregeln",
-            description: "Lerne die Grundlagen zu Primzahlen und Teilbarkeitsregeln, um Divisoren zu erkennen und Zahlenfaktoren zu bestimmen.",
+            description: "Lerne die Grundlagen zu Primzahlen und Teilbarkeitsregeln.",
             route: "/theory/primzahlundteil"
         },
 
@@ -126,7 +126,7 @@ function Grundlagen() {
             id: 16,
             title: "Praxis: Primzahlen und Teilbarkeitsregeln",
             headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
-            description: "Vertiefe dein Verständnis die Grundlagen zu Primzahlen und wichtigen Teilbarkeitsregeln.",
+            description: "Vertiefe dein Verständnis zu Primzahlen und wichtigen Teilbarkeitsregeln.",
             route: "/praxis-primzahlundteil"
         },
 
@@ -140,9 +140,9 @@ function Grundlagen() {
 
         {
             id: 18,
-            title: "Praxis: Primzahlen und Teilbarkeitsregeln",
-            headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
-            description: "Vertiefe dein Verständnis die Grundlagen zu Primzahlen und wichtigen Teilbarkeitsregeln.",
+            title: "Praxis: Primfaktorenzerlegung",
+            headline: "Praxis: Primfaktorenzerlegung",
+            description: "Vertiefe dein Verständnis zu Primfaktorenzerlegung.",
             route: "/praxis-primfaktorenzerlegung"
         }
 
