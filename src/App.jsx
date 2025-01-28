@@ -20,9 +20,9 @@ import AboutUs from "./components/LandingPage/AboutUs.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
 // Theory-based content
-import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
-import Grundlagen from "./Matura/Content/1_Grundlagen/Grundlagen.jsx";
-import GleichungenLoesen from "./Matura/Content/2_GleichungenLoesen/GleichungenLoesen.jsx";
+import DynamicTheoryPage from "./Matura/Module/DynamicTheoryPage.jsx";
+import Grundlagen from "./Matura/Module/1_Grundlagen/Grundlagen.jsx";
+import GleichungenLoesen from "./Matura/Module/2_GleichungenLoesen/GleichungenLoesen.jsx";
 
 // Onboarding
 import Step1_Welcome from "./components/Onboarding/steps/Step1_Welcome.jsx";
@@ -38,7 +38,7 @@ import Step9_LoginPage from "./components/Onboarding/steps/Step9_LoginPage.jsx";
 import { OnboardingProvider } from "./components/Onboarding/OnboardingContext.jsx";
 
 // PRACTICE dynamic loader
-import DynamicPracticePage from "./Matura/Content/DynamicPracticePage.jsx";
+import DynamicPracticePage from "./Matura/Module/DynamicPracticePage.jsx";
 
 // Onboarding step array
 const stepsArray = [
