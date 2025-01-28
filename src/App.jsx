@@ -19,21 +19,10 @@ import Price from "./components/LandingPage/Price.jsx";
 import AboutUs from "./components/LandingPage/AboutUs.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
+// Theory-based content
+import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
 import Grundlagen from "./Matura/Content/1_Grundlagen/Grundlagen.jsx";
 import GleichungenLoesen from "./Matura/Content/2_GleichungenLoesen/GleichungenLoesen.jsx";
-
-import Praxis_GriechischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Praxis_GriechischeBuchstaben.jsx";
-import Praxis_LateinischeBuchstaben from "./Matura/Content/1_Grundlagen/Lektionen/2_LateinischeBuchstaben/Praxis_LateinischeBuchstaben.jsx";
-import Praxis_Zahlenmengen from "./Matura/Content/1_Grundlagen/Lektionen/3_Zahlenmengen/Praxis_Zahlenmengen.jsx";
-import Praxis_NatZahlenArith from "./Matura/Content/1_Grundlagen/Lektionen/4_NatZahlenArith/Praxis_NatZahlenArith.jsx";
-import Praxis_KommutativGesetz from "./Matura/Content/1_Grundlagen/Lektionen/5_Kommutativgesetz/Praxis_KommutativGesetz.jsx";
-import Praxis_Assoziativitaet from "./Matura/Content/1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
-import Praxis_Distributivgesetz from "./Matura/Content/1_Grundlagen/Lektionen/7_Distributivgesetz/Praxis_Distributivgesetz.jsx";
-import Praxis_PrimzahlUndTeilbarkeit from "./Matura/Content/1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/Praxis_PrimzahlUndTeilbarkeit.jsx";
-import Praxis_Primfaktorenzerlegung from "./Matura/Content/1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/Praxis_Primfaktorenzerlegung.jsx";
-
-// SINGLE dynamic route for theory
-import DynamicTheoryPage from "./Matura/Content/DynamicTheoryPage.jsx";
 
 // Onboarding
 import Step1_Welcome from "./components/Onboarding/steps/Step1_Welcome.jsx";
@@ -48,6 +37,10 @@ import Step9_LoginPage from "./components/Onboarding/steps/Step9_LoginPage.jsx";
 
 import { OnboardingProvider } from "./components/Onboarding/OnboardingContext.jsx";
 
+// PRACTICE dynamic loader
+import DynamicPracticePage from "./Matura/Content/DynamicPracticePage.jsx";
+
+// Onboarding step array
 const stepsArray = [
     { path: "/welcome", component: Step1_Welcome },
     { path: "/goal-selection", component: Step2_GoalSelection },
@@ -119,56 +112,11 @@ function App() {
                 <Route path="/grundlagen" element={<Grundlagen />} />
                 <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
 
-                {/* Greek letters practice */}
-                <Route
-                    path="/praxis-griechischebuchstaben"
-                    element={<Praxis_GriechischeBuchstaben />}
-                />
-
-                <Route
-                    path="/praxis-lateinischebuchstaben"
-                    element={<Praxis_LateinischeBuchstaben />}
-                />
-
-                <Route
-                    path="/praxis-zahlenarithmetik"
-                    element={<Praxis_Zahlenmengen />}
-                />
-
-                <Route
-                    path="/praxis-natZahlenArithmetik"
-                    element={<Praxis_NatZahlenArith />}
-                />
-
-                <Route
-                    path= "/praxis-kommutativ"
-                    element={<Praxis_KommutativGesetz />}
-                />
-
-                <Route
-                    path= "/praxis-assoziativitaet"
-                    element={<Praxis_Assoziativitaet />}
-                />
-
-                <Route
-                    path= "/praxis-distributivgesetz"
-                    element={<Praxis_Distributivgesetz />}
-                />
-
-                Praxis_PrimzahlUndTeilbarkeit
-
-                <Route
-                    path= "/praxis-primzahlundteil"
-                    element={<Praxis_PrimzahlUndTeilbarkeit />}
-                />
-
-                <Route
-                    path= "/praxis-primfaktorenzerlegung"
-                    element={<Praxis_Primfaktorenzerlegung />}
-                />
-
-                {/* DYNAMIC route for theory => the “slug” picks the data */}
+                {/* DYNAMIC route for theory => the “slug” picks the correct theory data */}
                 <Route path="/theory/:slug" element={<DynamicTheoryPage />} />
+
+                {/* DYNAMIC route for practice => “slug” picks the correct practice component */}
+                <Route path="/practice/:slug" element={<DynamicPracticePage />} />
 
                 {/* Onboarding steps */}
                 {stepsArray.map((step, index) => (

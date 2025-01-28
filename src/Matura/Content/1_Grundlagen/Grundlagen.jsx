@@ -8,112 +8,126 @@ function Grundlagen() {
     const navigate = useNavigate();
 
     const moduleData = [
+        // THEORY #1
         {
             id: 1,
             title: "Griechische Buchstaben",
             headline: "Griechische Buchstaben",
             description: "Lerne die Griechische Buchstaben in Mathematik.",
-            route: "/theory/griechische" // this is the slug from theoryRegistry
+            route: "/theory/griechische"
         },
+        // PRACTICE #1
         {
             id: 2,
             title: "Praxis: Griechische Buchstaben",
             headline: "Praxis: Griechische Buchstaben",
-            description: "Vertiefe dein Verständnis über die griechischen Buchstaben in Mathematik.",
-            route: "/praxis-griechischebuchstaben"
+            description: "Vertiefe dein Verständnis über die griechischen Buchstaben.",
+            route: "/practice/griechischebuchstaben" // <-- updated
         },
 
+        // THEORY #2
         {
             id: 3,
             title: "Lateinische Buchstaben",
             headline: "Lateinische Buchstaben",
-            description: "Lerne die Lateinische Buchstaben die in Mathematik ständig vorkommen.",
+            description: "Lerne die Lateinische Buchstaben, die in der Mathematik vorkommen.",
             route: "/theory/lateinische"
         },
+        // PRACTICE #2
         {
             id: 4,
             title: "Praxis: Lateinische Buchstaben",
             headline: "Praxis: Lateinische Buchstaben",
-            description: "Vertiefe dein Verständnis über die lateinischen Buchstaben in Mathematik.",
-            route: "/praxis-lateinischebuchstaben"
+            description: "Vertiefe dein Verständnis über die lateinischen Buchstaben.",
+            route: "/practice/lateinischebuchstaben" // <-- updated
         },
 
+        // THEORY #3
         {
             id: 5,
             title: "Zahlenmengen",
             headline: "Zahlenmengen",
-            description: "Lerne die Gründe warum wir mehrere Zahlenmengen brauchen.",
+            description: "Lerne die Gründe, warum wir mehrere Zahlenmengen brauchen.",
             route: "/theory/zahlenarith"
         },
-
+        // PRACTICE #3
         {
             id: 6,
             title: "Praxis: Zahlenmengen",
             headline: "Praxis: Zahlenmengen",
             description: "Vertiefe dein Verständnis über Zahlenmengen.",
-            route: "/praxis-zahlenarithmetik"
+            route: "/practice/zahlenarithmetik" // <-- updated
         },
+
+        // THEORY #4
         {
             id: 7,
             title: "Grundlagen der Zahlen und Arithmetik",
             headline: "Grundlagen der Zahlen und Arithmetik",
-            description: "Erfahre mehr über Zahlenmengen, ihre Eigenschaften und grundlegende Rechenregeln.",
+            description: "Erfahre mehr über Zahlenmengen und grundlegende Rechenregeln.",
             route: "/theory/natZahlenArith"
         },
+        // PRACTICE #4
         {
             id: 8,
             title: "Praxis: Grundlagen der Zahlen und Arithmetik",
             headline: "Praxis: Grundlagen der Zahlen und Arithmetik",
             description: "Vertiefe dein Verständnis über Zahlen und Arithmetik.",
-            route: "/praxis-natZahlenArithmetik"
+            route: "/practice/natZahlenArithmetik" // <-- updated
         },
 
+        // THEORY #5
         {
             id: 9,
             title: "Kommutativgesetz",
             headline: "Kommutativgesetz",
-            description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren das Ergebnis nicht verändert.",
+            description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren kein anderes Ergebnis liefert.",
             route: "/theory/kommutativg"
-
         },
+        // PRACTICE #5
         {
             id: 10,
             title: "Praxis: Kommutativgesetz",
-            headline: "Praxis: Kommutativität von Addition und Multiplikation",
+            headline: "Praxis: Kommutativität",
             description: "Vertiefe dein Verständnis zu Kommutativgesetz.",
-            route: "/praxis-kommutativ"
+            route: "/practice/kommutativ" // <-- updated
         },
+
+        // THEORY #6
         {
             id: 11,
             title: "Assoziativgesetz",
             headline: "Assoziativgesetz",
-            description: "Lerne, warum die Klammerung bei Addition/Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt.",
+            description: "Warum spielt die Klammerung bei Addition/Multiplikation keine Rolle? Erfahre es hier.",
             route: "/theory/assoziativitaet"
         },
-
+        // PRACTICE #6
         {
             id: 12,
             title: "Praxis: Assoziativgesetz",
-            headline: "Praxis: Assoziativität in der Arithmetik",
-            description: "Vertiefe dein Verständnis zu Assoziativgesetz",
-            route: "/praxis-assoziativitaet"
+            headline: "Praxis: Assoziativität",
+            description: "Vertiefe dein Verständnis zum Assoziativgesetz.",
+            route: "/practice/assoziativitaet" // <-- updated
         },
 
+        // THEORY #7
         {
             id: 13,
             title: "Distributivgesetz",
             headline: "Distributivgesetz",
-            description: "Wie verknüpft man Addition und Multiplikation sinnvoll? Das Distributivgesetz liefert die Antwort!",
+            description: "Wie verknüpft man Addition und Multiplikation? Das Distributivgesetz!",
             route: "/theory/distributiv"
         },
-
+        // PRACTICE #7
         {
             id: 14,
             title: "Praxis: Distributivgesetz",
-            headline: "Praxis: Das Distributive Gesetz in der Arithmetik",
-            description: "Vertiefe dein Verständnis zu Distributivgesetz!",
-            route: "/praxis-distributivgesetz"
+            headline: "Praxis: Distributivgesetz",
+            description: "Vertiefe dein Verständnis zum Distributivgesetz.",
+            route: "/practice/distributivgesetz" // <-- updated
         },
+
+        // THEORY #8
         {
             id: 15,
             title: "Primzahlen und Teilbarkeitsregeln",
@@ -121,33 +135,31 @@ function Grundlagen() {
             description: "Lerne die Grundlagen zu Primzahlen und Teilbarkeitsregeln.",
             route: "/theory/primzahlundteil"
         },
-
+        // PRACTICE #8
         {
             id: 16,
             title: "Praxis: Primzahlen und Teilbarkeitsregeln",
             headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
-            description: "Vertiefe dein Verständnis zu Primzahlen und wichtigen Teilbarkeitsregeln.",
-            route: "/praxis-primzahlundteil"
+            description: "Vertiefe dein Verständnis zu Teilbarkeitsregeln.",
+            route: "/practice/primzahlundteil" // <-- updated
         },
 
+        // THEORY #9
         {
             id: 17,
             title: "Primfaktorenzerlegung",
             headline: "Primfaktorenzerlegung",
-            description: "Lerne die Grundlagen zu Primfaktorenzerlegung.",
+            description: "Lerne die Grundlagen zur Primfaktorenzerlegung.",
             route: "/theory/primfaktorenzerlegung"
         },
-
+        // PRACTICE #9
         {
             id: 18,
             title: "Praxis: Primfaktorenzerlegung",
             headline: "Praxis: Primfaktorenzerlegung",
-            description: "Vertiefe dein Verständnis zu Primfaktorenzerlegung.",
-            route: "/praxis-primfaktorenzerlegung"
+            description: "Vertiefe dein Verständnis zur Primfaktorenzerlegung.",
+            route: "/practice/primfaktorenzerlegung" // <-- updated
         }
-
-
-        // more modules ...
     ];
 
     const itemRefs = useRef([]);
@@ -167,6 +179,7 @@ function Grundlagen() {
             console.log("No route defined for module:", mod);
             return;
         }
+        // Navigate to the route (theory or practice)
         navigate(mod.route);
     };
 
