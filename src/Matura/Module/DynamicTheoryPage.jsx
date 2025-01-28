@@ -6,6 +6,10 @@ import { useParams } from "react-router-dom";
 import theoryRegistry from "./TheoryRegistry.js";
 import LectureTheoryPage from "./LektionTemplate/LectureTheoryPage.jsx";
 
+/**
+ * Loads the correct data from the registry based on the URL's :slug,
+ * then renders <LectureTheoryPage> with that data.
+ */
 function DynamicTheoryPage() {
     const { slug } = useParams();
     const data = theoryRegistry[slug];
@@ -18,15 +22,14 @@ function DynamicTheoryPage() {
         );
     }
 
-    // Hier leiten wir das Data-Objekt (mit bannerImageSrc, headline, introText, sections)
-    // einfach an LectureTheoryPage weiter. Dort wird quizData korrekt erkannt.
+    // We pass data.bannerImageSrc, data.introText, data.sections, etc. to LectureTheoryPage
     return (
         <LectureTheoryPage
             bannerImageSrc={data.bannerImageSrc}
-            bannerImages={data.bannerImages} // optional, falls du arrays hast
+            bannerImages={data.bannerImages} // optional
             headline={data.headline}
             introText={data.introText}
-            sectionsContent={data.sections}  // <-- WICHTIG
+            sectionsContent={data.sections}
             onSectionComplete={(sectionIndex) => {
                 console.log("Section completed:", sectionIndex, "for slug:", slug);
             }}

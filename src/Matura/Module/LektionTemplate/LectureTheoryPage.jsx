@@ -20,7 +20,7 @@ const OuterSection = chakra("section", {});
 const InnerSection = chakra("section", {});
 
 /**
- * Banner rendering logic
+ * Renders a single banner image or a slider of multiple banner images.
  */
 function BannerArea({ bannerImageSrc, bannerImages = [] }) {
     if (bannerImages.length >= 2) {
@@ -36,7 +36,7 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
             <Box w="100%" maxW="600px" mx="auto" mb={8}>
                 <Slider {...settings}>
                     {bannerImages.map((imgSrc, idx) => (
-                        <Box key={idx}>
+                        <Box key={`banner-${idx}`}>
                             <Image
                                 src={imgSrc}
                                 alt={`Lecture Banner ${idx + 1}`}
@@ -86,13 +86,9 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
 /**
  * LectureTheoryPage
  *
- * Alternative Gating mit sectionVisibility[] (boolean array).
- *
- * - Intro: bei Klick "Weiter" => Intro wird versteckt, sectionVisibility[0] = true,
- *   wir scrollen zu section 0.
- * - currentSectionIndex => der "aktive" Abschnitt, an dem sich der User befindet.
- * - Klick auf "Weiter" in section i => wir schalten section i+1 "visible" und
- *   scrollen dorthin, increment i => gating fürs Quiz (user muss isAnswered=true).
+ * Single gating state:
+ *   - currentSectionIndex = -1 => Intro is shown (no sections).
+ *   - currentSectionIndex >= 0 => Hide intro, show sections up to currentSectionIndex.
  */
 function LectureTheoryPage({
                                bannerImageSrc,
@@ -107,31 +103,24 @@ function LectureTheoryPage({
     const pageRef = useRef(null);
     const NAVBAR_HEIGHT = 80;
 
-    // Intro gating
-    const [introVisible, setIntroVisible] = useState(!!introText);
-
-    // Wir halten fest, welcher Abschnitt "aktiv" ist (User steht dort).
+    // -1 => intro, 0..(sectionsContent.length-1) => show that many sections
     const [currentSectionIndex, setCurrentSectionIndex] = useState(-1);
 
-    // Ein bool-Array, ob section i angezeigt wird.
-    // Anfangs: alle false.
-    const initialVisibility = sectionsContent.map(() => false);
-    const [sectionVisibility, setSectionVisibility] = useState(initialVisibility);
-
-    // Quiz-Freischaltung
+    // If the current section has a quiz, user must answer it before clicking "Weiter"
     const [isSectionAnswered, setIsSectionAnswered] = useState(false);
 
+    // Refs for each rendered section, for smooth scrolling
     const sectionRefs = useRef([]);
 
     const bgColor = useColorModeValue("#faf3dc", "#faf3dc");
     const cardBg = useColorModeValue("#faf3dc", "#faf3dc");
 
     const totalSections = sectionsContent.length;
-
     const isLastSection = currentSectionIndex === totalSections - 1;
+    const isIntro = currentSectionIndex === -1;
 
-    // Scroll Navbar out of view on mount
     useEffect(() => {
+        // Scroll the page so the navbar is out of view on mount
         if (pageRef.current) {
             setTimeout(() => {
                 const topPosition = pageRef.current.offsetTop + NAVBAR_HEIGHT;
@@ -143,22 +132,15 @@ function LectureTheoryPage({
         }
     }, []);
 
-    // INTRO => klick => zeige Section 0
+    /**
+     * Called when user clicks "Weiter" from the Intro
+     */
     const handleIntroNext = () => {
-        setIntroVisible(false);
-
-        // Mach section 0 sichtbar
-        setSectionVisibility((prev) => {
-            const copy = [...prev];
-            copy[0] = true;
-            return copy;
-        });
-
-        // Wir wechseln currentSectionIndex = 0
+        // Move from -1 to 0, showing the first section
         setCurrentSectionIndex(0);
         setIsSectionAnswered(false);
 
-        // Scroll zu Section 0
+        // Scroll to the first section
         setTimeout(() => {
             if (sectionRefs.current[0]) {
                 sectionRefs.current[0].scrollIntoView({
@@ -169,21 +151,18 @@ function LectureTheoryPage({
         }, 50);
     };
 
-    // "Weiter" => next section
+    /**
+     * Called when user clicks "Weiter" in a visible section
+     */
     const handleNextSection = () => {
         setIsSectionAnswered(false);
 
         const nextIndex = currentSectionIndex + 1;
         if (nextIndex < totalSections) {
-            // Mach section nextIndex sichtbar
-            setSectionVisibility((prev) => {
-                const copy = [...prev];
-                copy[nextIndex] = true;
-                return copy;
-            });
-
+            // show next section
             setCurrentSectionIndex(nextIndex);
 
+            // scroll to the newly shown section
             setTimeout(() => {
                 if (sectionRefs.current[nextIndex]) {
                     sectionRefs.current[nextIndex].scrollIntoView({
@@ -193,27 +172,30 @@ function LectureTheoryPage({
                 }
             }, 50);
 
-            if (onSectionComplete) onSectionComplete(nextIndex);
+            // optional callback
+            if (onSectionComplete) {
+                onSectionComplete(nextIndex);
+            }
         } else {
-            // Letzter => navigate
+            // If we've reached the last section, do whatever "finish" action you want
             navigate("/grundlagen");
         }
     };
 
-    // Wenn im aktuellen Abschnitt quiz => gating
-    const currentSection = currentSectionIndex >= 0
-        ? sectionsContent[currentSectionIndex]
-        : null;
+    // Identify the "current" section for quiz gating:
+    const currentSection =
+        currentSectionIndex >= 0 && currentSectionIndex < sectionsContent.length
+            ? sectionsContent[currentSectionIndex]
+            : null;
 
-    const hasQuiz = currentSection?.quizData ? true : false;
+    const hasQuiz = !!currentSection?.quizData;
+    // If there's a quiz, disable the "Weiter" button until it's answered
     const isButtonDisabled = hasQuiz && !isSectionAnswered;
 
-    // Quiz answered => man darf "Weiter" klicken
     const handleQuizAnswered = () => {
         setIsSectionAnswered(true);
     };
 
-    // Button label
     const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
 
     return (
@@ -237,7 +219,7 @@ function LectureTheoryPage({
                 )}
 
                 {/* INTRO */}
-                {introVisible && introText && (
+                {isIntro && introText && (
                     <>
                         <Text fontSize={{ base: "xl", md: "xl" }} mb={4}>
                             {introText}
@@ -258,24 +240,21 @@ function LectureTheoryPage({
                     </>
                 )}
 
-                {/* Abschnitte */}
-                {!introVisible && (
+                {/* SECTIONS (if currentSectionIndex >= 0) */}
+                {!isIntro && (
                     <>
                         {sectionsContent.map((section, idx) => {
-                            // Nur rendern, wenn sectionVisibility[idx] == true
-                            if (!sectionVisibility[idx]) return null;
+                            // Show all sections up to currentSectionIndex
+                            if (idx > currentSectionIndex) return null;
 
                             return (
                                 <InnerSection
-                                    key={idx}
+                                    key={`section-${idx}`}
                                     ref={(el) => (sectionRefs.current[idx] = el)}
                                     mt={8}
                                 >
                                     <LectureTheorySection
                                         heading={section.heading}
-                                        // isVisible => immer true, weil wir ja
-                                        // uns entschieden haben, es anzuzeigen
-                                        isVisible
                                         quizData={section.quizData}
                                         onQuizAnswered={handleQuizAnswered}
                                     >
@@ -285,7 +264,7 @@ function LectureTheoryPage({
                             );
                         })}
 
-                        {/* Next/Abschließen Button */}
+                        {/* NEXT/FINISH BUTTON */}
                         {currentSectionIndex < totalSections && (
                             <Button
                                 onClick={handleNextSection}

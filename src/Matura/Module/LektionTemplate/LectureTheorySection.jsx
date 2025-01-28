@@ -11,22 +11,29 @@ import {
     MatchingPairsQuiz,
 } from "../../../components/GenialQuizzes";
 
+/**
+ * Renders a single theory section (heading, paragraphs, optional quiz).
+ * The `isVisible` gating is commented out. If needed, you could re-enable it,
+ * but you must coordinate with LectureTheoryPage so they don’t conflict.
+ */
 function LectureTheorySection({
                                   heading,
-                                  isVisible,
+                                  isVisible, // not used here, but could be used if you want an internal gating
                                   children,
                                   quizData,
                                   onQuizAnswered = () => {},
                               }) {
-    // Optional Gating
+    // If you were using internal gating:
     // if (!isVisible) return null;
 
     const handleQuizComplete = () => {
         onQuizAnswered();
     };
 
+    /** Renders the correct quiz type, if any */
     const renderQuiz = () => {
         if (!quizData) return null;
+
         switch (quizData.type) {
             case "truefalse":
                 return (
@@ -78,7 +85,7 @@ function LectureTheorySection({
         }
     };
 
-    // Keys for paragraphs to fix key warning
+    // Make sure paragraphs each have a unique key
     const paragraphsArray = Array.isArray(children)
         ? children.map((para, i) => (
             <Box key={`para-${i}`} mb={2}>
