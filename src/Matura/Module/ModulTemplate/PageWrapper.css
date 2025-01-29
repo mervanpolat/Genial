@@ -237,6 +237,16 @@ body {
   grid-column: 3;
 }
 
+.right-item:nth-child(20) {
+  grid-row: 20;
+  grid-column: 2;
+}
+
+.right-item:nth-child(21) {
+  grid-row: 21;
+  grid-column: 1;
+}
+
 .right-item {
   display: flex;
   flex-direction: column;
@@ -363,6 +373,16 @@ body {
   .right-item:nth-child(19) {
     grid-row: 19;
     grid-column: 3;
+  }
+
+  .right-item:nth-child(20) {
+    grid-row: 20;
+    grid-column: 2;
+  }
+
+  .right-item:nth-child(21) {
+    grid-row: 21;
+    grid-column: 1;
   }
 }
 

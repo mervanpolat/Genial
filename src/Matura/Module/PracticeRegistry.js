@@ -10,6 +10,7 @@ import Praxis_Assoziativitaet from "./1_Grundlagen/Lektionen/6_Assoziativgesetz/
 import Praxis_Distributivgesetz from "./1_Grundlagen/Lektionen/7_Distributivgesetz/Praxis_Distributivgesetz.jsx";
 import Praxis_PrimzahlUndTeilbarkeit from "./1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/Praxis_PrimzahlUndTeilbarkeit.jsx";
 import Praxis_Primfaktorenzerlegung from "./1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/Praxis_Primfaktorenzerlegung.jsx";
+import Praxis_SiebDesEratosthenes from "./1_Grundlagen/Lektionen/10_PrimzahlenFinden/Praxis_SiebDesEratosthenes.jsx";
 
 // Create a slug => component mapping
 const practiceRegistry = {
@@ -22,6 +23,7 @@ const practiceRegistry = {
     distributivgesetz:     Praxis_Distributivgesetz,
     primzahlundteil:       Praxis_PrimzahlUndTeilbarkeit,
     primfaktorenzerlegung: Praxis_Primfaktorenzerlegung,
+    primzahlenfinden:      Praxis_SiebDesEratosthenes,
 };
 
 export default practiceRegistry;

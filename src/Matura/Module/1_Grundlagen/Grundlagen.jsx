@@ -159,7 +159,21 @@ function Grundlagen() {
             headline: "Praxis: Primfaktorenzerlegung",
             description: "Vertiefe dein Verständnis zur Primfaktorenzerlegung.",
             route: "/practice/primfaktorenzerlegung" // <-- updated
-        }
+        },
+        {
+            id: 19,
+            title: "Sieb des Eratosthenes",
+            headline: "Sieb des Eratosthenes",
+            description: "Lerne, wie du mithilfe des Siebs von Eratosthenes Primzahlen findest.",
+            route: "/theory/primzahlenfinden"
+        },
+        {
+            id: 20,
+            title: "Praxis: Sieb des Eratosthenes",
+            headline: "Praxis: Sieb des Eratosthenes",
+            description: "Vertiefe dein Verständnis zu Primzahlen.",
+            route: "/practice/primzahlenfinden"
+        },
     ];
 
     const itemRefs = useRef([]);
