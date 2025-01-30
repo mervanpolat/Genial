@@ -9,27 +9,24 @@ import {
     SimpleGrid,
     Flex,
     useBreakpointValue,
-    Progress,
     useToast,
     Icon,
 } from "@chakra-ui/react";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 /**
- * Byrne Color Palette
+ * LIMITED BYRNE'S COLOR PALETTE
  */
 const BYRNE_COLORS = {
-    beige: "#FAF3DC",
-    blue: "#30628B",
-    red: "#C03B2D",      // crossed-past
-    orange: "#DD8D41",   // crossed-current
-    green: "#48A346",    // prime-past
-    yellow: "#F0C34E",   // prime-current
+    beige:  "#FAF3DC", // Page background & default cell background
+    green:   "#48A346", // Prime-past
+    red:    "#C03B2D", // Crossed (both past & current)
+    yellow: "#F0C34E", // Prime-current
+    black:    "#000000",
 };
 
 /**
- * Generate all sieve steps up to `n`.
- * Each step => { prime, multiples[] }
+ * Generate sieve steps up to `n`.
  */
 function generateSieveSteps(n) {
     const crossed = new Array(n + 1).fill(false);
@@ -50,7 +47,7 @@ function generateSieveSteps(n) {
 }
 
 export default function SieveVisualization() {
-    // The numbers from 2..120
+    // Numbers from 2..120
     const numbers = useMemo(() => Array.from({ length: 119 }, (_, i) => i + 2), []);
 
     // Generate steps once
@@ -95,12 +92,12 @@ export default function SieveVisualization() {
 
     /** Manual step controls */
     const goPrevStep = () => {
-        if (currentStep > 0) setCurrentStep(currentStep - 1);
+        if (currentStep > 0) setCurrentStep((prev) => prev - 1);
     };
 
     const goNextStep = () => {
         if (currentStep < totalSteps) {
-            setCurrentStep(currentStep + 1);
+            setCurrentStep((prev) => prev + 1);
         } else {
             toast({
                 title: "Ende erreicht",
@@ -130,8 +127,8 @@ export default function SieveVisualization() {
     };
 
     /**
-     * Determine the status of a number based on:
-     *   - prime-past, prime-current, crossed-past, crossed-current, or none
+     * Determine the status of a number
+     *  - "prime-past", "prime-current", "crossed-past", "crossed-current", or "none"
      */
     const getNumberStatus = (num) => {
         // Check completed steps
@@ -150,69 +147,66 @@ export default function SieveVisualization() {
     };
 
     /**
-     * Map each status to Byrne's color logic.
+     * Map each status to a color from the limited palette
      */
     const getBoxColors = (status) => {
         switch (status) {
             case "prime-past":
+                // Past prime => Byrne’s Blue
                 return { bg: BYRNE_COLORS.green, color: "white" };
             case "prime-current":
+                // Current prime => Byrne’s Yellow
                 return { bg: BYRNE_COLORS.yellow, color: "black" };
             case "crossed-past":
-                return { bg: BYRNE_COLORS.red, color: "white" };
             case "crossed-current":
-                return { bg: BYRNE_COLORS.orange, color: "white" };
+                // Crossed => Byrne’s Red (past & current share the same red)
+                return { bg: BYRNE_COLORS.red, color: "white" };
             default:
-                return { bg: "white", color: "black" };
+                // None => Byrne’s Beige cell background, Blue text
+                return { bg: BYRNE_COLORS.beige, color: BYRNE_COLORS.black };
         }
     };
 
-    // Responsive grid columns
-    const columns = useBreakpointValue({ base: 5, sm: 6, md: 8, lg: 10 });
-    const spacing = useBreakpointValue({ base: 2, md: 3 });
+    // Adjust columns at different breakpoints
+    const columns = useBreakpointValue({
+        base: 10,  // on small screens
+        md: 10,
+        lg: 12,    // bigger on desktop
+    });
 
-    // Progress bar
-    const progressPercent = totalSteps === 0 ? 0 : (currentStep / totalSteps) * 100;
+
+    // Cell size bigger on desktop
+    const cellSize = useBreakpointValue({
+        base: "28px",  // mobile
+        md: "34px",    // medium
+        lg: "40px",    // desktop
+    });
 
     return (
         <Box
             bg={BYRNE_COLORS.beige}
-            borderRadius="md"
-            p={{ base: 3, md: 5 }}
-            maxW="800px"
+            p={4}
+            maxW="1000px"
             mx="auto"
             mt={4}
+            fontFamily="Inter, sans-serif"
         >
-            <Heading
-                as="h1"
-                size="md"
-                mb={3}
-                color={BYRNE_COLORS.blue}
-                textAlign="center"
-                whiteSpace="nowrap"
-            >
+            <Heading as="h1" size="md" mb={3} color={BYRNE_COLORS.black} textAlign="center">
                 Sieb des Eratosthenes (2–120)
             </Heading>
 
-            <Text color={BYRNE_COLORS.blue} fontSize="sm" mb={3} textAlign="center">
-                Beobachte Schritt für Schritt, wie Primzahlen erkannt und ihre
-                Vielfachen gestrichen werden.
+            <Text color={BYRNE_COLORS.black} fontSize="sm" mb={3} textAlign="center">
+                Beobachte Schritt für Schritt, wie Primzahlen erkannt und ihre Vielfachen
+                gestrichen werden.
             </Text>
 
-            <Progress
-                value={progressPercent}
-                size="sm"
-                colorScheme="blue"
-                borderRadius="sm"
-                mb={3}
-            />
 
             <Flex justify="center" align="center" mb={3} wrap="wrap" gap={2}>
-                {/* Previous Step */}
+                {/* Previous */}
                 <Button
                     onClick={goPrevStep}
-                    size="sm"
-                    bg={BYRNE_COLORS.blue}
+                    size="xs"
+                    bg={BYRNE_COLORS.black}
                     color="white"
                     _hover={{ bg: "#24597D" }}
                     isDisabled={currentStep === 0 || isPlaying}
@@ -223,8 +217,8 @@ export default function SieveVisualization() {
                 {/* Play / Pause */}
                 <Button
                     onClick={handlePlayPause}
-                    size="sm"
-                    bg={BYRNE_COLORS.blue}
+                    size="xs"
+                    bg={BYRNE_COLORS.black}
                     color="white"
                     _hover={{ bg: "#24597D" }}
                 >
@@ -241,11 +235,11 @@ export default function SieveVisualization() {
                     )}
                 </Button>
 
-                {/* Next Step */}
+                {/* Next */}
                 <Button
                     onClick={goNextStep}
-                    size="sm"
-                    bg={BYRNE_COLORS.blue}
+                    size="xs"
+                    bg={BYRNE_COLORS.black}
                     color="white"
                     _hover={{ bg: "#24597D" }}
                     isDisabled={currentStep >= totalSteps || isPlaying}
@@ -256,40 +250,48 @@ export default function SieveVisualization() {
                 {/* Reset */}
                 <Button
                     onClick={resetSteps}
-                    size="sm"
+                    size="xs"
                     variant="outline"
-                    borderColor={BYRNE_COLORS.blue}
-                    color={BYRNE_COLORS.blue}
+                    borderColor={BYRNE_COLORS.black}
+                    color={BYRNE_COLORS.black}
                     _hover={{ bg: BYRNE_COLORS.beige, opacity: 0.8 }}
                 >
                     Reset
                 </Button>
             </Flex>
 
-            <SimpleGrid columns={columns} spacing={spacing}>
-                {numbers.map((num) => {
-                    const status = getNumberStatus(num);
-                    const { bg, color } = getBoxColors(status);
+            {/* Grid Container with no spacing */}
+            <Box
+                border={`1px solid ${BYRNE_COLORS.black}`}
+                mx="auto"
+                display="block"
+                w="fit-content"
+            >
+                <SimpleGrid columns={columns} spacing={0}>
+                    {numbers.map((num) => {
+                        const status = getNumberStatus(num);
+                        const { bg, color } = getBoxColors(status);
 
-                    return (
-                        <Box
-                            key={num}
-                            textAlign="center"
-                            p={{ base: 2, md: 3 }}
-                            borderRadius="md"
-                            fontWeight="semibold"
-                            bg={bg}
-                            color={color}
-                            boxShadow="xs"
-                            // Prevent wrapping of three-digit numbers like '100'
-                            whiteSpace="nowrap"
-                            minW={{ base: "35px", md: "40px" }}
-                        >
-                            {num}
-                        </Box>
-                    );
-                })}
-            </SimpleGrid>
+                        return (
+                            <Box
+                                key={num}
+                                border={`1px solid ${BYRNE_COLORS.black}`}
+                                w={cellSize}
+                                h={cellSize}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                                fontSize="xs"
+                                fontWeight="semibold"
+                                bg={bg}
+                                color={color}
+                            >
+                                {num}
+                            </Box>
+                        );
+                    })}
+                </SimpleGrid>
+            </Box>
         </Box>
     );
 }
