@@ -174,6 +174,20 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis zu Primzahlen.",
             route: "/practice/primzahlenfinden"
         },
+        {
+            id: 21,
+            title: "Zahlentheorie",
+            headline: "Zahlentheorie",
+            description: "Lerne die Grundlagen zu Zahlentheorie.",
+            route: "/theory/zahlentheorie"
+        },
+        {
+            id: 22,
+            title: "Praxis: Zahlentheorie",
+            headline: "Praxis: Zahlentheorie",
+            description: "Vertiefe dein Verständnis zu Zahlentheorie.",
+            route: "/practice/zahlentheorie"
+        },
     ];
 
     const itemRefs = useRef([]);

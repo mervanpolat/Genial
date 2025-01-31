@@ -1,4 +1,4 @@
-// File: src/Matura/Module/1_Grundlagen/Lektionen/Praxis_SiebDesEratosthenes.jsx
+ // File: src/Matura/Module/1_Grundlagen/Lektionen/Praxis_SiebDesEratosthenes.jsx
 
 import React from "react";
 // Note the updated relative import path here:

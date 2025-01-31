@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 356">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #48a346;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-family: CMUSerif-Roman, 'CMU Serif';
+        font-size: 34.21px;
+      }
+
+      .cls-3 {
+        fill: #c03b2d;
+      }
+
+      .cls-4 {
+        fill: #fbf2d8;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" width="930" height="356"/>
+  <circle class="cls-3" cx="341.67" cy="34.11" r="21.67"/>
+  <circle class="cls-3" cx="411.99" cy="34.11" r="21.67"/>
+  <circle class="cls-3" cx="482.31" cy="34.11" r="21.67"/>
+  <circle class="cls-1" cx="552.63" cy="34.11" r="21.67"/>
+  <circle class="cls-1" cx="341.67" cy="107.09" r="21.67"/>
+  <circle class="cls-3" cx="411.99" cy="107.09" r="21.67"/>
+  <circle class="cls-1" cx="482.31" cy="107.09" r="21.67"/>
+  <circle class="cls-1" cx="552.63" cy="107.09" r="21.67"/>
+  <circle class="cls-3" cx="341.67" cy="180.08" r="21.67"/>
+  <circle class="cls-1" cx="411.99" cy="180.08" r="21.67"/>
+  <circle class="cls-3" cx="482.85" cy="180.08" r="21.67"/>
+  <circle class="cls-1" cx="552.52" cy="180.08" r="21.67"/>
+  <rect x="363.33" y="33.54" width="27.37" height="1.14"/>
+  <rect x="363.33" y="323.76" width="27.37" height="1.14"/>
+  <rect x="341.67" y="55.78" width="1.14" height="29.08"/>
+  <rect x="623.33" y="55.78" width="1.14" height="29.08"/>
+  <rect x="341.67" y="129.9" width="1.14" height="29.08"/>
+  <rect x="552.63" y="129.9" width="1.14" height="29.08"/>
+  <rect x="411.23" y="129.9" width="1.14" height="29.08"/>
+  <rect x="411.23" y="201.74" width="1.14" height="29.08"/>
+  <rect x="623.33" y="129.9" width="1.14" height="29.08"/>
+  <rect x="623.33" y="201.74" width="1.14" height="29.08"/>
+  <circle class="cls-1" cx="341.67" cy="251.92" r="21.67"/>
+  <circle class="cls-3" cx="411.99" cy="251.92" r="21.67"/>
+  <circle class="cls-1" cx="482.31" cy="251.92" r="21.67"/>
+  <circle class="cls-3" cx="552.63" cy="251.92" r="21.67"/>
+  <rect x="341.67" y="201.74" width="1.14" height="29.08"/>
+  <rect x="432.89" y="34.11" width="27.37" height="1.14"/>
+  <rect x="503.6" y="34.11" width="27.37" height="1.14"/>
+  <rect x="503.6" y="177.8" width="27.37" height="1.14"/>
+  <rect x="503.6" y="105.95" width="27.37" height="1.14"/>
+  <rect x="432.89" y="105.95" width="27.37" height="1.14"/>
+  <rect x="432.89" y="251.92" width="27.37" height="1.14"/>
+  <rect x="503.6" y="251.92" width="27.37" height="1.14"/>
+  <rect x="574.3" y="251.92" width="27.37" height="1.14"/>
+  <rect x="432.89" y="323.76" width="27.37" height="1.14"/>
+  <rect x="503.6" y="323.76" width="27.37" height="1.14"/>
+  <rect x="574.3" y="323.76" width="27.37" height="1.14"/>
+  <circle class="cls-3" cx="623.33" cy="34.11" r="21.67"/>
+  <circle class="cls-1" cx="623.33" cy="107.09" r="21.67"/>
+  <circle class="cls-3" cx="623.33" cy="180.08" r="21.67"/>
+  <circle class="cls-3" cx="623.33" cy="251.92" r="21.67"/>
+  <circle class="cls-3" cx="341.67" cy="323.76" r="21.67"/>
+  <circle class="cls-3" cx="411.99" cy="323.76" r="21.67"/>
+  <circle class="cls-1" cx="482.31" cy="323.76" r="21.67"/>
+  <circle class="cls-3" cx="552.63" cy="323.76" r="21.67"/>
+  <rect x="341.67" y="273.58" width="1.14" height="29.08"/>
+  <circle class="cls-3" cx="623.33" cy="323.76" r="21.67"/>
+  <rect x="574.3" y="34.11" width="27.37" height="1.14"/>
+  <text class="cls-2" transform="translate(474.29 188.43)"><tspan x="0" y="0">0</tspan></text>
+  <text class="cls-2" transform="translate(543.97 188.43)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-2" transform="translate(543.86 117.73)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-2" transform="translate(474.29 117.73)"><tspan x="0" y="0">3</tspan></text>
+  <text class="cls-2" transform="translate(403.59 117.73)"><tspan x="0" y="0">4</tspan></text>
+  <text class="cls-2" transform="translate(403.59 189.57)"><tspan x="0" y="0">5</tspan></text>
+  <text class="cls-2" transform="translate(403.59 262.55)"><tspan x="0" y="0">6</tspan></text>
+  <text class="cls-2" transform="translate(474.29 262.55)"><tspan x="0" y="0">7</tspan></text>
+  <text class="cls-2" transform="translate(543.86 262.55)"><tspan x="0" y="0">8</tspan></text>
+  <text class="cls-2" transform="translate(614.56 262.55)"><tspan x="0" y="0">9</tspan></text>
+  <text class="cls-2" transform="translate(606 190.71)"><tspan x="0" y="0">10</tspan></text>
+  <text class="cls-2" transform="translate(606 117.73)"><tspan x="0" y="0">11</tspan></text>
+  <text class="cls-2" transform="translate(606 45.89)"><tspan x="0" y="0">12</tspan></text>
+  <text class="cls-2" transform="translate(535.3 45.89)"><tspan x="0" y="0">13</tspan></text>
+  <text class="cls-2" transform="translate(465.74 45.89)"><tspan x="0" y="0">14</tspan></text>
+  <text class="cls-2" transform="translate(395.04 45.89)"><tspan x="0" y="0">15</tspan></text>
+  <text class="cls-2" transform="translate(324.34 45.89)"><tspan x="0" y="0">16</tspan></text>
+  <text class="cls-2" transform="translate(324.34 118.87)"><tspan x="0" y="0">17</tspan></text>
+  <text class="cls-2" transform="translate(324.34 191.85)"><tspan x="0" y="0">18</tspan></text>
+  <text class="cls-2" transform="translate(324.34 262.55)"><tspan x="0" y="0">19</tspan></text>
+  <text class="cls-2" transform="translate(324.34 334.4)"><tspan x="0" y="0">20</tspan></text>
+  <text class="cls-2" transform="translate(395.04 334.4)"><tspan x="0" y="0">21</tspan></text>
+  <text class="cls-2" transform="translate(465.74 334.4)"><tspan x="0" y="0">22</tspan></text>
+  <text class="cls-2" transform="translate(537.58 334.4)"><tspan x="0" y="0">23</tspan></text>
+  <text class="cls-2" transform="translate(606 334.4)"><tspan x="0" y="0">24</tspan></text>
+</svg>

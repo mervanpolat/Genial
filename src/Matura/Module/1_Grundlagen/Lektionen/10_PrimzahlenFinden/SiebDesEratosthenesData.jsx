@@ -4,9 +4,10 @@ import React from "react";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import SieveVisualization from "./SieveVisualization.jsx"; // <-- Wir binden die Visualisierung ein
+import SiebDesEratosthenes from "../10_PrimzahlenFinden/images/SiebDesEratosthenes.svg";
 
 const SiebDesEratosthenesData = {
-    bannerImageSrc: "/assets/images/eratosthenes_banner.png",
+    bannerImageSrc: SiebDesEratosthenes,
     headline: "Sieb des Eratosthenes – Primzahlen effizient finden",
     introText:
         "Das Sieb des Eratosthenes ist eine klassische Methode, um alle Primzahlen bis zu einer gewünschten Grenze zu bestimmen – ganz ohne komplizierte Teilbarkeitstests.",
