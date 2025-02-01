@@ -1,10 +1,12 @@
 // src/components/Onboarding/steps/Step4_InfoSection.jsx
+
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack, Image } from "@chakra-ui/react";
 
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import ContinueButton from "../ContinueButton.jsx";
+import Step4InfoSectionSVG from "../assets/Step4_InfoSection.svg";
 
 function Step4_InfoSection({ onContinue = () => {} }) {
     const message =
@@ -22,17 +24,15 @@ function Step4_InfoSection({ onContinue = () => {} }) {
             >
                 <VStack spacing={6} align="center">
                     <Image
-                        src="src/components/Onboarding/assets/Step4_InfoSection.svg"
+                        src={Step4InfoSectionSVG}
                         alt="Informationsbild"
                         maxW="250px"
                         objectFit="contain"
                         mb={6}
                     />
-
                     <Text fontSize="xl" textAlign="center">
                         {message}
                     </Text>
-
                     <ContinueButton onClick={onContinue} ariaLabel="Continue to Info Section">
                         Weiter
                     </ContinueButton>

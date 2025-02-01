@@ -8,6 +8,9 @@ import { Typewriter } from "react-simple-typewriter";
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import ContinueButton from "../ContinueButton.jsx";
 
+// Import your SVG as a module:
+import Step1WelcomeSVG from "../assets/Step1_Welcome.svg";
+
 function Step1_Welcome({ onContinue = () => {} }) {
     const message = "Hallo, lass uns einen Lernpfad nur für dich erstellen.";
 
@@ -16,8 +19,8 @@ function Step1_Welcome({ onContinue = () => {} }) {
             <Box p={8} textAlign="center">
                 <VStack spacing={10}>
                     <Image
-                        src="src/components/Onboarding/assets/Step1_Welcome.svg"
-                        alt="Step1_Welcome"
+                        src={Step1WelcomeSVG}
+                        alt="Step1 Welcome"
                         boxSize="250px"
                     />
                     <Text fontSize="2xl" fontWeight="bold">
@@ -31,10 +34,7 @@ function Step1_Welcome({ onContinue = () => {} }) {
                             delaySpeed={2000}
                         />
                     </Text>
-
-                    <ContinueButton onClick={onContinue}>
-                        Weiter
-                    </ContinueButton>
+                    <ContinueButton onClick={onContinue}>Weiter</ContinueButton>
                 </VStack>
             </Box>
         </OnboardingLayout>

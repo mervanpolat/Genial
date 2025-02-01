@@ -1,4 +1,5 @@
 // src/components/Onboarding/steps/Step9_LoginPage.jsx
+
 import React, { useEffect, useState } from "react";
 import { Box, VStack, Text, Button, Image, useDisclosure } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,9 @@ import OnboardingLayout from "../OnboardingLayout.jsx";
 import LoginPopper from "../../../firebase/LoginPopper.jsx";
 import { auth, db } from "../../../firebase/firebaseConfig.js";
 import { useOnboardingContext } from "../OnboardingContext.jsx";
+
+// Import the SVG
+import Step9LoginPageSVG from "../assets/Step9_LoginPage.svg";
 
 function Step9_LoginPage() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -80,7 +84,7 @@ function Step9_LoginPage() {
             >
                 <VStack spacing={6} align="center">
                     <Image
-                        src="src/components/Onboarding/assets/Step9_LoginPage.svg"
+                        src={Step9LoginPageSVG}
                         alt="Login Illustration"
                         maxW="250px"
                         objectFit="contain"

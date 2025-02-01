@@ -1,10 +1,12 @@
 // src/components/Onboarding/steps/Step8_FinalInfo.jsx
+
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack, Image } from "@chakra-ui/react";
 
 import OnboardingLayout from "../OnboardingLayout.jsx";
 import ContinueButton from "../ContinueButton.jsx";
+import Step8FinalInfoSVG from "../assets/Step8_FinalInfo.svg";
 
 function Step8_FinalInfo({ onContinue = () => {} }) {
     const headline = "Lerne bis zu 6-mal effizienter";
@@ -23,7 +25,7 @@ function Step8_FinalInfo({ onContinue = () => {} }) {
             >
                 <VStack spacing={6} align="center">
                     <Image
-                        src="src/components/Onboarding/assets/Step8_FinalInfo.svg"
+                        src={Step8FinalInfoSVG}
                         alt="Learning efficiency illustration"
                         maxW="250px"
                         objectFit="contain"
