@@ -299,7 +299,7 @@ const LateinischeBuchstabenData = {
                         <ChakraImage
                             src={DependantAndNonDependant}
                             alt="Dreieck mit α, β, γ"
-                            maxW="400px"
+                            maxW="100%"
                             objectFit="contain"
                             margin="0 auto"
                         />
