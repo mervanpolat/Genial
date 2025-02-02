@@ -5,7 +5,7 @@ import { Box } from "@chakra-ui/react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
-import GreekLettersBanner from "./images/GriechischeBuchstaben.png";
+import GreekLettersBanner from "./images/GriechischeBuchstaben.svg";
 import Dreieck from "./images/Dreieck.svg";
 import Normalverteilung from "./images/Normalverteilung.svg";
 import { Image as ChakraImage } from "@chakra-ui/react";

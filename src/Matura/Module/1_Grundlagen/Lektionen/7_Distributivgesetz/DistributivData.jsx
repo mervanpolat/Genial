@@ -151,6 +151,12 @@ const DistributivData = {
             heading: "5. Klammermultiplikation",
             paragraphs: [
                 <>
+                    Mit dem Distributivgesetz kann man auch zwei Summen ausmultiplizieren:
+                    Indem man das Gesetz zweimal anwendet (und die Kommutativität nutzt), zerlegt man das
+                    rechteckige Areal in vier Teilflächen.
+                </>,
+
+                <>
                     <Box mt={4} textAlign="center">
                         <ChakraImage
                             src={Ausmultiplizieren}
@@ -161,14 +167,7 @@ const DistributivData = {
                         />
                     </Box>
                 </>,
-                <>
-                    Mit dem Distributivgesetz kann man auch zwei Summen ausmultiplizieren:{" "}
-                    <BlockMath>
-                        {String.raw`(k+l)\times (m+n) = k\times m + k\times n + l\times m + l\times n`}
-                    </BlockMath>
-                    Indem man das Gesetz zweimal anwendet (und die Kommutativität nutzt), zerlegt man das
-                    rechteckige Areal in vier Teilflächen.
-                </>,
+
             ],
         },
     ],

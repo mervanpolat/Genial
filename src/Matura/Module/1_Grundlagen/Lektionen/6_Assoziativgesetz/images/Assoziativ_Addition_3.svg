@@ -1,79 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1371.6 201.11">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #f9c12b;
-      }
-
-      .cls-2 {
-        fill: #fbf2d8;
-      }
-
-      .cls-3 {
-        fill: #d32a20;
-      }
-
-      .cls-4 {
-        fill: #30628b;
-      }
-    </style>
-  </defs>
-  <rect class="cls-2" width="1371.6" height="201.11"/>
+  <rect width="1371.6" height="201.11" fill="#fbf2d8"/>
   <g>
-    <rect class="cls-3" x="150.58" y="56.09" width="77.38" height="77.38"/>
+    <rect x="150.58" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M230.16,135.67h-81.78V53.88h81.78v81.78ZM152.78,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="73" y="56.09" width="77.38" height="77.38"/>
+    <rect x="73" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M152.58,135.67h-81.78V53.88h81.78v81.78ZM75.2,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="227.95" y="56.09" width="77.38" height="77.38"/>
+    <rect x="227.95" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M307.54,135.67h-81.78V53.88h81.78v81.78ZM230.16,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="305.33" y="56.09" width="77.38" height="77.38"/>
+    <rect x="305.33" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M384.91,135.67h-81.78V53.88h81.78v81.78ZM307.54,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-4" x="382.99" y="56.45" width="77.38" height="77.38"/>
+    <rect x="382.99" y="56.45" width="77.38" height="77.38" fill="#30628b"/>
     <path d="M462.57,136.03h-81.78V54.24h81.78v81.78ZM385.19,131.62h72.97V58.65h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-1" x="460.36" y="56.45" width="77.38" height="77.38"/>
+    <rect x="460.36" y="56.45" width="77.38" height="77.38" fill="#f9c12b"/>
     <path d="M539.94,136.03h-81.78V54.24h81.78v81.78ZM462.57,131.62h72.97V58.65h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-1" x="537.95" y="56.45" width="77.38" height="77.38"/>
+    <rect x="537.95" y="56.45" width="77.38" height="77.38" fill="#f9c12b"/>
     <path d="M617.53,136.03h-81.78V54.24h81.78v81.78ZM540.15,131.62h72.97V58.65h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="833.58" y="56.09" width="77.38" height="77.38"/>
+    <rect x="833.58" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M913.16,135.67h-81.78V53.88h81.78v81.78ZM835.78,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="756" y="56.09" width="77.38" height="77.38"/>
+    <rect x="756" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M835.58,135.67h-81.78V53.88h81.78v81.78ZM758.2,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="910.95" y="56.09" width="77.38" height="77.38"/>
+    <rect x="910.95" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M990.54,135.67h-81.78V53.88h81.78v81.78ZM913.16,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-3" x="988.33" y="56.09" width="77.38" height="77.38"/>
+    <rect x="988.33" y="56.09" width="77.38" height="77.38" fill="#d32a20"/>
     <path d="M1067.91,135.67h-81.78V53.88h81.78v81.78ZM990.54,131.26h72.97V58.29h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-4" x="1065.99" y="56.45" width="77.38" height="77.38"/>
+    <rect x="1065.99" y="56.45" width="77.38" height="77.38" fill="#30628b"/>
     <path d="M1145.57,136.03h-81.78V54.24h81.78v81.78ZM1068.19,131.62h72.97V58.65h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-1" x="1143.36" y="56.45" width="77.38" height="77.38"/>
+    <rect x="1143.36" y="56.45" width="77.38" height="77.38" fill="#f9c12b"/>
     <path d="M1222.94,136.03h-81.78V54.24h81.78v81.78ZM1145.57,131.62h72.97V58.65h-72.97v72.97Z"/>
   </g>
   <g>
-    <rect class="cls-1" x="1220.95" y="56.45" width="77.38" height="77.38"/>
+    <rect x="1220.95" y="56.45" width="77.38" height="77.38" fill="#f9c12b"/>
     <path d="M1300.53,136.03h-81.78V54.24h81.78v81.78ZM1223.15,131.62h72.97V58.65h-72.97v72.97Z"/>
   </g>
 </svg>
