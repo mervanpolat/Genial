@@ -94,7 +94,7 @@ const DistributivData = {
                         <ChakraImage
                             src={Distributivgesetz}
                             alt="Dreieck mit α, β, γ"
-                            maxW="80%"
+                            maxW="100%"
                             objectFit="contain"
                             margin="0 auto"
                         />
@@ -161,7 +161,7 @@ const DistributivData = {
                         <ChakraImage
                             src={Ausmultiplizieren}
                             alt="Dreieck mit α, β, γ"
-                            maxW="80%"
+                            maxW="100%"
                             objectFit="contain"
                             margin="0 auto"
                         />

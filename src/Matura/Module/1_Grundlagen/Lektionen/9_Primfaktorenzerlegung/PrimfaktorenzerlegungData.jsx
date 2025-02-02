@@ -65,7 +65,7 @@ const PrimfaktorenzerlegungData = {
                         <ChakraImage
                             src={Teilbarkeit}
                             alt="Dreieck mit α, β, γ"
-                            maxW="80%"
+                            maxW="100%"
                             objectFit="contain"
                             margin="0 auto"
                         />
@@ -220,7 +220,7 @@ function Carousel60() {
                     <Image
                         src={prime60_3}
                         alt="60 step 3"
-                        maxW="80%"
+                        maxW="100%"
                         display="block"
                         mx="auto"
                     />
@@ -247,7 +247,7 @@ function Carousel84() {
                     <Image
                         src={prime84_1}
                         alt="84 step 1"
-                        maxW="80%"
+                        maxW="100%"
                         display="block"
                         mx="auto"
                     />
@@ -274,7 +274,7 @@ function Carousel105() {
                     <Image
                         src={prime105_1}
                         alt="105 step 1"
-                        maxW="80%"
+                        maxW="100%"
                         display="block"
                         mx="auto"
                     />
@@ -301,7 +301,7 @@ function Carousel48() {
                     <Image
                         src={prime48_1}
                         alt="48 step 1"
-                        maxW="80%"
+                        maxW="100%"
                         display="block"
                         mx="auto"
                     />
