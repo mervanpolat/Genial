@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+  <rect width="150" height="150" fill="#faf3dc"/>
+  <g>
+    <polygon points="139.21 33.09 10.79 116.9 139.21 116.9 139.21 33.09" fill="#f0c34e"/>
+    <path d="M121.54,44.63c3.54,6.86,10.13,11.48,17.68,11.48v-23.02l-17.68,11.54Z" fill="#c03b2d"/>
+    <path d="M139.21,93.89c-11.28,0-20.43,10.31-20.43,23.02h20.43v-23.02Z" fill="#30628b"/>
+    <path d="M10.79,116.9h30.1c0-6.2-1.48-12-4.05-17l-26.05,17Z"/>
+  </g>
+</svg>
