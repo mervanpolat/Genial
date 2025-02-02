@@ -8,9 +8,9 @@ import Praxis_NatZahlenArith from "./1_Grundlagen/Lektionen/4_NatZahlenArith/Pra
 import Praxis_KommutativGesetz from "./1_Grundlagen/Lektionen/5_Kommutativgesetz/Praxis_KommutativGesetz.jsx";
 import Praxis_Assoziativitaet from "./1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
 import Praxis_Distributivgesetz from "./1_Grundlagen/Lektionen/7_Distributivgesetz/Praxis_Distributivgesetz.jsx";
-import Praxis_PrimzahlUndTeilbarkeit from "./1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/Praxis_PrimzahlUndTeilbarkeit.jsx";
+import Praxis_PrimzahlUndTeilbarkeit from "./1_Grundlagen/Lektionen/8_PrimzahlenUndTeilbarkeitsregeln/Praxis_PrimzahlUndTeilbarkeit.jsx";
 import Praxis_Primfaktorenzerlegung from "./1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/Praxis_Primfaktorenzerlegung.jsx";
-import Praxis_SiebDesEratosthenes from "./1_Grundlagen/Lektionen/10_PrimzahlenFinden/Praxis_SiebDesEratosthenes.jsx";
+import Praxis_SiebDesEratosthenes from "./1_Grundlagen/Lektionen/10_SiebDesEratosthenes/Praxis_SiebDesEratosthenes.jsx";
 import Praxis_Zahlentheorie from "./1_Grundlagen/Lektionen/11_Zahlentheorie/Praxis_Zahlentheorie.jsx";
 
 // Create a slug => component mapping
