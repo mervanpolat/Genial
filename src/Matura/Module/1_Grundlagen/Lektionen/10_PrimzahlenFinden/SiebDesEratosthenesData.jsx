@@ -3,7 +3,7 @@
 import React from "react";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
-import SieveVisualization from "./SieveVisualization.jsx"; // <-- Wir binden die Visualisierung ein
+import SieveVisualization from "../../../../../components/InteractiveElements/Module/1_Grundlagen/10_PrimzahlenFinden/SieveVisualization.jsx"; // <-- Wir binden die Visualisierung ein
 import SiebDesEratosthenes from "../10_PrimzahlenFinden/images/SiebDesEratosthenes.svg";
 
 const SiebDesEratosthenesData = {

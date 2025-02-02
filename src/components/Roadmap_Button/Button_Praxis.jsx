@@ -1,7 +1,7 @@
-// File: src/components/CubeButton/CubePraxis.jsx
+// File: src/components/Button_Theorie/Button_Praxis.jsx
 import React from "react";
 
-function CubePraxis() {
+function Button_Praxis() {
     return (
         <svg
             id="cube-praxis"
@@ -103,4 +103,4 @@ function CubePraxis() {
     );
 }
 
-export default CubePraxis;
+export default Button_Praxis;

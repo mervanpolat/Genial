@@ -98,7 +98,7 @@ const NatZahlenArithData = {
                 // Illustrationshinweis:
                 /*
                   <Box mt={4} textAlign="center">
-                    <Image
+                    <images
                       src="/assets/images/MultiplikationBeispiel.png"
                       alt="Illustration zu 5x3"
                       maxW="400px"

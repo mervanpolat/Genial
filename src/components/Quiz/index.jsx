@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/index.js
+// File: src/components/Quiz/index.js
 import ExplanationReveal from "./ExplanationReveal";
 import MCQQuiz from "./MCQQuiz";
 import TrueFalseQuiz from "./TrueFalseQuiz";

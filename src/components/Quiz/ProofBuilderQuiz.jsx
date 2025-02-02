@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/ProofBuilderQuiz.jsx
+// File: src/components/Quiz/ProofBuilderQuiz.jsx
 
 import React, { useState } from "react";
 import {

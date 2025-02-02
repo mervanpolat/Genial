@@ -11,7 +11,7 @@ import DistributivData from "./1_Grundlagen/Lektionen/7_Distributivgesetz/Distri
 import PrimzahlUndTeilbarkeitData from "./1_Grundlagen/Lektionen/8_PrimzahlUndTeilbarkeit/PrimzahlUndTeilbarkeitData.jsx";
 import PrimfaktorenzerlegungData from "./1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/PrimfaktorenzerlegungData.jsx";
 import SiebDesEratosthenesData from "./1_Grundlagen/Lektionen/10_PrimzahlenFinden/SiebDesEratosthenesData.jsx";
-import ZahlentheorieData from "./1_Grundlagen/Lektionen/11_ZahlentheorieGrundlagen/ZahlentheorieData.jsx";
+import ZahlentheorieData from "./1_Grundlagen/Lektionen/11_Zahlentheorie/ZahlentheorieData.jsx";
 
 // Map each slug to its respective data file
 const theoryRegistry = {

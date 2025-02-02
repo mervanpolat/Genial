@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/FlashcardsQuiz.jsx
+// File: src/components/Quiz/FlashcardsQuiz.jsx
 
 import React, { useState } from "react";
 import { Box, Text, Button, ScaleFade } from "@chakra-ui/react";

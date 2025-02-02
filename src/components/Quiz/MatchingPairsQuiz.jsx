@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/MatchingPairsQuiz.jsx
+// File: src/components/Quiz/MatchingPairsQuiz.jsx
 
 import React, { useState } from "react";
 import {

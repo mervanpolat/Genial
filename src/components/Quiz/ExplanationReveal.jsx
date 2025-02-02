@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/ExplanationReveal.jsx
+// File: src/components/Quiz/ExplanationReveal.jsx
 
 import React, { useState } from "react";
 import { Box, Button, Text, Collapse } from "@chakra-ui/react";

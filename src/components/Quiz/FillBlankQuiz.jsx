@@ -1,4 +1,7 @@
-// File: src/components/GenialQuizzes/NumericInputQuiz.jsx
+// File: src/components/Quiz/FillBlankQuiz.jsx
+// ----------------------------------------------------
+// Updated with a safety check for templateText
+// to prevent "Cannot read properties of undefined" errors.
 
 import React, { useState } from "react";
 import {
@@ -19,37 +22,39 @@ const BEIGE = "#faf3dc";
 const BLUE = "#30628b";
 const RED = "#c03b2d";
 const GREEN = "#3bb25a";
+const YELLOW = "#f0c34e";
 
-function NumericInputQuiz({
-                              question,
-                              correctNumber,
-                              explanation,
-                              onQuizComplete,
-                          }) {
-    const [userAnswer, setUserAnswer] = useState("");
+function FillBlankQuiz({
+                           templateText,
+                           correctAnswers = [],
+                           explanation,
+                           onQuizComplete,
+                       }) {
+    const [userInput, setUserInput] = useState("");
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
     const toast = useToast();
 
+    // If templateText is missing or not a string, default to an empty string.
+    const safeTemplate = typeof templateText === "string" ? templateText : "";
+
+    // Insert userInput or "___" in place of "?"
+    const displayText = safeTemplate.replace("?", userInput || "___");
+
     const handleCheck = () => {
-        if (!userAnswer.trim()) {
+        if (!userInput.trim()) {
             toast({
-                title: "Bitte trage eine Zahl ein.",
+                title: "Bitte trage eine Antwort ein.",
                 status: "warning",
                 duration: 2000,
                 isClosable: true,
             });
             return;
         }
-
-        const numericUser = parseFloat(userAnswer.replace(",", "."));
-        const numericCorrect = parseFloat(correctNumber);
-
-        if (!isNaN(numericUser) && numericUser === numericCorrect) {
-            setIsCorrect(true);
-        } else {
-            setIsCorrect(false);
-        }
+        const correct = correctAnswers.some(
+            (ans) => ans.toLowerCase().trim() === userInput.toLowerCase().trim()
+        );
+        setIsCorrect(correct);
         setIsAnswered(true);
 
         if (onQuizComplete) onQuizComplete();
@@ -69,19 +74,21 @@ function NumericInputQuiz({
             transition="all 0.3s"
         >
             <Text fontSize="xl" fontWeight="bold" color="black" mb={1}>
-                {question}
+                {displayText}
             </Text>
-            <Text fontSize="sm" color="gray.700" mb={5}>
-                Gib eine Zahl ein und klicke auf „Antwort prüfen“.
+
+            <Text fontSize="sm" color="gray.700" mb={3}>
+                Fülle die Lücke und klicke auf „Antwort prüfen“.
             </Text>
 
             {!isAnswered && (
                 <>
-                    <Tooltip label="Nur Zahlen eingeben" hasArrow>
+                    <Tooltip label="Tippe deine Antwort ein" hasArrow>
                         <Input
-                            placeholder="Zahl eingeben"
-                            value={userAnswer}
-                            onChange={(e) => setUserAnswer(e.target.value)}
+                            mt={1}
+                            placeholder="Deine Antwort"
+                            value={userInput}
+                            onChange={(e) => setUserInput(e.target.value)}
                             border="2px solid"
                             borderColor={BLUE}
                             bg={BEIGE}
@@ -129,7 +136,7 @@ function NumericInputQuiz({
                             color={isCorrect ? GREEN : RED}
                             fontSize="lg"
                         >
-                            {isCorrect ? "Richtig!" : "Falsch!"}
+                            {isCorrect ? "Richtig!" : "Leider falsch!"}
                         </Text>
                     </Flex>
                     <ExplanationReveal explanation={explanation} />
@@ -139,4 +146,4 @@ function NumericInputQuiz({
     );
 }
 
-export default NumericInputQuiz;
+export default FillBlankQuiz;

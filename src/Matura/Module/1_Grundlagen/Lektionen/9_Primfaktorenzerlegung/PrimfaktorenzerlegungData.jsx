@@ -1,7 +1,7 @@
 // File: src/Matura/Module/1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/PrimfaktorenzerlegungData.jsx
 // ----------------------------------------------------------------------------------------------------
 // Updated to showcase four separate sliders (Carousel60, Carousel84, Carousel105, Carousel48)
-// using Chakra UI <Image> for each step. Each "problem" is in its own section.
+// using Chakra UI <images> for each step. Each "problem" is in its own section.
 // Also fixes the MCQ for 84 to have four answer options.
 
 import React from "react";

@@ -8,7 +8,7 @@ function AboutUs() {
             gap="5"
             alignItems="center"
         >
-          {/* Image on the right (desktop) */}
+          {/* images on the right (desktop) */}
           <Box flex="1" borderRadius="lg" overflow="hidden">
             <Image
                 src="./assets/images/AboutUs/Euclid.png"

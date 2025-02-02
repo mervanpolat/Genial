@@ -9,10 +9,10 @@ import {
     FillBlankQuiz,
     ReorderQuiz,
     MatchingPairsQuiz,
-} from "../../../components/GenialQuizzes";
+} from "../../../components/Quiz";
 
 // Falls du numericinput nutzt
-import NumericInputQuiz from "../../../components/GenialQuizzes/NumericInputQuiz.jsx";
+import NumericInputQuiz from "../../../components/Quiz/NumericInputQuiz.jsx";
 
 function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
     if (!quizData) return null;

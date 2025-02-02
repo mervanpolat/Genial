@@ -7,8 +7,8 @@ import { Box, Heading, Text, Button } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 // Import your two cube variants
-import CubeButton from "../../../components/CubeButton/CubeButton.jsx";
-import CubePraxis from "../../../components/CubeButton/CubePraxis.jsx";
+import Button_Theorie from "../../../components/Roadmap_Button/Button_Theorie.jsx";
+import Button_Praxis from "../../../components/Roadmap_Button/Button_Praxis.jsx";
 
 function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
     const tippyRef = useRef(null);
@@ -71,9 +71,9 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
         setTimeout(() => setLoading(false), 1000);
     };
 
-    // Even ID => CubePraxis, else => CubeButton
+    // Even ID => Button_Praxis, else => Button_Theorie
     const isEvenID = module.id % 2 === 0;
-    const CubeToRender = isEvenID ? CubePraxis : CubeButton;
+    const CubeToRender = isEvenID ? Button_Praxis : Button_Theorie;
 
     return (
         <Tippy

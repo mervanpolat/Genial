@@ -5,13 +5,13 @@ import { Box } from "@chakra-ui/react";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
-import GreekLettersBanner from "./Image/GriechischeBuchstaben.png";
-import Dreieck from "./Image/Dreieck.svg";
-import Normalverteilung from "./Image/Normalverteilung.svg";
+import GreekLettersBanner from "./images/GriechischeBuchstaben.png";
+import Dreieck from "./images/Dreieck.svg";
+import Normalverteilung from "./images/Normalverteilung.svg";
 import { Image as ChakraImage } from "@chakra-ui/react";
 
 // Example of an optional interactive element
-import SecantTangentVisualization from "../../../../../components/InteractiveElements/SecantTangentVisualization.jsx";
+import SecantTangentVisualization from "../../../../../components/InteractiveElements/Module/1_Grundlagen/1_GriechischeBuchstaben/SecantTangentVisualization.jsx";
 
 const GriechischeBuchstabenData = {
     bannerImageSrc: GreekLettersBanner,

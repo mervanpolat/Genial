@@ -10,13 +10,13 @@ import {
     FillBlankQuiz,
     ReorderQuiz,
     MatchingPairsQuiz,
-} from "../../../components/GenialQuizzes";
+} from "../../../components/Quiz";
 
 // New quiz imports:
-import ClozeQuiz from "../../../components/GenialQuizzes/ClozeQuiz";
-import DragAndDropSortQuiz from "../../../components/GenialQuizzes/DragAndDropSortQuiz";
-import FlashcardsQuiz from "../../../components/GenialQuizzes/FlashcardsQuiz";
-import MatchingTextToImagesQuiz from "../../../components/GenialQuizzes/MatchingTextToImagesQuiz";
+import ClozeQuiz from "../../../components/Quiz/ClozeQuiz";
+import DragAndDropSortQuiz from "../../../components/Quiz/DragAndDropSortQuiz";
+import FlashcardsQuiz from "../../../components/Quiz/FlashcardsQuiz";
+import MatchingTextToImagesQuiz from "../../../components/Quiz/MatchingTextToImagesQuiz";
 
 /**
  * Renders a single theory section (heading, paragraphs, optional quiz).

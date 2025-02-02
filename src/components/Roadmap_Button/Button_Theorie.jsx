@@ -1,6 +1,6 @@
 import 'react';
 
-function CubeButton() {
+function Button_Theorie() {
   return (
       <svg
           id="cube-button"
@@ -67,4 +67,4 @@ function CubeButton() {
   );
 }
 
-export default CubeButton;
+export default Button_Theorie;

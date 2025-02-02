@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/MatchingTextToImagesQuiz.jsx
+// File: src/components/Quiz/MatchingTextToImagesQuiz.jsx
 
 import React, { useState } from "react";
 import {

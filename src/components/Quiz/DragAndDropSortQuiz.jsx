@@ -1,4 +1,4 @@
-// File: src/components/GenialQuizzes/DragAndDropSortQuiz.jsx
+// File: src/components/Quiz/DragAndDropSortQuiz.jsx
 
 import React, { useState } from "react";
 import {

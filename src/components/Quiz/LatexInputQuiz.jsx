@@ -1,12 +1,14 @@
-// File: src/components/GenialQuizzes/GraphPlottingQuiz.jsx
+// File: src/components/Quiz/LatexInputQuiz.jsx
 
 import React, { useState } from "react";
 import {
     Box,
     Text,
+    Textarea,
     Button,
     Flex,
     ScaleFade,
+    useToast,
 } from "@chakra-ui/react";
 import { CheckCircleIcon, CloseIcon } from "@chakra-ui/icons";
 
@@ -15,44 +17,45 @@ const BLUE = "#30628b";
 const GREEN = "#3bb25a";
 const RED = "#c03b2d";
 
-/**
- * Minimal placeholder: "Click the coordinate plane to place your point."
- * Real usage would display a coordinate plane or a library-based chart.
- */
-function GraphPlottingQuiz({ question, correctPoint, onQuizComplete }) {
-    const [userPoint, setUserPoint] = useState(null);
+function LatexInputQuiz({ question, correctLatex, onQuizComplete }) {
+    const [userLatex, setUserLatex] = useState("");
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
-
-    const handleCanvasClick = (e) => {
-        if (isAnswered) return;
-        // pretend we get coordinates from e
-        const randomX = Math.floor(Math.random() * 10);
-        const randomY = Math.floor(Math.random() * 10);
-        setUserPoint({ x: randomX, y: randomY });
-    };
+    const toast = useToast();
 
     const handleCheck = () => {
-        if (userPoint && userPoint.x === correctPoint.x && userPoint.y === correctPoint.y) {
+        if (!userLatex.trim()) {
+            toast({
+                title: "Bitte gib einen LaTeX-Ausdruck ein.",
+                status: "warning",
+                duration: 2000,
+                isClosable: true,
+            });
+            return;
+        }
+
+        // Very naive check: see if strings match ignoring whitespace
+        const cleanInput = userLatex.replace(/\s+/g, "");
+        const cleanCorrect = correctLatex.replace(/\s+/g, "");
+        if (cleanInput === cleanCorrect) {
             setIsCorrect(true);
         } else {
             setIsCorrect(false);
         }
         setIsAnswered(true);
-
         if (onQuizComplete) onQuizComplete();
     };
 
     return (
         <Box
-            p={6}
-            borderRadius="md"
+            bg={CARD_BG}
             border="2px solid"
             borderColor={BLUE}
-            bg={CARD_BG}
+            borderRadius="md"
+            p={6}
+            mt={6}
             maxW="600px"
             mx="auto"
-            mt={6}
             boxShadow="lg"
             textAlign="center"
         >
@@ -60,36 +63,23 @@ function GraphPlottingQuiz({ question, correctPoint, onQuizComplete }) {
                 {question}
             </Text>
             <Text fontSize="sm" color="gray.700" mb={4}>
-                Klicke auf das Koordinatensystem, um einen Punkt zu setzen.
+                Gib den passenden LaTeX-Code ein (z.B. <code>\frac{1}{2}</code>).
             </Text>
 
-            <Box
-                w="300px"
-                h="300px"
-                bg="white"
-                mx="auto"
-                mb={4}
-                border="1px solid #ccc"
-                onClick={handleCanvasClick}
-                position="relative"
-                cursor={isAnswered ? "not-allowed" : "crosshair"}
-            >
-                {userPoint && (
-                    <Box
-                        position="absolute"
-                        bg={BLUE}
-                        borderRadius="50%"
-                        width="10px"
-                        height="10px"
-                        top="50%"
-                        left="50%"
-                        transform="translate(-50%, -50%)"
-                    />
-                )}
-            </Box>
+            {!isAnswered && (
+                <Textarea
+                    placeholder="z.B. \frac{1}{2}"
+                    value={userLatex}
+                    onChange={(e) => setUserLatex(e.target.value)}
+                    size="md"
+                    border="2px solid"
+                    borderColor={BLUE}
+                />
+            )}
 
-            {!isAnswered && userPoint && (
+            {!isAnswered && (
                 <Button
+                    mt={3}
                     bg="black"
                     color="white"
                     onClick={handleCheck}
@@ -112,9 +102,7 @@ function GraphPlottingQuiz({ question, correctPoint, onQuizComplete }) {
                             color={isCorrect ? GREEN : RED}
                             fontSize="lg"
                         >
-                            {isCorrect
-                                ? "Perfekt platziert!"
-                                : `Dein Punkt ist (${userPoint.x}, ${userPoint.y}).`}
+                            {isCorrect ? "Korrekte LaTeX-Eingabe!" : "Leider falsch."}
                         </Text>
                     </Flex>
                 </ScaleFade>
@@ -123,4 +111,4 @@ function GraphPlottingQuiz({ question, correctPoint, onQuizComplete }) {
     );
 }
 
-export default GraphPlottingQuiz;
+export default LatexInputQuiz;

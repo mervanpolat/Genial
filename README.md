@@ -56,9 +56,9 @@ Genial is an interactive web-based application designed to simplify and gamify t
 │   │   └── MaturatypenUebersicht
 │   │       └── MaturatypenUebersicht.jsx
 │   ├── components
-│   │   ├── CubeButton
-│   │   │   ├── CubeButton.jsx
-│   │   │   └── CubePraxis.jsx
+│   │   ├── Button_Theorie
+│   │   │   ├── Button_Theorie.jsx
+│   │   │   └── Button_Praxis.jsx
 │   │   ├── Dashboard
 │   │   │   └── Dashboard.jsx
 │   │   ├── GenialQuizzes
