@@ -203,16 +203,7 @@ export default function SieveVisualization() {
 
             <Flex justify="center" align="center" mb={3} wrap="wrap" gap={2}>
                 {/* Previous */}
-                <Button
-                    onClick={goPrevStep}
-                    size="xs"
-                    bg={BYRNE_COLORS.black}
-                    color="white"
-                    _hover={{ bg: "#24597D" }}
-                    isDisabled={currentStep === 0 || isPlaying}
-                >
-                    Zurück
-                </Button>
+
 
                 {/* Play / Pause */}
                 <Button
@@ -235,17 +226,7 @@ export default function SieveVisualization() {
                     )}
                 </Button>
 
-                {/* Next */}
-                <Button
-                    onClick={goNextStep}
-                    size="xs"
-                    bg={BYRNE_COLORS.black}
-                    color="white"
-                    _hover={{ bg: "#24597D" }}
-                    isDisabled={currentStep >= totalSteps || isPlaying}
-                >
-                    Weiter
-                </Button>
+
 
                 {/* Reset */}
                 <Button
