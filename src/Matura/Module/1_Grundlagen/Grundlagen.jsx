@@ -1,12 +1,25 @@
 // File: src/Matura/Module/Grundlagen.jsx
+
 import React, { useRef, createRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "../ModulTemplate/PageWrapper.css";
+import {
+    Box,
+    Flex,
+    Image,
+    Heading,
+    Text,
+    Grid,
+    GridItem,
+    VStack
+} from "@chakra-ui/react";
 import TooltipItem from "../ModulTippy/TooltipItem.jsx";
 
 function Grundlagen() {
     const navigate = useNavigate();
 
+    // -----------------------------------------------
+    // Example data for the puzzle
+    // -----------------------------------------------
     const moduleData = [
         // THEORY #1
         {
@@ -77,7 +90,8 @@ function Grundlagen() {
             id: 9,
             title: "Kommutativgesetz",
             headline: "Kommutativgesetz",
-            description: "Erfahre, warum die Reihenfolge der Summanden oder Faktoren kein anderes Ergebnis liefert.",
+            description:
+                "Erfahre, warum die Reihenfolge der Summanden oder Faktoren kein anderes Ergebnis liefert.",
             route: "/theory/kommutativg"
         },
         // PRACTICE #5
@@ -93,7 +107,8 @@ function Grundlagen() {
             id: 11,
             title: "Assoziativgesetz",
             headline: "Assoziativgesetz",
-            description: "Warum spielt die Klammerung bei Addition/Multiplikation keine Rolle? Erfahre es hier.",
+            description:
+                "Warum spielt die Klammerung bei Addition/Multiplikation keine Rolle? Erfahre es hier.",
             route: "/theory/assoziativitaet"
         },
         // PRACTICE #6
@@ -186,17 +201,11 @@ function Grundlagen() {
         }
     ];
 
-    // Store references for possible scroll-into-view
+    // Create refs for each item (if needed for scroll-into-view)
     const itemRefs = useRef([]);
     itemRefs.current = moduleData.map((_, i) => itemRefs.current[i] ?? createRef());
 
-    const handleCubeClick = (mod, event, itemRef) => {
-        event.stopPropagation();
-        if (itemRef?.current) {
-            itemRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-    };
-
+    // Navigation
     const handleAuswaehlen = (mod) => {
         if (!mod.route) {
             console.log("No route defined for module:", mod);
@@ -205,66 +214,121 @@ function Grundlagen() {
         navigate(mod.route);
     };
 
-    // Define the puzzle pattern for columns: (1 -> 2 -> 3 -> 2), repeating
-    const columnPattern = [1, 2, 3, 2];
+    // Handle cube icon click
+    const handleCubeClick = (mod, event, itemRef) => {
+        event.stopPropagation();
+        if (itemRef?.current) {
+            itemRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    };
+
+    // Columns go 1,2,3,2,1,2,3,2,... (zig-zag)
+    const zigZagCols = [1, 2, 3, 2];
 
     return (
-        <div className="template-page">
-            <div className="gleichungen-container">
-                {/* Left Section */}
-                <div className="left-section">
-                    <img
+        <Box /* remove background entirely or pick a color you want */
+            // bg="#faf3dc"
+            minH="100vh"
+            py={6}
+        >
+            <Flex
+                maxW="1200px"
+                mx="auto"
+                gap={8}
+                px={4}
+                // Sidebar on top for mobile, row for medium and up
+                direction={{ base: "column", md: "row" }}
+            >
+                {/* LEFT SECTION (Sidebar) */}
+                <Box
+                    flex="1 0 300px"
+                    border="1px solid #000" // remove or keep if you want a border
+                    p={6}
+                    textAlign="center"
+                    position={{ base: "static", md: "sticky" }}
+                    top="100px"
+                    alignSelf="flex-start"
+                    // bg="#fff" // removed white background
+                >
+                    <Image
                         src="/assets/CardImages/HTL2/Grundlagen.svg"
                         alt="Grundlagen"
-                        className="subject-icon"
+                        w="200px"
+                        mx="auto"
+                        mb={4}
                     />
-                    <h6>LEVEL 1</h6>
-                    <h1>Grundlagen</h1>
-                    <p>Vertiefe dich bei den Grundlagen der Mathematik.</p>
-                    <div className="exercise-units">
-                        <div className="exercise-unit">
-                            <img
+                    <Heading as="h6" fontSize="1.3rem" mb={1}>
+                        LEVEL 1
+                    </Heading>
+                    <Heading as="h1" fontSize="2rem" color="#333" mb={2}>
+                        Grundlagen
+                    </Heading>
+                    <Text fontSize="1.2rem" color="#555">
+                        Vertiefe dich bei den Grundlagen der Mathematik.
+                    </Text>
+
+                    <Flex justify="space-evenly" gap={6} mt={6}>
+                        <VStack spacing={1}>
+                            <Image
                                 src="/assets/images/Lektionen/Gleichungen/Uebung.png"
                                 alt="Übung"
+                                boxSize="40px"
                             />
-                            <h1>12 Übungen</h1>
-                        </div>
-                        <div className="exercise-unit">
-                            <img
+                            <Heading as="h1" size="sm" color="#333">
+                                12 Übungen
+                            </Heading>
+                        </VStack>
+                        <VStack spacing={1}>
+                            <Image
                                 src="/assets/images/Lektionen/Gleichungen/Lectures.png"
                                 alt="Einheit"
+                                boxSize="40px"
                             />
-                            <h1>2 Einheiten</h1>
-                        </div>
-                    </div>
-                </div>
+                            <Heading as="h1" size="sm" color="#333">
+                                2 Einheiten
+                            </Heading>
+                        </VStack>
+                    </Flex>
+                </Box>
 
-                {/* Right Section (Puzzle Layout) */}
-                <div className="right-section">
-                    {moduleData.map((mod, index) => {
-                        // 1-based row
-                        const row = index + 1;
-                        // Use the column pattern array
-                        const col = columnPattern[index % columnPattern.length];
+                {/* RIGHT SECTION (Puzzle Grid) */}
+                <Box flex="3">
+                    <Grid
+                        // Force 3 columns for ALL screen sizes
+                        templateColumns="repeat(3, 1fr)"
+                        autoRows="auto"
+                        gap="1px"
+                        position="relative"
+                        // Enable horizontal scrolling if screen is too narrow
+                        overflowX="auto"
+                    >
+                        {moduleData.map((mod, index) => {
+                            const row = index + 1;
+                            const col = zigZagCols[index % zigZagCols.length];
 
-                        return (
-                            <TooltipItem
-                                key={mod.id}
-                                module={mod}
-                                onSelect={handleAuswaehlen}
-                                onCubeClick={handleCubeClick}
-                                itemRef={itemRefs.current[index]}
-                                // Apply puzzle row/column via inline style
-                                puzzleStyle={{
-                                    gridRow: row,
-                                    gridColumn: col
-                                }}
-                            />
-                        );
-                    })}
-                </div>
-            </div>
-        </div>
+                            return (
+                                <GridItem
+                                    key={mod.id}
+                                    rowStart={row}
+                                    colStart={col}
+                                    ref={itemRefs.current[index]}
+                                    // bg="#fff" // removed white background
+                                    p={3}
+                                    borderRadius="md"
+                                >
+                                    <TooltipItem
+                                        module={mod}
+                                        onSelect={handleAuswaehlen}
+                                        onCubeClick={handleCubeClick}
+                                        itemRef={itemRefs.current[index]}
+                                    />
+                                </GridItem>
+                            );
+                        })}
+                    </Grid>
+                </Box>
+            </Flex>
+        </Box>
     );
 }
 

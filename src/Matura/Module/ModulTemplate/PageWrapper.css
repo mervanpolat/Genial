@@ -1,7 +1,7 @@
 /****************************************************
   GLOBAL FIXES
 ****************************************************/
-/*File: src/Matura/Module/ModulTemplate/PageWrapper.css*/
+/* File: src/Matura/Module/ModulTemplate/PageWrapper.css */
 * {
   box-sizing: border-box; /* Ensure padding/margin are contained within width */
 }
@@ -38,9 +38,9 @@ body {
 
 @media (max-width: 768px) {
   .gleichungen-container {
-    flex-direction: column; /* Stack vertically */
-    gap: 10px; /* Adjust gap for mobile */
-    padding: 10px; /* Adjust padding for smaller screens */
+    flex-direction: column; /* Stack vertically on small screens */
+    gap: 10px;
+    padding: 10px;
   }
 }
 
@@ -48,9 +48,9 @@ body {
   3) LEFT SECTION (Card)
 ****************************************************/
 .left-section {
-  display: flex;              /* Use flexbox */
-  flex-direction: column;     /* Stack content vertically */
-  align-items: center;        /* Center horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 30px;
   text-align: center;
   border: 1px solid #000;
@@ -118,10 +118,10 @@ body {
 @media (max-width: 768px) {
   .left-section {
     width: 100%;
-    position: static; /* Remove sticky */
+    position: static; /* Remove sticky on small screens */
     top: auto;
     margin-bottom: 20px;
-    padding: 30px; /* Slightly reduce padding */
+    padding: 30px;
     height: auto;
   }
 }
@@ -132,15 +132,15 @@ body {
 .right-section {
   margin-top: 6rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Always three columns */
-  grid-auto-rows: auto; /* Rows adjust automatically */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for puzzle layout */
+  grid-auto-rows: auto; /* Let the rows adjust automatically */
   gap: 10px; /* Space between items */
   position: relative;
 }
 
 /*
-   NOTE: We removed manual nth-child assignments here,
-   because we now control the puzzle layout dynamically in JS.
+   We use inline style for row/column assignments in React (PageWrapper.jsx):
+   style={{ gridRow: row, gridColumn: col }}
 */
 
 .right-item {
@@ -164,12 +164,12 @@ body {
   /* Keep 3 columns on tablets */
   .right-section {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px; /* Reduce gap slightly for smaller screens */
+    gap: 8px; /* Reduce gap slightly for tablets */
   }
 }
 
 @media (max-width: 768px) {
-  /* Keep 3 columns for mobile, or adjust if desired */
+  /* Keep 3 columns for mobile, or reduce if desired */
   .right-section {
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
@@ -228,8 +228,8 @@ body {
   /* Reduce padding and align sections */
   .gleichungen-container {
     flex-direction: column; /* Stack vertically */
-    gap: 5px; /* Adjust gap for mobile */
-    padding: 7px; /* Adjust padding for smaller screens */
+    gap: 5px;
+    padding: 7px;
   }
 }
 
