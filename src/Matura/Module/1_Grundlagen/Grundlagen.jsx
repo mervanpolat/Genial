@@ -1,4 +1,4 @@
-// File: src/Matura/Module/1_Grundlagen/Grundlagen.jsx
+// File: src/Matura/Module/Grundlagen.jsx
 import React, { useRef, createRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../ModulTemplate/PageWrapper.css";
@@ -22,9 +22,8 @@ function Grundlagen() {
             title: "Praxis: Griechische Buchstaben",
             headline: "Praxis: Griechische Buchstaben",
             description: "Vertiefe dein Verständnis über die griechischen Buchstaben.",
-            route: "/practice/griechischebuchstaben" // <-- updated
+            route: "/practice/griechischebuchstaben"
         },
-
         // THEORY #2
         {
             id: 3,
@@ -39,9 +38,8 @@ function Grundlagen() {
             title: "Praxis: Lateinische Buchstaben",
             headline: "Praxis: Lateinische Buchstaben",
             description: "Vertiefe dein Verständnis über die lateinischen Buchstaben.",
-            route: "/practice/lateinischebuchstaben" // <-- updated
+            route: "/practice/lateinischebuchstaben"
         },
-
         // THEORY #3
         {
             id: 5,
@@ -56,9 +54,8 @@ function Grundlagen() {
             title: "Praxis: Zahlenmengen",
             headline: "Praxis: Zahlenmengen",
             description: "Vertiefe dein Verständnis über Zahlenmengen.",
-            route: "/practice/zahlenarithmetik" // <-- updated
+            route: "/practice/zahlenarithmetik"
         },
-
         // THEORY #4
         {
             id: 7,
@@ -73,9 +70,8 @@ function Grundlagen() {
             title: "Praxis: Grundlagen der Zahlen und Arithmetik",
             headline: "Praxis: Grundlagen der Zahlen und Arithmetik",
             description: "Vertiefe dein Verständnis über Zahlen und Arithmetik.",
-            route: "/practice/natZahlenArithmetik" // <-- updated
+            route: "/practice/natZahlenArithmetik"
         },
-
         // THEORY #5
         {
             id: 9,
@@ -90,9 +86,8 @@ function Grundlagen() {
             title: "Praxis: Kommutativgesetz",
             headline: "Praxis: Kommutativität",
             description: "Vertiefe dein Verständnis zu Kommutativgesetz.",
-            route: "/practice/kommutativ" // <-- updated
+            route: "/practice/kommutativ"
         },
-
         // THEORY #6
         {
             id: 11,
@@ -107,9 +102,8 @@ function Grundlagen() {
             title: "Praxis: Assoziativgesetz",
             headline: "Praxis: Assoziativität",
             description: "Vertiefe dein Verständnis zum Assoziativgesetz.",
-            route: "/practice/assoziativitaet" // <-- updated
+            route: "/practice/assoziativitaet"
         },
-
         // THEORY #7
         {
             id: 13,
@@ -124,9 +118,8 @@ function Grundlagen() {
             title: "Praxis: Distributivgesetz",
             headline: "Praxis: Distributivgesetz",
             description: "Vertiefe dein Verständnis zum Distributivgesetz.",
-            route: "/practice/distributivgesetz" // <-- updated
+            route: "/practice/distributivgesetz"
         },
-
         // THEORY #8
         {
             id: 15,
@@ -141,9 +134,8 @@ function Grundlagen() {
             title: "Praxis: Primzahlen und Teilbarkeitsregeln",
             headline: "Praxis: Primzahlen und Teilbarkeitsregeln",
             description: "Vertiefe dein Verständnis zu Teilbarkeitsregeln.",
-            route: "/practice/primzahlundteil" // <-- updated
+            route: "/practice/primzahlundteil"
         },
-
         // THEORY #9
         {
             id: 17,
@@ -158,8 +150,9 @@ function Grundlagen() {
             title: "Praxis: Primfaktorenzerlegung",
             headline: "Praxis: Primfaktorenzerlegung",
             description: "Vertiefe dein Verständnis zur Primfaktorenzerlegung.",
-            route: "/practice/primfaktorenzerlegung" // <-- updated
+            route: "/practice/primfaktorenzerlegung"
         },
+        // THEORY #10
         {
             id: 19,
             title: "Sieb des Eratosthenes",
@@ -167,6 +160,7 @@ function Grundlagen() {
             description: "Lerne, wie du mithilfe des Siebs von Eratosthenes Primzahlen findest.",
             route: "/theory/primzahlenfinden"
         },
+        // PRACTICE #10
         {
             id: 20,
             title: "Praxis: Sieb des Eratosthenes",
@@ -174,6 +168,7 @@ function Grundlagen() {
             description: "Vertiefe dein Verständnis zu Primzahlen.",
             route: "/practice/primzahlenfinden"
         },
+        // THEORY #11
         {
             id: 21,
             title: "Zahlentheorie",
@@ -181,19 +176,19 @@ function Grundlagen() {
             description: "Lerne die Grundlagen zu Zahlentheorie.",
             route: "/theory/zahlentheorie"
         },
+        // PRACTICE #11
         {
             id: 22,
             title: "Praxis: Zahlentheorie",
             headline: "Praxis: Zahlentheorie",
             description: "Vertiefe dein Verständnis zu Zahlentheorie.",
             route: "/practice/zahlentheorie"
-        },
+        }
     ];
 
+    // Store references for possible scroll-into-view
     const itemRefs = useRef([]);
-    itemRefs.current = moduleData.map(
-        (_, i) => itemRefs.current[i] ?? createRef()
-    );
+    itemRefs.current = moduleData.map((_, i) => itemRefs.current[i] ?? createRef());
 
     const handleCubeClick = (mod, event, itemRef) => {
         event.stopPropagation();
@@ -207,13 +202,16 @@ function Grundlagen() {
             console.log("No route defined for module:", mod);
             return;
         }
-        // Navigate to the route (theory or practice)
         navigate(mod.route);
     };
+
+    // Define the puzzle pattern for columns: (1 -> 2 -> 3 -> 2), repeating
+    const columnPattern = [1, 2, 3, 2];
 
     return (
         <div className="template-page">
             <div className="gleichungen-container">
+                {/* Left Section */}
                 <div className="left-section">
                     <img
                         src="/assets/CardImages/HTL2/Grundlagen.svg"
@@ -241,16 +239,29 @@ function Grundlagen() {
                     </div>
                 </div>
 
+                {/* Right Section (Puzzle Layout) */}
                 <div className="right-section">
-                    {moduleData.map((mod, idx) => (
-                        <TooltipItem
-                            key={mod.id}
-                            module={mod}
-                            onSelect={handleAuswaehlen}
-                            onCubeClick={handleCubeClick}
-                            itemRef={itemRefs.current[idx]}
-                        />
-                    ))}
+                    {moduleData.map((mod, index) => {
+                        // 1-based row
+                        const row = index + 1;
+                        // Use the column pattern array
+                        const col = columnPattern[index % columnPattern.length];
+
+                        return (
+                            <TooltipItem
+                                key={mod.id}
+                                module={mod}
+                                onSelect={handleAuswaehlen}
+                                onCubeClick={handleCubeClick}
+                                itemRef={itemRefs.current[index]}
+                                // Apply puzzle row/column via inline style
+                                puzzleStyle={{
+                                    gridRow: row,
+                                    gridColumn: col
+                                }}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </div>

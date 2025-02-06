@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.14.0",
     "@popperjs/core": "^2.11.8",
     "@tippyjs/react": "^4.2.6",
+    "@xyflow/react": "^12.4.2",
     "d3": "^7.9.0",
     "firebase": "^11.1.0",
     "framer-motion": "^11.16.3",
@@ -36,6 +37,7 @@
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.30.3",
     "react-step-progress-bar": "^1.0.3",
+    "reactflow": "^11.11.4",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
