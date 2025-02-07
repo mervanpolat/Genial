@@ -1,6 +1,5 @@
-import { useRef, createRef } from 'react';
-import '../ModulTemplate/PageWrapper.css';
-import TooltipItem from "../ModulTippy/TooltipItem.jsx";
+import React from "react";
+import ModulTemplate from "../ModulTemplate/ModulTemplate.jsx";
 
 function GleichungenLoesen() {
   const moduleData = [
@@ -48,70 +47,17 @@ function GleichungenLoesen() {
     }
   ];
 
-  const itemRefs = useRef([]);
-  itemRefs.current = moduleData.map(
-      (module, i) => itemRefs.current[i] ?? createRef()
-  );
-
-  const handleCubeClick = (module, event, itemRef) => {
-    event.stopPropagation();
-    console.log('Clicked Module:', module.headline);
-
-    if (itemRef && itemRef.current) {
-      itemRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
-  const handleAuswaehlen = (module) => {
-    // For now, just an alert
-    alert(`Ausgewählt: ${module.headline}`);
-    // You can do if (module.id is even) => practice route, etc.:
-    // e.g. if (module.id % 2 === 0) { navigate("/praxis-xxx"); } else { ... }
-  };
-
   return (
-      <div className="template-page">
-        <div className="gleichungen-container">
-          <div className="left-section">
-            <img
-                src="/assets/CardImages/HTL2/Gleichung.png"
-                alt="Gleichung"
-                className="subject-icon"
-            />
-            <h6>LEVEL 2</h6>
-            <h1>Gleichungen lösen</h1>
-            <p>Eine solide Grundlage in Gleichungen mit Unbekannten aufbauen.</p>
-            <div className="exercise-units">
-              <div className="exercise-unit">
-                <img
-                    src="/assets/images/Lektionen/Gleichungen/Uebung.png"
-                    alt="Übung"
-                />
-                <h1>24 Übungen</h1>
-              </div>
-              <div className="exercise-unit">
-                <img
-                    src="/assets/images/Lektionen/Gleichungen/Lectures.png"
-                    alt="Einheit"
-                />
-                <h1>4 Einheiten</h1>
-              </div>
-            </div>
-          </div>
-
-          <div className="right-section">
-            {moduleData.map((module, index) => (
-                <TooltipItem
-                    key={module.id}
-                    module={module}
-                    onSelect={handleAuswaehlen}
-                    onCubeClick={handleCubeClick}
-                    itemRef={itemRefs.current[index]}
-                />
-            ))}
-          </div>
-        </div>
-      </div>
+      <ModulTemplate
+          level="LEVEL 2"
+          title="Gleichungen lösen"
+          headline="Gleichungen lösen"
+          description="Eine solide Grundlage in Gleichungen mit Unbekannten aufbauen."
+          imageSrc="/assets/CardImages/HTL2/Gleichung.png"
+          exercises={24}
+          units={4}
+          moduleData={moduleData}
+      />
   );
 }
 

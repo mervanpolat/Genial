@@ -1,10 +1,10 @@
-// File: src/Matura/Module/ModulTippy/TooltipItem.jsx
-
 import { useState, useEffect, useRef } from "react";
 import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
 import { Box, Heading, Text, Button } from "@chakra-ui/react";
 import PropTypes from "prop-types";
+
+// Import the CSS file that contains our custom animation styles
+import "./appleishTippy.css";
 
 // Import your two cube variants
 import Button_Theorie from "../../../components/Roadmap_Button/Button_Theorie.jsx";
@@ -77,6 +77,7 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
 
     return (
         <Tippy
+            className="appleish-tippy"
             theme="genial"
             interactive
             trigger="manual"
@@ -89,9 +90,14 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
             arrow
             placement="bottom"
             offset={[0, 1]}
-            animation="appleish"
+            // (We omit Tippy's 'animation' prop in favor of custom CSS)
             content={
-                <Box textAlign="center">
+                <Box
+                    textAlign="center"
+                    overflow="hidden" // Ensure child content respects the rounding
+                    p={4}
+                    borderRadius="20px"  // Additional border-radius inside
+                >
                     <Heading fontSize="26px" color="#faf3dc" mb="2" mt="2">
                         {module.headline}
                     </Heading>
@@ -124,11 +130,19 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
                 tippyRef.current = instance;
             }}
         >
-            <Box ref={itemRef} className="right-item">
+            <Box
+                ref={itemRef}
+                className="right-item"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                textAlign="center"
+            >
                 <Box className="cube-button-wrapper" onClick={handleCubeClick}>
                     <CubeToRender size={75} />
                 </Box>
-                <Text>{module.title}</Text>
+                <Text mt={2}>{module.title}</Text>
             </Box>
         </Tippy>
     );

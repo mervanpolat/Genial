@@ -1,0 +1,16 @@
+.appleish-tippy {
+    /* Start slightly shrunk and transparent */
+
+    /* Rounded corners + light box-shadow */
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    /* Animate both opacity & transform */
+
+}
+
+/* When Tippy becomes visible, animate to full size & opacity */
+.appleish-tippy[data-state="visible"] {
+    opacity: 1;
+    transform: scale(1);
+}

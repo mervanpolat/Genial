@@ -1,22 +1,10 @@
 // File: src/Matura/Module/Grundlagen.jsx
 
-import React, { useRef, createRef } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-    Box,
-    Flex,
-    Image,
-    Heading,
-    Text,
-    Grid,
-    GridItem,
-    VStack
-} from "@chakra-ui/react";
-import TooltipItem from "../ModulTippy/TooltipItem.jsx";
+import React from "react";
+import ModulTemplate from "../ModulTemplate/ModulTemplate.jsx";
+
 
 function Grundlagen() {
-    const navigate = useNavigate();
-
     // -----------------------------------------------
     // Example data for the puzzle
     // -----------------------------------------------
@@ -201,135 +189,19 @@ function Grundlagen() {
         }
     ];
 
-    // Create refs for each item (if needed for scroll-into-view)
-    const itemRefs = useRef([]);
-    itemRefs.current = moduleData.map((_, i) => itemRefs.current[i] ?? createRef());
-
-    // Navigation
-    const handleAuswaehlen = (mod) => {
-        if (!mod.route) {
-            console.log("No route defined for module:", mod);
-            return;
-        }
-        navigate(mod.route);
-    };
-
-    // Handle cube icon click
-    const handleCubeClick = (mod, event, itemRef) => {
-        event.stopPropagation();
-        if (itemRef?.current) {
-            itemRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-    };
-
-    // Columns go 1,2,3,2,1,2,3,2,... (zig-zag)
-    const zigZagCols = [1, 2, 3, 2];
-
     return (
-        <Box /* remove background entirely or pick a color you want */
-            // bg="#faf3dc"
-            minH="100vh"
-            py={6}
-        >
-            <Flex
-                maxW="1200px"
-                mx="auto"
-                gap={8}
-                px={4}
-                // Sidebar on top for mobile, row for medium and up
-                direction={{ base: "column", md: "row" }}
-            >
-                {/* LEFT SECTION (Sidebar) */}
-                <Box
-                    flex="1 0 300px"
-                    border="1px solid #000" // remove or keep if you want a border
-                    p={6}
-                    textAlign="center"
-                    position={{ base: "static", md: "sticky" }}
-                    top="100px"
-                    alignSelf="flex-start"
-                    // bg="#fff" // removed white background
-                >
-                    <Image
-                        src="/assets/CardImages/HTL2/Grundlagen.svg"
-                        alt="Grundlagen"
-                        w="200px"
-                        mx="auto"
-                        mb={4}
-                    />
-                    <Heading as="h6" fontSize="1.3rem" mb={1}>
-                        LEVEL 1
-                    </Heading>
-                    <Heading as="h1" fontSize="2rem" color="#333" mb={2}>
-                        Grundlagen
-                    </Heading>
-                    <Text fontSize="1.2rem" color="#555">
-                        Vertiefe dich bei den Grundlagen der Mathematik.
-                    </Text>
-
-                    <Flex justify="space-evenly" gap={6} mt={6}>
-                        <VStack spacing={1}>
-                            <Image
-                                src="/assets/images/Lektionen/Gleichungen/Uebung.png"
-                                alt="Übung"
-                                boxSize="40px"
-                            />
-                            <Heading as="h1" size="sm" color="#333">
-                                12 Übungen
-                            </Heading>
-                        </VStack>
-                        <VStack spacing={1}>
-                            <Image
-                                src="/assets/images/Lektionen/Gleichungen/Lectures.png"
-                                alt="Einheit"
-                                boxSize="40px"
-                            />
-                            <Heading as="h1" size="sm" color="#333">
-                                2 Einheiten
-                            </Heading>
-                        </VStack>
-                    </Flex>
-                </Box>
-
-                {/* RIGHT SECTION (Puzzle Grid) */}
-                <Box flex="3">
-                    <Grid
-                        // Force 3 columns for ALL screen sizes
-                        templateColumns="repeat(3, 1fr)"
-                        autoRows="auto"
-                        gap="1px"
-                        position="relative"
-                        // Enable horizontal scrolling if screen is too narrow
-                        overflowX="auto"
-                    >
-                        {moduleData.map((mod, index) => {
-                            const row = index + 1;
-                            const col = zigZagCols[index % zigZagCols.length];
-
-                            return (
-                                <GridItem
-                                    key={mod.id}
-                                    rowStart={row}
-                                    colStart={col}
-                                    ref={itemRefs.current[index]}
-                                    // bg="#fff" // removed white background
-                                    p={3}
-                                    borderRadius="md"
-                                >
-                                    <TooltipItem
-                                        module={mod}
-                                        onSelect={handleAuswaehlen}
-                                        onCubeClick={handleCubeClick}
-                                        itemRef={itemRefs.current[index]}
-                                    />
-                                </GridItem>
-                            );
-                        })}
-                    </Grid>
-                </Box>
-            </Flex>
-        </Box>
+        <ModulTemplate
+            level="LEVEL 1"
+            title="Grundlagen"
+            headline="Grundlagen"
+            description="Vertiefe dich bei den Grundlagen der Mathematik."
+            imageSrc="/assets/CardImages/HTL2/Grundlagen.svg"
+            exercises={12}
+            units={2}
+            moduleData={moduleData}
+        />
     );
+
 }
 
 export default Grundlagen;
