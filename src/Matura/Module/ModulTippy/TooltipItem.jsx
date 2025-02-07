@@ -126,7 +126,7 @@ function TooltipItem({ module, onSelect, onCubeClick, itemRef }) {
         >
             <Box ref={itemRef} className="right-item">
                 <Box className="cube-button-wrapper" onClick={handleCubeClick}>
-                    <CubeToRender />
+                    <CubeToRender size={75} />
                 </Box>
                 <Text>{module.title}</Text>
             </Box>

@@ -1,44 +1,39 @@
-import 'react';
+// File: src/components/Button_Theorie/Button_Theorie.jsx
 
-function Button_Theorie() {
+import React from 'react';
+
+function Button_Theorie({ size = 60 }) {
   return (
       <svg
+          style={{ width: size, height: size }}
           id="cube-button"
           className="cube-button"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 247.49 223.24"
       >
-        <style type="text/css">
+        <style>
           {`
-          /* Initial styles */
           #cube-button {
             cursor: pointer;
           }
-          #top-side, #left-side, #right-side {
-            /* No transition for instant effect */
-          }
           #top-side {
-            fill: #565656; /* Lighter initial shade */
+            fill: #565656;
           }
           #right-side {
-            fill: #000000; /* Lighter initial shade */
+            fill: #000000;
           }
           #left-side {
-            fill: #333333; /* Lighter initial shade */
+            fill: #333333;
           }
-
-          /* Hover effect (darker shade) */
           #cube-button:hover #top-side {
-            fill: #777777; /* Darker shade */
+            fill: #777777;
           }
           #cube-button:hover #right-side {
-            fill: #353535; /* Darker shade */
+            fill: #353535;
           }
           #cube-button:hover #left-side {
-            fill: #545454; /* Darker shade */
+            fill: #545454;
           }
-
-          /* Active (click and hold) effect */
           #cube-button:active #top-side,
           #cube-button:active #left-side,
           #cube-button:active #right-side {
