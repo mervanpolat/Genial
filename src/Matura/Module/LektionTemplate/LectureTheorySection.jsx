@@ -1,9 +1,5 @@
-// File: src/Matura/Module/LektionTemplate/LectureTheorySection.jsx
-
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-
-// Existing quiz imports:
 import {
     MCQQuiz,
     TrueFalseQuiz,
@@ -11,28 +7,17 @@ import {
     ReorderQuiz,
     MatchingPairsQuiz,
 } from "../../../components/Quiz";
-
-// New quiz imports:
 import ClozeQuiz from "../../../components/Quiz/ClozeQuiz";
 import DragAndDropSortQuiz from "../../../components/Quiz/DragAndDropSortQuiz";
 import FlashcardsQuiz from "../../../components/Quiz/FlashcardsQuiz";
 import MatchingTextToImagesQuiz from "../../../components/Quiz/MatchingTextToImagesQuiz";
 
-/**
- * Renders a single theory section (heading, paragraphs, optional quiz).
- * The `isVisible` gating is commented out. If needed, you could re-enable it,
- * but you must coordinate with LectureTheoryPage so they don’t conflict.
- */
 function LectureTheorySection({
                                   heading,
-                                  isVisible, // not used here, but could be used if you want an internal gating
                                   children,
                                   quizData,
                                   onQuizAnswered = () => {},
                               }) {
-    // If you were using internal gating:
-    // if (!isVisible) return null;
-
     const handleQuizComplete = () => {
         onQuizAnswered();
     };
@@ -79,7 +64,6 @@ function LectureTheorySection({
                     />
                 );
             case "cloze":
-                // Example props: { type: 'cloze', clozeText: '', blanks: [], explanation: '' }
                 return (
                     <ClozeQuiz
                         clozeText={quizData.clozeText}
@@ -89,7 +73,6 @@ function LectureTheorySection({
                     />
                 );
             case "dragAndDropSort":
-                // Example props: { type: 'dragAndDropSort', prompt: '', items: [], correctOrder: [] }
                 return (
                     <DragAndDropSortQuiz
                         prompt={quizData.prompt}
@@ -99,7 +82,6 @@ function LectureTheorySection({
                     />
                 );
             case "flashcards":
-                // Example props: { type: 'flashcards', frontText: '', backText: '' }
                 return (
                     <FlashcardsQuiz
                         frontText={quizData.frontText}
@@ -107,7 +89,6 @@ function LectureTheorySection({
                     />
                 );
             case "matchingTextToImages":
-                // Example props: { type: 'matchingTextToImages', items: [], imageOptions: [] }
                 return (
                     <MatchingTextToImagesQuiz
                         items={quizData.items}
@@ -129,14 +110,10 @@ function LectureTheorySection({
         }
     };
 
-    // Make sure paragraphs each have a unique key
+    // Map each paragraph
     const paragraphsArray = Array.isArray(children)
-        ? children.map((para, i) => (
-            <Box key={`para-${i}`} mb={2}>
-                {para}
-            </Box>
-        ))
-        : children;
+        ? children.map((para, i) => <Box key={i} mb={2}>{para}</Box>)
+        : [children];
 
     return (
         <Box as="section" mb={8}>

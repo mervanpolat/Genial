@@ -1,27 +1,22 @@
-// File: src/Matura/Module/LektionTemplate/LectureTheoryPage.jsx
-
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
     chakra,
     Button,
     Image,
     Text,
-    useColorModeValue,
     Box,
+    useColorModeValue,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import LectureTheorySection from "./LectureTheorySection.jsx";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
 const OuterSection = chakra("section", {});
 const InnerSection = chakra("section", {});
 
-/**
- * Renders a single banner image or a slider of multiple banner images.
- */
+/** Renders a single banner image or a slider of multiple banner images. */
 function BannerArea({ bannerImageSrc, bannerImages = [] }) {
     if (bannerImages.length >= 2) {
         const settings = {
@@ -86,117 +81,80 @@ function BannerArea({ bannerImageSrc, bannerImages = [] }) {
 /**
  * LectureTheoryPage
  *
- * Single gating state:
- *   - currentSectionIndex = -1 => Intro is shown (no sections).
- *   - currentSectionIndex >= 0 => Hide intro, show sections up to currentSectionIndex.
+ * Instead of an explicit “intro” state, we assume the FIRST item of sectionsContent
+ * might be your intro. Then we only show sections up to currentSectionIndex.
  */
 function LectureTheoryPage({
                                bannerImageSrc,
                                bannerImages,
                                headline,
-                               introText,
+                               introText, // optional
                                sectionsContent,
                                onSectionComplete,
                            }) {
     const navigate = useNavigate();
-
     const pageRef = useRef(null);
-    const NAVBAR_HEIGHT = 80;
-
-    // -1 => intro, 0..(sectionsContent.length-1) => show that many sections
-    const [currentSectionIndex, setCurrentSectionIndex] = useState(-1);
-
-    // If the current section has a quiz, user must answer it before clicking "Weiter"
+    const sectionRefs = useRef([]);
+    const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
     const [isSectionAnswered, setIsSectionAnswered] = useState(false);
 
-    // Refs for each rendered section, for smooth scrolling
-    const sectionRefs = useRef([]);
+    const totalSections = sectionsContent.length;
+    const isLastSection = currentSectionIndex === totalSections - 1;
 
     const bgColor = useColorModeValue("#faf3dc", "#faf3dc");
     const cardBg = useColorModeValue("#faf3dc", "#faf3dc");
 
-    const totalSections = sectionsContent.length;
-    const isLastSection = currentSectionIndex === totalSections - 1;
-    const isIntro = currentSectionIndex === -1;
+    // create refs for each section so we can scroll to them
+    sectionRefs.current = sectionsContent.map(
+        (_, i) => sectionRefs.current[i] ?? React.createRef()
+    );
 
     useEffect(() => {
-        // Scroll the page so the navbar is out of view on mount
         if (pageRef.current) {
-            setTimeout(() => {
-                const topPosition = pageRef.current.offsetTop + NAVBAR_HEIGHT;
-                window.scrollTo({
-                    top: topPosition,
-                    behavior: "smooth",
-                });
-            }, 50);
+            // optional scroll on mount
+            window.scrollTo({ top: pageRef.current.offsetTop, behavior: "smooth" });
         }
     }, []);
 
-    /**
-     * Called when user clicks "Weiter" from the Intro
-     */
-    const handleIntroNext = () => {
-        // Move from -1 to 0, showing the first section
-        setCurrentSectionIndex(0);
-        setIsSectionAnswered(false);
-
-        // Scroll to the first section
-        setTimeout(() => {
-            if (sectionRefs.current[0]) {
-                sectionRefs.current[0].scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }
-        }, 50);
+    const handleQuizAnswered = () => {
+        setIsSectionAnswered(true);
     };
 
-    /**
-     * Called when user clicks "Weiter" in a visible section
-     */
     const handleNextSection = () => {
         setIsSectionAnswered(false);
 
         const nextIndex = currentSectionIndex + 1;
         if (nextIndex < totalSections) {
-            // show next section
             setCurrentSectionIndex(nextIndex);
 
-            // scroll to the newly shown section
+            // optional: scroll to that next section
             setTimeout(() => {
-                if (sectionRefs.current[nextIndex]) {
-                    sectionRefs.current[nextIndex].scrollIntoView({
+                if (sectionRefs.current[nextIndex]?.current) {
+                    sectionRefs.current[nextIndex].current.scrollIntoView({
                         behavior: "smooth",
                         block: "start",
                     });
                 }
             }, 50);
 
-            // optional callback
             if (onSectionComplete) {
                 onSectionComplete(nextIndex);
             }
         } else {
-            // If we've reached the last section, do whatever "finish" action you want
-            navigate("/grundlagen");
+            // If we are on the last section, do "finish" logic
+            navigate("/grundlagen"); // or whichever route you want
         }
     };
 
-    // Identify the "current" section for quiz gating:
-    const currentSection =
-        currentSectionIndex >= 0 && currentSectionIndex < sectionsContent.length
-            ? sectionsContent[currentSectionIndex]
-            : null;
-
-    const hasQuiz = !!currentSection?.quizData;
-    // If there's a quiz, disable the "Weiter" button until it's answered
-    const isButtonDisabled = hasQuiz && !isSectionAnswered;
-
-    const handleQuizAnswered = () => {
-        setIsSectionAnswered(true);
-    };
-
     const buttonLabel = isLastSection ? "Lektion abschließen" : "Weiter";
+    const isButtonDisabled = false;
+    // if you want gating by quiz, set isButtonDisabled = has quiz & !answered
+    // or do that logic per-section.
+
+    // If you want each section to require the quiz to be answered, do something like:
+    // const currentSection = sectionsContent[currentSectionIndex];
+    // const hasQuiz = !!currentSection?.quizData;
+    // const isButtonDisabled = hasQuiz && !isSectionAnswered;
 
     return (
         <chakra.section ref={pageRef} bg={bgColor} minH="100vh" py={6}>
@@ -218,69 +176,48 @@ function LectureTheoryPage({
                     </Text>
                 )}
 
-                {/* INTRO */}
-                {isIntro && introText && (
-                    <>
-                        <Text fontSize={{ base: "xl", md: "xl" }} mb={4}>
-                            {introText}
-                        </Text>
-
-                        <Button
-                            onClick={handleIntroNext}
-                            mt={6}
-                            bg="#30628b"
-                            color="white"
-                            size={{ base: "md", md: "lg" }}
-                            boxShadow="md"
-                            _hover={{ bg: "#245074", boxShadow: "lg" }}
-                            _active={{ bg: "#1d3f5e" }}
-                        >
-                            Weiter
-                        </Button>
-                    </>
+                {/* If you still want an extra intro text on top (not in the sections) */}
+                {introText && (
+                    <Box mb={6}>
+                        <Text fontSize={{ base: "xl", md: "xl" }}>{introText}</Text>
+                    </Box>
                 )}
 
-                {/* SECTIONS (if currentSectionIndex >= 0) */}
-                {!isIntro && (
-                    <>
-                        {sectionsContent.map((section, idx) => {
-                            // Show all sections up to currentSectionIndex
-                            if (idx > currentSectionIndex) return null;
-
-                            return (
-                                <InnerSection
-                                    key={`section-${idx}`}
-                                    ref={(el) => (sectionRefs.current[idx] = el)}
-                                    mt={8}
-                                >
-                                    <LectureTheorySection
-                                        heading={section.heading}
-                                        quizData={section.quizData}
-                                        onQuizAnswered={handleQuizAnswered}
-                                    >
-                                        {section.paragraphs}
-                                    </LectureTheorySection>
-                                </InnerSection>
-                            );
-                        })}
-
-                        {/* NEXT/FINISH BUTTON */}
-                        {currentSectionIndex < totalSections && (
-                            <Button
-                                onClick={handleNextSection}
-                                mt={6}
-                                bg="#30628b"
-                                color="white"
-                                size={{ base: "md", md: "lg" }}
-                                boxShadow="md"
-                                _hover={{ bg: "#245074", boxShadow: "lg" }}
-                                _active={{ bg: "#1d3f5e" }}
-                                isDisabled={isButtonDisabled}
+                {/* RENDER SECTIONS up to currentSectionIndex */}
+                {sectionsContent.map((section, idx) => {
+                    if (idx > currentSectionIndex) return null; // not unlocked yet
+                    return (
+                        <InnerSection
+                            key={idx}
+                            ref={sectionRefs.current[idx]}
+                            mt={8}
+                        >
+                            <LectureTheorySection
+                                heading={section.heading}
+                                quizData={section.quizData}
+                                onQuizAnswered={handleQuizAnswered}
                             >
-                                {buttonLabel}
-                            </Button>
-                        )}
-                    </>
+                                {section.paragraphs}
+                            </LectureTheorySection>
+                        </InnerSection>
+                    );
+                })}
+
+                {/* NEXT/FINISH BUTTON */}
+                {currentSectionIndex < totalSections && (
+                    <Button
+                        onClick={handleNextSection}
+                        mt={6}
+                        bg="#30628b"
+                        color="white"
+                        size={{ base: "md", md: "lg" }}
+                        boxShadow="md"
+                        _hover={{ bg: "#245074", boxShadow: "lg" }}
+                        _active={{ bg: "#1d3f5e" }}
+                        isDisabled={isButtonDisabled}
+                    >
+                        {buttonLabel}
+                    </Button>
                 )}
             </OuterSection>
         </chakra.section>

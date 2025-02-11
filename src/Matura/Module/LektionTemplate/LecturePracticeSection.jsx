@@ -1,7 +1,5 @@
-// File: src/Matura/Module/LektionTemplate/LecturePracticeSection.jsx
-
-import React from "react";
-import { Box } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Box, Text } from "@chakra-ui/react";
 
 import {
     MCQQuiz,
@@ -10,10 +8,12 @@ import {
     ReorderQuiz,
     MatchingPairsQuiz,
 } from "../../../components/Quiz";
-
-// Falls du numericinput nutzt
 import NumericInputQuiz from "../../../components/Quiz/NumericInputQuiz.jsx";
 
+/**
+ * Renders a single quiz step. If there's a recognized 'type', it delegates
+ * to the correct quiz component. Otherwise defaults to MCQ.
+ */
 function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
     if (!quizData) return null;
 
@@ -35,6 +35,7 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
+
         case "fillblank":
             return (
                 <Box>
@@ -46,6 +47,7 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
+
         case "reorder":
             return (
                 <Box>
@@ -58,6 +60,7 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
+
         case "matchingpairs":
             return (
                 <Box>
@@ -68,6 +71,7 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
+
         case "numericinput":
             return (
                 <Box>
@@ -79,6 +83,27 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
                     />
                 </Box>
             );
+
+        case "info":
+            // No actual quiz question. We can auto-complete so user can click “Weiter.”
+            useEffect(() => {
+                handleQuizComplete();
+                // eslint-disable-next-line
+            }, []);
+
+            return (
+                <Box>
+                    {/* For consistency, let's display a heading if provided: */}
+                    {quizData.heading && (
+                        <Text fontSize="xl" fontWeight="bold" mb={4}>
+                            {quizData.heading}
+                        </Text>
+                    )}
+                    {/* The content is normal text or any JSX: */}
+                    <Box>{quizData.content}</Box>
+                </Box>
+            );
+
         case "mcq":
         default:
             return (

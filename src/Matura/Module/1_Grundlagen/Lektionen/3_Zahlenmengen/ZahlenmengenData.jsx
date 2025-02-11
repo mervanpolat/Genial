@@ -12,9 +12,16 @@ const ZahlenmengenData = {
     bannerImageSrc: Zahlenmengen,
 
     headline: "Zahlen und Arithmetik – Ein Überblick",
-    introText: `In diesem Abschnitt frischen wir grundlegende Kenntnisse zu Zahlenmengen und den zugehörigen Rechenoperationen auf. Warum braucht man neben natürlichen Zahlen noch ganze, rationale, reelle und sogar komplexe Zahlen? Hier erfährst du es!`,
-
     sections: [
+
+        {
+            paragraphs: [
+                <>
+                    In diesem Abschnitt frischen wir grundlegende Kenntnisse zu Zahlenmengen und den zugehörigen Rechenoperationen auf. Warum braucht man neben natürlichen Zahlen noch ganze, rationale, reelle und sogar komplexe Zahlen? Hier erfährst du es!
+                </>
+            ],
+        },
+
         {
             heading: "1. Einführung",
             paragraphs: [
@@ -27,7 +34,14 @@ const ZahlenmengenData = {
                     <InlineMath>{String.raw`(\mathbb{C})`}</InlineMath>. Jede Erweiterung wird nötig,
                     um neue Problemstellungen zu lösen: z. B. negative Lösungen, Brüche, Wurzeln oder
                     sogar imaginäre Zahlen.
-                </>,
+                </>
+            ],
+
+
+        },
+
+        {
+            paragraphs: [
                 <>
                     Vielleicht hast du schon von <strong>“irrationalen”</strong> Zahlen gehört, wie{" "}
                     <InlineMath>{String.raw`\sqrt{2}`}</InlineMath> oder{" "}
@@ -36,7 +50,8 @@ const ZahlenmengenData = {
                     <em>warum</em> wir all diese Mengen benötigen und wie sie zusammenhängen.
                 </>,
             ],
-            quizData: {
+        },
+        {   quizData: {
                 type: "matchingpairs",
                 pairs: [
                     { left: "Natürliche Zahlen", right: "Zählen von Objekten (0,1,2,…)" },
@@ -45,8 +60,9 @@ const ZahlenmengenData = {
                 ],
                 explanation:
                     "Natürliche Zahlen (ℕ) -> Zählen, ganze Zahlen (ℤ) -> schließt Negatives ein, reelle Zahlen (ℝ) -> auch irrationale Werte wie √2.",
-            },
+            }
         },
+
         {
             heading: "2. Natürliche und ganze Zahlen",
             paragraphs: [
