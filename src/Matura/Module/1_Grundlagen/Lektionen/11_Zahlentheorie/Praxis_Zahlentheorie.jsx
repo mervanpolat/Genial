@@ -197,17 +197,6 @@ function Praxis_Zahlentheorie() {
             explanation:
                 "Um das kgV zu finden, nimmt man die jeweils größten Exponenten, für den ggT die kleinsten.",
         },
-        {
-            type: "info",
-            heading: "Fazit",
-            content: (
-                <>
-                    <p>
-                        Die Kombination aus kgV und ggT bildet ...
-                    </p>
-                </>
-            ),
-        },
     ];
 
     return (
