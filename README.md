@@ -154,12 +154,6 @@ Open your browser and navigate to [http://localhost:5173/](http://localhost:5173
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## Contact
 
 For questions, suggestions, or issues, please contact:
