@@ -50,25 +50,6 @@ Open your browser and navigate to [http://localhost:5173/](http://localhost:5173
 
 ---
 
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch for your feature:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Description of feature"
-   ```
-4. Push to your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
-
----
-
 ## Contact
 
 For questions, suggestions, or issues, please contact:
