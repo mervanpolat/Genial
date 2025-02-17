@@ -10,9 +10,15 @@ const SiebDesEratosthenesData = {
     bannerImageSrc: SiebDesEratosthenes,
     headline: "Sieb des Eratosthenes – Primzahlen effizient finden",
     introText:
-        "Das Sieb des Eratosthenes ist eine klassische Methode, um alle Primzahlen bis zu einer gewünschten Grenze zu bestimmen – ganz ohne komplizierte Teilbarkeitstests.",
+        "",
 
     sections: [
+        {
+            paragraphs: [
+                <>Das Sieb des Eratosthenes ist eine klassische Methode, um alle Primzahlen bis zu einer gewünschten Grenze zu bestimmen – ganz ohne komplizierte Teilbarkeitstests.</>
+            ]
+        },
+
         {
             heading: "Einleitung",
             paragraphs: [
@@ -27,6 +33,9 @@ const SiebDesEratosthenesData = {
                     aller Primzahlen bis <InlineMath>{String.raw`n`}</InlineMath> benötigt.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (
@@ -55,6 +64,9 @@ const SiebDesEratosthenesData = {
                     entfernt man. Daraufhin nimmt man die nächste ungestrichene Zahl usw.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -89,6 +101,9 @@ const SiebDesEratosthenesData = {
                     Primzahlen übrig bleiben.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText:
@@ -111,6 +126,9 @@ const SiebDesEratosthenesData = {
                     segmentierte Sieve-Verfahren.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "matchingpairs",
                 pairs: [

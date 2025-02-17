@@ -72,10 +72,13 @@ const LateinischeBuchstabenData = {
     bannerImages: [Lateinische_Buchstaben, Lateinische_Buchstaben2],
 
     headline: "Lateinische Buchstaben in der Mathematik",
-    introText:
-        "Diese kurze Übersicht behandelt die häufigsten lateinischen Buchstaben und deren typische Verwendung in der Mathematik – von Variablen für reelle Zahlen bis hin zu Euler’s Zahl e.",
 
     sections: [
+        {
+            paragraphs: [
+                <>Diese kurze Übersicht behandelt die häufigsten lateinischen Buchstaben und deren typische Verwendung in der Mathematik – von Variablen für reelle Zahlen bis hin zu Euler’s Zahl e.</>
+            ]
+        },
         {
             heading: "A, B, C: Beliebte Reelle Zahlen",
             paragraphs: [
@@ -88,6 +91,10 @@ const LateinischeBuchstabenData = {
                     etwa als Seitenlängen in einem Dreieck.
                 </>,
             ],
+
+        },
+
+        {
             quizData: {
                 type: "mcq",
                 question: "Wofür werden die Buchstaben A, B und C häufig verwendet?",
@@ -138,6 +145,9 @@ const LateinischeBuchstabenData = {
                     werden z.B. als <InlineMath>{String.raw`\ln(x)`}</InlineMath> notiert.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement:
@@ -189,6 +199,10 @@ const LateinischeBuchstabenData = {
                     wird!
                 </>,
             ],
+
+        },
+
+        {
             quizData: {
                 type: "matchingpairs",
                 pairs: [
@@ -237,6 +251,9 @@ const LateinischeBuchstabenData = {
                     „Es regnet“, „Ich habe einen Schirm“).
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: "Welche Buchstaben nutzt man gerne für Polynomfunktionen?",

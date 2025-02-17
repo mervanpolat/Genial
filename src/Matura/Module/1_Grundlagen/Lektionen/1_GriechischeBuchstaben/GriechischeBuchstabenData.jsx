@@ -16,10 +16,17 @@ import SecantTangentVisualization from "../../../../../components/InteractiveEle
 const GriechischeBuchstabenData = {
     bannerImageSrc: GreekLettersBanner,
     headline: "Griechische Buchstaben in der Mathematik",
-    introText:
-        "Von Alpha bis Omega: Griechische Buchstaben begegnen uns überall in der Mathematik—von Winkeln in der Geometrie bis hin zu Wahrscheinlichkeiten in der Statistik! " +
-        "Diese Lektion zeigt dir Schritt für Schritt, wo und wie du sie anwenden kannst.",
     sections: [
+
+        {
+            paragraphs: [
+                <>
+                    Von Alpha bis Omega: Griechische Buchstaben begegnen uns überall in der Mathematik—von Winkeln in der Geometrie bis hin zu Wahrscheinlichkeiten in der Statistik! " +
+                    Diese Lektion zeigt dir Schritt für Schritt, wo und wie du sie anwenden kannst.
+                </>
+            ]
+        },
+
         {
             heading: "Einführung und Überblick",
             paragraphs: [
@@ -60,7 +67,9 @@ const GriechischeBuchstabenData = {
                         </li>
                     </Box>
                 </>,
-            ],
+            ]
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: "Welcher Buchstabe repräsentiert typischerweise eine Summe?",
@@ -68,7 +77,7 @@ const GriechischeBuchstabenData = {
                 correctAnswerIndex: 2,
                 explanation:
                     "Das große Sigma (∑) ist das klassische Summenzeichen, während das große Pi (∏) für Produkte steht.",
-            },
+            }
         },
         {
             heading: "Geometrie: Winkelbezeichnungen",
@@ -91,6 +100,8 @@ const GriechischeBuchstabenData = {
                     </Box>
                 </>,
             ],
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: "Der Buchstabe α wird häufig als Winkel in der Geometrie verwendet.",
@@ -169,6 +180,9 @@ const GriechischeBuchstabenData = {
                     </Box>
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "matchingpairs",
                 pairs: [

@@ -15,10 +15,14 @@ import Multiplikation from "./images/Multiplikation.svg";
 const KommutativGesetzData = {
     bannerImageSrc: KommutativGesetz,
     headline: "Kommutative Gesetze in der Arithmetik",
-    introText:
-        "In dieser Lektion betrachten wir die Kommutativität von Addition und Multiplikation bei natürlichen Zahlen – warum das sinnvoll ist und wie sich das geometrisch sowie anschaulich begründen lässt.",
 
     sections: [
+        {
+            paragraphs: [
+                <>In dieser Lektion betrachten wir die Kommutativität von Addition und Multiplikation bei natürlichen Zahlen – warum das sinnvoll ist und wie sich das geometrisch sowie anschaulich begründen lässt.</>
+            ]
+        },
+
         {
             heading: "1. Einführung",
             paragraphs: [
@@ -67,6 +71,9 @@ const KommutativGesetzData = {
                     </Box>
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -117,6 +124,9 @@ const KommutativGesetzData = {
                     </Box>
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (
@@ -143,6 +153,9 @@ const KommutativGesetzData = {
                     <strong>Vertauschungen</strong> keinen Einfluss auf das Endergebnis haben.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText: "Vertausche die Faktoren: (3 x 4) = (4 x ?) = ?",

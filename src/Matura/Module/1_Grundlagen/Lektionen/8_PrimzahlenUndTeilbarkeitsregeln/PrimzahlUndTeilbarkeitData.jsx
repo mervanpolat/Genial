@@ -9,10 +9,13 @@ import Teilbarkeit from "./images/Teilbarkeit.svg";
 const PrimzahlUndTeilbarkeitData = {
     bannerImageSrc: Teilbarkeit, // oder bannerImages: ["...", "..."]
     headline: "Teilbarkeit und Primzahlen",
-    introText:
-        "Wie unterscheidet man Primzahlen und zusammengesetzte Zahlen? Wie funktioniert die Zerlegung in Primfaktoren? Hier erfährst du die wichtigsten Grundlagen zur Teilbarkeit.",
 
     sections: [
+        {
+            paragraphs: [
+                <>Wie unterscheidet man Primzahlen und zusammengesetzte Zahlen? Wie funktioniert die Zerlegung in Primfaktoren? Hier erfährst du die wichtigsten Grundlagen zur Teilbarkeit.</>
+            ]
+        },
         {
             heading: "1. Divisoren und Notation",
             paragraphs: [
@@ -61,6 +64,9 @@ const PrimzahlUndTeilbarkeitData = {
                     die 1 zählen dazu.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -99,6 +105,8 @@ const PrimzahlUndTeilbarkeitData = {
                     Exponenten.
                 </>,
             ],
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText:
@@ -107,7 +115,6 @@ const PrimzahlUndTeilbarkeitData = {
                 explanation:
                     "2² = 4, 4 × 3 = 12. So entsteht aus den Primfaktoren 2 und 3 erneut 12.",
             },
-
         },
         {
             heading: "4. Wichtige Teilbarkeitsregeln",
@@ -135,6 +142,9 @@ const PrimzahlUndTeilbarkeitData = {
                     teilbar ist.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (

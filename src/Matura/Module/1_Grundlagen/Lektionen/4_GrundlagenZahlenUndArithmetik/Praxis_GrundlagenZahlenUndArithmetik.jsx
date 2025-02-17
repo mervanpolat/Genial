@@ -1,11 +1,11 @@
-// File: src/Matura/Module/1_Grundlagen/Lektionen/4_NatZahlenArith/Praxis_NatZahlenArith.jsx
+// File: src/Matura/Module/1_Grundlagen/Lektionen/4_GrundlagenZahlenUndArithmetik/Praxis_GrundlagenZahlenUndArithmetik.jsx
 
 import React from "react";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import LecturePracticePage from "../../../LektionTemplate/LecturePracticePage.jsx";
 
-function Praxis_NatZahlenArith() {
+function Praxis_GrundlagenZahlenUndArithmetik() {
     const quizSteps = [
         {
             type: "mcq",
@@ -96,4 +96,4 @@ function Praxis_NatZahlenArith() {
     );
 }
 
-export default Praxis_NatZahlenArith;
+export default Praxis_GrundlagenZahlenUndArithmetik;

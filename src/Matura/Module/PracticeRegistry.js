@@ -4,7 +4,7 @@
 import Praxis_GriechischeBuchstaben from "./1_Grundlagen/Lektionen/1_GriechischeBuchstaben/Praxis_GriechischeBuchstaben.jsx";
 import Praxis_LateinischeBuchstaben from "./1_Grundlagen/Lektionen/2_LateinischeBuchstaben/Praxis_LateinischeBuchstaben.jsx";
 import Praxis_Zahlenmengen from "./1_Grundlagen/Lektionen/3_Zahlenmengen/Praxis_Zahlenmengen.jsx";
-import Praxis_NatZahlenArith from "./1_Grundlagen/Lektionen/4_NatZahlenArith/Praxis_NatZahlenArith.jsx";
+import Praxis_GrundlagenZahlenUndArithmetik from "./1_Grundlagen/Lektionen/4_GrundlagenZahlenUndArithmetik/Praxis_GrundlagenZahlenUndArithmetik.jsx";
 import Praxis_KommutativGesetz from "./1_Grundlagen/Lektionen/5_Kommutativgesetz/Praxis_KommutativGesetz.jsx";
 import Praxis_Assoziativitaet from "./1_Grundlagen/Lektionen/6_Assoziativgesetz/Praxis_Assoziativitaet.jsx";
 import Praxis_Distributivgesetz from "./1_Grundlagen/Lektionen/7_Distributivgesetz/Praxis_Distributivgesetz.jsx";
@@ -18,7 +18,7 @@ const practiceRegistry = {
     griechischebuchstaben: Praxis_GriechischeBuchstaben,
     lateinischebuchstaben: Praxis_LateinischeBuchstaben,
     zahlenarithmetik:      Praxis_Zahlenmengen,
-    natZahlenArithmetik:   Praxis_NatZahlenArith,
+    natZahlenArithmetik:   Praxis_GrundlagenZahlenUndArithmetik,
     kommutativ:            Praxis_KommutativGesetz,
     assoziativitaet:       Praxis_Assoziativitaet,
     distributivgesetz:     Praxis_Distributivgesetz,

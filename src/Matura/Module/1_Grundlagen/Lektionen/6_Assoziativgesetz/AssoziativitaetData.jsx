@@ -27,10 +27,13 @@ import "slick-carousel/slick/slick-theme.css";
 const AssoziativitaetData = {
     bannerImageSrc: Assoziativgesetz, // Optional banner
     headline: "Assoziativität in der Arithmetik",
-    introText:
-        "Hier lernst du, warum sich die Klammerung bei Addition oder Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt und wieso das als Axiom festgelegt wird.",
 
     sections: [
+        {
+            paragraphs: [
+                <>Hier lernst du, warum sich die Klammerung bei Addition oder Multiplikation natürlicher Zahlen auf das Ergebnis nicht auswirkt und wieso das als Axiom festgelegt wird.</>
+            ]
+        },
         {
             heading: "1. Einführung",
             paragraphs: [
@@ -117,6 +120,9 @@ const AssoziativitaetData = {
                     dieselbe Gesamtanzahl.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -165,6 +171,9 @@ const AssoziativitaetData = {
                     </Box>
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (

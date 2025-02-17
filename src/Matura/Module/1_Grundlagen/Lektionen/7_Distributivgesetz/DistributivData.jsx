@@ -25,10 +25,14 @@ import Ausmultiplizieren from "./images/Ausmultiplizieren.svg";
 const DistributivData = {
     bannerImageSrc: Distributivgesetz,
     headline: "Das Distributivgesetz",
-    introText:
-        "Nach den Illustrationen zum Kommutativ- und Assoziativgesetz geht es jetzt um das Distributivgesetz. Es verbindet Multiplikation und Addition – und ist fundamental für das Ausmultiplizieren von Klammern.",
 
     sections: [
+        {
+            paragraphs: [
+                <>Nach den Illustrationen zum Kommutativ- und Assoziativgesetz geht es jetzt um das Distributivgesetz. Es verbindet Multiplikation und Addition – und ist fundamental für das Ausmultiplizieren von Klammern.</>
+            ]
+        },
+
         {
             heading: "1. Einführung",
             paragraphs: [
@@ -72,6 +76,9 @@ const DistributivData = {
                     „<em>k wird verteilt</em>“.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (
@@ -110,6 +117,9 @@ const DistributivData = {
                     <InlineMath>{String.raw`k(m+n) = km + kn`}</InlineMath> anschaulich dargestellt.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -138,6 +148,9 @@ const DistributivData = {
                     selben Ergebnis.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText:
@@ -161,7 +174,7 @@ const DistributivData = {
                         <ChakraImage
                             src={Ausmultiplizieren}
                             alt="Dreieck mit α, β, γ"
-                            maxW="100%"
+                            maxW="90%"
                             objectFit="contain"
                             margin="0 auto"
                         />

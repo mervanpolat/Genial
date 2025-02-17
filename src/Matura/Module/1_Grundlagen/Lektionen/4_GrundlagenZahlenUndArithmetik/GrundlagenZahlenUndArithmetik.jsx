@@ -1,16 +1,20 @@
-// File: src/Matura/Module/1_Grundlagen/Lektionen/4_NatZahlenArith/NatZahlenArithData.jsx
+// File: src/Matura/Module/1_Grundlagen/Lektionen/4_GrundlagenZahlenUndArithmetik/GrundlagenZahlenUndArithmetik.jsx
 
 import React from "react";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 import NatZahlenArithDataBanner from "./images/ZahlenUndArithmetik.svg"
 
-const NatZahlenArithData = {
+const GrundlagenZahlenUndArithmetik = {
     bannerImageSrc: NatZahlenArithDataBanner,
     headline: "Natürliche Zahlen und Grundrechenarten",
-    introText: `In diesem Abschnitt besprechen wir die wichtigsten Eigenschaften der natürlichen Zahlen, darunter Diskretheit, Ordnungsrelation und die Bedeutung von neutralen Elementen beim Addieren und Multiplizieren.`,
 
     sections: [
+        {
+          paragraphs: [
+              <>In diesem Abschnitt besprechen wir die wichtigsten Eigenschaften der natürlichen Zahlen, darunter Diskretheit, Ordnungsrelation und die Bedeutung von neutralen Elementen beim Addieren und Multiplizieren.</>
+          ]
+        },
         {
             heading: "1. Einführung in die natürlichen Zahlen",
             paragraphs: [
@@ -23,7 +27,7 @@ const NatZahlenArithData = {
                     bezeichnet man als <strong>geordnete Menge</strong>.
                 </>,
                 <>
-                    <br/><br/>Weiterhin ist <InlineMath>{String.raw`\mathbb{N}`}</InlineMath> eine{" "}
+                    <br/>Weiterhin ist <InlineMath>{String.raw`\mathbb{N}`}</InlineMath> eine{" "}
                     <strong>diskrete Menge</strong>. Das heißt, zwischen zwei natürlichen Zahlen
                     liegen keine weiteren „Zahlen“ dieser Art. Im Gegensatz dazu kennst du bestimmt
                     die reellen Zahlen <InlineMath>{String.raw`\mathbb{R}`}</InlineMath>, die{" "}
@@ -42,7 +46,7 @@ const NatZahlenArithData = {
                     Ergebnis in <InlineMath>{String.raw`\mathbb{N}`}</InlineMath>.
                 </>,
                 <>
-                    <br/><br/>Zusätzlich kennen wir sogenannte <strong>neutrale Elemente</strong>:<br/>
+                    <br/>Zusätzlich kennen wir sogenannte <strong>neutrale Elemente</strong>:<br/>
                 </>,
                 <>
                     - <InlineMath>{String.raw`0`}</InlineMath> ist das neutrale Element der Addition, da{" "}
@@ -50,11 +54,15 @@ const NatZahlenArithData = {
                     <InlineMath>{String.raw`n \in \mathbb{N}`}</InlineMath>.
                 </>,
                 <>
-                    <br/>- <InlineMath>{String.raw`1`}</InlineMath> ist das neutrale Element der Multiplikation,
+                    - <InlineMath>{String.raw`1`}</InlineMath> ist das neutrale Element der Multiplikation,
                     da <InlineMath>{String.raw`n \cdot 1 = n`}</InlineMath> für alle{" "}
                     <InlineMath>{String.raw`n \in \mathbb{N}`}</InlineMath>.
                 </>,
             ],
+
+        },
+
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -91,7 +99,7 @@ const NatZahlenArithData = {
                     <InlineMath>{String.raw`5^3 = 5 \times 5 \times 5`}</InlineMath>.
                 </>,
                 <>
-                    <br/><strong>Begriffe:</strong> Beim Addieren heißt jedes Summenglied ein{" "}
+                    <strong>Begriffe:</strong> Beim Addieren heißt jedes Summenglied ein{" "}
                     „Term“ und das Ergebnis die „Summe“. Beim Multiplizieren nennen wir die
                     einzelnen Zahlen „Faktoren“ und das Ergebnis das „Produkt“.
                 </>,
@@ -121,6 +129,8 @@ const NatZahlenArithData = {
                     „erweiterte Form“ von Addition.
                 </>,
             ],
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText:
@@ -153,4 +163,4 @@ const NatZahlenArithData = {
     ],
 };
 
-export default NatZahlenArithData;
+export default GrundlagenZahlenUndArithmetik;

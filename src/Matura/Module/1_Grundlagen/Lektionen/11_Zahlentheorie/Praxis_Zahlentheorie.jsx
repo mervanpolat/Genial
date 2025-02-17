@@ -23,6 +23,8 @@ function Carousel_12_18_20() {
         slidesToScroll: 1,
     };
 
+
+
     return (
         <div style={{ margin: "20px 0" }}>
             <Slider {...settings}>
@@ -156,11 +158,13 @@ function Praxis_Zahlentheorie() {
             explanation:
                 "Sowohl 24 als auch 40 sind durch 8 teilbar. Es gibt keinen größeren gemeinsamen Faktor.",
         },
+
         {
             type: "fillblank",
             heading: "3. Primfaktorzerlegung als Werkzeug",
             content: (
                 <>
+            
                     <p>
                         Die <em>Primfaktorzerlegung</em> ist ein systematischer Ansatz, um ...
                     </p>

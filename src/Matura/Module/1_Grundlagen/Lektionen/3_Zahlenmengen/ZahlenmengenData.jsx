@@ -81,6 +81,9 @@ const ZahlenmengenData = {
                     auch negative Werte (und 0) enthalten.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 // Hier wandeln wir “Frage” in ein JSX-Element um, damit du InlineMath nutzen kannst
@@ -121,6 +124,8 @@ const ZahlenmengenData = {
                     (<InlineMath>{String.raw`\mathbb{R}`}</InlineMath>).
                 </>,
             ],
+        },
+        {
             quizData: {
                 type: "truefalse",
                 // Wieder als JSX
@@ -155,6 +160,8 @@ const ZahlenmengenData = {
                     Lösungen.
                 </>,
             ],
+        },
+        {
             quizData: {
                 type: "fillblank",
                 // Hier reicht ein einfacher String für die Frage
@@ -169,7 +176,6 @@ const ZahlenmengenData = {
                     </>
                 ),
             },
-
         },
         {
             heading: "5. Venn-Diagramm und Inklusion",

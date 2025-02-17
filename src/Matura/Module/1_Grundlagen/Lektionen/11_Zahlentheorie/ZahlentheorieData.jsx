@@ -84,10 +84,14 @@ function Carousel_12_18_20() {
 const ZahlentheorieData = {
     bannerImageSrc: "/assets/images/Banner_LCM_GCF.svg",
     headline: "kgV und ggT in der Schulmathematik",
-    introText:
-        "In dieser Lektion lernst du, wie du das kleinste gemeinsame Vielfache (kgV) und den größten gemeinsamen Teiler (ggT) von Zahlen oder Termen bestimmst. Dabei hilft dir insbesondere die Primfaktorzerlegung.",
 
     sections: [
+        {
+            paragraphs: [
+            <>In dieser Lektion lernst du, wie du das kleinste gemeinsame Vielfache (kgV) und den größten gemeinsamen Teiler (ggT) von Zahlen oder Termen bestimmst. Dabei hilft dir insbesondere die Primfaktorzerlegung.</>
+            ]
+        },
+
         {
             heading: "1. Einführung in das kgV (kleinstes gemeinsames Vielfaches)",
             paragraphs: [
@@ -111,6 +115,9 @@ const ZahlentheorieData = {
                     sucht das kleinste gemeinsame Element.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -146,6 +153,9 @@ const ZahlentheorieData = {
                     Teiler beider Zahlen ist.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (
@@ -160,6 +170,7 @@ const ZahlentheorieData = {
                     "Sowohl 24 als auch 40 sind durch 8 teilbar. Es gibt keinen größeren gemeinsamen Faktor.",
             },
         },
+
         {
             heading: "3. Primfaktorzerlegung als Werkzeug",
             paragraphs: [
@@ -178,6 +189,9 @@ const ZahlentheorieData = {
                     Exponenten jedes Primfaktors wählt.
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText:
@@ -198,8 +212,12 @@ const ZahlentheorieData = {
                 </>,
                 <>
                     <Carousel_12_18_20 />
-                </>,
+                </>
+                ,
             ],
+
+        },
+        {
             quizData: {
                 type: "matchingpairs",
                 pairs: [

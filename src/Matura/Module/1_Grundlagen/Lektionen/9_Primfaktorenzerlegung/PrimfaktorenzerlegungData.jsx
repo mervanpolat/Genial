@@ -34,10 +34,13 @@ import Teilbarkeit from "./images/Teilbarkeit.svg";
 const PrimfaktorenzerlegungData = {
     bannerImageSrc: Primfaktorzerlegung,
     headline: "Primfaktorenzerlegung",
-    introText:
-        "Was steckt hinter der Zerlegung in Primfaktoren, und warum ist sie für viele mathematische Anwendungen so bedeutsam? Hier erfährst du alles Wichtige!",
 
     sections: [
+        {
+            paragraphs: [
+                <>Was steckt hinter der Zerlegung in Primfaktoren, und warum ist sie für viele mathematische Anwendungen so bedeutsam? Hier erfährst du alles Wichtige!</>
+            ]
+        },
         {
             heading: "1. Grundlagen: Warum Primfaktoren?",
             paragraphs: [
@@ -64,7 +67,7 @@ const PrimfaktorenzerlegungData = {
                     <Box mt={4} textAlign="center">
                         <ChakraImage
                             src={Teilbarkeit}
-                            alt="Dreieck mit α, β, γ"
+                            alt="Teilbarkeitsregeln"
                             maxW="100%"
                             objectFit="contain"
                             margin="0 auto"
@@ -84,6 +87,9 @@ const PrimfaktorenzerlegungData = {
                     <Carousel60 />
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -114,6 +120,9 @@ const PrimfaktorenzerlegungData = {
                     <Carousel84 />
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "mcq",
                 question: (
@@ -145,6 +154,9 @@ const PrimfaktorenzerlegungData = {
                     <Carousel105 />
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "fillblank",
                 templateText:
@@ -166,6 +178,9 @@ const PrimfaktorenzerlegungData = {
                     <Carousel48 />
                 </>,
             ],
+
+        },
+        {
             quizData: {
                 type: "truefalse",
                 statement: (
@@ -218,11 +233,13 @@ function Carousel60() {
                 <div>
                     <p>So schaut die Primfaktorzerlegung für die Zahl 60 aus.</p>
                     <Image
+                        margin={10}
                         src={prime60_3}
                         alt="60 step 3"
-                        maxW="100%"
+                        maxW="60%"
                         display="block"
                         mx="auto"
+                        my="10px"
                     />
                 </div>
             </Slider>
@@ -247,9 +264,10 @@ function Carousel84() {
                     <Image
                         src={prime84_1}
                         alt="84 step 1"
-                        maxW="100%"
+                        maxW="60%"
                         display="block"
                         mx="auto"
+                        my="10px"
                     />
                 </div>
             </Slider>
@@ -274,7 +292,7 @@ function Carousel105() {
                     <Image
                         src={prime105_1}
                         alt="105 step 1"
-                        maxW="100%"
+                        maxW="60%"
                         display="block"
                         mx="auto"
                     />
@@ -301,7 +319,7 @@ function Carousel48() {
                     <Image
                         src={prime48_1}
                         alt="48 step 1"
-                        maxW="100%"
+                        maxW="60%"
                         display="block"
                         mx="auto"
                     />
