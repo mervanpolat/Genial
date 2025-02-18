@@ -12,20 +12,22 @@ import PrimzahlUndTeilbarkeitData from "./1_Grundlagen/Lektionen/8_PrimzahlenUnd
 import PrimfaktorenzerlegungData from "./1_Grundlagen/Lektionen/9_Primfaktorenzerlegung/PrimfaktorenzerlegungData.jsx";
 import SiebDesEratosthenesData from "./1_Grundlagen/Lektionen/10_SiebDesEratosthenes/SiebDesEratosthenesData.jsx";
 import ZahlentheorieData from "./1_Grundlagen/Lektionen/11_Zahlentheorie/ZahlentheorieData.jsx";
+import GanzeZahlenAdditionData from "./1_Grundlagen/Lektionen/12_GanzeZahlenAddition/GanzeZahlenAddition.jsx";
 
 // Map each slug to its respective data file
 const theoryRegistry = {
-    griechische: GriechischeBuchstabenData,
-    lateinische: LateinischeBuchstabenData,
-    zahlenarith: ZahlenmengenData,
-    natZahlenArith: natZahlenArithData,
-    kommutativg: KommutativGesetzData,
-    assoziativitaet: AssoziativitaetData,
-    distributiv: DistributivData,
-    primzahlundteil: PrimzahlUndTeilbarkeitData,
-    primfaktorenzerlegung: PrimfaktorenzerlegungData,
-    primzahlenfinden: SiebDesEratosthenesData,
-    zahlentheorie: ZahlentheorieData,
+  griechische: GriechischeBuchstabenData,
+  lateinische: LateinischeBuchstabenData,
+  zahlenarith: ZahlenmengenData,
+  natZahlenArith: natZahlenArithData,
+  kommutativg: KommutativGesetzData,
+  assoziativitaet: AssoziativitaetData,
+  distributiv: DistributivData,
+  primzahlundteil: PrimzahlUndTeilbarkeitData,
+  primfaktorenzerlegung: PrimfaktorenzerlegungData,
+  primzahlenfinden: SiebDesEratosthenesData,
+  zahlentheorie: ZahlentheorieData,
+  ganzeZahlenAddition: GanzeZahlenAdditionData,
 };
 
 export default theoryRegistry;

@@ -1,38 +1,126 @@
 import React from "react";
 import { InlineMath, BlockMath } from "react-katex";
-import LecturePracticePage from "../../../../../components/LecturePracticePage";
-import TippyText from "../../../../../components/TippyText";
+import "katex/dist/katex.min.css";
+import { Box } from "@chakra-ui/react";
+import TippyText from "../../../../../components/TippyText/TippyText.jsx";
 
 function GanzeZahlenAddition() {
   const quizSteps = [
     {
       type: "multiplechoice",
-      heading: "1. Addition ganzer Zahlen",
+      heading: "1. Einführung in die Zahlengerade",
       content: (
         <>
-          <p>Bei der Addition ganzer Zahlen gelten bestimmte Regeln:</p>
+          <Box mb={3} sx={{ textAlign: "center" }}>
+            <img
+              src="/assets/images/zahlengerade.png"
+              alt="Zahlengerade mit positiven und negativen Zahlen"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+          </Box>
+
           <p>
-            - Positive Zahlen plus positive Zahlen ergeben positive Zahlen
-            <br />
-            - Negative Zahlen plus negative Zahlen ergeben negative Zahlen
-            <br />- Bei unterschiedlichen Vorzeichen subtrahiert man die Beträge
+            Um die Addition ganzer Zahlen anschaulich darzustellen, verwenden
+            wir eine Zahlengerade:
           </p>
+          <ul>
+            <li>
+              Der Nullpunkt <InlineMath math="0" /> ist unser Ausgangspunkt
+            </li>
+            <li>Positive Zahlen liegen rechts von 0</li>
+            <li>Negative Zahlen liegen links von 0</li>
+          </ul>
+
+          <h4>Das neutrale Element</h4>
+          <Box mb={3} sx={{ textAlign: "center" }}>
+            <img
+              src="/assets/images/neutrales-element.png"
+              alt="Demonstration des neutralen Elements"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+          </Box>
+
+          <p>Die Null ist das neutrale Element der Addition:</p>
+          <BlockMath math="n + 0 = n" />
+          <BlockMath math="0 + n = n" />
+
+          <h4>Gegenzahlen (Opposites)</h4>
+          <Box mb={3} sx={{ textAlign: "center" }}>
+            <img
+              src="/assets/images/gegenzahlen.png"
+              alt="Visualisierung von Gegenzahlen"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+          </Box>
+
+          <p>Jede Zahl hat eine Gegenzahl:</p>
+          <ul>
+            <li>
+              Die Gegenzahl zu <InlineMath math="n" /> ist{" "}
+              <InlineMath math="-n" />
+            </li>
+            <li>
+              Zusammen ergeben sie Null: <InlineMath math="n + (-n) = 0" />
+            </li>
+            <li>
+              Beispiel: <InlineMath math="5 + (-5) = 0" />
+            </li>
+          </ul>
+
+          <h4>Addition auf der Zahlengerade</h4>
+          <Box mb={3} sx={{ textAlign: "center" }}>
+            <img
+              src="/assets/images/addition-visualisierung.png"
+              alt="Visualisierung der Addition auf der Zahlengerade"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+          </Box>
+
+          <p>Bei der Addition bewegen wir uns auf der Zahlengerade:</p>
+          <ul>
+            <li>Positive Zahlen: Bewegung nach rechts</li>
+            <li>Negative Zahlen: Bewegung nach links</li>
+          </ul>
+
+          <Box
+            sx={{
+              backgroundColor: "#f8f9fa",
+              padding: "15px",
+              borderRadius: "5px",
+              marginTop: "20px",
+              marginBottom: "20px",
+            }}
+          >
+            <strong>Wichtige Eigenschaften:</strong>
+            <ul>
+              <li>
+                Kommutativgesetz: <InlineMath math="a + b = b + a" />
+              </li>
+              <li>
+                Assoziativgesetz:{" "}
+                <InlineMath math="(a + b) + c = a + (b + c)" />
+              </li>
+              <li>
+                Neutrales Element: <InlineMath math="a + 0 = a" />
+              </li>
+            </ul>
+          </Box>
         </>
       ),
       question: (
-        <>
-          Was ergibt <InlineMath>{String.raw`(-5) + (+3)`}</InlineMath>?
-        </>
+        <p>
+          Was ergibt <InlineMath math="(-7) + 3" />?
+        </p>
       ),
       options: [
-        <InlineMath>{String.raw`-2`}</InlineMath>,
-        <InlineMath>{String.raw`-8`}</InlineMath>,
-        <InlineMath>{String.raw`+2`}</InlineMath>,
-        <InlineMath>{String.raw`+8`}</InlineMath>,
+        { id: 0, text: <InlineMath math="-4" /> },
+        { id: 1, text: <InlineMath math="10" /> },
+        { id: 2, text: <InlineMath math="4" /> },
+        { id: 3, text: <InlineMath math="-10" /> },
       ],
       correctAnswerIndex: 0,
       explanation:
-        "Bei unterschiedlichen Vorzeichen subtrahiert man die Beträge: |-5| - |3| = 5 - 3 = 2, das Vorzeichen kommt von der betragsmäßig größeren Zahl (-5).",
+        "Wenn wir bei -7 starten und 3 Schritte nach rechts gehen, landen wir bei -4.",
     },
     {
       type: "truefalse",
@@ -98,7 +186,7 @@ function GanzeZahlenAddition() {
   return (
     <LecturePracticePage
       headline="Addition ganzer Zahlen"
-      introText="In dieser Lektion lernst du die grundlegenden Regeln zur Addition ganzer Zahlen."
+      introText="In dieser Lektion lernst du die grundlegenden Regeln zur Addition ganzer Zahlen und das Konzept des neutralen Elements."
       quizSteps={quizSteps}
     />
   );
