@@ -10,12 +10,12 @@ const GanzeZahlenSubtraktionData = {
   sections: [
     {
       paragraphs: [
-        <>
-          In dieser Lektion lernst du, wie man ganze Zahlen subtrahiert. Wir
-          werden uns ansehen, wie man mit positiven und negativen Zahlen rechnet
-          und welche Regeln dabei zu beachten sind. Diese Kenntnisse sind
-          grundlegend für viele weitere mathematische Konzepte.
-        </>,
+        <p>
+          In dieser Lektion lernst du, wie man ganze Zahlen subtrahiert. Mit Hilfe von anschaulichen 
+          Beispielen und der Zahlengerade wirst du schnell verstehen, wie die Subtraktion mit 
+          positiven und negativen Zahlen funktioniert. Diese Kenntnisse sind nicht nur in der 
+          Mathematik wichtig, sondern begegnen uns auch häufig im Alltag.
+        </p>,
       ],
     },
     {
@@ -23,27 +23,40 @@ const GanzeZahlenSubtraktionData = {
       paragraphs: [
         <>
           <p>
-            Bei der Subtraktion ziehen wir eine Zahl von einer anderen ab. Dabei
-            gibt es verschiedene Fälle zu beachten:
+            Bei der Subtraktion ziehen wir eine Zahl von einer anderen ab. Schauen wir uns die 
+            verschiedenen Fälle mit einfachen Beispielen an:
           </p>
           <ul>
             <li>
               Positive Zahlen subtrahieren: <InlineMath math="8 - 5 = 3" />
+              <br />
+              <small style={{ color: '#666' }}>
+                (Wie beim Zählen: Von 8 um 5 nach unten zählen)
+              </small>
             </li>
             <li>
               Negative Zahlen subtrahieren: <InlineMath math="8 - (-5) = 13" />
+              <br />
+              <small style={{ color: '#666' }}>
+                (Minus und Minus wird zu Plus: 8 + 5 = 13)
+              </small>
             </li>
             <li>
-              Von negativen Zahlen subtrahieren:{" "}
-              <InlineMath math="(-8) - 5 = -13" />
+              Von negativen Zahlen subtrahieren: <InlineMath math="(-8) - 5 = -13" />
+              <br />
+              <small style={{ color: '#666' }}>
+                (Von -8 noch 5 weiter runter)
+              </small>
             </li>
           </ul>
-          <p>
-            <TippyText tooltipText="Merke dir: Wenn du eine negative Zahl subtrahierst, wird daraus eine Addition!">
-              Wichtiger Hinweis: Das Subtrahieren einer negativen Zahl
+          <Box p={3} bg="blue.50" borderRadius="md">
+            <TippyText tooltipText="Dies ist eine der wichtigsten Regeln bei der Subtraktion ganzer Zahlen!">
+              <strong>Goldene Regel:</strong> Das Subtrahieren einer negativen Zahl 
               entspricht dem Addieren der positiven Zahl.
+              <br />
+              <InlineMath math="a - (-b) = a + b" />
             </TippyText>
-          </p>
+          </Box>
         </>,
       ],
     },
@@ -103,33 +116,44 @@ const GanzeZahlenSubtraktionData = {
           <p>
             Für die Subtraktion ganzer Zahlen gelten diese wichtigen Regeln:
           </p>
-          <ul>
-            <li>
-              <TippyText tooltipText="Diese Regel ist besonders wichtig bei Aufgaben mit negativen Zahlen">
-                Minus und Minus ergibt Plus:{" "}
-                <InlineMath math="a - (-b) = a + b" />
-              </TippyText>
-            </li>
-            <li>
-              Jede Subtraktion lässt sich als Addition schreiben:{" "}
-              <InlineMath math="a - b = a + (-b)" />
-            </li>
-            <li>
-              Bei mehreren Minuszeichen gilt:
-              <ul>
-                <li>
-                  Zwei Minuszeichen = Plus: <InlineMath math="--a = a" />
-                </li>
-                <li>
-                  Drei Minuszeichen = Minus: <InlineMath math="---a = -a" />
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <p>Beispielrechnungen:</p>
-          <BlockMath math="6 - (-4) = 6 + 4 = 10" />
-          <BlockMath math="(-3) - 5 = (-3) + (-5) = -8" />
-          <BlockMath math="(-2) - (-8) = (-2) + 8 = 6" />
+          <Box p={4} bg="green.50" borderRadius="md">
+            <ul>
+              <li>
+                <TippyText tooltipText="Diese Regel ist besonders wichtig bei Aufgaben mit negativen Zahlen">
+                  <strong>Hauptregel:</strong> Minus und Minus ergibt Plus:{" "}
+                  <InlineMath math="a - (-b) = a + b" />
+                </TippyText>
+              </li>
+              <li>
+                <strong>Umwandlungsregel:</strong> Jede Subtraktion lässt sich als Addition schreiben:{" "}
+                <InlineMath math="a - b = a + (-b)" />
+              </li>
+              <li>
+                <strong>Vorzeichenregel:</strong> Bei mehreren Minuszeichen:
+                <ul>
+                  <li>
+                    Zwei Minuszeichen = Plus: <InlineMath math="--a = a" />
+                  </li>
+                  <li>
+                    Drei Minuszeichen = Minus: <InlineMath math="---a = -a" />
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </Box>
+          <Box mt={4}>
+            <p><strong>Schrittweise Beispielrechnungen:</strong></p>
+            <Box p={3} bg="gray.50" borderRadius="md">
+              <BlockMath math="6 - (-4) = 6 + 4 = 10" />
+              <small style={{ color: '#666' }}>Minus und Minus wird zu Plus</small>
+              
+              <BlockMath math="(-3) - 5 = (-3) + (-5) = -8" />
+              <small style={{ color: '#666' }}>Von -3 noch 5 weiter runter</small>
+              
+              <BlockMath math="(-2) - (-8) = (-2) + 8 = 6" />
+              <small style={{ color: '#666' }}>Minus und Minus wird zu Plus</small>
+            </Box>
+          </Box>
         </>,
       ],
     },
