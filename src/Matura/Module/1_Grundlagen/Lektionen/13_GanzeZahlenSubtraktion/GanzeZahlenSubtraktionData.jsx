@@ -74,21 +74,33 @@ const GanzeZahlenSubtraktionData = {
 
           <p>
             Die Zahlengerade ist ein wichtiges Werkzeug zum Verständnis der
-            Subtraktion:
+            Subtraktion. Denke an einen Thermometer - die Bewegung nach links bedeutet 
+            kälter (subtrahieren), nach rechts wärmer (addieren):
           </p>
-          <ul>
-            <li>
-              Eine positive Zahl subtrahieren: Nach links gehen
-              <br />
-              Beispiel: <InlineMath math="5 - 3 = 2" /> (3 Schritte nach links)
-            </li>
-            <li>
-              Eine negative Zahl subtrahieren: Nach rechts gehen
-              <br />
-              Beispiel: <InlineMath math="5 - (-3) = 8" /> (3 Schritte nach
-              rechts)
-            </li>
-          </ul>
+          <Box p={3} bg="purple.50" borderRadius="md" mb={3}>
+            <ul>
+              <li>
+                Eine positive Zahl subtrahieren: Nach links gehen
+                <br />
+                Beispiel: <InlineMath math="5 - 3 = 2" /> (3 Schritte nach links)
+              </li>
+              <li>
+                Eine negative Zahl subtrahieren: Nach rechts gehen
+                <br />
+                Beispiel: <InlineMath math="5 - (-3) = 8" /> (3 Schritte nach
+                rechts)
+              </li>
+            </ul>
+          </Box>
+          <TippyText tooltipText="Diese Visualisierung hilft dir, die Richtung der Bewegung auf der Zahlengerade zu verstehen">
+            <Box p={3} bg="yellow.50" borderRadius="md">
+              <p><strong>Merkhilfe:</strong></p>
+              <ul>
+                <li>Subtrahieren einer positiven Zahl: "Gehe nach links" ⬅️</li>
+                <li>Subtrahieren einer negativen Zahl: "Gehe nach rechts" ➡️</li>
+              </ul>
+            </Box>
+          </TippyText>
         </>,
       ],
       quizData: {
@@ -162,22 +174,39 @@ const GanzeZahlenSubtraktionData = {
       paragraphs: [
         <>
           <p>Die Subtraktion ganzer Zahlen begegnet uns im Alltag häufig:</p>
-          <ul>
-            <li>
-              Temperaturunterschiede: Von <InlineMath math="-2°C" /> auf{" "}
-              <InlineMath math="-7°C" />
-              <br />
-              Berechnung: <InlineMath math="(-7) - (-2) = -5" /> (Es wurde um
-              5°C kälter)
-            </li>
-            <li>
-              Höhenunterschiede: Von 100m unter dem Meeresspiegel auf 200m über
-              dem Meeresspiegel
-              <br />
-              Berechnung: <InlineMath math="200 - (-100) = 300" />{" "}
-              (Höhenunterschied von 300m)
-            </li>
-          </ul>
+          <Box p={4} bg="teal.50" borderRadius="md">
+            <ul>
+              <li>
+                <strong>Temperaturunterschiede:</strong> Von <InlineMath math="-2°C" /> auf{" "}
+                <InlineMath math="-7°C" />
+                <br />
+                Berechnung: <InlineMath math="(-7) - (-2) = -5" />
+                <br />
+                <small style={{ color: '#666' }}>
+                  (Es wurde um 5°C kälter, weil wir von -2°C noch 5 Einheiten nach unten gehen)
+                </small>
+              </li>
+              <li>
+                <strong>Höhenunterschiede:</strong> Von 100m unter dem Meeresspiegel auf 200m über
+                dem Meeresspiegel
+                <br />
+                Berechnung: <InlineMath math="200 - (-100) = 300" />
+                <br />
+                <small style={{ color: '#666' }}>
+                  (Gesamter Höhenunterschied von 300m, weil wir von -100m bis +200m gehen)
+                </small>
+              </li>
+              <li>
+                <strong>Kontostand:</strong> Von <InlineMath math="-150€" /> (Schulden) auf <InlineMath math="50€" /> (Guthaben)
+                <br />
+                Berechnung: <InlineMath math="50 - (-150) = 200" />
+                <br />
+                <small style={{ color: '#666' }}>
+                  (Eine Verbesserung um 200€, weil wir von -150€ zu +50€ gehen)
+                </small>
+              </li>
+            </ul>
+          </Box>
         </>,
       ],
     },
