@@ -8,6 +8,8 @@ const GanzeZahlenSubtraktionData = {
   bannerImageSrc: "/assets/images/ganze-zahlen-subtraktion-banner.png",
   headline: "Subtraktion ganzer Zahlen",
   sections: [
+
+    
     {
       paragraphs: [
         <p>
@@ -206,6 +208,50 @@ const GanzeZahlenSubtraktionData = {
                 </small>
               </li>
             </ul>
+          </Box>
+        </>,
+      ],
+    },
+    {
+      heading: "5. Übungsaufgaben",
+      paragraphs: [
+        <>
+          <p>Löse folgende Aufgaben, um dein Verständnis zu festigen:</p>
+          <Box p={4} bg="orange.50" borderRadius="md">
+            <ol>
+              <li>
+                Berechne: <InlineMath math="12 - (-8)" />
+                <br />
+                <small style={{ color: '#666' }}>
+                  Tipp: Denk an die Regel "Minus und Minus wird zu Plus"
+                </small>
+              </li>
+              <li>
+                Berechne: <InlineMath math="(-15) - 7" />
+                <br />
+                <small style={{ color: '#666' }}>
+                  Tipp: Nutze die Zahlengerade - von -15 noch 7 nach links
+                </small>
+              </li>
+              <li>
+                Temperaturaufgabe: Am Morgen zeigt das Thermometer <InlineMath math="-3°C" />, 
+                am Abend <InlineMath math="-8°C" />. Wie stark ist die Temperatur gefallen?
+                <br />
+                <small style={{ color: '#666' }}>
+                  Tipp: Berechne <InlineMath math="(-8) - (-3)" />
+                </small>
+              </li>
+            </ol>
+          </Box>
+          <Box mt={3} p={3} bg="pink.50" borderRadius="md">
+            <TippyText tooltipText="Die Lösungen findest du, wenn du die Aufgaben nach den gelernten Regeln berechnest">
+              <p><strong>Lösungen:</strong></p>
+              <ol>
+                <li><InlineMath math="12 - (-8) = 12 + 8 = 20" /></li>
+                <li><InlineMath math="(-15) - 7 = -22" /></li>
+                <li><InlineMath math="(-8) - (-3) = -8 + 3 = -5" /> (Die Temperatur ist um 5°C gefallen)</li>
+              </ol>
+            </TippyText>
           </Box>
         </>,
       ],
