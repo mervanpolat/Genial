@@ -1,5 +1,5 @@
 // src/components/Onboarding/steps/Step7_TimePreference.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
 
@@ -9,8 +9,7 @@ import ContinueButton from "../ContinueButton.jsx";
 import { useOnboardingContext } from "../OnboardingContext.jsx";
 
 function Step7_TimePreference({ onContinue = () => {} }) {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const { setTimePreference } = useOnboardingContext();
+    const { timePreference, setTimePreference } = useOnboardingContext();
 
     const options = [
         { label: "Morgens", emoji: "🐓" },
@@ -18,6 +17,18 @@ function Step7_TimePreference({ onContinue = () => {} }) {
         { label: "Abends", emoji: "🏡" },
         { label: "Nachts", emoji: "🦉" },
     ];
+
+    // Initialize selectedOption from context
+    const [selectedOption, setSelectedOption] = useState(() => {
+        const index = options.findIndex(option => option.label === timePreference);
+        return index !== -1 ? index : null;
+    });
+
+    // Sync with context changes (for when user navigates back)
+    useEffect(() => {
+        const index = options.findIndex(option => option.label === timePreference);
+        setSelectedOption(index !== -1 ? index : null);
+    }, [timePreference, options]);
 
     const handleSelection = (index) => {
         setSelectedOption(index);

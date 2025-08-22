@@ -1,5 +1,5 @@
 // src/components/Onboarding/steps/Step3_MaturatypSelection.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
 
@@ -15,9 +15,8 @@ import { RiBuilding2Fill } from "react-icons/ri";
 import { useOnboardingContext } from "../OnboardingContext.jsx";
 
 function Step3_MaturatypSelection({ onContinue = () => {} }) {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const { setMaturatyp } = useOnboardingContext();
-
+    const { maturatyp, setMaturatyp } = useOnboardingContext();
+    
     const options = [
         { label: "AHS", icon: GiBookshelf },
         { label: "BHS Cluster P", icon: FaLaptopCode },
@@ -26,6 +25,18 @@ function Step3_MaturatypSelection({ onContinue = () => {} }) {
         { label: "BHS Cluster W1", icon: MdBusiness },
         { label: "BHS Cluster W2", icon: GiStairsGoal },
     ];
+
+    // Initialize selectedOption from context
+    const [selectedOption, setSelectedOption] = useState(() => {
+        const index = options.findIndex(option => option.label === maturatyp);
+        return index !== -1 ? index : null;
+    });
+
+    // Sync with context changes (for when user navigates back)
+    useEffect(() => {
+        const index = options.findIndex(option => option.label === maturatyp);
+        setSelectedOption(index !== -1 ? index : null);
+    }, [maturatyp, options]);
 
     const handleSelection = (index) => {
         setSelectedOption(index);

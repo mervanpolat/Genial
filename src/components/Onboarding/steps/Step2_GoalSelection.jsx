@@ -1,5 +1,5 @@
 // src/components/Onboarding/steps/Step2_GoalSelection.jsx
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
 
@@ -7,11 +7,11 @@ import OnboardingLayout from "../OnboardingLayout.jsx";
 import OptionItem from "../OptionItem.jsx";
 import ContinueButton from "../ContinueButton.jsx";
 import { useOnboardingContext } from "../OnboardingContext.jsx";
+import { useOnboardingSelection } from "../hooks/useOnboardingSelection.js";
 
 function Step2_GoalSelection({ onContinue = () => {} }) {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const { setGoal } = useOnboardingContext();
-
+    const { goal, setGoal } = useOnboardingContext();
+    
     // Each option has a label + emoji, but we only store the label
     const options = [
         { label: "Mathekenntnisse auffrischen.", emoji: "✨" },
@@ -21,11 +21,7 @@ function Step2_GoalSelection({ onContinue = () => {} }) {
         { label: "Etwas anderes", emoji: "🧚" },
     ];
 
-    const handleSelection = (index) => {
-        setSelectedOption(index);
-        // Store only the label in OnboardingContext (Option A)
-        setGoal(options[index].label);
-    };
+    const { selectedOption, handleSelection } = useOnboardingSelection(options, goal, setGoal);
 
     const handleContinueClick = () => {
         if (selectedOption !== null) {
