@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -30,12 +30,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig.js";
 
-// (Optional) Your login popper/modal (no longer triggered by “Anmelden”)
+// Login modal for sign-in functionality
 import LoginPopper from "../../firebase/LoginPopper.jsx";
 
 function NavBar() {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate(); // For optional programmatic navigation
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -44,7 +43,7 @@ function NavBar() {
     return () => unsubscribe();
   }, []);
 
-  // We still keep the login popper in case we need it somewhere else
+  // Login modal controls
   const {
     isOpen: isLoginOpen,
     onOpen: onLoginOpen,
@@ -168,15 +167,15 @@ function NavBar() {
                   Über uns
                 </ChakraLink>
 
-                {/* CHANGED: If not logged in, we link to /welcome (Step1) instead of opening LoginPopper */}
+                {/* FIXED: "Anmelden" now opens the sign-in modal instead of onboarding */}
                 {!user ? (
-                    <ChakraLink
-                        as={RouterLink}
-                        to="/welcome"  // <--- GOES TO STEP 1
-                        {...animatedUnderline}
+                    <Button
+                        variant="link"
+                        onClick={onLoginOpen}
+                        sx={animatedUnderline}
                     >
                       Anmelden
-                    </ChakraLink>
+                    </Button>
                 ) : (
                     <Menu>
                       <MenuButton
@@ -247,16 +246,18 @@ function NavBar() {
                   Über uns
                 </ChakraLink>
 
-                {/* CHANGED: On mobile, also link to /welcome if not logged in */}
+                {/* FIXED: Mobile "Anmelden" also opens sign-in modal */}
                 {!user ? (
-                    <ChakraLink
-                        as={RouterLink}
-                        to="/welcome"
-                        onClick={closeDrawer}
-                        {...animatedUnderline}
+                    <Button
+                        variant="link"
+                        onClick={() => {
+                          closeDrawer();
+                          onLoginOpen();
+                        }}
+                        sx={animatedUnderline}
                     >
                       Anmelden
-                    </ChakraLink>
+                    </Button>
                 ) : (
                     <Menu>
                       <MenuButton
@@ -284,8 +285,7 @@ function NavBar() {
           </DrawerContent>
         </Drawer>
 
-        {/* If you still want the popper available, it’s here.
-          But it’s no longer used by the "Anmelden" button. */}
+        {/* Sign-in modal */}
         <LoginPopper isOpen={isLoginOpen} onClose={onLoginClose} />
       </>
   );

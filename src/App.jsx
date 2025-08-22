@@ -1,5 +1,4 @@
 // File: src/App.jsx
-import React from "react";
 import {
     BrowserRouter as Router,
     Routes,
@@ -112,10 +111,10 @@ function App() {
                 <Route path="/grundlagen" element={<Grundlagen />} />
                 <Route path="/gleichungen-loesen" element={<GleichungenLoesen />} />
 
-                {/* DYNAMIC route for theory => the “slug” picks the correct theory data */}
+                {/* DYNAMIC route for theory => the "slug" picks the correct theory data */}
                 <Route path="/theory/:slug" element={<DynamicTheoryPage />} />
 
-                {/* DYNAMIC route for practice => “slug” picks the correct practice component */}
+                {/* DYNAMIC route for practice => "slug" picks the correct practice component */}
                 <Route path="/practice/:slug" element={<DynamicPracticePage />} />
 
                 {/* Onboarding steps */}

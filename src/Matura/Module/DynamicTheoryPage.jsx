@@ -1,6 +1,5 @@
 // File: src/Matura/Module/DynamicTheoryPage.jsx
 
-import React from "react";
 import { Box } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import theoryRegistry from "./TheoryRegistry.js";
@@ -17,7 +16,7 @@ function DynamicTheoryPage() {
     if (!data) {
         return (
             <Box p={6} color="red">
-                <strong>Theory not found for slug: “{slug}”</strong>
+                <strong>Theory not found for slug: &quot;{slug}&quot;</strong>
             </Box>
         );
     }
@@ -31,7 +30,7 @@ function DynamicTheoryPage() {
             introText={data.introText}
             sectionsContent={data.sections}
             onSectionComplete={(sectionIndex) => {
-                console.log("Section completed:", sectionIndex, "for slug:", slug);
+                // Section completed callback - can be used for analytics or progress tracking
             }}
         />
     );

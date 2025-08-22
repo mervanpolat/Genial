@@ -1,5 +1,4 @@
 // src/components/Onboarding/steps/Step2_GoalSelection.jsx
-import React from "react";
 import PropTypes from "prop-types";
 import { Box, Text, VStack } from "@chakra-ui/react";
 
