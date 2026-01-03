@@ -1,5 +1,5 @@
-import React from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import practiceRegistry from "../practiceRegistry.js";
 import LecturePracticePage from "./LecturePracticePage.jsx";
 
@@ -14,7 +14,9 @@ function DynamicPracticePage({ slug: propSlug }) {
     if (!data) {
         return (
             <div style={{ padding: "2rem", color: "red" }}>
-                <strong>No practice data found for slug: "{slugFromRoute}"</strong>
+                <strong>
+                    No practice data found for slug: &quot;{slugFromRoute}&quot;
+                </strong>
             </div>
         );
     }
@@ -28,5 +30,9 @@ function DynamicPracticePage({ slug: propSlug }) {
         />
     );
 }
+
+DynamicPracticePage.propTypes = {
+    slug: PropTypes.string,
+};
 
 export default DynamicPracticePage;

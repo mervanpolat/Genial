@@ -1,6 +1,6 @@
 // File: src/components/Button_Theorie/Button_Praxis.jsx
 
-import React from "react";
+import PropTypes from "prop-types";
 
 function Button_Praxis({ size }) {
     return (
@@ -71,5 +71,9 @@ function Button_Praxis({ size }) {
         </svg>
     );
 }
+
+Button_Praxis.propTypes = {
+    size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
 
 export default Button_Praxis;
