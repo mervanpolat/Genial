@@ -1,6 +1,7 @@
 // File: src/Matura/Module/LektionTemplate/LecturePracticePage.jsx
 
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import LecturePracticeSection from "./LecturePracticeSection.jsx";
@@ -86,5 +87,12 @@ function LecturePracticePage({
         </Box>
     );
 }
+
+LecturePracticePage.propTypes = {
+    headline: PropTypes.string,
+    introText: PropTypes.string,
+    quizSteps: PropTypes.arrayOf(PropTypes.object),
+    onAllDone: PropTypes.func,
+};
 
 export default LecturePracticePage;

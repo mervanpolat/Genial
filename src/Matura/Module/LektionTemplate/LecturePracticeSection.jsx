@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { Box, Text } from "@chakra-ui/react";
 
 import {
@@ -119,5 +120,35 @@ function LecturePracticeSection({ quizData, onAnswered = () => {} }) {
             );
     }
 }
+
+const quizDataShape = PropTypes.shape({
+    type: PropTypes.string,
+    question: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.string),
+    correctAnswerIndex: PropTypes.number,
+    explanation: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    statement: PropTypes.string,
+    isTrue: PropTypes.bool,
+    templateText: PropTypes.string,
+    correctAnswers: PropTypes.arrayOf(PropTypes.string),
+    prompt: PropTypes.string,
+    initialWords: PropTypes.arrayOf(PropTypes.string),
+    correctOrder: PropTypes.arrayOf(PropTypes.string),
+    pairs: PropTypes.arrayOf(
+        PropTypes.shape({
+            left: PropTypes.string,
+            right: PropTypes.string,
+        }),
+    ),
+    questionImage: PropTypes.string,
+    heading: PropTypes.string,
+    content: PropTypes.node,
+    correctNumber: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+});
+
+LecturePracticeSection.propTypes = {
+    quizData: quizDataShape,
+    onAnswered: PropTypes.func,
+};
 
 export default LecturePracticeSection;

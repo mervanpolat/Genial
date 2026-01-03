@@ -29,7 +29,7 @@ function DynamicTheoryPage() {
             headline={data.headline}
             introText={data.introText}
             sectionsContent={data.sections}
-            onSectionComplete={(sectionIndex) => {
+            onSectionComplete={() => {
                 // Section completed callback - can be used for analytics or progress tracking
             }}
         />

@@ -1,6 +1,6 @@
 // File: src/components/TippyText/TippyText.jsx
 
-import React from "react";
+import PropTypes from "prop-types";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
@@ -59,6 +59,11 @@ const TippyText = ({ children, content }) => {
             </Tippy>
         </>
     );
+};
+
+TippyText.propTypes = {
+    children: PropTypes.node.isRequired,
+    content: PropTypes.node.isRequired,
 };
 
 export default TippyText;

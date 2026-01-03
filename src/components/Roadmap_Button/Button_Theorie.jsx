@@ -1,6 +1,6 @@
 // File: src/components/Button_Theorie/Button_Theorie.jsx
 
-import React from 'react';
+import PropTypes from 'prop-types';
 
 function Button_Theorie({ size = 60 }) {
   return (
@@ -61,5 +61,9 @@ function Button_Theorie({ size = 60 }) {
       </svg>
   );
 }
+
+Button_Theorie.propTypes = {
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
 
 export default Button_Theorie;
